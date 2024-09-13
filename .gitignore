@@ -1,0 +1,8 @@
+.idea
+node_modules
+build
+dist
+
+package-lock.json
+*.tar.gz
+.env*

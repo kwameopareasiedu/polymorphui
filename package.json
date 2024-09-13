@@ -1,0 +1,8 @@
+{
+  "name": "twreact-lib",
+  "version": "0.1.0",
+  "description": "Tailwind React UI library",
+  "main": "index.js",
+  "author": "Kwame Opare Asiedu",
+  "license": "MIT"
+}
