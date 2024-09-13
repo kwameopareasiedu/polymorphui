@@ -4,6 +4,7 @@
     "module": "esnext",
     "rootDir": "src",
     "moduleResolution": "node10",
+    "jsx": "react-jsx",
     "outDir": "dist",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
