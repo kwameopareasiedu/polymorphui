@@ -1,18 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es2016",
+    "target": "esnext",
     "module": "esnext",
-    "rootDir": "src",
-    "moduleResolution": "node10",
-    "jsx": "react-jsx",
-    "outDir": "dist",
+    "strict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
+    "moduleResolution": "node",
     "skipLibCheck": true,
-    "typeRoots": ["types"],
-    "paths": {
-      "@/*": ["./src/*"]
-    }
-  }
+    "jsx": "react-jsx",
+    "noImplicitAny": false,
+    "typeRoots": ["types", "node_modules/@types"],
+    "paths": { "@/*": ["./src/*"] }
+  },
+  "include": ["src", "types"],
+  "exclude": ["node_modules", "dist"]
 }
