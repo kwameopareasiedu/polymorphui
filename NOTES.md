@@ -4,7 +4,7 @@ A place to organize my thoughts
 
 - `twReact` is imported into a project
 - `twReact` exports two theme files:
-  - `theme-default.js`: Built from the default theme file from `twReact`
+  - `theme.t.js`: Built from the default theme file from `twReact`
   - `theme-user.js`: Compiled from the `twreact.theme.ts` in target project
 - Dev creates `twreact.theme.ts` in project root with the following structure:
   ```typescript

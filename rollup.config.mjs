@@ -6,21 +6,20 @@ import typescript from "@rollup/plugin-typescript";
 import { terser } from "rollup-plugin-terser";
 import { dts } from "rollup-plugin-dts";
 import svgr from "@svgr/rollup";
+import paths from "rollup-plugin-tsconfig-paths";
 
 function componentNameFromPath(inputPath) {
   const parts = inputPath.split("/");
   return inputPath.includes("index") ? parts.at(-2) : parts.at(-1)?.split(".")[0];
 }
 
-const themeConfig = defineConfig([
-  {
-    input: "src/theme-default.ts",
-    output: { dir: "dist" },
-    plugins: [typescript(), dts()],
-  }
-]);
+const themeTypeConfig = defineConfig({
+  input: "src/theme.rollup.ts",
+  output: { file: "dist/theme.d.ts" },
+  plugins: [typescript(), dts()],
+});
 
-const componentConfig = globbySync(["src/components/*.tsx", "src/components/**/index.tsx"], { gitignore: true })
+const componentConfig = globbySync(["src/components/*.tsx", "src/components/**/index.tsx"])
   .map((inputPath) => {
     const componentName = componentNameFromPath(inputPath);
     const isProd = process.env.BUILD === "production";
@@ -32,14 +31,13 @@ const componentConfig = globbySync(["src/components/*.tsx", "src/components/**/i
           dir: `dist`,
           manualChunks: {
             ["shared"]: ["src/utils.ts"],
-            ["theme-default"]: ["src/theme-default.ts"],
-            ["theme-user"]: ["src/theme-user.ts"],
+            ["theme"]: ["src/theme.app.ts"],
           },
           chunkFileNames: ({ name }) => {
             return name + ".js";
           },
         },
-        plugins: [nodeResolve(), commonjs(), typescript(), svgr(), isProd && terser()],
+        plugins: [nodeResolve(), commonjs(), typescript(), paths(), svgr(), isProd && terser()],
         external: ["react", "react/jsx-runtime", "react-dom"],
       },
       {
@@ -51,4 +49,4 @@ const componentConfig = globbySync(["src/components/*.tsx", "src/components/**/i
   })
   .flat();
 
-export default [...themeConfig, ...componentConfig];
+export default [themeTypeConfig, ...componentConfig];

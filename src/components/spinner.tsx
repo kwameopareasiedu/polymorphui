@@ -1,7 +1,6 @@
 import React, { HTMLAttributes, ReactNode } from "react";
-import themeDefault from "@/theme-default";
-import themeUser from "@/theme-user";
-import { cn, deepMerge } from "@/utils";
+import { cn, useVariants } from "@/utils";
+import RingBg from "@/assets/ring-bg.svg";
 
 export interface SpinnerProps extends HTMLAttributes<HTMLSpanElement> {
   variant?: "default";
@@ -9,12 +8,8 @@ export interface SpinnerProps extends HTMLAttributes<HTMLSpanElement> {
   icon?: ReactNode;
 }
 
-const defaultVariants = themeDefault.spinner ?? ({} as ComponentVariantMap<SpinnerProps>);
-const userVariants = themeUser.spinner ?? ({} as ComponentVariantMap<SpinnerProps>);
-const mergedVariants = deepMerge(defaultVariants, userVariants);
-
 export function Spinner({ variant = "default", ...props }: SpinnerProps) {
-  const { size, icon, className, ...rest } = deepMerge(mergedVariants[variant] ?? {}, props);
+  const { size = 8, icon = <RingBg />, className, ...rest } = useVariants("spinner", props, variant);
   const _className = cn(className, "inline-block");
 
   return (

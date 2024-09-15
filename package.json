@@ -1,11 +1,13 @@
 {
-  "name": "twreact-lib",
+  "name": "twreact",
   "version": "0.1.0",
   "description": "Tailwind React UI library",
   "main": "index.js",
   "author": "Kwame Opare Asiedu",
   "license": "MIT",
-  "types": "dist",
+  "exports": {
+    "./*": "./dist/*.js"
+  },
   "scripts": {
     "rollup:dev": "rollup -c",
     "rollup:build": "rollup -c --environment BUILD:production"
@@ -29,7 +31,8 @@
     "rollup": "^4.21.3",
     "rollup-plugin-dts": "^6.1.1",
     "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-typescript2": "^0.36.0",
+    "rollup-plugin-tsconfig-paths": "^1.5.2",
+    "rollup-plugin-typescript-paths": "^1.5.0",
     "tailwindcss": "^3.4.11",
     "typescript": "^5.6.2",
     "typescript-eslint": "^8.5.0"
