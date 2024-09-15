@@ -5,6 +5,7 @@
   "main": "index.js",
   "author": "Kwame Opare Asiedu",
   "license": "MIT",
+  "types": "dist",
   "scripts": {
     "rollup:dev": "rollup -c",
     "rollup:build": "rollup -c --environment BUILD:production"

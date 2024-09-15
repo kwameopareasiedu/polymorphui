@@ -1,5 +1,5 @@
 export interface ThemeVariants {
-  spinner?: ComponentVariantMap<import("@/lib/spinner").SpinnerProps>;
+  spinner?: ComponentVariantMap<import("@/components/spinner").SpinnerProps>;
 }
 
 export default {
