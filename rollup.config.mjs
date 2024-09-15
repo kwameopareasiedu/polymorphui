@@ -7,6 +7,9 @@ import { terser } from "rollup-plugin-terser";
 import { dts } from "rollup-plugin-dts";
 import svgr from "@svgr/rollup";
 import paths from "rollup-plugin-tsconfig-paths";
+import shebang from "rollup-plugin-add-shebang";
+
+const isProd = process.env.BUILD === "production";
 
 function componentNameFromPath(inputPath) {
   const parts = inputPath.split("/");
@@ -22,7 +25,6 @@ const themeTypeConfig = defineConfig({
 const componentConfig = globbySync(["src/components/*.tsx", "src/components/**/index.tsx"])
   .map((inputPath) => {
     const componentName = componentNameFromPath(inputPath);
-    const isProd = process.env.BUILD === "production";
 
     return defineConfig([
       {
@@ -30,12 +32,10 @@ const componentConfig = globbySync(["src/components/*.tsx", "src/components/**/i
         output: {
           dir: `dist`,
           manualChunks: {
-            ["shared"]: ["src/utils.ts"],
-            ["theme"]: ["src/theme.app.ts"],
+            shared: ["src/utils.ts"],
+            theme: ["src/theme.app.ts"],
           },
-          chunkFileNames: ({ name }) => {
-            return name + ".js";
-          },
+          chunkFileNames: "[name].js",
         },
         plugins: [nodeResolve(), commonjs(), typescript(), paths(), svgr(), isProd && terser()],
         external: ["react", "react/jsx-runtime", "react-dom"],
@@ -49,4 +49,17 @@ const componentConfig = globbySync(["src/components/*.tsx", "src/components/**/i
   })
   .flat();
 
-export default [themeTypeConfig, ...componentConfig];
+const cliConfig = defineConfig({
+  input: { cli: "src/cli/index.ts" },
+  output: {
+    dir: "bin",
+    format: "commonjs",
+    manualChunks: {
+      shared: ["commander", "esprima"],
+    },
+    chunkFileNames: "[name].js",
+  },
+  plugins: [nodeResolve(), commonjs(), typescript(), shebang(), isProd && terser()],
+});
+
+export default [themeTypeConfig, ...componentConfig, cliConfig];
