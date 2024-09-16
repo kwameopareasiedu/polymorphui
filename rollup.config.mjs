@@ -47,16 +47,17 @@ const componentConfig = globbySync(["src/components/*.tsx", "src/components/**/i
 
 const cliConfig = defineConfig({
   input: { cli: "src/cli/index.ts" },
-  output: {
-    dir: "bin",
-    format: "commonjs",
-    manualChunks: {
-      shared: ["commander", "esprima"],
-    },
-    chunkFileNames: "[name].js",
-  },
+  output: { dir: "bin", format: "commonjs" },
   plugins: [nodeResolve(), commonjs(), typescript(), shebang(), isProd && terser()],
-  external: ["rollup", "@rollup/plugin-node-resolve", "@rollup/plugin-commonjs", "@rollup/plugin-typescript"],
+  external: [
+    "@rollup/plugin-node-resolve",
+    "@rollup/plugin-commonjs",
+    "@rollup/plugin-typescript",
+    "ast-traverse",
+    "commander",
+    "esprima",
+    "rollup",
+  ],
 });
 
 export default [variantTypeConfig, ...componentConfig, cliConfig];

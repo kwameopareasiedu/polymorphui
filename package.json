@@ -10,31 +10,33 @@
     "./*": "./dist/*.js"
   },
   "bin": {
-    "pronto": "./bin/cli.js"
+    "prontoui": "./bin/cli.js"
   },
   "scripts": {
     "rollup:dev": "rollup -c -w",
     "rollup:build": "rollup -c --environment BUILD:production"
   },
-  "dependencies": {},
-  "devDependencies": {
-    "@eslint/js": "^9.10.0",
+  "dependencies": {
     "@rollup/plugin-commonjs": "^26.0.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-typescript": "^11.1.6",
+    "ast-traverse": "^0.1.1",
+    "commander": "^12.1.0",
+    "esprima": "^4.0.1",
+    "rollup": "^4.21.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.10.0",
     "@svgr/rollup": "^8.1.0",
     "@types/esprima": "^4.0.6",
     "@types/node": "^22.5.4",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
-    "commander": "^12.1.0",
     "deepmerge": "^4.3.1",
     "eslint": "^9.10.0",
     "eslint-plugin-react": "^7.36.1",
-    "esprima": "^4.0.1",
     "globals": "^15.9.0",
     "globby": "^14.0.2",
-    "rollup": "^4.21.3",
     "rollup-plugin-add-shebang": "^0.3.1",
     "rollup-plugin-dts": "^6.1.1",
     "rollup-plugin-terser": "^7.0.2",
