@@ -11,20 +11,16 @@ import shebang from "rollup-plugin-add-shebang";
 
 const isProd = process.env.BUILD === "production";
 
-function componentNameFromPath(inputPath) {
-  const parts = inputPath.split("/");
-  return inputPath.includes("index") ? parts.at(-2) : parts.at(-1)?.split(".")[0];
-}
-
-const themeTypeConfig = defineConfig({
-  input: "src/theme.rollup.ts",
-  output: { file: "dist/theme.d.ts" },
+const variantTypeConfig = defineConfig({
+  input: "src/variant.rollup.ts",
+  output: { file: "dist/variant.d.ts" },
   plugins: [typescript(), dts()],
 });
 
 const componentConfig = globbySync(["src/components/*.tsx", "src/components/**/index.tsx"])
   .map((inputPath) => {
-    const componentName = componentNameFromPath(inputPath);
+    const parts = inputPath.split("/");
+    const componentName = inputPath.includes("index") ? parts.at(-2) : parts.at(-1)?.split(".")[0];
 
     return defineConfig([
       {
@@ -32,8 +28,8 @@ const componentConfig = globbySync(["src/components/*.tsx", "src/components/**/i
         output: {
           dir: `dist`,
           manualChunks: {
-            shared: ["src/utils.ts"],
-            theme: ["src/theme.app.ts"],
+            shared: ["src/components/utils.ts"],
+            variant: ["src/variant.app.ts"],
           },
           chunkFileNames: "[name].js",
         },
@@ -60,6 +56,7 @@ const cliConfig = defineConfig({
     chunkFileNames: "[name].js",
   },
   plugins: [nodeResolve(), commonjs(), typescript(), shebang(), isProd && terser()],
+  external: ["rollup", "@rollup/plugin-node-resolve", "@rollup/plugin-commonjs", "@rollup/plugin-typescript"],
 });
 
-export default [themeTypeConfig, ...componentConfig, cliConfig];
+export default [variantTypeConfig, ...componentConfig, cliConfig];

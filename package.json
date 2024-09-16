@@ -1,16 +1,16 @@
 {
-  "name": "twreact",
+  "name": "prontoui",
   "version": "0.1.0",
   "description": "Tailwind React UI library",
   "main": "index.js",
   "author": "Kwame Opare Asiedu",
   "license": "MIT",
   "exports": {
-    "./theme": "./dist/theme.d.ts",
+    "./variant": "./dist/variant.d.ts",
     "./*": "./dist/*.js"
   },
   "bin": {
-    "twreact": "./bin/cli.js"
+    "pronto": "./bin/cli.js"
   },
   "scripts": {
     "rollup:dev": "rollup -c -w",

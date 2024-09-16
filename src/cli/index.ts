@@ -2,20 +2,20 @@ import { Command } from "commander";
 import { init } from "@/cli/init";
 import { generate } from "@/cli/generate";
 
-const cli = new Command("twreact");
-cli.description("Variant based Tailwind React UI library");
+const cli = new Command("ProntoUI");
+cli.description("Variant based React component library");
 cli.version("0.1.0");
 
 cli
   .command("init")
-  .description("Create twreact config file")
+  .description("Create ProntoUI config file")
   .action(async () => {
     await tryCatch(init());
   });
 
 cli
   .command("generate")
-  .description("(Re)generate theme for twreact components")
+  .description("(Re)generate variants for ProntoUI components")
   .action(async () => {
     await tryCatch(generate());
   });

@@ -1,5 +1,5 @@
 import React, { HTMLAttributes, ReactNode } from "react";
-import { cn, useVariants } from "@/utils";
+import { cn, useComponentVariants } from "@/components/utils";
 import RingBg from "@/assets/ring-bg.svg";
 
 export interface SpinnerProps extends HTMLAttributes<HTMLSpanElement> {
@@ -9,7 +9,7 @@ export interface SpinnerProps extends HTMLAttributes<HTMLSpanElement> {
 }
 
 export function Spinner({ variant = "default", ...props }: SpinnerProps) {
-  const { size = 8, icon = <RingBg />, className, ...rest } = useVariants("spinner", props, variant);
+  const { size = 8, icon = <RingBg />, className, ...rest } = useComponentVariants("spinner", props, variant);
   const _className = cn(className, "inline-block");
 
   return (

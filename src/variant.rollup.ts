@@ -3,6 +3,6 @@ export interface ComponentVariantMap<T> {
   [variant: string]: Omit<T, "variant">;
 }
 
-export interface ThemeVariants {
+export interface ProntoVariants {
   spinner?: ComponentVariantMap<import("@/components/spinner").SpinnerProps>;
 }
