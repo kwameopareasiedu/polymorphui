@@ -33,6 +33,6 @@ export async function generate() {
 
     const componentTypesSource = readFileSync(componentTypesPath, { encoding: "utf-8" });
     writeFileSync(componentTypesPath, componentTypesSource.replace(/(variant\?:.+)/g, `variant?: ${unionType};`));
-    console.warn(`updated "${componentTypesPath}" variant with: ${unionType}`);
+    console.log(`updated "${componentName}" variant with: ${unionType}`);
   }
 }
