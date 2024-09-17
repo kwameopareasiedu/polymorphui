@@ -11,13 +11,22 @@ import shebang from "rollup-plugin-add-shebang";
 
 const isProd = process.env.BUILD === "production";
 
-const variantTypeConfig = defineConfig({
-  input: "src/variant.rollup.ts",
-  output: { file: "dist/variant.d.ts" },
-  plugins: [typescript(), dts()],
-});
+const variantConfig = defineConfig([
+  {
+    input: "src/components/variant.types.ts",
+    output: { file: "dist/variant.d.ts" },
+    plugins: [typescript(), dts()],
+  },
+  {
+    input: "src/components/variant.ts",
+    output: { file: "dist/variant.js" },
+    plugins: [nodeResolve(), commonjs(), typescript(), isProd && terser()],
+  },
+]);
 
-const componentConfig = globbySync(["src/components/*.tsx", "src/components/**/index.tsx"])
+const componentConfig = globbySync(["src/components/*.tsx", "src/components/**/index.tsx"], {
+  ignoreFiles: ["src/components/*.ts"],
+})
   .map((inputPath) => {
     const parts = inputPath.split("/");
     const componentName = inputPath.includes("index") ? parts.at(-2) : parts.at(-1)?.split(".")[0];
@@ -29,12 +38,11 @@ const componentConfig = globbySync(["src/components/*.tsx", "src/components/**/i
           dir: `dist`,
           manualChunks: {
             shared: ["src/components/utils.ts"],
-            variant: ["src/variant.app.ts"],
           },
           chunkFileNames: "[name].js",
         },
         plugins: [nodeResolve(), commonjs(), typescript(), paths(), svgr(), isProd && terser()],
-        external: ["react", "react/jsx-runtime", "react-dom"],
+        external: ["react", "react/jsx-runtime", "react-dom", "./variant"],
       },
       {
         input: { [componentName]: inputPath },
@@ -45,18 +53,20 @@ const componentConfig = globbySync(["src/components/*.tsx", "src/components/**/i
   })
   .flat();
 
-const cliConfig = defineConfig({
-  input: { cli: "src/cli/index.ts" },
-  output: { dir: "bin", format: "commonjs" },
-  plugins: [nodeResolve(), commonjs(), typescript(), shebang(), isProd && terser()],
-  external: [
-    "@rollup/plugin-node-resolve",
-    "@rollup/plugin-commonjs",
-    "@rollup/plugin-typescript",
-    "commander",
-    "esprima",
-    "rollup",
-  ],
-});
+const cliConfig = defineConfig([
+  {
+    input: { cli: "src/cli/index.ts" },
+    output: { dir: "bin", format: "commonjs" },
+    plugins: [nodeResolve(), commonjs(), typescript(), shebang(), isProd && terser()],
+    external: [
+      "@rollup/plugin-node-resolve",
+      "@rollup/plugin-commonjs",
+      "@rollup/plugin-typescript",
+      "commander",
+      "esprima",
+      "rollup",
+    ],
+  },
+]);
 
-export default [variantTypeConfig, ...componentConfig, cliConfig];
+export default [...variantConfig, ...componentConfig, ...cliConfig];

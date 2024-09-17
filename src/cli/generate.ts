@@ -56,7 +56,8 @@ export async function generate() {
     console.log(`success: "${componentName}" variants: ${unionType}`);
   }
 
-  console.log(configJsSource);
+  const variantPath = resolve(__dirname, "../dist/variant.js");
+  writeFileSync(variantPath, configJsSource);
 }
 
 function traverseAst(node: AstNode, nodePath: string, onNode?: (node: AstNode, nodePath: string) => void) {
