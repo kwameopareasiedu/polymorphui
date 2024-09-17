@@ -5,4 +5,5 @@ export interface ComponentVariantMap<T> {
 
 export interface ProntoVariants {
   spinner?: ComponentVariantMap<import("@/components/spinner").SpinnerProps>;
+  button?: ComponentVariantMap<import("@/components/button").ButtonProps>;
 }
