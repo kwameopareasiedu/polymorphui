@@ -9,11 +9,18 @@ export interface SpinnerProps extends HTMLAttributes<HTMLSpanElement> {
 }
 
 export function Spinner({ variant = "default", ...props }: SpinnerProps) {
-  const { size = 8, icon = <RingBg />, className, ...rest } = useComponentVariants("spinner", props, variant);
-  const _className = cn(className, "inline-block");
+  const { size, icon, className, style, ...rest } = useComponentVariants({
+    componentName: "spinner",
+    componentProps: props,
+    variantName: variant,
+    defaultProps: { size: 20, icon: <RingBg /> },
+  });
 
   return (
-    <span className={_className} {...rest} style={{ width: size + "px", height: size + "px" }}>
+    <span
+      className={cn("inline-block stroke-gray-600", className)}
+      style={{ ...style, width: size + "px", height: size + "px" }}
+      {...rest}>
       {icon}
     </span>
   );

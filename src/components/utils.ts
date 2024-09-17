@@ -12,11 +12,18 @@ export function deepMerge<T, S>(variant1: T, variant2: S) {
 
 type ComponentName = keyof import("@/components/variant.types").ProntoVariants;
 
-export function useComponentVariants<T>(componentName: ComponentName, componentProps: T, variantName: string) {
-  const appComponentVariants = (appVariants[componentName] ??
-    {}) as import("@/components/variant.types").ComponentVariantMap<T>;
-  return useMemo(
-    () => deepMerge(appComponentVariants[variantName], componentProps),
-    [appComponentVariants, variantName, componentProps],
-  );
+export function useComponentVariants<T>(args: {
+  componentName: ComponentName;
+  componentProps: T;
+  variantName: string;
+  defaultProps: Partial<Omit<T, "variant">>;
+}) {
+  const { componentName, componentProps, variantName, defaultProps } = args;
+
+  return useMemo(() => {
+    const componentVariants = (appVariants[componentName] ??
+      {}) as import("@/components/variant.types").ComponentVariantMap<T>;
+    const variantProps = componentVariants[variantName] ?? {};
+    return deepMerge(deepmerge(defaultProps, variantProps), componentProps);
+  }, [variantName, componentProps, defaultProps]);
 }
