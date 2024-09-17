@@ -53,7 +53,6 @@ const cliConfig = defineConfig({
     "@rollup/plugin-node-resolve",
     "@rollup/plugin-commonjs",
     "@rollup/plugin-typescript",
-    "ast-traverse",
     "commander",
     "esprima",
     "rollup",

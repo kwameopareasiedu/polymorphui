@@ -7,11 +7,12 @@ import { rollup } from "rollup";
 import nodeResolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
-import traverse from "ast-traverse";
+
+type AstNode = NestedRecord & { type: string };
 
 enum TreePath {
   COMPONENT = "Program.VariableDeclaration.VariableDeclarator.ObjectExpression.Property",
-  RELATIVE_VARIANT = "Property.ObjectExpression.Property",
+  VARIANT = "Program.VariableDeclaration.VariableDeclarator.ObjectExpression.Property.ObjectExpression.Property",
 }
 
 export async function generate() {
@@ -29,36 +30,15 @@ export async function generate() {
 
   const configAst = esprima.parseModule(configJsSource, { comment: false, tokens: false, range: false });
   const componentVariantMap: { [k: string]: string[] } = {};
-  const treePaths = [];
+  let currentComponentName = "";
 
-  traverse(configAst, {
-    pre: (node) => {
-      treePaths.push(node.type as never);
-
-      if (treePaths.join(".") === TreePath.COMPONENT && node.key?.name) {
-        const componentName = node.key?.name;
-        const variantNames = [];
-        const subTreePaths = [];
-
-        traverse(node, {
-          pre: (subNode) => {
-            subTreePaths.push(subNode.type as never);
-
-            if (subTreePaths.join(".") === TreePath.RELATIVE_VARIANT && subNode.key?.name) {
-              variantNames.push(subNode.key?.name as never);
-            }
-          },
-          post: () => {
-            subTreePaths.splice(-1, 1);
-          },
-        });
-
-        componentVariantMap[componentName] = variantNames;
-      }
-    },
-    post: () => {
-      treePaths.splice(-1, 1);
-    },
+  traverseAst(configAst, "", (node, nodePath) => {
+    if (nodePath === TreePath.COMPONENT) {
+      currentComponentName = node.key.name;
+      componentVariantMap[node.key.name] = [];
+    } else if (nodePath === TreePath.VARIANT && currentComponentName) {
+      componentVariantMap[currentComponentName].push(node.key.name);
+    }
   });
 
   for (const componentName in componentVariantMap) {
@@ -77,4 +57,22 @@ export async function generate() {
   }
 
   console.log(configJsSource);
+}
+
+function traverseAst(node: AstNode, nodePath: string, onNode?: (node: AstNode, nodePath: string) => void) {
+  const newNodePath = nodePath ? `${nodePath}.${node.type}` : node.type;
+  onNode?.(node, newNodePath);
+
+  for (const key in node) {
+    const child = node[key];
+    const typeOfChild = Object.prototype.toString.call(child);
+
+    if (typeOfChild === "[object Object]") {
+      traverseAst(child, newNodePath, onNode);
+    } else if (typeOfChild === "[object Array]") {
+      for (const value of child) {
+        traverseAst(value, newNodePath, onNode);
+      }
+    }
+  }
 }
