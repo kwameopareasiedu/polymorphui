@@ -9,8 +9,8 @@ export async function init() {
 
   writeFileSync(
     configPath,
-    `import type { ProntoVariants } from "prontoui/variant"\n
-export default {} as ProntoVariants;`,
+    `import type { ComponentVariants } from "prontoui/variant"\n
+export default {} as ComponentVariants;`,
   );
 
   console.log(`success: created "${configName}"!`);

@@ -52,11 +52,14 @@ export async function generate() {
     }
 
     const componentTypesSource = readFileSync(componentTypesPath, { encoding: "utf-8" });
-    writeFileSync(componentTypesPath, componentTypesSource.replace(/(variant\?:.+)/g, `variant?: ${unionType};`));
+    writeFileSync(
+      componentTypesPath,
+      componentTypesSource.replace(/(variant\?:.+)/g, `variant?: ${unionType} | (${unionType})[];`),
+    );
     console.log(`success: "${componentName}" variants: ${unionType}`);
   }
 
-  const variantPath = resolve(__dirname, "../dist/variant.js");
+  const variantPath = resolve(__dirname, "../dist/variants.js");
   writeFileSync(variantPath, configJsSource);
 }
 

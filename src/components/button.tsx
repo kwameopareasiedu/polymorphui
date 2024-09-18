@@ -1,9 +1,8 @@
 import React, { ButtonHTMLAttributes, ReactNode } from "react";
-import { cn, useComponentVariants } from "@/components/utils";
+import { cn, useVariantProps } from "@/components/utils";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "default";
-  size?: "sm" | "md" | "lg";
+  variant?: string | string[];
   leading?: ReactNode;
   trailing?: ReactNode;
   loading?: boolean;
@@ -11,14 +10,13 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export function Button({ variant = "default", ...props }: ButtonProps) {
-  const { size, className, leading, trailing, loading, flex, disabled, children, ...rest } = useComponentVariants({
+  const { className, leading, trailing, loading, flex, disabled, children, ...rest } = useVariantProps({
     componentName: "button",
     componentProps: props,
     variantName: variant,
-    defaultProps: { size: "md" },
   });
 
-  const _className = cn(flex && "w-full", className);
+  const _className = cn(className, flex && "w-full");
 
   return (
     <button className={_className} disabled={disabled || loading} {...rest}>

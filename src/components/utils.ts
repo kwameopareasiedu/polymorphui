@@ -1,29 +1,30 @@
 import { useMemo } from "react";
 import deepmerge from "deepmerge";
-import appVariants from "./variant"; // IMPORTANT: LEAVE AS RELATIVE IMPORT
+import type { ComponentNameType, VariantNameType, VariantPropsMap } from "@/components/variant.types";
+import variants from "@/components/variants";
 
 export function cn(...classes: (string | boolean | null | undefined)[]) {
   return classes.filter((cs) => !!cs).join(" ");
 }
 
-export function deepMerge<T, S>(variant1: T, variant2: S) {
-  return deepmerge<T | S>(variant1, variant2);
-}
-
-type ComponentName = keyof import("@/components/variant.types").ProntoVariants;
-
-export function useComponentVariants<T>(args: {
-  componentName: ComponentName;
-  componentProps: T;
-  variantName: string;
-  defaultProps: Partial<Omit<T, "variant">>;
+export function useVariantProps<P>(args: {
+  componentName: ComponentNameType;
+  componentProps: P;
+  variantName: string | string[];
+  defaultProps?: Partial<Omit<P, VariantNameType>>;
 }) {
-  const { componentName, componentProps, variantName, defaultProps } = args;
+  const { componentName, componentProps, variantName, defaultProps = {} } = args;
 
   return useMemo(() => {
-    const componentVariants = (appVariants[componentName] ??
-      {}) as import("@/components/variant.types").ComponentVariantMap<T>;
-    const variantProps = componentVariants[variantName] ?? {};
-    return deepMerge(deepmerge(defaultProps, variantProps), componentProps);
+    const componentVariants = (variants[componentName] ?? {}) as VariantPropsMap<P>;
+    const _variantName = Array.isArray(variantName) ? variantName : [variantName];
+    const variantPropsList = _variantName.map((variantName) => componentVariants[variantName] ?? {});
+    const stringProps = ["className"];
+
+    return deepmerge.all([defaultProps, ...variantPropsList, componentProps], {
+      customMerge: (key) => (stringProps.includes(key) ? concatStrings : undefined),
+    }) as Omit<P, VariantNameType>;
   }, [variantName, componentProps, defaultProps]);
 }
+
+const concatStrings = (strA: string, strB: string) => [strA, strB].join(" ");

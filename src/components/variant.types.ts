@@ -1,9 +1,13 @@
-export interface ComponentVariantMap<T> {
-  default: Omit<T, "variant">;
-  [variant: string]: Omit<T, "variant">;
+export type VariantNameType = "variant";
+
+export interface VariantPropsMap<T> {
+  default: Omit<T, VariantNameType>;
+  [variant: string]: Omit<T, VariantNameType>;
 }
 
-export interface ProntoVariants {
-  spinner?: ComponentVariantMap<import("@/components/spinner").SpinnerProps>;
-  button?: ComponentVariantMap<import("@/components/button").ButtonProps>;
+export interface ComponentVariants {
+  spinner?: VariantPropsMap<import("@/components/spinner").SpinnerProps>;
+  button?: VariantPropsMap<import("@/components/button").ButtonProps>;
 }
+
+export type ComponentNameType = keyof ComponentVariants;
