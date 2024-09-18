@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, ReactNode } from "react";
+import React, { forwardRef, HTMLAttributes, ReactNode } from "react";
 import { resolveClassName } from "@/components/utils";
 import RingBg from "@/assets/ring-bg.svg";
 
@@ -7,18 +7,20 @@ export interface SpinnerProps extends HTMLAttributes<HTMLSpanElement> {
   icon?: ReactNode;
 }
 
-export function Spinner({ variant = "default", icon = <RingBg />, className, ...rest }: SpinnerProps) {
-  const _className = resolveClassName(
-    "spinner",
-    variant,
-    "spinner inline-block animate-spin",
-    "fill-blue-500 w-4",
-    className,
-  );
+export const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>(
+  ({ variant = "default", icon = <RingBg />, className, ...rest }: SpinnerProps, ref) => {
+    const _className = resolveClassName(
+      "spinner",
+      variant,
+      "spinner inline-block animate-spin",
+      "fill-blue-500 w-4",
+      className,
+    );
 
-  return (
-    <span className={_className} {...rest}>
-      {icon}
-    </span>
-  );
-}
+    return (
+      <span ref={ref} className={_className} {...rest}>
+        {icon}
+      </span>
+    );
+  },
+);
