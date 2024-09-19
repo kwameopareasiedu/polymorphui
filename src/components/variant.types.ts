@@ -6,8 +6,8 @@ export interface VariantsClassNameMap {
 export interface ComponentVariants {
   spinner?: VariantsClassNameMap & { button?: string };
   button?: VariantsClassNameMap;
-  text?: VariantsClassNameMap & { tooltip?: string };
-  popup?: VariantsClassNameMap & { tooltip?: string };
+  text?: VariantsClassNameMap;
+  popup?: VariantsClassNameMap;
   tooltip?: VariantsClassNameMap;
 }
 
