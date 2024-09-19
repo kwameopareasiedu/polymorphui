@@ -24,6 +24,7 @@ export interface PopupProps extends Omit<HTMLAttributes<HTMLDivElement>, "childr
   when?: "hover" | "click";
   hoverDelayMs?: number;
   autoClose?: boolean;
+  usePortal?: boolean;
 }
 
 export const Popup = forwardRef<HTMLDivElement, PopupProps>(
@@ -37,6 +38,7 @@ export const Popup = forwardRef<HTMLDivElement, PopupProps>(
       when = "hover",
       hoverDelayMs = 250,
       autoClose = false,
+      usePortal = true,
       children,
       style,
       ...rest
@@ -97,11 +99,16 @@ export const Popup = forwardRef<HTMLDivElement, PopupProps>(
     };
 
     useEffect(() => {
-      if (controller) {
-        controller.__internalClose = () => {
-          setShowFloating(false);
-        };
-      }
+      const closeCallback = () => setShowFloating(false);
+      const openCallback = () => setShowFloating(true);
+
+      controller?.__registerCloseCallback(closeCallback);
+      controller?.__registerOpenCallback(openCallback);
+
+      return () => {
+        controller?.__unregisterCloseCallback(closeCallback);
+        controller?.__unregisterOpenCallback(openCallback);
+      };
     }, [controller]);
 
     useEffect(() => {
@@ -131,35 +138,70 @@ export const Popup = forwardRef<HTMLDivElement, PopupProps>(
       className,
     );
 
+    const wrappedFloatingElement = (
+      <div
+        ref={(el) => {
+          if (typeof ref === "function") ref(el);
+          else if (ref && (ref as MutableRefObject<HTMLDivElement>)?.current) ref.current = el;
+          setFloating(el);
+        }}
+        className={_className}
+        style={{ ...style, ...styles.popper }}
+        {...rest}
+        {...attributes.popup}>
+        {floatingElement}
+      </div>
+    );
+
     return (
       <>
         {anchorElement}
-
-        {showFloating &&
-          createPortal(
-            <div
-              ref={(el) => {
-                if (typeof ref === "function") ref(el);
-                else if (ref && (ref as MutableRefObject<HTMLDivElement>)?.current) ref.current = el;
-                setFloating(el);
-              }}
-              className={_className}
-              style={{ ...style, ...styles.popper }}
-              {...rest}
-              {...attributes.popup}>
-              {floatingElement}
-            </div>,
-            document.body,
-          )}
+        {showFloating
+          ? usePortal
+            ? createPortal(wrappedFloatingElement, document.body)
+            : wrappedFloatingElement
+          : null}
       </>
     );
   },
 );
 
 export class PopupController {
-  __internalClose?: () => void;
+  private readonly __closeCallbacks: (() => void)[];
+  private readonly __openCallbacks: (() => void)[];
+
+  constructor() {
+    this.__closeCallbacks = [];
+    this.__openCallbacks = [];
+  }
+
+  __registerCloseCallback = (cb: () => void) => {
+    if (!this.__closeCallbacks.includes(cb)) this.__closeCallbacks.push(cb);
+  };
+
+  __unregisterCloseCallback = (cb: () => void) => {
+    if (this.__closeCallbacks.includes(cb)) {
+      const idx = this.__closeCallbacks.indexOf(cb);
+      this.__closeCallbacks.splice(idx, 1);
+    }
+  };
+
+  __registerOpenCallback = (cb: () => void) => {
+    if (!this.__openCallbacks.includes(cb)) this.__openCallbacks.push(cb);
+  };
+
+  __unregisterOpenCallback = (cb: () => void) => {
+    if (this.__openCallbacks.includes(cb)) {
+      const idx = this.__openCallbacks.indexOf(cb);
+      this.__openCallbacks.splice(idx, 1);
+    }
+  };
 
   close = () => {
-    this.__internalClose?.();
+    for (const cb of this.__closeCallbacks) cb();
+  };
+
+  open = () => {
+    for (const cb of this.__openCallbacks) cb();
   };
 }

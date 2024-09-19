@@ -9,6 +9,7 @@ export interface ComponentVariants {
   text?: VariantsClassNameMap;
   popup?: VariantsClassNameMap;
   tooltip?: VariantsClassNameMap;
+  contextMenu?: VariantsClassNameMap;
 }
 
 export type ComponentNameType = keyof ComponentVariants;

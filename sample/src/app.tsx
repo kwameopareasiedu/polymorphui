@@ -1,11 +1,12 @@
+import { ReactNode } from "react";
+import { CgOptions } from "react-icons/cg";
+import { AiFillAlert, AiOutlineClose } from "react-icons/ai";
 import { Spinner } from "prontoui/spinner";
 import { Button } from "prontoui/button";
 import { Text } from "prontoui/text";
 import { Popup, PopupController } from "prontoui/popup";
 import { Tooltip } from "prontoui/tooltip";
-import { CgOptions } from "react-icons/cg";
-import { AiFillAlert, AiOutlineClose } from "react-icons/ai";
-import { ReactNode } from "react";
+import { ContextMenu } from "prontoui/context-menu";
 
 const popupController = new PopupController();
 
@@ -68,6 +69,32 @@ function App() {
           <Button>Long hover popup (1.5s)</Button>
           <Text>Move the cursor out to close me</Text>
         </Popup>
+      </Showcase>
+
+      <Showcase title="Context Menu">
+        <ContextMenu
+          controller={popupController}
+          items={[
+            { label: "File" },
+            {
+              label: "Edit",
+              onClick: () => alert("Edit item clicked"),
+            },
+            {
+              label: "View",
+              items: [{ label: "Appearance" }, { label: "Editor" }],
+            },
+            {
+              label: "Navigate",
+              items: [
+                { label: "Home" },
+                { label: "Back", onClick: () => alert("Navigate/Back item clicked") },
+                { label: "Forward", disabled: true },
+              ],
+            },
+          ]}>
+          <Button>Open menu</Button>
+        </ContextMenu>
       </Showcase>
     </main>
   );
