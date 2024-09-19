@@ -2,7 +2,7 @@ import React, { forwardRef, HTMLAttributes } from "react";
 import { cn, resolveClassName } from "@/components/utils";
 
 export interface TextProps extends HTMLAttributes<HTMLParagraphElement> {
-  variant?: string | string[];
+  variant?: string | string[] | null;
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span" | "strong" | "li";
   inline?: boolean;
 }

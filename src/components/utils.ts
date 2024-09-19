@@ -7,11 +7,13 @@ export function cn(...classes: (string | boolean | null | undefined)[]) {
 
 export function resolveClassName(
   componentName: ComponentNameType,
-  variantName: string | string[],
+  variantName: string | string[] | null,
   structuralClassName: string,
   fallbackClassName?: string,
   className?: string,
 ) {
+  if (variantName === null) return cn(structuralClassName, className);
+
   const componentVariants = (variants[componentName] ?? {}) as VariantsClassNameMap;
   const variantList = Array.isArray(variantName) ? variantName : [variantName];
   const variantClassName = variantList.map((variantName) => componentVariants[variantName] ?? "").join(" ");

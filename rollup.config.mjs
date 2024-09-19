@@ -50,7 +50,7 @@ const helperConfigs = defineConfig([
       "esprima",
       "rollup",
     ],
-  }
+  },
 ]);
 
 const componentConfigs = defineConfig([
@@ -58,7 +58,15 @@ const componentConfigs = defineConfig([
     input: componentInputMap,
     output: { dir: `dist` },
     plugins: [nodeResolve(), commonjs(), typescript(), paths(), svgr(), remap(), isProd && terser()],
-    external: ["react", "react/jsx-runtime", "react-dom", "@/components/utils"],
+    external: [
+      "react",
+      "react/jsx-runtime",
+      "react-dom",
+      "@/components/utils",
+      "@/components/spinner",
+      "@/components/popup",
+      "@/components/text",
+    ],
   },
   {
     input: componentInputMap,

@@ -2,6 +2,9 @@ export default function remap() {
   const mappings = {
     "@/components/variants": "./variants.js",
     "@/components/utils": "./utils.js",
+    "@/components/spinner": "./spinner",
+    "@/components/popup": "./popup",
+    "@/components/text": "./text",
   };
 
   return {

@@ -16,7 +16,7 @@ import { usePopper } from "react-popper";
 import { Placement } from "@popperjs/core";
 
 export interface PopupProps extends Omit<HTMLAttributes<HTMLDivElement>, "children"> {
-  variant?: string | string[];
+  variant?: string | string[] | null;
   controller?: PopupController;
   children: [ReactNode, ReactNode];
   offset?: [number, number];
