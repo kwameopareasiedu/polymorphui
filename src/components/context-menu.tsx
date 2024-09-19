@@ -1,4 +1,4 @@
-import React, { forwardRef, HTMLAttributes, ReactNode, useRef } from "react";
+import React, { forwardRef, HTMLAttributes, ReactNode } from "react";
 import { resolveClassName } from "@/components/utils";
 import { Popup, PopupController } from "@/components/popup";
 import ArrowRight from "@/assets/arrow-right.svg";
@@ -27,7 +27,7 @@ export const ContextMenu = forwardRef<HTMLDivElement, ContextMenuProps>(
         "[&>button]:inline-grid [&>button]:gap-2 [&>button]:grid-cols-[30px,1fr,30px] [&>button]:justify-start " +
         "[&>button]:items-center [&>button]:py-1.5 [&>button]:border-t-[0.5px] [&>button]:border-t-gray-300 " +
         "[&>button:first-child]:border-none [&>button:hover]:bg-gray-100 [&>button:disabled]:bg-gray-200 " +
-        "[&>button:disabled]:opacity-50 ",
+        "[&>button:disabled]:opacity-50 [&>button]:whitespace-nowrap ",
       className,
     );
 

@@ -53,6 +53,7 @@ export const Popup = forwardRef<HTMLDivElement, PopupProps>(
     const { styles, attributes } = usePopper(anchor, floating, {
       modifiers: [{ name: "offset", options: { offset } }],
       placement: placement,
+      strategy: "fixed",
     });
 
     const [anchorElement, floatingElement] = useMemo(() => {

@@ -75,22 +75,21 @@ function App() {
         <ContextMenu
           controller={popupController}
           items={[
-            { label: "File" },
+            { label: "Option 1" },
             {
-              label: "Edit",
-              onClick: () => alert("Edit item clicked"),
-            },
-            {
-              label: "View",
-              items: [{ label: "Appearance" }, { label: "Editor" }],
-            },
-            {
-              label: "Navigate",
+              label: "Option 2",
+              onClick: () => alert("Option 2 clicked"),
               items: [
-                { label: "Home" },
-                { label: "Back", onClick: () => alert("Navigate/Back item clicked") },
-                { label: "Forward", disabled: true },
+                { label: "Nested 1" },
+                {
+                  label: "Nested 2",
+                  items: [{ label: "Double Nested 1" }],
+                },
               ],
+            },
+            {
+              label: "Option 3",
+              onClick: () => alert("Option 3 clicked"),
             },
           ]}>
           <Button>Open menu</Button>
