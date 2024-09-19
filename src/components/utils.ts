@@ -14,6 +14,6 @@ export function resolveClassName(
 ) {
   const componentVariants = (variants[componentName] ?? {}) as VariantsClassNameMap;
   const variantList = Array.isArray(variantName) ? variantName : [variantName];
-  const variantClasses = variantList.map((variantName) => componentVariants[variantName] ?? "").join(" ");
-  return cn(structuralClassName, variantClasses || fallbackClassName, className);
+  const variantClassName = variantList.map((variantName) => componentVariants[variantName] ?? "").join(" ");
+  return cn(structuralClassName, variantClassName || fallbackClassName, className);
 }
