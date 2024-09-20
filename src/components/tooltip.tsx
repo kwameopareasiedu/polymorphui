@@ -40,7 +40,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
         variant={null}
         openEvent="triggerEnter"
         closeEvent="triggerLeave"
-        hoverDelayMs={delayMs}
+        openDelayMs={delayMs}
         placement={placement}
         offset={offset}
         {...rest}>

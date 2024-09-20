@@ -72,7 +72,7 @@ function App() {
         <Popup
           placement="bottom-start"
           offset={[0, 10]}
-          hoverDelayMs={1500}
+          openDelayMs={1500}
           openEvent="triggerEnter"
           closeEvent="triggerLeave">
           <Button>Long hover popup (1.5s)</Button>
@@ -86,22 +86,20 @@ function App() {
 
           <ContextMenuItems>
             <p className="text-xs font-medium text-gray-500 bg-slate-50 px-4">Header 1</p>
-            <ContextMenuItem label="Option 1" />
+            <ContextMenuItem label="Option 1" onClick={() => alert("Option 1 clicked")} />
             <ContextMenuItem label="Option 2">
               <ContextMenuItems>
-                <ContextMenuItem label="Nested 1" />
-                <ContextMenuItem label="Nested 2" />
+                <ContextMenuItem label="Nested 1" onClick={() => alert("Nested 1 clicked")} />
+                <ContextMenuItem label="Nested 2" onClick={() => alert("Nested 2 clicked")} />
               </ContextMenuItems>
             </ContextMenuItem>
-            <ContextMenuItem label="Option 3" />
-            <ContextMenuItem label="Option 4" />
-            <ContextMenuItem label="Option 5" />
-            <ContextMenuItem label="Option 6">
+            <ContextMenuItem label="Option 3" onClick={() => alert("Option 3 clicked")} />
+            <ContextMenuItem label="Option 4">
               <ContextMenuItems>
-                <ContextMenuItem label="Nested 1" />
-                <ContextMenuItem label="Nested 2" />
-                <ContextMenuItem label="Nested 3" />
-                <ContextMenuItem label="Nested 4" />
+                <ContextMenuItem label="Nested 1" onClick={() => alert("Nested 1 clicked")} />
+                <ContextMenuItem label="Nested 2" onClick={() => alert("Nested 2 clicked")} />
+                <ContextMenuItem label="Nested 3" onClick={() => alert("Nested 3 clicked")} />
+                <ContextMenuItem label="Nested 4" onClick={() => alert("Nested 4 clicked")} />
               </ContextMenuItems>
             </ContextMenuItem>
           </ContextMenuItems>

@@ -26,7 +26,8 @@ export interface PopupProps extends Omit<HTMLAttributes<HTMLDivElement>, "childr
   children: [ReactNode, ReactNode];
   offset?: [number, number];
   placement?: Placement;
-  hoverDelayMs?: number;
+  openDelayMs?: number;
+  closeDelayMs?: number;
   usePortal?: boolean;
 }
 
@@ -40,7 +41,8 @@ export const Popup = forwardRef<HTMLDivElement, PopupProps>(
       placement = "auto-start",
       openEvent,
       closeEvent,
-      hoverDelayMs = 250,
+      openDelayMs = 250,
+      closeDelayMs = 250,
       usePortal = true,
       children,
       onMouseEnter,
@@ -93,7 +95,7 @@ export const Popup = forwardRef<HTMLDivElement, PopupProps>(
             clearTimeout(closeTimer.current);
             openTimer.current = setTimeout(() => {
               setOpen(true);
-            }, hoverDelayMs);
+            }, openDelayMs);
           }
         },
         onMouseLeave: (e: never) => {
@@ -103,7 +105,7 @@ export const Popup = forwardRef<HTMLDivElement, PopupProps>(
             clearTimeout(closeTimer.current);
             closeTimer.current = setTimeout(() => {
               setOpen(false);
-            }, hoverDelayMs);
+            }, closeDelayMs);
           }
         },
       });
@@ -185,7 +187,7 @@ export const Popup = forwardRef<HTMLDivElement, PopupProps>(
             clearTimeout(closeTimer.current);
             closeTimer.current = setTimeout(() => {
               setOpen(false);
-            }, hoverDelayMs);
+            }, closeDelayMs);
           }
         }}>
         {floatingElement}

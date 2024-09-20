@@ -3,6 +3,8 @@ import { resolveClassName } from "@/components/utils";
 import { Popup, PopupController } from "@/components/popup";
 import ArrowRight from "@/assets/arrow-right.svg";
 
+const internalPopupController = new PopupController();
+
 export interface ContextMenuProps extends Omit<HTMLAttributes<HTMLDivElement>, "children"> {
   controller?: PopupController;
   children: [ReactNode, ReactElement<ContextMenuItemsProps>];
@@ -18,7 +20,7 @@ export const ContextMenu = forwardRef<HTMLDivElement, ContextMenuProps>(
         variant={null}
         openEvent="triggerClick"
         closeEvent="outsideClick"
-        controller={controller}
+        controller={controller ? [controller, internalPopupController] : internalPopupController}
         placement="right-start"
         offset={[0, 4]}
         {...rest}>
@@ -74,8 +76,16 @@ export const ContextMenuItem = forwardRef<HTMLButtonElement, ContextMenuItemProp
       className,
     );
 
+    const handleOnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+      onClick?.(e);
+
+      if (!hasItems) {
+        internalPopupController.close();
+      }
+    };
+
     const base = (
-      <button {...rest} ref={ref} type="button" className={_className} onClick={onClick} disabled={disabled}>
+      <button {...rest} ref={ref} type="button" className={_className} onClick={handleOnClick} disabled={disabled}>
         {icon && <span className="col-start-1 col-span-1">{icon}</span>}
         <span className="col-start-2 col-span-1">{label}</span>
         {hasItems && (
