@@ -37,7 +37,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
     return (
       <Popup
         ref={ref}
-        when="hover"
+        trigger="hover"
         variant={null}
         hoverDelayMs={delayMs}
         placement={placement}

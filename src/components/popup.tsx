@@ -21,9 +21,9 @@ export interface PopupProps extends Omit<HTMLAttributes<HTMLDivElement>, "childr
   children: [ReactNode, ReactNode];
   offset?: [number, number];
   placement?: Placement;
-  when?: "hover" | "click";
+  trigger?: "hover" | "click";
   hoverDelayMs?: number;
-  autoClose?: boolean;
+  dismissible?: boolean;
   usePortal?: boolean;
 }
 
@@ -35,9 +35,9 @@ export const Popup = forwardRef<HTMLDivElement, PopupProps>(
       offset,
       controller,
       placement = "auto-start",
-      when = "hover",
+      trigger = "hover",
       hoverDelayMs = 250,
-      autoClose = false,
+      dismissible = false,
       usePortal = true,
       children,
       style,
@@ -59,7 +59,7 @@ export const Popup = forwardRef<HTMLDivElement, PopupProps>(
     const [anchorElement, floatingElement] = useMemo(() => {
       const [anchorElement, floatingElement] = children as [ReactElement, ReactElement];
 
-      const augmentedAnchorElement = cloneElement(anchorElement, {
+      const clonedAnchorElement = cloneElement(anchorElement, {
         ref: (el: HTMLElement) => {
           const originalRef = anchorElement.props.ref;
           if (originalRef?.current) originalRef.current = el;
@@ -68,36 +68,29 @@ export const Popup = forwardRef<HTMLDivElement, PopupProps>(
         },
         onClick: (e: never) => {
           anchorElement.props?.onClick?.(e);
-          handleAnchorClick();
+          if (trigger === "click") {
+            setShowFloating((showFloating) => !showFloating);
+          }
         },
         onMouseEnter: (e: never) => {
           anchorElement.props?.onMouseEnter?.(e);
-          handleAnchorMouseEnter();
+          if (trigger === "hover") {
+            hoverTimer.current = setTimeout(() => {
+              setShowFloating(true);
+            }, hoverDelayMs);
+          }
         },
         onMouseLeave: (e: never) => {
           anchorElement.props?.onMouseLeave?.(e);
-          handleAnchorMouseLeave();
+          if (trigger === "hover") {
+            clearTimeout(hoverTimer.current);
+            setShowFloating(false);
+          }
         },
       });
 
-      return [augmentedAnchorElement, floatingElement];
-    }, [children]);
-
-    const handleAnchorClick = () => {
-      if (when !== "click") return;
-      setShowFloating((showFloating) => !showFloating);
-    };
-
-    const handleAnchorMouseEnter = () => {
-      if (when !== "hover") return;
-      hoverTimer.current = setTimeout(() => setShowFloating(true), hoverDelayMs);
-    };
-
-    const handleAnchorMouseLeave = () => {
-      if (when !== "hover") return;
-      clearTimeout(hoverTimer.current);
-      setShowFloating(false);
-    };
+      return [clonedAnchorElement, floatingElement];
+    }, [children, trigger]);
 
     useEffect(() => {
       const closeCallback = () => setShowFloating(false);
@@ -115,8 +108,8 @@ export const Popup = forwardRef<HTMLDivElement, PopupProps>(
     useEffect(() => {
       const onWindowClick = (e: MouseEvent) => {
         if (
-          autoClose &&
-          when === "click" &&
+          dismissible &&
+          trigger === "click" &&
           !anchor?.contains(e.target as never) &&
           !floating?.contains(e.target as never)
         ) {
@@ -129,7 +122,7 @@ export const Popup = forwardRef<HTMLDivElement, PopupProps>(
       return () => {
         window.removeEventListener("click", onWindowClick);
       };
-    }, [anchor, floating, when, autoClose]);
+    }, [anchor, floating, trigger, dismissible]);
 
     const _className = resolveClassName(
       "popup",

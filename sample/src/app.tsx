@@ -6,7 +6,7 @@ import { Button } from "prontoui/button";
 import { Text } from "prontoui/text";
 import { Popup, PopupController } from "prontoui/popup";
 import { Tooltip } from "prontoui/tooltip";
-import { ContextMenu } from "prontoui/context-menu";
+import { ContextMenu, ContextMenuItem, ContextMenuItems } from "prontoui/context-menu";
 
 const popupController = new PopupController();
 
@@ -43,18 +43,18 @@ function App() {
           <Text>Move the cursor out to close me</Text>
         </Popup>
 
-        <Popup placement="top-start" offset={[0, 10]} when="click">
+        <Popup placement="top-start" offset={[0, 10]} trigger="click">
           <Button>Click popup</Button>
           <Text>Click the button again to close me</Text>
         </Popup>
 
-        <Popup placement="left-start" offset={[0, 10]} when="click" autoClose>
+        <Popup placement="left-start" offset={[0, 10]} trigger="click" dismissible>
           <Button>Outside close popup</Button>
 
           <Text>Click outside this popup to close me</Text>
         </Popup>
 
-        <Popup controller={popupController} placement="right-start" offset={[0, 10]} when="click">
+        <Popup controller={popupController} placement="right-start" offset={[0, 10]} trigger="click">
           <Button>Controller popup</Button>
 
           <div className="flex flex-col gap-2 py-2">
@@ -65,34 +65,26 @@ function App() {
           </div>
         </Popup>
 
-        <Popup placement="bottom-start" offset={[0, 10]} hoverDelayMs={1500} autoClose>
+        <Popup placement="bottom-start" offset={[0, 10]} hoverDelayMs={1500} dismissible>
           <Button>Long hover popup (1.5s)</Button>
           <Text>Move the cursor out to close me</Text>
         </Popup>
       </Showcase>
 
       <Showcase title="Context Menu">
-        <ContextMenu
-          controller={popupController}
-          items={[
-            { label: "Option 1" },
-            {
-              label: "Option 2",
-              onClick: () => alert("Option 2 clicked"),
-              items: [
-                { label: "Nested 1" },
-                {
-                  label: "Nested 2",
-                  items: [{ label: "Double Nested 1" }],
-                },
-              ],
-            },
-            {
-              label: "Option 3",
-              onClick: () => alert("Option 3 clicked"),
-            },
-          ]}>
+        <ContextMenu controller={popupController}>
           <Button>Open menu</Button>
+
+          <ContextMenuItems>
+            <p className="text-xs font-medium text-gray-500 bg-slate-50 px-4">Header 1</p>
+            <ContextMenuItem label="Option 1" />
+            <ContextMenuItem label="Option 2">
+              <ContextMenuItems>
+                <ContextMenuItem label="Nested 1" />
+                <ContextMenuItem label="Nested 2" />
+              </ContextMenuItems>
+            </ContextMenuItem>
+          </ContextMenuItems>
         </ContextMenu>
       </Showcase>
     </main>

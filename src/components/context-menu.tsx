@@ -1,89 +1,98 @@
-import React, { forwardRef, HTMLAttributes, ReactNode } from "react";
+import React, { ButtonHTMLAttributes, Children, forwardRef, HTMLAttributes, ReactElement, ReactNode } from "react";
 import { resolveClassName } from "@/components/utils";
 import { Popup, PopupController } from "@/components/popup";
 import ArrowRight from "@/assets/arrow-right.svg";
 
-export type ContextMenuItem = {
-  icon?: ReactNode;
-  label: string;
-  disabled?: boolean;
-  onClick?: () => void;
-  items?: ContextMenuItem[];
-};
-
-export interface ContextMenuProps extends HTMLAttributes<HTMLDivElement> {
-  variant?: string | string[];
-  items: ContextMenuItem[];
+export interface ContextMenuProps extends Omit<HTMLAttributes<HTMLDivElement>, "children"> {
   controller?: PopupController;
+  children: [ReactNode, ReactElement<ContextMenuItemsProps>];
 }
 
 export const ContextMenu = forwardRef<HTMLDivElement, ContextMenuProps>(
-  ({ variant = "default", items, className, controller, children, ...rest }: ContextMenuProps, ref) => {
-    const _className = resolveClassName(
-      "contextMenu",
-      variant,
-      "contextMenu",
-      "flex flex-col bg-white border-[0.5px] border-gray-300 text-gray-600 overflow-hidden rounded text-sm " +
-        "[&>button]:inline-grid [&>button]:gap-2 [&>button]:grid-cols-[30px,1fr,30px] [&>button]:justify-start " +
-        "[&>button]:items-center [&>button]:py-1.5 [&>button]:border-t-[0.5px] [&>button]:border-t-gray-300 " +
-        "[&>button:first-child]:border-none [&>button:hover]:bg-gray-100 [&>button:disabled]:bg-gray-200 " +
-        "[&>button:disabled]:opacity-50 [&>button]:whitespace-nowrap ",
-      className,
-    );
-
-    const renderContextMenuRoot = (items: ContextMenuItem[]) => {
-      return (
-        <div className={_className}>
-          {items.map((item, idx) => {
-            const hasMoreItems = item.items && item.items.length > 0;
-
-            const button = (
-              <button key={idx} type="button" onClick={item.onClick} disabled={item.disabled}>
-                {item.icon && <span className="col-start-1 col-span-1">{item.icon}</span>}
-                <span className="col-start-2 col-span-1">{item.label}</span>
-                {hasMoreItems && (
-                  <span className="col-start-3 col-span-1 grid place-items-center">
-                    <ArrowRight {...({ className: "w-3" } as object)} />
-                  </span>
-                )}
-              </button>
-            );
-
-            if (hasMoreItems) {
-              return (
-                <Popup
-                  key={idx}
-                  ref={ref}
-                  when="click"
-                  variant={null}
-                  placement="right-start"
-                  usePortal={false}
-                  offset={[0, 4]}
-                  autoClose
-                  {...rest}>
-                  {button}
-                  {renderContextMenuRoot(item.items!)}
-                </Popup>
-              );
-            } else return button;
-          })}
-        </div>
-      );
-    };
+  ({ controller, children, ...rest }: ContextMenuProps, ref) => {
+    const [anchor, items] = children;
 
     return (
       <Popup
         ref={ref}
-        when="click"
+        trigger="click"
         variant={null}
         controller={controller}
         placement="right-start"
         offset={[0, 4]}
-        autoClose
+        dismissible
         {...rest}>
-        {children}
-        {renderContextMenuRoot(items)}
+        {anchor}
+        {items}
       </Popup>
     );
+  },
+);
+
+export interface ContextMenuItemsProps extends Omit<HTMLAttributes<HTMLDivElement>, "children"> {
+  variant?: string | string[];
+  children: OneOrMany<ReactElement>;
+}
+
+export const ContextMenuItems = forwardRef<HTMLDivElement, ContextMenuItemsProps>(
+  ({ variant = "default", className, children, ...rest }: ContextMenuItemsProps, ref) => {
+    const _className = resolveClassName(
+      "contextMenu",
+      variant,
+      "contextMenu",
+      "flex flex-col bg-white border-[0.5px] border-gray-300 text-gray-600 overflow-hidden rounded text-sm",
+      className,
+    );
+
+    return (
+      <div ref={ref} className={_className} {...rest}>
+        {children}
+      </div>
+    );
+  },
+);
+
+export interface ContextMenuItemProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
+  variant?: string | string[];
+  label: ReactNode;
+  icon?: ReactNode;
+  children?: ReactElement;
+}
+
+export const ContextMenuItem = forwardRef<HTMLButtonElement, ContextMenuItemProps>(
+  (
+    { variant = "default", label, icon, className, children, disabled, onClick, ...rest }: ContextMenuItemProps,
+    ref,
+  ) => {
+    const hasItems = Children.count(children) > 0;
+
+    const _className = resolveClassName(
+      "contextMenuItem",
+      variant,
+      "contextMenuItem inline-grid grid-cols-[32px,1fr,32px] gap-2 items-center whitespace-nowrap",
+      "py-1.5 border-t-[0.5px] border-t-gray-300 first:border-none hover:bg-gray-100 disabled:bg-gray-200 disabled:opacity-50 ",
+      className,
+    );
+
+    const base = (
+      <button {...rest} ref={ref} type="button" className={_className} onClick={onClick} disabled={disabled}>
+        {icon && <span className="col-start-1 col-span-1">{icon}</span>}
+        <span className="col-start-2 col-span-1">{label}</span>
+        {hasItems && (
+          <span className="col-start-3 col-span-1 grid place-items-center">
+            <ArrowRight {...({ className: "w-3" } as object)} />
+          </span>
+        )}
+      </button>
+    );
+
+    if (hasItems) {
+      return (
+        <Popup trigger="click" variant={null} placement="right-start" usePortal={false} offset={[0, 4]} dismissible>
+          {base}
+          {children}
+        </Popup>
+      );
+    } else return base;
   },
 );
