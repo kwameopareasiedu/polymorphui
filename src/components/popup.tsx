@@ -2,7 +2,6 @@ import React, {
   cloneElement,
   forwardRef,
   HTMLAttributes,
-  MutableRefObject,
   ReactElement,
   ReactNode,
   useEffect,
@@ -15,15 +14,19 @@ import { createPortal } from "react-dom";
 import { usePopper } from "react-popper";
 import { Placement } from "@popperjs/core";
 
+type OpenEventType = "triggerEnter" | "triggerClick";
+
+type CloseEventType = "triggerLeave" | "triggerClick" | "outsideClick";
+
 export interface PopupProps extends Omit<HTMLAttributes<HTMLDivElement>, "children"> {
   variant?: string | string[] | null;
-  controller?: PopupController;
+  controller?: PopupController | PopupController[];
+  openEvent: OpenEventType | OpenEventType[] | null;
+  closeEvent: CloseEventType | CloseEventType[] | null;
   children: [ReactNode, ReactNode];
   offset?: [number, number];
   placement?: Placement;
-  trigger?: "hover" | "click";
   hoverDelayMs?: number;
-  dismissible?: boolean;
   usePortal?: boolean;
 }
 
@@ -35,85 +38,110 @@ export const Popup = forwardRef<HTMLDivElement, PopupProps>(
       offset,
       controller,
       placement = "auto-start",
-      trigger = "hover",
+      openEvent,
+      closeEvent,
       hoverDelayMs = 250,
-      dismissible = false,
       usePortal = true,
       children,
+      onMouseEnter,
+      onMouseLeave,
       style,
       ...rest
     }: PopupProps,
     ref,
   ) => {
-    const hoverTimer = useRef<NodeJS.Timeout>();
-    const [anchor, setAnchor] = useState<HTMLElement | null>(null);
-    const [floating, setFloating] = useState<HTMLElement | null>(null);
-    const [showFloating, setShowFloating] = useState(false);
+    const openTimer = useRef<NodeJS.Timeout>();
+    const closeTimer = useRef<NodeJS.Timeout>();
+    const [triggerRef, setTriggerRef] = useState<HTMLElement | null>(null);
+    const [floatingRef, setFloatingRef] = useState<HTMLElement | null>(null);
+    const [open, setOpen] = useState(false);
 
-    const { styles, attributes } = usePopper(anchor, floating, {
+    const { styles, attributes } = usePopper(triggerRef, floatingRef, {
       modifiers: [{ name: "offset", options: { offset } }],
       placement: placement,
       strategy: "fixed",
     });
 
-    const [anchorElement, floatingElement] = useMemo(() => {
-      const [anchorElement, floatingElement] = children as [ReactElement, ReactElement];
+    const [openEvents, closeEvents] = useMemo(() => {
+      const openEvents = Array.isArray(openEvent) ? openEvent : [openEvent];
+      const closeEvents = Array.isArray(closeEvent) ? closeEvent : [closeEvent];
+      return [openEvents, closeEvents];
+    }, [openEvent, closeEvent]);
 
-      const clonedAnchorElement = cloneElement(anchorElement, {
+    const [triggerElement, floatingElement] = useMemo(() => {
+      const [triggerElement, floatingElement] = children as [ReactElement, ReactElement];
+
+      const clonedTriggerElement = cloneElement(triggerElement, {
         ref: (el: HTMLElement) => {
-          const originalRef = anchorElement.props.ref;
-          if (originalRef?.current) originalRef.current = el;
-          else if (originalRef?.call) originalRef(el);
-          setAnchor(el);
+          const triggerRef = triggerElement.props.ref;
+          if (typeof triggerRef === "function") triggerRef(el);
+          else if (triggerRef?.current) triggerRef.current = el;
+          setTriggerRef(el);
         },
         onClick: (e: never) => {
-          anchorElement.props?.onClick?.(e);
-          if (trigger === "click") {
-            setShowFloating((showFloating) => !showFloating);
-          }
+          triggerElement.props?.onClick?.(e);
+          setOpen((showFloating) => {
+            if (!showFloating && openEvents.includes("triggerClick")) return true;
+            else if (showFloating && closeEvents.includes("triggerClick")) return false;
+            else return showFloating;
+          });
         },
         onMouseEnter: (e: never) => {
-          anchorElement.props?.onMouseEnter?.(e);
-          if (trigger === "hover") {
-            hoverTimer.current = setTimeout(() => {
-              setShowFloating(true);
+          triggerElement.props?.onMouseEnter?.(e);
+          if (openEvents.includes("triggerEnter")) {
+            clearTimeout(openTimer.current);
+            clearTimeout(closeTimer.current);
+            openTimer.current = setTimeout(() => {
+              setOpen(true);
             }, hoverDelayMs);
           }
         },
         onMouseLeave: (e: never) => {
-          anchorElement.props?.onMouseLeave?.(e);
-          if (trigger === "hover") {
-            clearTimeout(hoverTimer.current);
-            setShowFloating(false);
+          triggerElement.props?.onMouseLeave?.(e);
+          if (closeEvents.includes("triggerLeave")) {
+            clearTimeout(openTimer.current);
+            clearTimeout(closeTimer.current);
+            closeTimer.current = setTimeout(() => {
+              setOpen(false);
+            }, hoverDelayMs);
           }
         },
       });
 
-      return [clonedAnchorElement, floatingElement];
-    }, [children, trigger]);
+      return [clonedTriggerElement, floatingElement];
+    }, [children, openEvents, closeEvents]);
 
     useEffect(() => {
-      const closeCallback = () => setShowFloating(false);
-      const openCallback = () => setShowFloating(true);
+      const closeCallback = () => setOpen(false);
+      const openCallback = () => setOpen(true);
 
-      controller?.__registerCloseCallback(closeCallback);
-      controller?.__registerOpenCallback(openCallback);
+      if (Array.isArray(controller)) {
+        controller?.forEach((c) => c.__registerCloseCallback(closeCallback));
+        controller?.forEach((c) => c.__registerOpenCallback(openCallback));
+      } else {
+        controller?.__registerCloseCallback(closeCallback);
+        controller?.__registerOpenCallback(openCallback);
+      }
 
       return () => {
-        controller?.__unregisterCloseCallback(closeCallback);
-        controller?.__unregisterOpenCallback(openCallback);
+        if (Array.isArray(controller)) {
+          controller?.forEach((c) => c.__unregisterCloseCallback(closeCallback));
+          controller?.forEach((c) => c.__unregisterOpenCallback(openCallback));
+        } else {
+          controller?.__unregisterCloseCallback(closeCallback);
+          controller?.__unregisterOpenCallback(openCallback);
+        }
       };
     }, [controller]);
 
     useEffect(() => {
       const onWindowClick = (e: MouseEvent) => {
         if (
-          dismissible &&
-          trigger === "click" &&
-          !anchor?.contains(e.target as never) &&
-          !floating?.contains(e.target as never)
+          closeEvents.includes("outsideClick") &&
+          !triggerRef?.contains(e.target as never) &&
+          !floatingRef?.contains(e.target as never)
         ) {
-          setShowFloating(false);
+          setOpen(false);
         }
       };
 
@@ -122,39 +150,52 @@ export const Popup = forwardRef<HTMLDivElement, PopupProps>(
       return () => {
         window.removeEventListener("click", onWindowClick);
       };
-    }, [anchor, floating, trigger, dismissible]);
+    }, [triggerRef, floatingRef, closeEvents]);
 
     const _className = resolveClassName(
       "popup",
       variant,
       "popup",
-      "bg-blue-100 rounded text-sm text-gray-600 px-2",
+      "bg-white border-[0.5px] border-gray-300 rounded-sm text-sm text-gray-600 px-2",
       className,
     );
 
-    const wrappedFloatingElement = (
+    const floatingRoot = (
       <div
         ref={(el) => {
           if (typeof ref === "function") ref(el);
-          else if (ref && (ref as MutableRefObject<HTMLDivElement>)?.current) ref.current = el;
-          setFloating(el);
+          else if (ref?.current) ref.current = el;
+          setFloatingRef(el);
         }}
         className={_className}
         style={{ ...style, ...styles.popper }}
         {...rest}
-        {...attributes.popup}>
+        {...attributes.popup}
+        onMouseEnter={(e: never) => {
+          onMouseEnter?.(e);
+          if (openEvents.includes("triggerEnter")) {
+            clearTimeout(openTimer.current);
+            clearTimeout(closeTimer.current);
+          }
+        }}
+        onMouseLeave={(e: never) => {
+          onMouseLeave?.(e);
+          if (closeEvents.includes("triggerLeave")) {
+            clearTimeout(openTimer.current);
+            clearTimeout(closeTimer.current);
+            closeTimer.current = setTimeout(() => {
+              setOpen(false);
+            }, hoverDelayMs);
+          }
+        }}>
         {floatingElement}
       </div>
     );
 
     return (
       <>
-        {anchorElement}
-        {showFloating
-          ? usePortal
-            ? createPortal(wrappedFloatingElement, document.body)
-            : wrappedFloatingElement
-          : null}
+        {triggerElement}
+        {open ? (usePortal ? createPortal(floatingRoot, document.body) : floatingRoot) : null}
       </>
     );
   },

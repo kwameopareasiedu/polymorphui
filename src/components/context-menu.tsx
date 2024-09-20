@@ -15,12 +15,12 @@ export const ContextMenu = forwardRef<HTMLDivElement, ContextMenuProps>(
     return (
       <Popup
         ref={ref}
-        trigger="click"
         variant={null}
+        openEvent="triggerClick"
+        closeEvent="outsideClick"
         controller={controller}
         placement="right-start"
         offset={[0, 4]}
-        dismissible
         {...rest}>
         {anchor}
         {items}
@@ -40,7 +40,7 @@ export const ContextMenuItems = forwardRef<HTMLDivElement, ContextMenuItemsProps
       "contextMenu",
       variant,
       "contextMenu",
-      "flex flex-col bg-white border-[0.5px] border-gray-300 text-gray-600 overflow-hidden rounded text-sm",
+      "flex flex-col bg-white border-[0.5px] border-gray-300 text-gray-600 overflow-hidden rounded-sm text-sm",
       className,
     );
 
@@ -88,7 +88,13 @@ export const ContextMenuItem = forwardRef<HTMLButtonElement, ContextMenuItemProp
 
     if (hasItems) {
       return (
-        <Popup trigger="click" variant={null} placement="right-start" usePortal={false} offset={[0, 4]} dismissible>
+        <Popup
+          variant={null}
+          openEvent="triggerEnter"
+          closeEvent={["outsideClick", "triggerLeave"]}
+          placement="right-start"
+          usePortal={false}
+          offset={[0, -4]}>
           {base}
           {children}
         </Popup>

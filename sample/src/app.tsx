@@ -38,23 +38,27 @@ function App() {
       </Showcase>
 
       <Showcase title="Popup">
-        <Popup placement="top-start" offset={[0, 10]}>
+        <Popup placement="top-start" offset={[0, 10]} openEvent="triggerEnter" closeEvent="triggerLeave">
           <Button>Hover popup</Button>
           <Text>Move the cursor out to close me</Text>
         </Popup>
 
-        <Popup placement="top-start" offset={[0, 10]} trigger="click">
+        <Popup placement="top-start" offset={[0, 10]} openEvent="triggerClick" closeEvent="triggerClick">
           <Button>Click popup</Button>
           <Text>Click the button again to close me</Text>
         </Popup>
 
-        <Popup placement="left-start" offset={[0, 10]} trigger="click" dismissible>
+        <Popup placement="left-start" offset={[0, 10]} openEvent="triggerClick" closeEvent="outsideClick">
           <Button>Outside close popup</Button>
-
           <Text>Click outside this popup to close me</Text>
         </Popup>
 
-        <Popup controller={popupController} placement="right-start" offset={[0, 10]} trigger="click">
+        <Popup
+          placement="right-start"
+          offset={[0, 10]}
+          controller={popupController}
+          openEvent="triggerClick"
+          closeEvent={null}>
           <Button>Controller popup</Button>
 
           <div className="flex flex-col gap-2 py-2">
@@ -65,14 +69,19 @@ function App() {
           </div>
         </Popup>
 
-        <Popup placement="bottom-start" offset={[0, 10]} hoverDelayMs={1500} dismissible>
+        <Popup
+          placement="bottom-start"
+          offset={[0, 10]}
+          hoverDelayMs={1500}
+          openEvent="triggerEnter"
+          closeEvent="triggerLeave">
           <Button>Long hover popup (1.5s)</Button>
           <Text>Move the cursor out to close me</Text>
         </Popup>
       </Showcase>
 
       <Showcase title="Context Menu">
-        <ContextMenu controller={popupController}>
+        <ContextMenu>
           <Button>Open menu</Button>
 
           <ContextMenuItems>
@@ -82,6 +91,17 @@ function App() {
               <ContextMenuItems>
                 <ContextMenuItem label="Nested 1" />
                 <ContextMenuItem label="Nested 2" />
+              </ContextMenuItems>
+            </ContextMenuItem>
+            <ContextMenuItem label="Option 3" />
+            <ContextMenuItem label="Option 4" />
+            <ContextMenuItem label="Option 5" />
+            <ContextMenuItem label="Option 6">
+              <ContextMenuItems>
+                <ContextMenuItem label="Nested 1" />
+                <ContextMenuItem label="Nested 2" />
+                <ContextMenuItem label="Nested 3" />
+                <ContextMenuItem label="Nested 4" />
               </ContextMenuItems>
             </ContextMenuItem>
           </ContextMenuItems>
