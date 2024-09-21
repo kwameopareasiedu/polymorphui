@@ -46,10 +46,7 @@ export async function generate() {
     const unionType = variants.map((v) => `"${v}"`).join(" | ");
     const componentTypesPath = resolve(__dirname, `../dist/${componentName}.d.ts`);
 
-    if (!existsSync(componentTypesPath)) {
-      console.warn(`warning: "${componentName}" does not exist!`);
-      continue;
-    }
+    if (!existsSync(componentTypesPath)) continue;
 
     const componentTypesSource = readFileSync(componentTypesPath, { encoding: "utf-8" });
     writeFileSync(

@@ -11,6 +11,7 @@ import { ContextMenu, ContextMenuItem, ContextMenuItems } from "prontoui/context
 import { Input } from "prontoui/input";
 import { TextArea } from "prontoui/textarea";
 import { Select } from "prontoui/select";
+import { Switch } from "prontoui/switch";
 
 const popupController = new PopupController();
 
@@ -19,6 +20,7 @@ function App() {
   const [areaText, setAreaText] = useState("");
   const [selectValue, setSelectValue] = useState("");
   const [multiSelectValue, setMultiSelectValue] = useState<string[]>([]);
+  const [switchChecked, setSwitchChecked] = useState(false);
 
   return (
     <main className="p-4 flex flex-wrap items-start gap-8">
@@ -194,6 +196,15 @@ function App() {
         />
 
         <Select options={[]} placeholder="Bio here" disabled />
+      </Showcase>
+
+      <Showcase title="Switch">
+        <Switch
+          checked={switchChecked}
+          onChange={(e) => {
+            setSwitchChecked(e.target.checked);
+          }}
+        />
       </Showcase>
     </main>
   );

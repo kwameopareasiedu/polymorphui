@@ -245,3 +245,21 @@ export const SelectOptionButton = forwardRef<HTMLButtonElement, SelectOptionButt
     );
   },
 );
+
+export interface SwitchThumbProps extends Omit<HTMLAttributes<HTMLSpanElement>, "children"> {
+  variant?: string | string[];
+}
+
+export const SwitchThumb = forwardRef<HTMLSpanElement, SwitchThumbProps>(
+  ({ variant = "default", className, ...rest }: InputHelperProps, ref) => {
+    const _className = resolveClassName(
+      "switchThumb",
+      variant,
+      "switchThumb inline-block h-full aspect-square rounded-full transition-all",
+      "bg-white",
+      className,
+    );
+
+    return <span ref={ref} className={_className} {...rest} />;
+  },
+);
