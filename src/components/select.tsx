@@ -1,4 +1,12 @@
-import React, { ButtonHTMLAttributes, ChangeEventHandler, forwardRef, ReactNode, useState } from "react";
+import React, {
+  ButtonHTMLAttributes,
+  ChangeEventHandler,
+  KeyboardEvent,
+  forwardRef,
+  ReactNode,
+  useState,
+  useRef,
+} from "react";
 import { combineRefs, resolveClassName } from "@/components/utils";
 import { Popup, PopupController } from "@/components/popup";
 import Dropdown from "@/assets/dropdown.svg";
@@ -51,6 +59,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
     }: SelectProps,
     ref,
   ) => {
+    const buttonRef = useRef<HTMLButtonElement>(null);
     const [triggerWidth, setTriggerWidth] = useState(0);
 
     const _className = resolveClassName("select", variant, "select w-full flex flex-col gap-0.5", undefined, className);
@@ -75,6 +84,14 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
       } else {
         onChange?.({ target: { value: option.value } } as never);
         internalPopupController.close();
+        buttonRef.current?.focus();
+      }
+    };
+
+    const handleOnKeyUp = (e: KeyboardEvent<HTMLDivElement>) => {
+      if (e.key === "Escape") {
+        internalPopupController.close();
+        buttonRef.current?.focus();
       }
     };
 
@@ -89,7 +106,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
           controller={internalPopupController}
           placement="bottom-start"
           offset={[0, 8]}>
-          <SelectButton ref={combineRefs(ref, (el) => setTriggerWidth(el?.clientWidth ?? 0))} {...rest}>
+          <SelectButton ref={combineRefs(ref, buttonRef, (el) => setTriggerWidth(el?.clientWidth ?? 0))} {...rest}>
             {leading && <InputAddon>{leading}</InputAddon>}
 
             <InputInput
@@ -103,7 +120,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
             <Dropdown {...({ className: "w-3" } as object)} />
           </SelectButton>
 
-          <SelectOptions style={{ minWidth: `${triggerWidth}px` }}>
+          <SelectOptions style={{ minWidth: `${triggerWidth}px` }} onKeyUp={handleOnKeyUp}>
             {options.map((option, idx) => (
               <SelectOptionButton key={idx} onClick={() => handleOnOptionClicked(option)}>
                 <span>{option.label}</span>

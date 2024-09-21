@@ -4,8 +4,13 @@ import React, {
   HTMLAttributes,
   InputHTMLAttributes,
   LabelHTMLAttributes,
+  KeyboardEvent,
+  useEffect,
+  useRef,
+  useState,
+  Children,
 } from "react";
-import { resolveClassName } from "@/components/utils";
+import { combineRefs, resolveClassName } from "@/components/utils";
 
 export interface InputLabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
   variant?: string | string[];
@@ -169,7 +174,11 @@ export interface SelectOptionsProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const SelectOptions = forwardRef<HTMLDivElement, SelectOptionsProps>(
-  ({ variant = "default", className, children, ...rest }: SelectOptionsProps, ref) => {
+  ({ variant = "default", className, children, onKeyDownCapture, onKeyUp, ...rest }: SelectOptionsProps, ref) => {
+    const optionsRef = useRef<HTMLDivElement>(null);
+    const [childCount] = useState(Children.count(children));
+    const [focusIndex, setFocusIndex] = useState(0);
+
     const _className = resolveClassName(
       "selectOptions",
       variant,
@@ -178,8 +187,36 @@ export const SelectOptions = forwardRef<HTMLDivElement, SelectOptionsProps>(
       className,
     );
 
+    const handleOnKeyDownCapture = (e: KeyboardEvent<HTMLDivElement>) => {
+      if (["ArrowDown", "ArrowUp"].includes(e.key)) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+
+      onKeyDownCapture?.(e);
+    };
+
+    const handleOnKeyUp = (e: KeyboardEvent<HTMLDivElement>) => {
+      if (e.key === "ArrowDown") setFocusIndex((idx) => Math.min(idx + 1, childCount));
+      else if (e.key === "ArrowUp") setFocusIndex((idx) => Math.max(0, idx - 1));
+      onKeyUp?.(e);
+    };
+
+    useEffect(() => {
+      if (optionsRef.current && optionsRef.current.childElementCount > 0) {
+        const targetElement = optionsRef.current.children.item(focusIndex) as HTMLElement | null;
+        targetElement?.focus();
+      }
+    }, [focusIndex]);
+
     return (
-      <div ref={ref} className={_className} {...rest}>
+      <div
+        ref={combineRefs(ref, optionsRef)}
+        className={_className}
+        onKeyUp={handleOnKeyUp}
+        onKeyDownCapture={handleOnKeyDownCapture}
+        {...rest}
+        tabIndex={0}>
         {children}
       </div>
     );
@@ -196,7 +233,8 @@ export const SelectOptionButton = forwardRef<HTMLButtonElement, SelectOptionButt
       "selectOptionButton",
       variant,
       "selectOptionButton text-left px-2 py-1",
-      "w-full flex items-center justify-between text-sm hover:bg-blue-500 hover:text-white transition-colors",
+      "w-full flex items-center justify-between text-sm hover:bg-blue-500 hover:text-white " +
+        "focus:bg-blue-500 focus:text-white focus:outline-0 transition-colors",
       className,
     );
 
