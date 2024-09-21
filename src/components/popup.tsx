@@ -9,7 +9,7 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { resolveClassName } from "@/components/utils";
+import { combineRefs, resolveClassName } from "@/components/utils";
 import { createPortal } from "react-dom";
 import { usePopper } from "react-popper";
 import { Placement } from "@popperjs/core";
@@ -76,8 +76,7 @@ export const Popup = forwardRef<HTMLDivElement, PopupProps>(
       const clonedTriggerElement = cloneElement(triggerElement, {
         ref: (el: HTMLElement) => {
           const triggerRef = triggerElement.props.ref;
-          if (typeof triggerRef === "function") triggerRef(el);
-          else if (triggerRef?.current) triggerRef.current = el;
+          combineRefs(triggerRef)(el);
           setTriggerRef(el);
         },
         onClick: (e: never) => {
@@ -165,8 +164,7 @@ export const Popup = forwardRef<HTMLDivElement, PopupProps>(
     const floatingRoot = (
       <div
         ref={(el) => {
-          if (typeof ref === "function") ref(el);
-          else if (ref?.current) ref.current = el;
+          combineRefs(ref)(el);
           setFloatingRef(el);
         }}
         className={_className}

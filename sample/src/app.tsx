@@ -1,6 +1,7 @@
 import { ReactNode, useState } from "react";
 import { CgOptions } from "react-icons/cg";
 import { AiFillAlert, AiOutlineClose } from "react-icons/ai";
+import { BiNotepad, BiUser } from "react-icons/bi";
 import { Spinner } from "prontoui/spinner";
 import { Button } from "prontoui/button";
 import { Text } from "prontoui/text";
@@ -8,12 +9,13 @@ import { Popup, PopupController } from "prontoui/popup";
 import { Tooltip } from "prontoui/tooltip";
 import { ContextMenu, ContextMenuItem, ContextMenuItems } from "prontoui/context-menu";
 import { Input } from "prontoui/input";
-import { BiUser } from "react-icons/bi";
+import { TextArea } from "prontoui/textarea";
 
 const popupController = new PopupController();
 
 function App() {
   const [inputText, setInputText] = useState("");
+  const [areaText, setAreaText] = useState("");
 
   return (
     <main className="p-4 flex flex-wrap items-start gap-8">
@@ -124,6 +126,18 @@ function App() {
           helper="Helper text"
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
+        />
+      </Showcase>
+
+      <Showcase title="TextArea">
+        <TextArea
+          leading={<BiNotepad />}
+          trailing={<Spinner variant="default" />}
+          placeholder="Bio here"
+          value={areaText}
+          error="Error text"
+          helper="Helper text"
+          onChange={(e) => setAreaText(e.target.value)}
         />
       </Showcase>
     </main>

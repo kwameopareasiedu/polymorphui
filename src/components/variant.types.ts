@@ -12,6 +12,7 @@ export interface ComponentVariants {
   contextMenu?: VariantsClassNameMap;
   contextMenuItem?: VariantsClassNameMap;
   input?: VariantsClassNameMap;
+  textarea?: VariantsClassNameMap;
 }
 
 export type ComponentNameType = keyof ComponentVariants;
