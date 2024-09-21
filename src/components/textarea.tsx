@@ -1,6 +1,13 @@
 import React, { FormEvent, forwardRef, InputHTMLAttributes, ReactNode, useEffect, useRef } from "react";
 import { combineRefs, resolveClassName } from "@/components/utils";
-import { InputAddon, InputError, InputHelper, InputLabel, InputWrapper } from "@/components/input-helpers";
+import {
+  InputAddon,
+  InputError,
+  InputHelper,
+  InputLabel,
+  InputTextArea,
+  InputWrapper,
+} from "@/components/input-helpers";
 
 export interface TextAreaProps extends Omit<InputHTMLAttributes<HTMLTextAreaElement>, "children"> {
   variant?: string | string[];
@@ -35,9 +42,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       "textarea",
       variant,
       "textarea w-full flex flex-col gap-0.5",
-      "[&_textarea]:py-2 [&_textarea]:resize-none [&_textarea]:min-h-24 [&_textarea]:bg-transparent " +
-        "[&_textarea:focus]:outline-none [&_textarea]:placeholder:text-sm [&_textarea]:placeholder:text-sm " +
-        "[&_textarea]:placeholder:pt-0.5",
+      undefined,
       className,
     );
 
@@ -66,12 +71,12 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 
         <InputWrapper className="!items-start">
           {leading && <InputAddon>{leading}</InputAddon>}
-          <textarea ref={combineRefs(ref, textareaRef)} className="flex-1" {...rest} onInput={handleOnInput} />
+          <InputTextArea ref={combineRefs(ref, textareaRef)} onInput={handleOnInput} {...rest} />
           {trailing && <InputAddon>{trailing}</InputAddon>}
         </InputWrapper>
 
         {(helper || error) && (
-          <div className="f flex items-center justify-between gap-2">
+          <div className="flex items-center justify-between gap-2">
             {error && <InputError>{error}</InputError>}
             {helper && <InputHelper>{helper}</InputHelper>}
           </div>

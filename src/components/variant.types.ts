@@ -17,10 +17,13 @@ export interface ComponentVariants {
   inputAddon?: VariantsClassNameMap;
   inputWrapper?: VariantsClassNameMap;
   input?: VariantsClassNameMap;
+  inputInput?: VariantsClassNameMap;
   textarea?: VariantsClassNameMap;
+  inputTextArea?: VariantsClassNameMap;
   select?: VariantsClassNameMap;
+  selectButton?: VariantsClassNameMap;
   selectOptions?: VariantsClassNameMap;
-  selectOption?: VariantsClassNameMap;
+  selectOptionButton?: VariantsClassNameMap;
 }
 
 export type ComponentNameType = keyof ComponentVariants;

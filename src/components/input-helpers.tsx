@@ -1,4 +1,10 @@
-import React, { forwardRef, HTMLAttributes, LabelHTMLAttributes } from "react";
+import React, {
+  ButtonHTMLAttributes,
+  forwardRef,
+  HTMLAttributes,
+  InputHTMLAttributes,
+  LabelHTMLAttributes,
+} from "react";
 import { resolveClassName } from "@/components/utils";
 
 export interface InputLabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
@@ -86,6 +92,118 @@ export const InputWrapper = forwardRef<HTMLDivElement, InputWrapperProps>(
       <div ref={ref} className={_className} {...rest}>
         {children}
       </div>
+    );
+  },
+);
+
+export interface InputInputProps extends InputHTMLAttributes<HTMLInputElement> {
+  variant?: string | string[];
+}
+
+export const InputInput = forwardRef<HTMLInputElement, InputInputProps>(
+  ({ variant = "default", className, children, ...rest }: InputInputProps, ref) => {
+    const _className = resolveClassName(
+      "inputInput",
+      variant,
+      "inputInput flex-1",
+      "py-2 bg-transparent focus:outline-none placeholder:text-sm",
+      className,
+    );
+
+    return (
+      <input ref={ref} className={_className} {...rest}>
+        {children}
+      </input>
+    );
+  },
+);
+
+export interface InputTextAreaProps extends InputHTMLAttributes<HTMLTextAreaElement> {
+  variant?: string | string[];
+}
+
+export const InputTextArea = forwardRef<HTMLTextAreaElement, InputTextAreaProps>(
+  ({ variant = "default", className, children, ...rest }: InputTextAreaProps, ref) => {
+    const _className = resolveClassName(
+      "inputTextArea",
+      variant,
+      "inputTextArea flex-1",
+      "min-h-24 py-2 bg-transparent resize-none focus:outline-none " +
+        "placeholder:text-sm placeholder:text-sm placeholder:pt-0.5",
+      className,
+    );
+
+    return (
+      <textarea ref={ref} className={_className} {...rest}>
+        {children}
+      </textarea>
+    );
+  },
+);
+
+export interface SelectButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: string | string[];
+}
+
+export const SelectButton = forwardRef<HTMLButtonElement, SelectButtonProps>(
+  ({ variant = "default", className, children, ...rest }: SelectButtonProps, ref) => {
+    const _className = resolveClassName(
+      "selectButton",
+      variant,
+      "selectButton flex items-center gap-2",
+      "bg-white p-2 rounded border-2 border-gray-300 focus:border-blue-400 focus:outline-0 " +
+        "disabled:opacity-50 disabled:bg-gray-100 ",
+      className,
+    );
+
+    return (
+      <button ref={ref} className={_className} {...rest} type="button">
+        {children}
+      </button>
+    );
+  },
+);
+
+export interface SelectOptionsProps extends HTMLAttributes<HTMLDivElement> {
+  variant?: string | string[];
+}
+
+export const SelectOptions = forwardRef<HTMLDivElement, SelectOptionsProps>(
+  ({ variant = "default", className, children, ...rest }: SelectOptionsProps, ref) => {
+    const _className = resolveClassName(
+      "selectOptions",
+      variant,
+      "selectOptions",
+      "bg-white border-[0.5px] border-gray-300 rounded-sm",
+      className,
+    );
+
+    return (
+      <div ref={ref} className={_className} {...rest}>
+        {children}
+      </div>
+    );
+  },
+);
+
+export interface SelectOptionButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: string | string[];
+}
+
+export const SelectOptionButton = forwardRef<HTMLButtonElement, SelectOptionButtonProps>(
+  ({ variant = "default", className, children, ...rest }: SelectOptionButtonProps, ref) => {
+    const _className = resolveClassName(
+      "selectOptionButton",
+      variant,
+      "selectOptionButton text-left px-2 py-1",
+      "w-full flex items-center justify-between text-sm hover:bg-blue-500 hover:text-white transition-colors",
+      className,
+    );
+
+    return (
+      <button ref={ref} type="button" className={_className} {...rest}>
+        {children}
+      </button>
     );
   },
 );

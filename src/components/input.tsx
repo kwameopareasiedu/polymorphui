@@ -1,6 +1,6 @@
 import React, { forwardRef, InputHTMLAttributes, ReactNode } from "react";
 import { resolveClassName } from "@/components/utils";
-import { InputAddon, InputError, InputHelper, InputLabel, InputWrapper } from "@/components/input-helpers";
+import { InputAddon, InputError, InputHelper, InputInput, InputLabel, InputWrapper } from "@/components/input-helpers";
 
 export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "children"> {
   variant?: string | string[];
@@ -13,13 +13,7 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ variant = "default", label, leading, trailing, id, className, helper, error, ...rest }: InputProps, ref) => {
-    const _className = resolveClassName(
-      "input",
-      variant,
-      "input w-full flex flex-col gap-0.5",
-      "[&_input]:py-2 [&_input]:bg-transparent [&_input:focus]:outline-none [&_input]:placeholder:text-sm",
-      className,
-    );
+    const _className = resolveClassName("input", variant, "input w-full flex flex-col gap-0.5", undefined, className);
 
     return (
       <div className={_className}>
@@ -27,12 +21,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
         <InputWrapper>
           {leading && <InputAddon>{leading}</InputAddon>}
-          <input ref={ref} className="flex-1" {...rest} />
+          <InputInput ref={ref} {...rest} />
           {trailing && <InputAddon>{trailing}</InputAddon>}
         </InputWrapper>
 
         {(helper || error) && (
-          <div className="f flex items-center justify-between gap-2">
+          <div className="flex items-center justify-between gap-2">
             {error && <InputError>{error}</InputError>}
             {helper && <InputHelper>{helper}</InputHelper>}
           </div>

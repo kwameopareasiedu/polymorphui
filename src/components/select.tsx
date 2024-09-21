@@ -1,20 +1,29 @@
-import React, { ButtonHTMLAttributes, ChangeEventHandler, forwardRef, ReactNode, useRef } from "react";
+import React, { ButtonHTMLAttributes, ChangeEventHandler, forwardRef, ReactNode, useState } from "react";
 import { combineRefs, resolveClassName } from "@/components/utils";
 import { Popup, PopupController } from "@/components/popup";
 import Dropdown from "@/assets/dropdown.svg";
 import Check from "@/assets/check.svg";
-import { InputAddon, InputError, InputHelper, InputLabel } from "@/components/input-helpers";
+import {
+  InputAddon,
+  InputError,
+  InputHelper,
+  InputInput,
+  InputLabel,
+  SelectOptionButton,
+  SelectOptions,
+  SelectButton,
+} from "@/components/input-helpers";
 
 const internalPopupController = new PopupController();
 
-export type SelectOption = {
+export type SelectOptionType = {
   label: string;
   value: string;
 };
 
 export interface SelectProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children" | "value" | "onChange"> {
   variant?: string | string[];
-  options: SelectOption[];
+  options: SelectOptionType[];
   label?: ReactNode;
   leading?: ReactNode;
   helper?: ReactNode;
@@ -42,41 +51,19 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
     }: SelectProps,
     ref,
   ) => {
-    const buttonRef = useRef<HTMLButtonElement | null>(null);
+    const [triggerWidth, setTriggerWidth] = useState(0);
 
-    const _className = resolveClassName(
-      "select",
-      variant,
-      "select w-full flex flex-col gap-0.5",
-      "[&>button]:bg-white [&>button]:p-2 [&>button]:rounded [&>button]:border-2 [&>button]:border-gray-300 " +
-        "[&>button:focus]:border-blue-400 [&>button:focus]:outline-0 [&>button:disabled]:opacity-50 [&>button:disabled]:bg-gray-100 " +
-        "[&_.t_input]:placeholder:text-sm",
-      className,
-    );
-
-    const _optionsClassName = resolveClassName(
-      "selectOptions",
-      variant,
-      "selectOptions",
-      "bg-white border-[0.5px] border-gray-300 rounded-sm",
-    );
-
-    const _optionClassName = resolveClassName(
-      "selectOption",
-      variant,
-      "selectOption text-left px-2 py-1",
-      "w-full flex items-center justify-between text-sm hover:bg-blue-500 hover:text-white transition-colors",
-    );
+    const _className = resolveClassName("select", variant, "select w-full flex flex-col gap-0.5", undefined, className);
 
     const isMultiSelect = Array.isArray(value);
     const selectedValues = Array.isArray(value) ? value : value ? [value] : [];
     const selectedLabels = selectedValues.map((val) => options.find((op) => op.value === val)?.label ?? "");
 
-    const optionIsSelected = (option: SelectOption) => {
+    const optionIsSelected = (option: SelectOptionType) => {
       return selectedValues.includes(option.value);
     };
 
-    const handleOnOptionClicked = (option: SelectOption) => {
+    const handleOnOptionClicked = (option: SelectOptionType) => {
       if (isMultiSelect) {
         const newValueSet = new Set(selectedValues);
         if (selectedValues.includes(option.value)) {
@@ -102,37 +89,32 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
           controller={internalPopupController}
           placement="bottom-start"
           offset={[0, 8]}>
-          <button ref={combineRefs(ref, buttonRef)} className="t flex items-center gap-2" {...rest} type="button">
+          <SelectButton ref={combineRefs(ref, (el) => setTriggerWidth(el?.clientWidth ?? 0))} {...rest}>
             {leading && <InputAddon>{leading}</InputAddon>}
 
-            <input
+            <InputInput
               value={selectedLabels.join(", ")}
-              className="text-left flex-1 pointer-events-none"
+              className="text-left flex-1 pointer-events-none !p-0"
               placeholder={placeholder}
               readOnly
               disabled
             />
 
             <Dropdown {...({ className: "w-3" } as object)} />
-          </button>
+          </SelectButton>
 
-          <div className={_optionsClassName} style={{ minWidth: `${buttonRef.current?.offsetWidth ?? 0}px` }}>
+          <SelectOptions style={{ minWidth: `${triggerWidth}px` }}>
             {options.map((option, idx) => (
-              <button
-                key={idx}
-                type="button"
-                className={_optionClassName}
-                onClick={() => handleOnOptionClicked(option)}>
+              <SelectOptionButton key={idx} onClick={() => handleOnOptionClicked(option)}>
                 <span>{option.label}</span>
-
                 {optionIsSelected(option) && <Check {...({ className: "w-3" } as object)} />}
-              </button>
+              </SelectOptionButton>
             ))}
-          </div>
+          </SelectOptions>
         </Popup>
 
         {(helper || error) && (
-          <div className="f flex items-center justify-between gap-2">
+          <div className="flex items-center justify-between gap-2">
             {error && <InputError>{error}</InputError>}
             {helper && <InputHelper>{helper}</InputHelper>}
           </div>
