@@ -148,8 +148,8 @@ function App() {
               <small>{areaText.length} chars</small>
             </div>
           }
-          leading={<BiNotepad />}
-          trailing={<Spinner variant="default" />}
+          leading={<BiNotepad className="mt-3" />}
+          trailing={<Spinner variant="default" className="mt-3" />}
           placeholder="Bio here"
           value={areaText}
           error="Error text"

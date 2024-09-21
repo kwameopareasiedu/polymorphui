@@ -1,5 +1,6 @@
 import React, { forwardRef, InputHTMLAttributes, ReactNode } from "react";
 import { resolveClassName } from "@/components/utils";
+import { InputAddon, InputError, InputHelper, InputLabel, InputWrapper } from "@/components/input-helpers";
 
 export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "children"> {
   variant?: string | string[];
@@ -16,27 +17,24 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       "input",
       variant,
       "input w-full flex flex-col gap-0.5",
-      "[&>.w]:bg-white [&>.w]:px-2 [&>.w]:rounded [&>.w]:border-2 [&>.w]:border-gray-300 " +
-        "[&>.w:focus-within]:border-blue-400 [&>.w:has(input:disabled)]:opacity-50 [&>.w:has(input:disabled)]:bg-gray-100 " +
-        "[&>label]:text-sm [&>label]:text-gray-600 [&_input]:py-2 [&_input]:bg-transparent [&_input:focus]:outline-none " +
-        "[&_input]:placeholder:text-sm [&_.e]:text-xs [&_.e]:text-red-500 [&_.h]:text-xs [&_.h]:text-gray-400",
+      "[&_input]:py-2 [&_input]:bg-transparent [&_input:focus]:outline-none [&_input]:placeholder:text-sm",
       className,
     );
 
     return (
       <div className={_className}>
-        {label && <label htmlFor={id}>{label}</label>}
+        {label && <InputLabel htmlFor={id}>{label}</InputLabel>}
 
-        <div className="w flex items-center gap-2">
-          {leading && <span className="l inline-grid place-items-center">{leading}</span>}
+        <InputWrapper>
+          {leading && <InputAddon>{leading}</InputAddon>}
           <input ref={ref} className="flex-1" {...rest} />
-          {trailing && <span className="t inline-grid place-items-center">{trailing}</span>}
-        </div>
+          {trailing && <InputAddon>{trailing}</InputAddon>}
+        </InputWrapper>
 
         {(helper || error) && (
           <div className="f flex items-center justify-between gap-2">
-            {error && <span className="e">{error}</span>}
-            {helper && <span className="h">{helper}</span>}
+            {error && <InputError>{error}</InputError>}
+            {helper && <InputHelper>{helper}</InputHelper>}
           </div>
         )}
       </div>

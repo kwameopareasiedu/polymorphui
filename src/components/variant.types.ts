@@ -11,6 +11,11 @@ export interface ComponentVariants {
   tooltip?: VariantsClassNameMap;
   contextMenu?: VariantsClassNameMap;
   contextMenuItem?: VariantsClassNameMap;
+  inputLabel?: VariantsClassNameMap;
+  inputError?: VariantsClassNameMap;
+  inputHelper?: VariantsClassNameMap;
+  inputAddon?: VariantsClassNameMap;
+  inputWrapper?: VariantsClassNameMap;
   input?: VariantsClassNameMap;
   textarea?: VariantsClassNameMap;
   select?: VariantsClassNameMap;

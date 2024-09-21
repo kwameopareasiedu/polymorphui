@@ -5,6 +5,7 @@ export default function remap() {
     "@/components/spinner": "./spinner.js",
     "@/components/popup": "./popup.js",
     "@/components/text": "./text.js",
+    "@/components/input-helpers": "./input-helpers.js",
   };
 
   return {

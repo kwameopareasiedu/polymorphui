@@ -3,6 +3,7 @@ import { combineRefs, resolveClassName } from "@/components/utils";
 import { Popup, PopupController } from "@/components/popup";
 import Dropdown from "@/assets/dropdown.svg";
 import Check from "@/assets/check.svg";
+import { InputAddon, InputError, InputHelper, InputLabel } from "@/components/input-helpers";
 
 const internalPopupController = new PopupController();
 
@@ -49,7 +50,6 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
       "select w-full flex flex-col gap-0.5",
       "[&>button]:bg-white [&>button]:p-2 [&>button]:rounded [&>button]:border-2 [&>button]:border-gray-300 " +
         "[&>button:focus]:border-blue-400 [&>button:focus]:outline-0 [&>button:disabled]:opacity-50 [&>button:disabled]:bg-gray-100 " +
-        "[&>label]:text-sm [&>label]:text-gray-600 [&_.e]:text-xs [&_.e]:text-red-500 [&_.h]:text-xs [&_.h]:text-gray-400 " +
         "[&_.t_input]:placeholder:text-sm",
       className,
     );
@@ -93,7 +93,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 
     return (
       <div className={_className}>
-        {label && <label htmlFor={id}>{label}</label>}
+        {label && <InputLabel htmlFor={id}>{label}</InputLabel>}
 
         <Popup
           variant={null}
@@ -103,7 +103,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
           placement="bottom-start"
           offset={[0, 8]}>
           <button ref={combineRefs(ref, buttonRef)} className="t flex items-center gap-2" {...rest} type="button">
-            {leading && <span className="l inline-grid place-items-center">{leading}</span>}
+            {leading && <InputAddon>{leading}</InputAddon>}
 
             <input
               value={selectedLabels.join(", ")}
@@ -133,8 +133,8 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 
         {(helper || error) && (
           <div className="f flex items-center justify-between gap-2">
-            {error && <span className="e">{error}</span>}
-            {helper && <span className="h">{helper}</span>}
+            {error && <InputError>{error}</InputError>}
+            {helper && <InputHelper>{helper}</InputHelper>}
           </div>
         )}
       </div>

@@ -66,6 +66,7 @@ const componentConfigs = defineConfig([
       "@/components/spinner",
       "@/components/popup",
       "@/components/text",
+      "@/components/input-helpers",
     ],
   },
   {
