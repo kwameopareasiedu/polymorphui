@@ -34,7 +34,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       "textarea",
       variant,
       "textarea w-full flex flex-col gap-0.5",
-      "[&>.w]:bg-white [&>.w]:px-2 [&>.w]:rounded [&>.w]:border-2 [&>.w]:border-transparent " +
+      "[&>.w]:bg-white [&>.w]:px-2 [&>.w]:rounded [&>.w]:border-2 [&>.w]:border-gray-300 " +
         "[&>.w:focus-within]:border-blue-400 [&>.w:has(input:disabled)]:opacity-50 [&>.w:has(input:disabled)]:bg-gray-100 " +
         "[&>label]:text-sm [&>label]:text-gray-600 [&_textarea]:py-2 [&_textarea]:resize-none [&_textarea]:min-h-24 " +
         "[&_textarea]:bg-transparent [&_textarea:focus]:outline-none [&_textarea]:placeholder:text-sm " +

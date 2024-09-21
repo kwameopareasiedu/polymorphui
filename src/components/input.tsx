@@ -16,7 +16,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       "input",
       variant,
       "input w-full flex flex-col gap-0.5",
-      "[&>.w]:bg-white [&>.w]:px-2 [&>.w]:rounded [&>.w]:border-2 [&>.w]:border-transparent " +
+      "[&>.w]:bg-white [&>.w]:px-2 [&>.w]:rounded [&>.w]:border-2 [&>.w]:border-gray-300 " +
         "[&>.w:focus-within]:border-blue-400 [&>.w:has(input:disabled)]:opacity-50 [&>.w:has(input:disabled)]:bg-gray-100 " +
         "[&>label]:text-sm [&>label]:text-gray-600 [&_input]:py-2 [&_input]:bg-transparent [&_input:focus]:outline-none " +
         "[&_input]:placeholder:text-sm [&_.e]:text-xs [&_.e]:text-red-500 [&_.h]:text-xs [&_.h]:text-gray-400",

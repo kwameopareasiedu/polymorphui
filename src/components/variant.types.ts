@@ -13,6 +13,9 @@ export interface ComponentVariants {
   contextMenuItem?: VariantsClassNameMap;
   input?: VariantsClassNameMap;
   textarea?: VariantsClassNameMap;
+  select?: VariantsClassNameMap;
+  selectOptions?: VariantsClassNameMap;
+  selectOption?: VariantsClassNameMap;
 }
 
 export type ComponentNameType = keyof ComponentVariants;

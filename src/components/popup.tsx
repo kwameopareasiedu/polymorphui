@@ -29,6 +29,8 @@ export interface PopupProps extends Omit<HTMLAttributes<HTMLDivElement>, "childr
   openDelayMs?: number;
   closeDelayMs?: number;
   usePortal?: boolean;
+  onOpen?: () => void;
+  onClose?: () => void;
 }
 
 export const Popup = forwardRef<HTMLDivElement, PopupProps>(
@@ -45,6 +47,8 @@ export const Popup = forwardRef<HTMLDivElement, PopupProps>(
       closeDelayMs = 250,
       usePortal = true,
       children,
+      onOpen,
+      onClose,
       onMouseEnter,
       onMouseLeave,
       style,
@@ -75,7 +79,8 @@ export const Popup = forwardRef<HTMLDivElement, PopupProps>(
 
       const clonedTriggerElement = cloneElement(triggerElement, {
         ref: (el: HTMLElement) => {
-          const triggerRef = triggerElement.props.ref;
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const triggerRef = (triggerElement as any).ref;
           combineRefs(triggerRef)(el);
           setTriggerRef(el);
         },
@@ -152,6 +157,13 @@ export const Popup = forwardRef<HTMLDivElement, PopupProps>(
         window.removeEventListener("click", onWindowClick);
       };
     }, [triggerRef, floatingRef, closeEvents]);
+
+    useEffect(() => {
+      if (triggerRef) {
+        if (open) onOpen?.();
+        else onClose?.();
+      }
+    }, [open]);
 
     const _className = resolveClassName(
       "popup",

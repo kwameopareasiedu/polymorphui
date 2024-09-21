@@ -10,12 +10,15 @@ import { Tooltip } from "prontoui/tooltip";
 import { ContextMenu, ContextMenuItem, ContextMenuItems } from "prontoui/context-menu";
 import { Input } from "prontoui/input";
 import { TextArea } from "prontoui/textarea";
+import { Select } from "prontoui/select";
 
 const popupController = new PopupController();
 
 function App() {
   const [inputText, setInputText] = useState("");
   const [areaText, setAreaText] = useState("");
+  const [selectValue, setSelectValue] = useState("");
+  const [multiSelectValue, setMultiSelectValue] = useState<string[]>([]);
 
   return (
     <main className="p-4 flex flex-wrap items-start gap-8">
@@ -49,7 +52,13 @@ function App() {
           <Text>Move the cursor out to close me</Text>
         </Popup>
 
-        <Popup placement="top-start" offset={[0, 10]} openEvent="triggerClick" closeEvent="triggerClick">
+        <Popup
+          placement="top-start"
+          offset={[0, 10]}
+          openEvent="triggerClick"
+          closeEvent="triggerClick"
+          onOpen={() => console.log("Opened")}
+          onClose={() => console.log("Closed")}>
           <Button>Click popup</Button>
           <Text>Click the button again to close me</Text>
         </Popup>
@@ -121,16 +130,24 @@ function App() {
           trailing={<Spinner variant="default" />}
           onChange={(e) => setInputText(e.target.value)}
         />
-        <Input
-          error="Error text"
-          helper="Helper text"
-          value={inputText}
-          onChange={(e) => setInputText(e.target.value)}
-        />
+        <Tooltip description="Input showcase" offset={[0, 0]}>
+          <Input
+            error="Error text"
+            helper="Helper text"
+            value={inputText}
+            onChange={(e) => setInputText(e.target.value)}
+          />
+        </Tooltip>
       </Showcase>
 
       <Showcase title="TextArea">
         <TextArea
+          label={
+            <div className="flex items-center justify-between">
+              <span>Label</span>
+              <small>{areaText.length} chars</small>
+            </div>
+          }
           leading={<BiNotepad />}
           trailing={<Spinner variant="default" />}
           placeholder="Bio here"
@@ -139,6 +156,44 @@ function App() {
           helper="Helper text"
           onChange={(e) => setAreaText(e.target.value)}
         />
+      </Showcase>
+
+      <Showcase title="Select">
+        <Select
+          options={[
+            { label: "Apple", value: "apple" },
+            { label: "Orange", value: "orange" },
+            { label: "Grapes", value: "grapes" },
+            { label: "Pear", value: "pear" },
+          ]}
+          value={selectValue}
+          label="Favorite fruits"
+          leading={<BiNotepad />}
+          placeholder="Select fruit"
+          error="Error text"
+          helper="Helper text"
+          onChange={(e) => {
+            setSelectValue(e.target.value);
+          }}
+        />
+
+        <Select
+          options={[
+            { label: "Apple", value: "apple" },
+            { label: "Orange", value: "orange" },
+            { label: "Grapes", value: "grapes" },
+            { label: "Pear", value: "pear" },
+          ]}
+          value={multiSelectValue}
+          placeholder="Select fruits"
+          error="Error text"
+          helper="Helper text"
+          onChange={(e) => {
+            setMultiSelectValue(e.target.value);
+          }}
+        />
+
+        <Select options={[]} placeholder="Bio here" disabled />
       </Showcase>
     </main>
   );
@@ -153,7 +208,7 @@ interface ShowcaseProps {
 
 function Showcase({ title, children }: ShowcaseProps) {
   return (
-    <div className="max-w-full sm:max-w-[386px] flex flex-col items-start gap-4 p-4 shadow-lg bg-slate-50 rounded-md">
+    <div className="max-w-full sm:max-w-[386px] flex flex-col items-start gap-4 p-4 shadow-lg bg-gray-200 rounded-md">
       <p className="uppercase text-sm font-medium text-gray-700 tracking-wide">{title}</p>
       <div className="flex flex-wrap gap-2">{children}</div>
     </div>
