@@ -11,6 +11,7 @@ export interface ComponentVariants {
   tooltip?: VariantsClassNameMap;
   contextMenu?: VariantsClassNameMap;
   contextMenuItem?: VariantsClassNameMap;
+  input?: VariantsClassNameMap;
 }
 
 export type ComponentNameType = keyof ComponentVariants;

@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { CgOptions } from "react-icons/cg";
 import { AiFillAlert, AiOutlineClose } from "react-icons/ai";
 import { Spinner } from "prontoui/spinner";
@@ -7,10 +7,14 @@ import { Text } from "prontoui/text";
 import { Popup, PopupController } from "prontoui/popup";
 import { Tooltip } from "prontoui/tooltip";
 import { ContextMenu, ContextMenuItem, ContextMenuItems } from "prontoui/context-menu";
+import { Input } from "prontoui/input";
+import { BiUser } from "react-icons/bi";
 
 const popupController = new PopupController();
 
 function App() {
+  const [inputText, setInputText] = useState("");
+
   return (
     <main className="p-4 flex flex-wrap items-start gap-8">
       <Showcase title="Spinner">
@@ -104,6 +108,23 @@ function App() {
             </ContextMenuItem>
           </ContextMenuItems>
         </ContextMenu>
+      </Showcase>
+
+      <Showcase title="Input">
+        <Input placeholder="Input" value={inputText} onChange={(e) => setInputText(e.target.value)} />
+        <Input leading={<BiUser />} placeholder="Disabled Input" disabled />
+        <Input
+          label="Label"
+          value={inputText}
+          trailing={<Spinner variant="default" />}
+          onChange={(e) => setInputText(e.target.value)}
+        />
+        <Input
+          error="Error text"
+          helper="Helper text"
+          value={inputText}
+          onChange={(e) => setInputText(e.target.value)}
+        />
       </Showcase>
     </main>
   );
