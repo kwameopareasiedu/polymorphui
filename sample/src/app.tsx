@@ -12,6 +12,7 @@ import { Input } from "prontoui/input";
 import { TextArea } from "prontoui/textarea";
 import { Select } from "prontoui/select";
 import { Switch } from "prontoui/switch";
+import { Checkbox } from "prontoui/checkbox";
 
 const popupController = new PopupController();
 
@@ -205,6 +206,29 @@ function App() {
             setSwitchChecked(e.target.checked);
           }}
         />
+
+        <Tooltip description="Disabled switch" placement="top-start">
+          <span>
+            <Switch disabled />
+          </span>
+        </Tooltip>
+
+        <div className="inline-flex items-center gap-2">
+          <Switch />
+          <Text>I&apos;m a switch</Text>
+        </div>
+      </Showcase>
+
+      <Showcase title="Checkbox">
+        <div className="inline-flex items-center gap-2">
+          <Checkbox
+            checked={switchChecked}
+            onChange={(e) => {
+              setSwitchChecked(e.target.checked);
+            }}
+          />
+          <Text>Sell my privacy</Text>
+        </div>
       </Showcase>
     </main>
   );

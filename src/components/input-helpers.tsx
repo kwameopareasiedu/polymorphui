@@ -177,7 +177,7 @@ export const SelectOptions = forwardRef<HTMLDivElement, SelectOptionsProps>(
   ({ variant = "default", className, children, onKeyDownCapture, onKeyUp, ...rest }: SelectOptionsProps, ref) => {
     const optionsRef = useRef<HTMLDivElement>(null);
     const [childCount] = useState(Children.count(children));
-    const [focusIndex, setFocusIndex] = useState(0);
+    const [focusIndex, setFocusIndex] = useState(-1);
 
     const _className = resolveClassName(
       "selectOptions",
@@ -197,17 +197,21 @@ export const SelectOptions = forwardRef<HTMLDivElement, SelectOptionsProps>(
     };
 
     const handleOnKeyUp = (e: KeyboardEvent<HTMLDivElement>) => {
-      if (e.key === "ArrowDown") setFocusIndex((idx) => Math.min(idx + 1, childCount));
+      if (e.key === "ArrowDown") setFocusIndex((idx) => Math.min(idx + 1, childCount - 1));
       else if (e.key === "ArrowUp") setFocusIndex((idx) => Math.max(0, idx - 1));
       onKeyUp?.(e);
     };
 
     useEffect(() => {
-      if (optionsRef.current && optionsRef.current.childElementCount > 0) {
+      if (optionsRef.current && optionsRef.current.childElementCount > 0 && focusIndex >= 0) {
         const targetElement = optionsRef.current.children.item(focusIndex) as HTMLElement | null;
         targetElement?.focus();
       }
     }, [focusIndex]);
+
+    useEffect(() => {
+      optionsRef.current?.focus();
+    }, []);
 
     return (
       <div
