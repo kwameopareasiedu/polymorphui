@@ -214,20 +214,31 @@ function App() {
         </Tooltip>
 
         <div className="inline-flex items-center gap-2">
-          <Switch />
-          <Text>I&apos;m a switch</Text>
+          <Switch
+            id="switch"
+            checked={switchChecked}
+            onChange={(e) => {
+              setSwitchChecked(e.target.checked);
+            }}
+          />
+          <Text as="label" htmlFor="switch">
+            I&apos;m a switch
+          </Text>
         </div>
       </Showcase>
 
       <Showcase title="Checkbox">
         <div className="inline-flex items-center gap-2">
           <Checkbox
+            id="checkbox"
             checked={switchChecked}
             onChange={(e) => {
               setSwitchChecked(e.target.checked);
             }}
           />
-          <Text>Sell my privacy</Text>
+          <Text as="label" htmlFor="checkbox">
+            Sell my privacy
+          </Text>
         </div>
       </Showcase>
     </main>

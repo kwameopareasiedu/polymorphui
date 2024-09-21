@@ -1,9 +1,9 @@
-import React, { forwardRef, HTMLAttributes } from "react";
+import React, { forwardRef, LabelHTMLAttributes } from "react";
 import { cn, resolveClassName } from "@/components/utils";
 
-export interface TextProps extends HTMLAttributes<HTMLParagraphElement> {
+export interface TextProps extends LabelHTMLAttributes<HTMLParagraphElement> {
   variant?: string | string[] | null;
-  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span" | "strong" | "li";
+  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span" | "strong" | "li" | "label";
   inline?: boolean;
 }
 
