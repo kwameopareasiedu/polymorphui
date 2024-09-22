@@ -30,6 +30,9 @@ export interface ComponentVariants {
   radioGroup?: VariantsClassNameMap;
   radioGroupItems?: VariantsClassNameMap;
   radioGroupItem?: VariantsClassNameMap;
+  dialog?: VariantsClassNameMap;
+  dialogContent?: VariantsClassNameMap;
+  dialogClose?: VariantsClassNameMap;
 }
 
 export type ComponentNameType = keyof ComponentVariants;

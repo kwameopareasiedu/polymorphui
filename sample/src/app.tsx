@@ -15,6 +15,7 @@ import { Switch } from "prontoui/switch";
 import { Checkbox } from "prontoui/checkbox";
 import { RadioGroup, RadioGroupItem } from "prontoui/radio-group";
 import { InputLabel } from "prontoui/input-helpers";
+import { Dialog, DialogClose, DialogContent } from "prontoui/dialog";
 
 const popupController = new PopupController();
 
@@ -25,6 +26,7 @@ function App() {
   const [multiSelectValue, setMultiSelectValue] = useState<string[]>([]);
   const [switchChecked, setSwitchChecked] = useState(false);
   const [radioGroupValue, setRadioGroupValue] = useState("");
+  const [showDialog, setShowDialog] = useState(false);
 
   return (
     <main className="p-4 flex flex-wrap items-start gap-8">
@@ -287,6 +289,40 @@ function App() {
             </InputLabel>
           ))}
         </RadioGroup>
+      </Showcase>
+
+      <Showcase title="Dialog">
+        <Button onClick={() => setShowDialog(true)}>Open Dialog</Button>
+
+        {showDialog && (
+          <Dialog onClose={() => setShowDialog(false)} dismissible>
+            <DialogContent>
+              <DialogClose />
+
+              <Text as="h1" className="text-5xl">
+                Hello World
+              </Text>
+
+              <Text as="h1" className="mt-6">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, incidunt, minus? Architecto, atque
+                consequatur distinctio dolorem ea fugiat fugit illum iusto nulla quaerat, ratione repellendus similique
+                suscipit temporibus tenetur voluptatibus.
+              </Text>
+
+              <Text as="h1">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, incidunt, minus? Architecto, atque
+                consequatur distinctio dolorem ea fugiat fugit illum iusto nulla quaerat, ratione repellendus similique
+                suscipit temporibus tenetur voluptatibus.
+              </Text>
+
+              <div className="flex justify-end">
+                <Button className="bg-black" onClick={() => setShowDialog(false)}>
+                  Close
+                </Button>
+              </div>
+            </DialogContent>
+          </Dialog>
+        )}
       </Showcase>
     </main>
   );
