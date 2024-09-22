@@ -240,6 +240,8 @@ function App() {
             Sell my privacy
           </Text>
         </div>
+
+        <Checkbox disabled />
       </Showcase>
     </main>
   );

@@ -1,13 +1,6 @@
 import React, { FormEvent, forwardRef, InputHTMLAttributes, ReactNode, useEffect, useRef } from "react";
 import { combineRefs, resolveClassName } from "@/components/utils";
-import {
-  InputAddon,
-  InputError,
-  InputHelper,
-  InputLabel,
-  InputTextArea,
-  InputWrapper,
-} from "@/components/input-helpers";
+import { InputAddon, InputError, InputHelper, InputLabel, InputWrapper } from "@/components/input-helpers";
 
 export interface TextAreaProps extends Omit<InputHTMLAttributes<HTMLTextAreaElement>, "children"> {
   variant?: string | string[];
@@ -82,6 +75,29 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
           </div>
         )}
       </div>
+    );
+  },
+);
+
+interface InputTextAreaProps extends InputHTMLAttributes<HTMLTextAreaElement> {
+  variant?: string | string[];
+}
+
+const InputTextArea = forwardRef<HTMLTextAreaElement, InputTextAreaProps>(
+  ({ variant = "default", className, children, ...rest }: InputTextAreaProps, ref) => {
+    const _className = resolveClassName(
+      "inputTextArea",
+      variant,
+      "inputTextArea flex-1",
+      "min-h-24 py-2 bg-transparent resize-none focus:outline-none " +
+        "placeholder:text-sm placeholder:text-sm placeholder:pt-0.5",
+      className,
+    );
+
+    return (
+      <textarea ref={ref} className={_className} {...rest}>
+        {children}
+      </textarea>
     );
   },
 );

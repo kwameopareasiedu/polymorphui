@@ -1,6 +1,6 @@
-import React, { ButtonHTMLAttributes, forwardRef, MouseEvent } from "react";
+import React, { ButtonHTMLAttributes, forwardRef, HTMLAttributes, MouseEvent } from "react";
 import { cn, resolveClassName } from "@/components/utils";
-import { SwitchThumb } from "@/components/input-helpers";
+import { InputHelperProps } from "@/components/input-helpers";
 
 export interface SwitchProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children" | "onChange"> {
   variant?: string | string[];
@@ -32,5 +32,23 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
         />
       </button>
     );
+  },
+);
+
+interface SwitchThumbProps extends Omit<HTMLAttributes<HTMLSpanElement>, "children"> {
+  variant?: string | string[];
+}
+
+const SwitchThumb = forwardRef<HTMLSpanElement, SwitchThumbProps>(
+  ({ variant = "default", className, ...rest }: InputHelperProps, ref) => {
+    const _className = resolveClassName(
+      "switchThumb",
+      variant,
+      "switchThumb inline-block h-full aspect-square rounded-full transition-all",
+      "bg-white",
+      className,
+    );
+
+    return <span ref={ref} className={_className} {...rest} />;
   },
 );
