@@ -10,7 +10,7 @@ import { Tooltip } from "prontoui/tooltip";
 import { ContextMenu, ContextMenuItem, ContextMenuItems } from "prontoui/context-menu";
 import { Input } from "prontoui/input";
 import { TextArea } from "prontoui/textarea";
-import { Select } from "prontoui/select";
+import { Select, SelectItem } from "prontoui/select";
 import { Switch } from "prontoui/switch";
 import { Checkbox } from "prontoui/checkbox";
 import { RadioGroup, RadioGroupItem } from "prontoui/radio-group";
@@ -166,40 +166,34 @@ function App() {
 
       <Showcase title="Select">
         <Select
-          items={[
-            { label: "Apple", value: "apple" },
-            { label: "Orange", value: "orange" },
-            { label: "Grapes", value: "grapes" },
-            { label: "Pear", value: "pear" },
-          ]}
           value={selectValue}
-          label="Favorite fruits"
+          label="Favorite fruit"
           leading={<BiNotepad />}
           placeholder="Select fruit"
           error="Error text"
           helper="Helper text"
-          onChange={(e) => {
-            setSelectValue(e.target.value);
-          }}
-        />
+          onChange={(e) => setSelectValue(e.target.value)}>
+          <SelectItem value="apples">Apples</SelectItem>
+          <SelectItem value="oranges">Oranges</SelectItem>
+          <SelectItem value="grapes">Grapes</SelectItem>
+          <SelectItem value="pears">Pears</SelectItem>
+        </Select>
 
         <Select
-          items={[
-            { label: "Apple", value: "apple" },
-            { label: "Orange", value: "orange" },
-            { label: "Grapes", value: "grapes" },
-            { label: "Pear", value: "pear" },
-          ]}
           value={multiSelectValue}
+          label="Favorite fruits"
+          leading={<BiNotepad />}
           placeholder="Select fruits"
           error="Error text"
           helper="Helper text"
-          onChange={(e) => {
-            setMultiSelectValue(e.target.value);
-          }}
-        />
+          onChange={(e) => setMultiSelectValue(e.target.value)}>
+          <SelectItem value="apples">Apples</SelectItem>
+          <SelectItem value="oranges">Oranges</SelectItem>
+          <SelectItem value="grapes">Grapes</SelectItem>
+          <SelectItem value="pears">Pears</SelectItem>
+        </Select>
 
-        <Select items={[]} placeholder="Bio here" disabled />
+        <Select placeholder="Bio here" disabled />
       </Showcase>
 
       <Showcase title="Switch">

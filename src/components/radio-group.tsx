@@ -10,7 +10,10 @@ import React, {
 import { cn, resolveClassName } from "@/components/utils";
 import { InputLabel } from "@/components/input-helpers";
 
-type RadioGroupContextProps = { value: any; setValue: (val: any) => void };
+interface RadioGroupContextProps {
+  value: any;
+  setValue: (val: any) => void;
+}
 
 const RadioGroupContext = createContext<RadioGroupContextProps>(null as never);
 

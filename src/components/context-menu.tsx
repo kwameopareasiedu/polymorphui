@@ -35,9 +35,9 @@ export interface ContextMenuItemsProps extends Omit<HTMLAttributes<HTMLDivElemen
 export const ContextMenuItems = forwardRef<HTMLDivElement, ContextMenuItemsProps>(
   ({ variant = "default", className, children, ...rest }: ContextMenuItemsProps, ref) => {
     const _className = resolveClassName(
-      "contextMenu",
+      "contextMenuItems",
       variant,
-      "contextMenu",
+      "contextMenuItems",
       "flex flex-col bg-white border-[0.5px] border-gray-300 text-gray-600 overflow-hidden rounded-sm text-sm",
       className,
     );

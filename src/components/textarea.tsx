@@ -1,4 +1,4 @@
-import React, { FormEvent, forwardRef, InputHTMLAttributes, ReactNode, useEffect, useRef } from "react";
+import React, { FormEvent, forwardRef, InputHTMLAttributes, ReactNode, useRef, useState } from "react";
 import { combineRefs, resolveClassName } from "@/components/utils";
 import { InputAddon, InputError, InputHelper, InputLabel, InputWrapper } from "@/components/input-helpers";
 
@@ -30,6 +30,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
     ref,
   ) => {
     const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+    const [autoFocusedInitially, setAutoFocusedInitially] = useState(false);
 
     const _className = resolveClassName(
       "textarea",
@@ -54,9 +55,10 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       autoResizeTextArea();
     };
 
-    useEffect(() => {
+    if (!autoFocusedInitially) {
       autoResizeTextArea();
-    }, []);
+      setAutoFocusedInitially(true);
+    }
 
     return (
       <div className={_className}>

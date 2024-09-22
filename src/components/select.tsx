@@ -9,6 +9,10 @@ import React, {
   HTMLAttributes,
   Children,
   useEffect,
+  MouseEvent,
+  createContext,
+  ReactElement,
+  useContext,
 } from "react";
 import { combineRefs, resolveClassName } from "@/components/utils";
 import { Popup, PopupController } from "@/components/popup";
@@ -16,22 +20,30 @@ import Dropdown from "@/assets/dropdown.svg";
 import Check from "@/assets/check.svg";
 import { InputAddon, InputError, InputHelper, InputInput, InputLabel } from "@/components/input-helpers";
 
-const internalPopupController = new PopupController();
-
-export type SelectItemType = {
+type SelectItemDataType = {
   label: string;
-  value: string;
+  value: any;
 };
 
-export interface SelectProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children" | "value" | "onChange"> {
+interface SelectContextProps {
+  selectedValues: any[];
+  setItemValue: (val: any) => void;
+  registerItem: (item: SelectItemDataType) => void;
+}
+
+const SelectContext = createContext<SelectContextProps>(null as never);
+
+const internalPopupController = new PopupController();
+
+export interface SelectProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "value" | "onChange"> {
   variant?: string | string[];
-  items: SelectItemType[];
   label?: ReactNode;
   leading?: ReactNode;
   helper?: ReactNode;
   error?: ReactNode;
   placeholder?: string;
   value?: string | string[];
+  children?: ReactElement<SelectItemProps> | ReactElement<SelectItemProps>[];
   onChange?: ChangeEventHandler<{ value: string & string[] }>;
 }
 
@@ -40,7 +52,6 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
     {
       variant = "default",
       label,
-      items,
       leading,
       id,
       className,
@@ -49,12 +60,14 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
       placeholder,
       value,
       onChange,
+      children,
       ...rest
     }: SelectProps,
     ref,
   ) => {
     const buttonRef = useRef<HTMLButtonElement>(null);
     const [triggerWidth, setTriggerWidth] = useState(0);
+    const [items, setItems] = useState<SelectItemDataType[]>([]);
 
     const _className = resolveClassName("select", variant, "select w-full flex flex-col gap-0.5", undefined, className);
 
@@ -62,21 +75,27 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
     const selectedValues = Array.isArray(value) ? value : value ? [value] : [];
     const selectedLabels = selectedValues.map((val) => items.find((op) => op.value === val)?.label ?? "");
 
-    const optionIsSelected = (option: SelectItemType) => {
-      return selectedValues.includes(option.value);
+    const registerItem = (item: SelectItemDataType) => {
+      setItems((items) => {
+        const existingItemValues = items.map((item) => item.value);
+        if (!existingItemValues.includes(item.value)) {
+          return [...items, item];
+        } else return items;
+      });
     };
 
-    const handleOnOptionClicked = (option: SelectItemType) => {
+    const handleOnClickItem = (itemValue: any) => {
       if (isMultiSelect) {
         const newValueSet = new Set(selectedValues);
-        if (selectedValues.includes(option.value)) {
-          newValueSet.delete(option.value);
-        } else newValueSet.add(option.value);
+
+        if (selectedValues.includes(itemValue)) {
+          newValueSet.delete(itemValue);
+        } else newValueSet.add(itemValue);
 
         const newValue = Array.from(newValueSet);
         onChange?.({ target: { value: newValue } } as never);
       } else {
-        onChange?.({ target: { value: option.value } } as never);
+        onChange?.({ target: { value: itemValue } } as never);
         internalPopupController.close();
         buttonRef.current?.focus();
       }
@@ -90,46 +109,43 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
     };
 
     return (
-      <div className={_className}>
-        {label && <InputLabel htmlFor={id}>{label}</InputLabel>}
+      <SelectContext.Provider value={{ selectedValues, registerItem, setItemValue: handleOnClickItem }}>
+        <div className={_className}>
+          {label && <InputLabel htmlFor={id}>{label}</InputLabel>}
 
-        <Popup
-          openEvent="triggerClick"
-          closeEvent={["triggerClick", "outsideClick"]}
-          controller={internalPopupController}
-          placement="bottom-start"
-          offset={[0, 4]}>
-          <SelectButton ref={combineRefs(ref, buttonRef, (el) => setTriggerWidth(el?.clientWidth ?? 0))} {...rest}>
-            {leading && <InputAddon>{leading}</InputAddon>}
+          <Popup
+            openEvent="triggerClick"
+            closeEvent={["triggerClick", "outsideClick"]}
+            controller={internalPopupController}
+            placement="bottom-start"
+            offset={[0, 4]}>
+            <SelectButton ref={combineRefs(ref, buttonRef, (el) => setTriggerWidth(el?.clientWidth ?? 0))} {...rest}>
+              {leading && <InputAddon>{leading}</InputAddon>}
 
-            <InputInput
-              value={selectedLabels.join(", ")}
-              className="text-left flex-1 pointer-events-none !p-0"
-              placeholder={placeholder}
-              readOnly
-              disabled
-            />
+              <InputInput
+                value={selectedLabels.join(", ")}
+                className="text-left flex-1 pointer-events-none !p-0"
+                placeholder={placeholder}
+                readOnly
+                disabled
+              />
 
-            <Dropdown {...({ className: "w-3" } as object)} />
-          </SelectButton>
+              <Dropdown {...({ className: "w-3" } as object)} />
+            </SelectButton>
 
-          <SelectItems style={{ minWidth: `${triggerWidth}px` }} onKeyUp={handleOnKeyUp}>
-            {items.map((item, idx) => (
-              <SelectOptionButton key={idx} onClick={() => handleOnOptionClicked(item)}>
-                <span>{item.label}</span>
-                {optionIsSelected(item) && <Check {...({ className: "w-3" } as object)} />}
-              </SelectOptionButton>
-            ))}
-          </SelectItems>
-        </Popup>
+            <SelectItems style={{ minWidth: `${triggerWidth}px` }} onKeyUp={handleOnKeyUp}>
+              {children}
+            </SelectItems>
+          </Popup>
 
-        {(helper || error) && (
-          <div className="flex items-center justify-between gap-2">
-            {error && <InputError>{error}</InputError>}
-            {helper && <InputHelper>{helper}</InputHelper>}
-          </div>
-        )}
-      </div>
+          {(helper || error) && (
+            <div className="flex items-center justify-between gap-2">
+              {error && <InputError>{error}</InputError>}
+              {helper && <InputHelper>{helper}</InputHelper>}
+            </div>
+          )}
+        </div>
+      </SelectContext.Provider>
     );
   },
 );
@@ -157,20 +173,21 @@ const SelectButton = forwardRef<HTMLButtonElement, SelectButtonProps>(
   },
 );
 
-interface SelectOptionsProps extends HTMLAttributes<HTMLDivElement> {
+interface SelectItemsProps extends HTMLAttributes<HTMLDivElement> {
   variant?: string | string[];
 }
 
-const SelectItems = forwardRef<HTMLDivElement, SelectOptionsProps>(
-  ({ variant = "default", className, children, onKeyDownCapture, onKeyUp, ...rest }: SelectOptionsProps, ref) => {
+const SelectItems = forwardRef<HTMLDivElement, SelectItemsProps>(
+  ({ variant = "default", className, children, onKeyDownCapture, onKeyUp, ...rest }: SelectItemsProps, ref) => {
     const optionsRef = useRef<HTMLDivElement>(null);
     const [childCount] = useState(Children.count(children));
+    const [focusedInitially, setFocusedInitially] = useState(false);
     const [focusIndex, setFocusIndex] = useState(-1);
 
     const _className = resolveClassName(
-      "selectOptions",
+      "selectItems",
       variant,
-      "selectOptions",
+      "selectItems",
       "bg-white border-[0.5px] border-gray-300 rounded-sm",
       className,
     );
@@ -197,9 +214,10 @@ const SelectItems = forwardRef<HTMLDivElement, SelectOptionsProps>(
       }
     }, [focusIndex]);
 
-    useEffect(() => {
+    if (!focusedInitially) {
       optionsRef.current?.focus();
-    }, []);
+      setFocusedInitially(true);
+    }
 
     return (
       <div
@@ -215,24 +233,41 @@ const SelectItems = forwardRef<HTMLDivElement, SelectOptionsProps>(
   },
 );
 
-interface SelectItemProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface SelectItemProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "value"> {
   variant?: string | string[];
+  value: any;
+  children: string;
 }
 
-const SelectOptionButton = forwardRef<HTMLButtonElement, SelectItemProps>(
-  ({ variant = "default", className, children, ...rest }: SelectItemProps, ref) => {
+export const SelectItem = forwardRef<HTMLButtonElement, SelectItemProps>(
+  ({ variant = "default", className, children, value, onClick, ...rest }: SelectItemProps, ref) => {
+    const [registered, setRegistered] = useState(false);
+    const selectContext = useContext(SelectContext);
+
+    if (!selectContext) throw "error: <SelectItem /> must be a child of a <Select />";
+
     const _className = resolveClassName(
-      "selectOptionButton",
+      "selectItem",
       variant,
-      "selectOptionButton text-left px-2 py-1",
-      "w-full flex items-center justify-between text-sm hover:bg-blue-500 hover:text-white " +
-        "focus:bg-blue-500 focus:text-white focus:outline-0 transition-colors",
+      "selectItem text-left px-2 py-1",
+      "w-full flex items-center justify-between text-sm transition-colors hover:bg-blue-500 " +
+        "hover:text-white focus:bg-blue-500 focus:text-white focus:outline-0",
       className,
     );
 
+    const handleOnClick = (e: MouseEvent<HTMLButtonElement>) => {
+      selectContext.setItemValue(value);
+      onClick?.(e);
+    };
+
+    if (!registered) {
+      selectContext.registerItem({ label: children, value: value });
+      setRegistered(true);
+    }
+
     return (
-      <button ref={ref} type="button" className={_className} {...rest}>
-        {children}
+      <button ref={ref} type="button" className={_className} onClick={handleOnClick} {...rest}>
+        {children} {selectContext.selectedValues.includes(value) && <Check {...({ className: "w-3" } as object)} />}
       </button>
     );
   },

@@ -8,7 +8,7 @@ export interface ComponentVariants {
   button?: VariantsClassNameMap;
   text?: VariantsClassNameMap;
   tooltip?: VariantsClassNameMap;
-  contextMenu?: VariantsClassNameMap;
+  contextMenuItems?: VariantsClassNameMap;
   contextMenuItem?: VariantsClassNameMap;
   inputLabel?: VariantsClassNameMap;
   inputError?: VariantsClassNameMap;
@@ -21,8 +21,8 @@ export interface ComponentVariants {
   inputTextArea?: VariantsClassNameMap;
   select?: VariantsClassNameMap;
   selectButton?: VariantsClassNameMap;
-  selectOptions?: VariantsClassNameMap;
-  selectOptionButton?: VariantsClassNameMap;
+  selectItems?: VariantsClassNameMap;
+  selectItem?: VariantsClassNameMap;
   switch?: VariantsClassNameMap;
   switchThumb?: VariantsClassNameMap;
   checkbox?: VariantsClassNameMap;
