@@ -13,6 +13,8 @@ import { TextArea } from "prontoui/textarea";
 import { Select } from "prontoui/select";
 import { Switch } from "prontoui/switch";
 import { Checkbox } from "prontoui/checkbox";
+import { RadioGroup, RadioGroupItem } from "prontoui/radio-group";
+import { InputLabel } from "prontoui/input-helpers";
 
 const popupController = new PopupController();
 
@@ -22,6 +24,7 @@ function App() {
   const [selectValue, setSelectValue] = useState("");
   const [multiSelectValue, setMultiSelectValue] = useState<string[]>([]);
   const [switchChecked, setSwitchChecked] = useState(false);
+  const [radioGroupValue, setRadioGroupValue] = useState("");
 
   return (
     <main className="p-4 flex flex-wrap items-start gap-8">
@@ -228,7 +231,8 @@ function App() {
       </Showcase>
 
       <Showcase title="Checkbox">
-        <div className="inline-flex items-center gap-2">
+        <InputLabel className="inline-flex items-center gap-2">
+          Sell my privacy
           <Checkbox
             id="checkbox"
             checked={switchChecked}
@@ -236,12 +240,50 @@ function App() {
               setSwitchChecked(e.target.checked);
             }}
           />
-          <Text as="label" htmlFor="checkbox">
-            Sell my privacy
-          </Text>
-        </div>
+        </InputLabel>
 
         <Checkbox disabled />
+      </Showcase>
+
+      <Showcase title="Radio Group">
+        <InputLabel>Favorite day in the week?</InputLabel>
+        <RadioGroup className="w-full" value={radioGroupValue} onChange={(e) => setRadioGroupValue(e.target.value)}>
+          {[
+            ["Monday", "monday"],
+            ["Tuesday", "tuesday"],
+            ["Wednesday", "wednesday"],
+            ["Thursday", "thursday"],
+            ["Friday", "friday"],
+            ["Saturday", "saturday"],
+            ["Sunday", "sunday"],
+          ].map(([label, value]) => (
+            <InputLabel className="flex items-center gap-2 cursor-pointer">
+              <RadioGroupItem value={value} />
+              {label}
+            </InputLabel>
+          ))}
+        </RadioGroup>
+
+        <RadioGroup
+          className="w-full"
+          value={radioGroupValue}
+          onChange={(e) => setRadioGroupValue(e.target.value)}
+          inline>
+          {[
+            ["M", "monday"],
+            ["T", "tuesday"],
+            ["W", "wednesday"],
+            ["T", "thursday"],
+            ["F", "friday"],
+            ["S", "saturday"],
+            ["S", "sunday"],
+          ].map(([label, value]) => (
+            <InputLabel className="flex items-center gap-2 cursor-pointer">
+              <RadioGroupItem value={value} />
+              {label}
+            </InputLabel>
+          ))}
+        </RadioGroup>
       </Showcase>
     </main>
   );

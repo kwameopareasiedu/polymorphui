@@ -27,6 +27,8 @@ export interface ComponentVariants {
   switch?: VariantsClassNameMap;
   switchThumb?: VariantsClassNameMap;
   checkbox?: VariantsClassNameMap;
+  radioGroup?: VariantsClassNameMap;
+  radioGroupItem?: VariantsClassNameMap;
 }
 
 export type ComponentNameType = keyof ComponentVariants;
