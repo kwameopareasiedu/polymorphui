@@ -230,16 +230,15 @@ function App() {
           }}
         />
 
-        <InputLabel className="inline-flex items-center gap-2" htmlFor="checkbox">
-          <Checkbox
-            id="checkbox"
-            checked={switchChecked}
-            onChange={(e) => {
-              setSwitchChecked(e.target.checked);
-            }}
-          />
-          Sell my privacy
-        </InputLabel>
+        <Checkbox
+          id="checkbox"
+          error="Error text"
+          label="Sell my privacy"
+          checked={switchChecked}
+          onChange={(e) => {
+            setSwitchChecked(e.target.checked);
+          }}
+        />
 
         <Checkbox disabled />
       </Showcase>
@@ -249,6 +248,8 @@ function App() {
           label="Favorite day in the week?"
           className="w-full"
           value={radioGroupValue}
+          error="Error text"
+          helper="Helper text"
           onChange={(e) => setRadioGroupValue(e.target.value)}>
           {[
             ["Monday", "monday"],

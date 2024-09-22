@@ -8,7 +8,7 @@ import React, {
   useContext,
 } from "react";
 import { cn, resolveClassName } from "@/components/utils";
-import { InputLabel } from "@/components/input-helpers";
+import { InputError, InputHelper, InputLabel } from "@/components/input-helpers";
 
 interface RadioGroupContextProps {
   value: any;
@@ -22,11 +22,27 @@ export interface RadioGroupProps extends Omit<HTMLAttributes<HTMLDivElement>, "o
   value?: any;
   inline?: boolean;
   label?: ReactNode;
+  helper?: ReactNode;
+  error?: ReactNode;
   onChange?: (e: { target: { value: any } }) => void;
 }
 
 export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
-  ({ variant = "default", id, className, value, label, children, onChange, inline, ...rest }: RadioGroupProps, ref) => {
+  (
+    {
+      variant = "default",
+      className,
+      value,
+      label,
+      children,
+      onChange,
+      helper,
+      error,
+      inline,
+      ...rest
+    }: RadioGroupProps,
+    ref,
+  ) => {
     const _className = resolveClassName(
       "radioGroup",
       variant,
@@ -50,9 +66,16 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
     return (
       <RadioGroupContext.Provider value={{ value, setValue: handleOnChange }}>
         <div ref={ref} className={_className} {...rest}>
-          {label && <InputLabel htmlFor={id}>{label}</InputLabel>}
+          {label && <InputLabel>{label}</InputLabel>}
 
           <div className={_itemsClassName}>{children}</div>
+
+          {(helper || error) && (
+            <div className="flex items-center justify-between gap-2">
+              {error && <InputError>{error}</InputError>}
+              {helper && <InputHelper>{helper}</InputHelper>}
+            </div>
+          )}
         </div>
       </RadioGroupContext.Provider>
     );
