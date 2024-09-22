@@ -18,14 +18,14 @@ import { InputAddon, InputError, InputHelper, InputInput, InputLabel } from "@/c
 
 const internalPopupController = new PopupController();
 
-export type SelectOptionType = {
+export type SelectItemType = {
   label: string;
   value: string;
 };
 
 export interface SelectProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children" | "value" | "onChange"> {
   variant?: string | string[];
-  options: SelectOptionType[];
+  items: SelectItemType[];
   label?: ReactNode;
   leading?: ReactNode;
   helper?: ReactNode;
@@ -40,7 +40,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
     {
       variant = "default",
       label,
-      options,
+      items,
       leading,
       id,
       className,
@@ -60,13 +60,13 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 
     const isMultiSelect = Array.isArray(value);
     const selectedValues = Array.isArray(value) ? value : value ? [value] : [];
-    const selectedLabels = selectedValues.map((val) => options.find((op) => op.value === val)?.label ?? "");
+    const selectedLabels = selectedValues.map((val) => items.find((op) => op.value === val)?.label ?? "");
 
-    const optionIsSelected = (option: SelectOptionType) => {
+    const optionIsSelected = (option: SelectItemType) => {
       return selectedValues.includes(option.value);
     };
 
-    const handleOnOptionClicked = (option: SelectOptionType) => {
+    const handleOnOptionClicked = (option: SelectItemType) => {
       if (isMultiSelect) {
         const newValueSet = new Set(selectedValues);
         if (selectedValues.includes(option.value)) {
@@ -113,14 +113,14 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
             <Dropdown {...({ className: "w-3" } as object)} />
           </SelectButton>
 
-          <SelectOptions style={{ minWidth: `${triggerWidth}px` }} onKeyUp={handleOnKeyUp}>
-            {options.map((option, idx) => (
-              <SelectOptionButton key={idx} onClick={() => handleOnOptionClicked(option)}>
-                <span>{option.label}</span>
-                {optionIsSelected(option) && <Check {...({ className: "w-3" } as object)} />}
+          <SelectItems style={{ minWidth: `${triggerWidth}px` }} onKeyUp={handleOnKeyUp}>
+            {items.map((item, idx) => (
+              <SelectOptionButton key={idx} onClick={() => handleOnOptionClicked(item)}>
+                <span>{item.label}</span>
+                {optionIsSelected(item) && <Check {...({ className: "w-3" } as object)} />}
               </SelectOptionButton>
             ))}
-          </SelectOptions>
+          </SelectItems>
         </Popup>
 
         {(helper || error) && (
@@ -161,7 +161,7 @@ interface SelectOptionsProps extends HTMLAttributes<HTMLDivElement> {
   variant?: string | string[];
 }
 
-const SelectOptions = forwardRef<HTMLDivElement, SelectOptionsProps>(
+const SelectItems = forwardRef<HTMLDivElement, SelectOptionsProps>(
   ({ variant = "default", className, children, onKeyDownCapture, onKeyUp, ...rest }: SelectOptionsProps, ref) => {
     const optionsRef = useRef<HTMLDivElement>(null);
     const [childCount] = useState(Children.count(children));
@@ -215,12 +215,12 @@ const SelectOptions = forwardRef<HTMLDivElement, SelectOptionsProps>(
   },
 );
 
-interface SelectOptionButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface SelectItemProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: string | string[];
 }
 
-const SelectOptionButton = forwardRef<HTMLButtonElement, SelectOptionButtonProps>(
-  ({ variant = "default", className, children, ...rest }: SelectOptionButtonProps, ref) => {
+const SelectOptionButton = forwardRef<HTMLButtonElement, SelectItemProps>(
+  ({ variant = "default", className, children, ...rest }: SelectItemProps, ref) => {
     const _className = resolveClassName(
       "selectOptionButton",
       variant,

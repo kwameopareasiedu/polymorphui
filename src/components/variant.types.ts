@@ -27,6 +27,7 @@ export interface ComponentVariants {
   switchThumb?: VariantsClassNameMap;
   checkbox?: VariantsClassNameMap;
   radioGroup?: VariantsClassNameMap;
+  radioGroupItems?: VariantsClassNameMap;
   radioGroupItem?: VariantsClassNameMap;
 }
 

@@ -1,5 +1,14 @@
-import React, { ButtonHTMLAttributes, createContext, forwardRef, HTMLAttributes, MouseEvent, useContext } from "react";
+import React, {
+  ButtonHTMLAttributes,
+  createContext,
+  forwardRef,
+  HTMLAttributes,
+  MouseEvent,
+  ReactNode,
+  useContext,
+} from "react";
 import { cn, resolveClassName } from "@/components/utils";
+import { InputLabel } from "@/components/input-helpers";
 
 type RadioGroupContextProps = { value: any; setValue: (val: any) => void };
 
@@ -9,15 +18,24 @@ export interface RadioGroupProps extends Omit<HTMLAttributes<HTMLDivElement>, "o
   variant?: string | string[];
   value?: any;
   inline?: boolean;
+  label?: ReactNode;
   onChange?: (e: { target: { value: any } }) => void;
 }
 
 export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
-  ({ variant = "default", className, value, children, onChange, inline, ...rest }: RadioGroupProps, ref) => {
+  ({ variant = "default", id, className, value, label, children, onChange, inline, ...rest }: RadioGroupProps, ref) => {
     const _className = resolveClassName(
       "radioGroup",
       variant,
-      cn("radioGroup inline-flex gap-2", inline ? "flex-row" : "flex-col"),
+      cn("radioGroup inline-flex flex-col gap-2"),
+      undefined,
+      className,
+    );
+
+    const _itemsClassName = resolveClassName(
+      "radioGroupItems",
+      variant,
+      cn("radioGroupItems inline-flex gap-2", inline ? "flex-row" : "flex-col"),
       undefined,
       className,
     );
@@ -29,7 +47,9 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
     return (
       <RadioGroupContext.Provider value={{ value, setValue: handleOnChange }}>
         <div ref={ref} className={_className} {...rest}>
-          {children}
+          {label && <InputLabel htmlFor={id}>{label}</InputLabel>}
+
+          <div className={_itemsClassName}>{children}</div>
         </div>
       </RadioGroupContext.Provider>
     );

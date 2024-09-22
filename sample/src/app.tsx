@@ -166,7 +166,7 @@ function App() {
 
       <Showcase title="Select">
         <Select
-          options={[
+          items={[
             { label: "Apple", value: "apple" },
             { label: "Orange", value: "orange" },
             { label: "Grapes", value: "grapes" },
@@ -184,7 +184,7 @@ function App() {
         />
 
         <Select
-          options={[
+          items={[
             { label: "Apple", value: "apple" },
             { label: "Orange", value: "orange" },
             { label: "Grapes", value: "grapes" },
@@ -199,7 +199,7 @@ function App() {
           }}
         />
 
-        <Select options={[]} placeholder="Bio here" disabled />
+        <Select items={[]} placeholder="Bio here" disabled />
       </Showcase>
 
       <Showcase title="Switch">
@@ -246,8 +246,11 @@ function App() {
       </Showcase>
 
       <Showcase title="Radio Group">
-        <InputLabel>Favorite day in the week?</InputLabel>
-        <RadioGroup className="w-full" value={radioGroupValue} onChange={(e) => setRadioGroupValue(e.target.value)}>
+        <RadioGroup
+          label="Favorite day in the week?"
+          className="w-full"
+          value={radioGroupValue}
+          onChange={(e) => setRadioGroupValue(e.target.value)}>
           {[
             ["Monday", "monday"],
             ["Tuesday", "tuesday"],
@@ -257,7 +260,7 @@ function App() {
             ["Saturday", "saturday"],
             ["Sunday", "sunday"],
           ].map(([label, value]) => (
-            <InputLabel className="flex items-center gap-2 cursor-pointer">
+            <InputLabel key={value} className="flex items-center gap-2 cursor-pointer">
               <RadioGroupItem value={value} />
               {label}
             </InputLabel>
@@ -278,7 +281,7 @@ function App() {
             ["S", "saturday"],
             ["S", "sunday"],
           ].map(([label, value]) => (
-            <InputLabel className="flex items-center gap-2 cursor-pointer">
+            <InputLabel key={value} className="flex items-center gap-2 cursor-pointer">
               <RadioGroupItem value={value} />
               {label}
             </InputLabel>
