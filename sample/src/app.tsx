@@ -254,16 +254,16 @@ function App() {
           helper="Helper text"
           onChange={(e) => setRadioGroupValue(e.target.value)}>
           {[
-            ["Monday", "monday"],
-            ["Tuesday", "tuesday"],
-            ["Wednesday", "wednesday"],
-            ["Thursday", "thursday"],
-            ["Friday", "friday"],
-            ["Saturday", "saturday"],
-            ["Sunday", "sunday"],
-          ].map(([label, value]) => (
-            <InputLabel key={value} className="flex items-center gap-2 cursor-pointer">
-              <RadioGroupItem value={value} />
+            ["Monday", "monday", false],
+            ["Tuesday", "tuesday", true],
+            ["Wednesday", "wednesday", true],
+            ["Thursday", "thursday", true],
+            ["Friday", "friday", true],
+            ["Saturday", "saturday", true],
+            ["Sunday", "sunday", true],
+          ].map(([label, value, enabled]) => (
+            <InputLabel key={value as string} className="flex items-center gap-2 cursor-pointer">
+              <RadioGroupItem value={value as string} disabled={!enabled} />
               {label}
             </InputLabel>
           ))}
@@ -275,16 +275,16 @@ function App() {
           onChange={(e) => setRadioGroupValue(e.target.value)}
           inline>
           {[
-            ["M", "monday"],
-            ["T", "tuesday"],
-            ["W", "wednesday"],
-            ["T", "thursday"],
-            ["F", "friday"],
-            ["S", "saturday"],
-            ["S", "sunday"],
-          ].map(([label, value]) => (
-            <InputLabel key={value} className="flex items-center gap-2 cursor-pointer">
-              <RadioGroupItem value={value} />
+            ["M", "monday", false],
+            ["T", "tuesday", true],
+            ["W", "wednesday", true],
+            ["T", "thursday", true],
+            ["F", "friday", true],
+            ["S", "saturday", true],
+            ["S", "sunday", true],
+          ].map(([label, value, enabled]) => (
+            <InputLabel key={value as string} className="flex items-center gap-2 cursor-pointer">
+              <RadioGroupItem value={value as string} disabled={!enabled} />
               {label}
             </InputLabel>
           ))}

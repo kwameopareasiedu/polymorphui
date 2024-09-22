@@ -43,7 +43,8 @@ export const Checkbox = forwardRef<HTMLButtonElement, CheckboxProps>(
       variant,
       "checkboxCheck inline-grid place-items-center w-5 h-5 rounded-sm cursor-pointer",
       "border-2 border-gray-300 transition-colors data-[checked=true]:bg-blue-400 " +
-        "data-[checked=true]:border-blue-400 disabled:opacity-35",
+        "data-[checked=true]:border-blue-400 disabled:opacity-35 enabled:hover:border-blue-400 focus:outline-0 " +
+        "focus:border-blue-400",
       className,
     );
 

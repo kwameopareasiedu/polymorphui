@@ -1,5 +1,5 @@
 import React, { ButtonHTMLAttributes, forwardRef, ReactNode } from "react";
-import { cn, resolveClassName } from "@/components/utils";
+import { resolveClassName } from "@/components/utils";
 import { Spinner } from "@/components/spinner";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -18,7 +18,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const _className = resolveClassName(
       "button",
       variant,
-      cn("button flex justify-center items-center gap-1"),
+      "button flex justify-center items-center gap-1",
       "bg-blue-500 px-2 py-1 rounded-sm text-white text-sm font-medium transition-opacity enabled:hover:opacity-85 enabled:active:translate-y-[1px] focus:outline-0 focus:opacity-85 disabled:opacity-50 data-[flex=true]:w-full",
       className,
     );

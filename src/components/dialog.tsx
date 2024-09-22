@@ -9,7 +9,7 @@ import React, {
   useEffect,
   useRef,
 } from "react";
-import { cn, combineRefs, resolveClassName } from "@/components/utils";
+import { combineRefs, resolveClassName } from "@/components/utils";
 import { createPortal } from "react-dom";
 import Close from "@/assets/close.svg";
 
@@ -34,7 +34,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
     const _className = resolveClassName(
       "dialog",
       variant,
-      cn("dialog fixed top-0 left-0 w-screen h-screen z-9999 grid place-items-center p-6"),
+      "dialog fixed top-0 left-0 w-screen h-screen z-9999 grid place-items-center p-6",
       "bg-black/75",
       className,
     );

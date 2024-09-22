@@ -15,7 +15,8 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
       variant,
       "switch relative inline-block w-10 h-6 rounded-full border-2 transition-colors",
       "bg-gray-300 border-gray-300 focus:outline-0 data-[checked=true]:bg-blue-400 " +
-        "data-[checked=true]:border-blue-400 disabled:opacity-35",
+        "data-[checked=true]:border-blue-400 disabled:opacity-35 enabled:hover:border-blue-400 " +
+        "focus:border-blue-400",
       className,
     );
 

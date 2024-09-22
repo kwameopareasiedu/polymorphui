@@ -7,7 +7,7 @@ import React, {
   ReactNode,
   useContext,
 } from "react";
-import { cn, resolveClassName } from "@/components/utils";
+import { resolveClassName } from "@/components/utils";
 import { InputError, InputHelper, InputLabel } from "@/components/input-helpers";
 
 interface RadioGroupContextProps {
@@ -46,7 +46,7 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
     const _className = resolveClassName(
       "radioGroup",
       variant,
-      cn("radioGroup inline-flex flex-col gap-2"),
+      "radioGroup inline-flex flex-col gap-2",
       undefined,
       className,
     );
@@ -54,7 +54,7 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
     const _itemsClassName = resolveClassName(
       "radioGroupItems",
       variant,
-      cn("radioGroupItems inline-flex gap-2", inline ? "flex-row" : "flex-col"),
+      "radioGroupItems inline-flex gap-2 flex-col data-[inline=true]:flex-row",
       undefined,
       className,
     );
@@ -68,7 +68,9 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
         <div ref={ref} className={_className} {...rest}>
           {label && <InputLabel>{label}</InputLabel>}
 
-          <div className={_itemsClassName}>{children}</div>
+          <div className={_itemsClassName} data-inline={inline}>
+            {children}
+          </div>
 
           {(helper || error) && (
             <div className="flex items-center justify-between gap-2">
@@ -98,8 +100,8 @@ export const RadioGroupItem = forwardRef<HTMLButtonElement, RadioGroupItemProps>
       "radioGroupItem relative inline-grid place-items-center w-5 h-5 rounded-full cursor-pointer " +
         'after:w-3 after:h-3 after:rounded-full after:content-[""]',
       "border-2 border-gray-300 transition-colors data-[checked=true]:border-blue-400 " +
-        "data-[checked=true]:after:bg-blue-400 disabled:opacity-35 hover:border-blue-400 focus:outline-0 " +
-        "focus:border-blue-400",
+        "data-[checked=true]:after:bg-blue-400 disabled:opacity-35 enabled:hover:border-blue-400 " +
+        "focus:outline-0 focus:border-blue-400",
       className,
     );
 
