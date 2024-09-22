@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { ButtonHTMLAttributes, createContext, forwardRef, HTMLAttributes, MouseEvent, useContext } from "react";
 import { cn, resolveClassName } from "@/components/utils";
 

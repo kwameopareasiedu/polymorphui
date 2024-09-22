@@ -10,26 +10,22 @@ export interface ContextMenuProps extends Omit<HTMLAttributes<HTMLDivElement>, "
   children: [ReactNode, ReactElement<ContextMenuItemsProps>];
 }
 
-export const ContextMenu = forwardRef<HTMLDivElement, ContextMenuProps>(
-  ({ controller, children, ...rest }: ContextMenuProps, ref) => {
-    const [anchor, items] = children;
+export const ContextMenu = ({ controller, children, ...rest }: ContextMenuProps) => {
+  const [anchor, items] = children;
 
-    return (
-      <Popup
-        ref={ref}
-        variant={null}
-        openEvent="triggerClick"
-        closeEvent="outsideClick"
-        controller={controller ? [controller, internalPopupController] : internalPopupController}
-        placement="right-start"
-        offset={[0, 4]}
-        {...rest}>
-        {anchor}
-        {items}
-      </Popup>
-    );
-  },
-);
+  return (
+    <Popup
+      openEvent="triggerClick"
+      closeEvent="outsideClick"
+      controller={controller ? [controller, internalPopupController] : internalPopupController}
+      placement="right-start"
+      offset={[0, 4]}
+      {...rest}>
+      {anchor}
+      {items}
+    </Popup>
+  );
+};
 
 export interface ContextMenuItemsProps extends Omit<HTMLAttributes<HTMLDivElement>, "children"> {
   variant?: string | string[];
@@ -99,11 +95,9 @@ export const ContextMenuItem = forwardRef<HTMLButtonElement, ContextMenuItemProp
     if (hasItems) {
       return (
         <Popup
-          variant={null}
           openEvent="triggerEnter"
           closeEvent={["outsideClick", "triggerLeave"]}
           placement="right-start"
-          usePortal={false}
           offset={[0, -4]}>
           {base}
           {children}

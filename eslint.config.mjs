@@ -9,5 +9,10 @@ export default [
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
-  { rules: { "react/display-name": "off" } },
+  {
+    rules: {
+      "react/display-name": "off",
+      "@typescript-eslint/no-explicit-any": "warn",
+    },
+  },
 ];

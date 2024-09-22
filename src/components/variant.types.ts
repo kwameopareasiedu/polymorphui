@@ -7,7 +7,6 @@ export interface ComponentVariants {
   spinner?: VariantsClassNameMap & { button?: string };
   button?: VariantsClassNameMap;
   text?: VariantsClassNameMap;
-  popup?: VariantsClassNameMap;
   tooltip?: VariantsClassNameMap;
   contextMenu?: VariantsClassNameMap;
   contextMenuItem?: VariantsClassNameMap;

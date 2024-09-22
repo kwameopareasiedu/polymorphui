@@ -4,7 +4,7 @@ import { Popup } from "@/components/popup";
 import { Text } from "@/components/text";
 import { Placement } from "@popperjs/core";
 
-export interface TooltipProps extends HTMLAttributes<HTMLDivElement> {
+export interface TooltipProps extends HTMLAttributes<HTMLParagraphElement> {
   variant?: string | string[];
   description: string;
   delayMs?: number;
@@ -12,7 +12,7 @@ export interface TooltipProps extends HTMLAttributes<HTMLDivElement> {
   placement?: Placement;
 }
 
-export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
+export const Tooltip = forwardRef<HTMLParagraphElement, TooltipProps>(
   (
     {
       variant = "default",
@@ -36,16 +36,13 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 
     return (
       <Popup
-        ref={ref}
-        variant={null}
         openEvent="triggerEnter"
         closeEvent="triggerLeave"
         openDelayMs={delayMs}
         placement={placement}
-        offset={offset}
-        {...rest}>
+        offset={offset}>
         {children}
-        <Text variant={null} className={_className}>
+        <Text ref={ref} variant={null} className={_className} {...rest}>
           {description}
         </Text>
       </Popup>

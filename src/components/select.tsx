@@ -94,12 +94,11 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
         {label && <InputLabel htmlFor={id}>{label}</InputLabel>}
 
         <Popup
-          variant={null}
           openEvent="triggerClick"
           closeEvent={["triggerClick", "outsideClick"]}
           controller={internalPopupController}
           placement="bottom-start"
-          offset={[0, 8]}>
+          offset={[0, 4]}>
           <SelectButton ref={combineRefs(ref, buttonRef, (el) => setTriggerWidth(el?.clientWidth ?? 0))} {...rest}>
             {leading && <InputAddon>{leading}</InputAddon>}
 
