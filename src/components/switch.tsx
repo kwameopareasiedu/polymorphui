@@ -1,5 +1,5 @@
 import React, { ButtonHTMLAttributes, forwardRef, HTMLAttributes, MouseEvent } from "react";
-import { cn, resolveClassName } from "@/components/utils";
+import { resolveClassName } from "@/components/utils";
 import { InputHelperProps } from "@/components/input-helpers";
 
 export interface SwitchProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children" | "onChange"> {
@@ -13,7 +13,7 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
     const _className = resolveClassName(
       "switch",
       variant,
-      "switch relative inline-block w-10 h-6 rounded-full border-2",
+      "switch relative inline-block w-10 h-6 rounded-full border-2 transition-colors",
       "bg-gray-300 border-gray-300 focus:outline-0 data-[checked=true]:bg-blue-400 " +
         "data-[checked=true]:border-blue-400 disabled:opacity-35",
       className,
@@ -27,7 +27,7 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
     return (
       <button ref={ref} className={_className} onClick={handleOnClick} {...rest} data-checked={checked}>
         <SwitchThumb
-          className={cn("absolute top-0 transition-all", !checked ? "left-0" : "left-full -translate-x-full")}
+          className="absolute top-0 left-0 translate-x-0 transition-all pointer-events-none data-[checked=true]:left-full data-[checked=true]:-translate-x-full"
           data-checked={checked}
         />
       </button>

@@ -26,7 +26,7 @@ export const Checkbox = forwardRef<HTMLButtonElement, CheckboxProps>(
 
     return (
       <button ref={ref} className={_className} onClick={handleOnClick} {...rest} data-checked={checked}>
-        {checked && <Check {...({ className: "w-4 text-white" } as object)} />}
+        {checked && <Check {...({ className: "w-4 text-white pointer-events-none" } as object)} />}
       </button>
     );
   },
