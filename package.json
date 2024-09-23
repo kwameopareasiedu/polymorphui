@@ -12,6 +12,12 @@
   "bin": {
     "polymorphui": "./bin/cli.js"
   },
+  "files": [
+    "bin",
+    "dist",
+    "package.json",
+    "yarn.lock"
+  ],
   "scripts": {
     "rollup:dev": "rollup -c -w",
     "rollup:build": "rollup -c --environment BUILD:production"
