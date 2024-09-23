@@ -166,7 +166,7 @@ const SelectButton = forwardRef<HTMLButtonElement, SelectButtonProps>(
     );
 
     return (
-      <button ref={ref} className={_className} {...rest} type="button">
+      <button ref={ref} type="button" className={_className} {...rest}>
         {children}
       </button>
     );

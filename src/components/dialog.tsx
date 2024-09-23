@@ -96,16 +96,16 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
     );
 
     useEffect(() => {
-      const handleTabKeyPress = (e: KeyboardEvent) => {
+      const handleOnKeyDown = (e: KeyboardEvent) => {
         const dialogElement = dialogRef.current;
 
         if (dialogElement) {
-          const focusableSelectors = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-          const focusableElements = dialogElement.querySelectorAll(focusableSelectors);
-          const firstElement = focusableElements[0] as HTMLElement;
-          const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
-
           if (e.key === "Tab") {
+            const focusableSelectors = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+            const focusableElements = dialogElement.querySelectorAll(focusableSelectors);
+            const firstElement = focusableElements[0] as HTMLElement;
+            const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+
             if (e.shiftKey && document.activeElement === firstElement) {
               e.preventDefault();
               lastElement.focus();
@@ -117,12 +117,12 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
         }
       };
 
-      window.addEventListener("keydown", handleTabKeyPress);
+      window.addEventListener("keydown", handleOnKeyDown);
 
       dialogRef.current?.focus();
 
       return () => {
-        window.removeEventListener("keydown", handleTabKeyPress);
+        window.removeEventListener("keydown", handleOnKeyDown);
       };
     }, []);
 
@@ -141,7 +141,8 @@ export interface DialogCloseProps extends Omit<ButtonHTMLAttributes<HTMLButtonEl
 export const DialogClose = forwardRef<HTMLButtonElement, DialogCloseProps>(
   ({ variant = "default", className, onClick, ...rest }: DialogCloseProps, ref) => {
     const dialogContext = useContext(DialogContext);
-    if (!dialogContext) throw "error: <DialogClose /> must be a child of a <Dialog />";
+
+    if (!dialogContext) throw "error: <DialogClose /> must be a descendant of a <Dialog />";
 
     const _className = resolveClassName(
       "dialogClose",
@@ -157,7 +158,7 @@ export const DialogClose = forwardRef<HTMLButtonElement, DialogCloseProps>(
     };
 
     return (
-      <button ref={ref} className={_className} onClick={handleOnClick} {...rest}>
+      <button ref={ref} type="button" className={_className} onClick={handleOnClick} {...rest}>
         <Close />
       </button>
     );

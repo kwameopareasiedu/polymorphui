@@ -113,11 +113,11 @@ export const RadioGroupItem = forwardRef<HTMLButtonElement, RadioGroupItemProps>
     return (
       <button
         ref={ref}
+        type="button"
         className={_className}
         onClick={handleOnClick}
         data-checked={radioGroupContext.value === value}
         {...rest}
-        type="button"
       />
     );
   },

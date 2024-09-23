@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { Fragment, ReactNode, useState } from "react";
 import { CgOptions } from "react-icons/cg";
 import { AiFillAlert, AiOutlineClose } from "react-icons/ai";
 import { BiNotepad, BiUser } from "react-icons/bi";
@@ -16,6 +16,7 @@ import { Checkbox } from "prontoui/checkbox";
 import { RadioGroup, RadioGroupItem } from "prontoui/radio-group";
 import { InputLabel } from "prontoui/input-helpers";
 import { Dialog, DialogClose, DialogContent } from "prontoui/dialog";
+import { TabItem, TabItems, TabPanel, Tabs } from "prontoui/tabs";
 
 const popupController = new PopupController();
 
@@ -27,6 +28,7 @@ function App() {
   const [switchChecked, setSwitchChecked] = useState(false);
   const [radioGroupValue, setRadioGroupValue] = useState("");
   const [showDialog, setShowDialog] = useState(false);
+  const [activeTab, setActiveTab] = useState("");
 
   return (
     <main className="p-4 flex flex-wrap items-start gap-8">
@@ -323,6 +325,61 @@ function App() {
             </DialogContent>
           </Dialog>
         )}
+      </Showcase>
+
+      <Showcase title="Tabs">
+        <Tabs as={Fragment}>
+          <TabItems>
+            <Tooltip description="First tab">
+              <TabItem value="first">First</TabItem>
+            </Tooltip>
+            <TabItem value="second">Second</TabItem>
+            <TabItem value="third">Third</TabItem>
+          </TabItems>
+
+          <TabPanel value="first" className="w-full p-4 bg-white">
+            <Text>First tab panel content</Text>
+          </TabPanel>
+
+          <TabPanel value="second" className="w-full p-4 bg-white">
+            <Text>Second tab panel content</Text>
+          </TabPanel>
+
+          <TabPanel value="third" className="w-full p-4 bg-white">
+            <Text>Third tab panel content</Text>
+          </TabPanel>
+        </Tabs>
+
+        <Tabs
+          orientation="vertical"
+          defaultValue="second"
+          className="w-full flex items-start"
+          value={activeTab}
+          onChange={setActiveTab}>
+          <TabItems>
+            <Tooltip description="First tab">
+              <TabItem value="first">First</TabItem>
+            </Tooltip>
+            <TabItem value="second">Second</TabItem>
+            <TabItem value="third">Third</TabItem>
+          </TabItems>
+
+          <TabPanel value="first" className="w-full h-full p-4 bg-white">
+            <Text>First tab panel content</Text>
+          </TabPanel>
+
+          <TabPanel value="second" className="w-full h-full p-4 bg-white">
+            <Text>Second tab panel content</Text>
+          </TabPanel>
+
+          <TabPanel value="third" className="w-full h-full p-4 bg-white">
+            <Text>Third tab panel content</Text>
+          </TabPanel>
+        </Tabs>
+
+        <Button onClick={() => setActiveTab("third")} disabled={activeTab === "third"}>
+          Go to third panel
+        </Button>
       </Showcase>
     </main>
   );

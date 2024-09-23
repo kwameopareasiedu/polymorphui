@@ -24,7 +24,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     );
 
     return (
-      <button ref={ref} className={_className} disabled={disabled || loading} {...rest} data-flex={flex}>
+      <button ref={ref} type="button" className={_className} disabled={disabled || loading} {...rest} data-flex={flex}>
         {loading ? <Spinner variant="button" /> : <span className="leading">{leading}</span>}
         {children}
         {<span className="trailing">{trailing}</span>}

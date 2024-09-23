@@ -2,7 +2,7 @@ import type { ComponentNameType, VariantsClassNameMap } from "@/components/varia
 import variants from "@/components/variants";
 import { MutableRefObject } from "react";
 
-export function cn(...classes: (string | boolean | null | undefined)[]) {
+function cn(...classes: (string | boolean | null | undefined)[]) {
   return classes.filter((cs) => !!cs).join(" ");
 }
 

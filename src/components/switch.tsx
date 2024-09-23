@@ -26,7 +26,7 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
     };
 
     return (
-      <button ref={ref} className={_className} onClick={handleOnClick} {...rest} data-checked={checked}>
+      <button ref={ref} type="button" className={_className} onClick={handleOnClick} {...rest} data-checked={checked}>
         <SwitchThumb
           className="absolute top-0 left-0 translate-x-0 transition-all pointer-events-none data-[checked=true]:left-full data-[checked=true]:-translate-x-full"
           data-checked={checked}

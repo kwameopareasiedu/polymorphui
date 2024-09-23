@@ -61,6 +61,7 @@ export const Checkbox = forwardRef<HTMLButtonElement, CheckboxProps>(
           <button
             ref={ref}
             id={id}
+            type="button"
             className={_checkClassName}
             onClick={handleOnClick}
             {...rest}

@@ -33,6 +33,10 @@ export interface ComponentVariants {
   dialog?: VariantsClassNameMap;
   dialogContent?: VariantsClassNameMap;
   dialogClose?: VariantsClassNameMap;
+  tabs?: VariantsClassNameMap;
+  tabItems?: VariantsClassNameMap;
+  tabItem?: VariantsClassNameMap;
+  tabPanel?: VariantsClassNameMap;
 }
 
 export type ComponentNameType = keyof ComponentVariants;
