@@ -1,6 +1,6 @@
-/** @type {import('tailwindcss').Config} */
+/** @type {import("tailwindcss").Config} */
 export default {
-  content: ["index.html", "node_modules/prontoui/dist/*.js", "pronto.config.ts", "src/**/*.{tsx,ts}"],
+  content: ["index.html", "polymorphui.config.ts", "node_modules/polymorphui/dist/*.js", "src/**/*.{tsx,ts}"],
   theme: {
     extend: {},
   },

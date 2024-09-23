@@ -1,1 +1,1 @@
-export const configName = "pronto.config.ts";
+export const configName = "polymorphui.config.ts";

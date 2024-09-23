@@ -1,4 +1,4 @@
-import type { ComponentVariants } from "prontoui/variant";
+import type { ComponentVariants } from "polymorphui/variant";
 
 export default {
   text: {

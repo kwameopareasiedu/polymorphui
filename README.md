@@ -1,56 +1,140 @@
-# ProntoUI
+# PolymorphUI
 
-[**["Pronto" - "_With Great Speed_"]**](https://www.merriam-webster.com/thesaurus/pronto)
+> pol·y·morph (noun)
+> An organism, inorganic object or material which takes various forms.
 
-**ProntoUI** is a headless component library with the easiest customizability ever and **custom type-safe variants**.
-It is inspired by how the [Prisma ORM](https://www.prisma.io/) dynamically builds the prisma client package based on
-the `prisma.schema` file.
+**PolymorphUI** is a collection of variant-based UI components built using [TailwindCSS](https://tailwindcss.com/).
+PolymorphUI allows you to define as many variant styles as possible. It ships with a CLI that regenerates the internal
+styles based on your configuration file.
+
+_PolymorphUI is inspired by how the [Prisma ORM](https://www.prisma.io/) dynamically builds the prisma client package
+based on the `prisma.schema` file._
+
+## Installation
+
+Install the PolymorphUI components and CLI using the following command:
+
+```bash
+# NPM
+npm install --save-dev polymorphui
+# Yarn
+yarn add --dev polymorphui
+```
 
 ## Getting Started
 
-Getting started with ProntoUI is the simplest thing ever:
+Getting started with PolymorphUI is the simplest thing ever:
 
-1. Create the config file by running `npx prontoui init`. This creates a `pronto.config.ts` at the root of your project
-2. Define component variants in `pronto.config.ts`. This would look something like this:
+1. Create the config file by running `npx polymorphui init`. This creates a `polymorphui.config.ts` at the root of your
+   project
+2. Define component variants in `polymorphui.config.ts`. This would look something like this:
 
    ```typescript
-   import type { ProntoVariants } from "prontoui/variant";
+   import type { ComponentVariants } from "polymorphui/variant";
 
    export default {
-     spinner: {
-       default: {},
-       amber: { size: 8, className: "stroke-amber-500" },
-       bubble: { size: 24, className: "stroke-green-500" },
+     text: {
+       default: "text-gray-600 tracking-wide",
+       heading: "text-5xl font-medium text-black",
+       small: "text-sm",
+       /* Other text variants (As many as you want) */
      },
      button: {
-       default: {},
-       primary: {},
-       secondary: {},
-       /* Other button variants (As many variants as you want 😀) */
+       secondary: "bg-orange-500 hover:opacity-85",
+       /* Other button variants (As many as you want) */
      },
      /* Other component variants */
-   } as ProntoVariants;
+   } as ComponentVariants;
    ```
 
-3. Run `npx prontoui generate` and that's it. Seriously!
+3. Run `npx polymorphui generate` to generate the internal theme (**and types too!**) based on your config.
 
-4. Use ProntoUI components in your app
+4. Added the following paths to your `tailwind.config.js`:
+
+- `"node_modules/polymorphui/dist/*.js"`
+- `"polymorphui.config.ts"`
+
+## Usage
 
 ```typescript jsx
-import { Spinner } from "prontoui/spinner";
+import { Text } from "polymorphui/text";
 
-<Spinner variant="default" />; // The "variant" prop is now limited to "default" | "amber" | "bubble"
+<Text>Hello World</Text>; // The "variant" prop defaults to "default"
+<Text variant="default">Hello World</Text>; // The "variant" prop is now typed to "default" | "heading" | "small"
+<Text variant={["default", "small"]}>Hello World</Text>; // You can combine variants also!
 ```
 
-## Goals
+## Components
 
-- [x] Set up a build system with Rollup for the following tasks:
-  - [x] Compile components from Typescript to Javascript (`*.tsx` -> `*.js`)
-  - [x] Generate component typings files (`*.tsx` -> `*.d.ts`)
-  - [x] Generate variants typings which exports typings for the host app's config file (`variant.d.ts`)
-  - [x] Generate variant placeholder file for the host app's compiled variants (`variant.js`)
-  - [x] Compile the CLI to exported binaries
-- [x] Set up a CLI with the following commands:
-  - [x] `init`: Create `pronto.config.ts` in host app root
-  - [x] `generate`: Compile `pronto.config.ts` in host app to `node_modules/prontoui/dist/variant.js`
-- [x] Export unstyled customizable components
+PolymorphUI exports the following components:
+
+### Spinner
+
+`Extends HTMLAttributes<HTMLSpanElement>`
+
+```typescript jsx
+import { Spinner } from "polymorphui/spinner";
+
+<Spinner />;
+```
+
+| Props      | Description              | Type                 | Default              |
+|------------|--------------------------|----------------------|----------------------|
+| `variant?` | Variant(s) to style with | `string \| string[]` | `"default"`          |
+| `icon?`    | Spinner icon to render   | `ReactNode`          | `<Ring />` (Inbuilt) |
+
+### Button
+
+`Extends ButtonHTMLAttributes<HTMLButtonElement>`
+
+```typescript jsx
+import { Button } from "polymorphui/button";
+
+<Button />;
+```
+
+| Props       | Description                       | Type                 | Default     |
+|-------------|-----------------------------------|----------------------|-------------|
+| `variant?`  | Variant(s) to style with          | `string \| string[]` | `"default"` |
+| `leading?`  | Component to render left of text  | `ReactNode`          |             |
+| `trailing?` | Component to render right of text | `ReactNode`          |             |
+| `loading?`  | Show loading indicator            | `boolean`            | `false`     |
+| `flex?`     | Use full width                    | `boolean`            | `false`     |
+
+### Text
+
+`Extends LabelHTMLAttributes<HTMLParagraphElement>`
+
+```typescript jsx
+import { Text } from "polymorphui/text";
+
+<Text>Hello World</Text>;
+```
+
+| Props      | Description               | Type                                                                     | Default     |
+|------------|---------------------------|--------------------------------------------------------------------------|-------------|
+| `variant?` | Variant(s) to style with  | `string \| string[]`                                                     | `"default"` |
+| `as?`      | HTML element to render    | `h1 \| h2 \| h3 \| h4 \| h5 \| h6 \| p \| span \| strong \| li \| label` | `p`         |
+| `inline?`  | Render inline with `span` | `boolean`                                                                | `false`     |
+
+### Popup
+
+### Tooltip
+
+### ContextMenu
+
+### Input
+
+### Textarea
+
+### Select
+
+### Switch
+
+### Checkbox
+
+### RadioGroup
+
+### Dialog
+
+### Tabs

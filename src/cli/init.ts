@@ -9,7 +9,7 @@ export async function init() {
 
   writeFileSync(
     configPath,
-    `import type { ComponentVariants } from "prontoui/variant"\n
+    `import type { ComponentVariants } from "polymorphui/variant"\n
 export default {} as ComponentVariants;`,
   );
 

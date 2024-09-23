@@ -2,21 +2,21 @@ import { Fragment, ReactNode, useState } from "react";
 import { CgOptions } from "react-icons/cg";
 import { AiFillAlert, AiOutlineClose } from "react-icons/ai";
 import { BiNotepad, BiUser } from "react-icons/bi";
-import { Spinner } from "prontoui/spinner";
-import { Button } from "prontoui/button";
-import { Text } from "prontoui/text";
-import { Popup, PopupController } from "prontoui/popup";
-import { Tooltip } from "prontoui/tooltip";
-import { ContextMenu, ContextMenuItem, ContextMenuItems } from "prontoui/context-menu";
-import { Input } from "prontoui/input";
-import { TextArea } from "prontoui/textarea";
-import { Select, SelectItem } from "prontoui/select";
-import { Switch } from "prontoui/switch";
-import { Checkbox } from "prontoui/checkbox";
-import { RadioGroup, RadioGroupItem } from "prontoui/radio-group";
-import { InputLabel } from "prontoui/input-helpers";
-import { Dialog, DialogClose, DialogContent } from "prontoui/dialog";
-import { TabItem, TabItems, TabPanel, Tabs } from "prontoui/tabs";
+import { Spinner } from "polymorphui/spinner";
+import { Button } from "polymorphui/button";
+import { Text } from "polymorphui/text";
+import { Popup, PopupController } from "polymorphui/popup";
+import { Tooltip } from "polymorphui/tooltip";
+import { ContextMenu, ContextMenuItem, ContextMenuItems } from "polymorphui/context-menu";
+import { Input } from "polymorphui/input";
+import { TextArea } from "polymorphui/textarea";
+import { Select, SelectItem } from "polymorphui/select";
+import { Switch } from "polymorphui/switch";
+import { Checkbox } from "polymorphui/checkbox";
+import { RadioGroup, RadioGroupItem } from "polymorphui/radio-group";
+import { InputLabel } from "polymorphui/input-helpers";
+import { Dialog, DialogClose, DialogContent } from "polymorphui/dialog";
+import { TabItem, TabItems, TabPanel, Tabs } from "polymorphui/tabs";
 
 const popupController = new PopupController();
 
@@ -301,7 +301,7 @@ function App() {
             <DialogContent>
               <DialogClose />
 
-              <Text as="h1" className="text-5xl">
+              <Text as="h1" className="!text-5xl">
                 Hello World
               </Text>
 

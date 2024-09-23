@@ -1,7 +1,7 @@
 {
-  "name": "prontoui",
+  "name": "polymorphui",
   "version": "0.1.0",
-  "description": "Tailwind React UI library",
+  "description": "React UI library which can take on many appearances",
   "main": "index.js",
   "author": "Kwame Opare Asiedu",
   "license": "MIT",
@@ -10,7 +10,7 @@
     "./*": "./dist/*.js"
   },
   "bin": {
-    "prontoui": "./bin/cli.js"
+    "polymorphui": "./bin/cli.js"
   },
   "scripts": {
     "rollup:dev": "rollup -c -w",
