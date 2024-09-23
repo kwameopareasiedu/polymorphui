@@ -5,7 +5,7 @@ import ArrowRight from "@/assets/arrow-right.svg";
 
 const internalPopupController = new PopupController();
 
-export interface ContextMenuProps extends Omit<HTMLAttributes<HTMLDivElement>, "children"> {
+export interface ContextMenuProps {
   controller?: PopupController;
   children: [ReactNode, ReactElement<ContextMenuItemsProps>];
 }
