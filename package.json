@@ -5,6 +5,12 @@
   "main": "index.js",
   "author": "Kwame Opare Asiedu",
   "license": "MIT",
+  "homepage": "https://github.com/kwameopareasiedu/polymorphui",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kwameopareasiedu/polymorphui.git"
+  },
+  "readme": "https://github.com/kwameopareasiedu/polymorphui?tab=readme-ov-file#polymorphui",
   "exports": {
     "./variant": "./dist/variant.d.ts",
     "./*": "./dist/*.js"
@@ -55,5 +61,15 @@
   "peerDependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
-  }
+  },
+  "engines": {
+    "node": "^20.11.1"
+  },
+  "keywords": [
+    "ui",
+    "react",
+    "variant",
+    "tailwindcss",
+    "component"
+  ]
 }
