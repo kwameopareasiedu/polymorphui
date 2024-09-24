@@ -1,6 +1,6 @@
 {
   "name": "polymorphui",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "React UI library which can take on many appearances",
   "author": "Kwame Opare Asiedu",
   "license": "MIT",
@@ -8,6 +8,10 @@
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/kwameopareasiedu/polymorphui.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
   },
   "readme": "https://github.com/kwameopareasiedu/polymorphui?tab=readme-ov-file#polymorphui",
   "exports": {

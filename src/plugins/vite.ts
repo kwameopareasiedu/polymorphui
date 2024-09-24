@@ -13,7 +13,7 @@ export default function (): Plugin {
     configureServer: (server: ViteDevServer): void => {
       server.watcher.options = {
         ...server.watcher.options,
-        ignored: ["/node_modules/polymorphui/dist", "**/.git/**"],
+        ignored: ["!**/node_modules/polymorphui/dist/**", "**/.git/**"],
       };
     },
   };
