@@ -55,7 +55,7 @@ export default defineConfig([
   {
     /** Creates CLI files */
     input: { cli: "src/cli/index.ts" },
-    output: { dir: "bin", format: "commonjs", entryFileNames: "[name].cjs" },
+    output: { dir: "bin", format: "commonjs" },
     plugins: [nodeResolve(), commonjs(), typescript(), shebang(), isProd && terser()],
     external: [
       "@rollup/plugin-node-resolve",
@@ -105,7 +105,7 @@ export default defineConfig([
   {
     /** Creates plugin files */
     input: pluginNamePathMap,
-    output: { dir: `dist` },
+    output: { dir: "dist", entryFileNames: "[name].mjs" },
     plugins: [nodeResolve(), commonjs(), typescript(), isProd && terser()],
     external: ["vite"],
   },
