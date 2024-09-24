@@ -6,6 +6,7 @@ export default function (): Plugin {
     config: () => {
       return {
         optimizeDeps: {
+          include: ["react-dom"],
           exclude: ["polymorphui"],
         },
       };
