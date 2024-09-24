@@ -55,7 +55,7 @@ export default defineConfig([
   {
     /** Creates CLI files */
     input: { cli: "src/cli/index.ts" },
-    output: { dir: "bin", format: "commonjs" },
+    output: { dir: "bin" },
     plugins: [nodeResolve(), commonjs(), typescript(), shebang(), isProd && terser()],
     external: [
       "@rollup/plugin-node-resolve",
