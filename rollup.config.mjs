@@ -105,7 +105,7 @@ export default defineConfig([
   {
     /** Creates plugin files */
     input: pluginNamePathMap,
-    output: { dir: `dist`, format: "cjs" },
+    output: { dir: `dist` },
     plugins: [nodeResolve(), commonjs(), typescript(), isProd && terser()],
     external: ["vite"],
   },

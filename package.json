@@ -1,6 +1,6 @@
 {
   "name": "polymorphui",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "React UI library which can take on many appearances",
   "author": "Kwame Opare Asiedu",
   "license": "MIT",
@@ -11,9 +11,16 @@
     "type": "git",
     "url": "git+ssh://git@github.com/kwameopareasiedu/polymorphui.git"
   },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org",
-    "access": "public"
+  "files": [
+    "bin",
+    "dist",
+    "package.json",
+    "yarn.lock"
+  ],
+  "typesVersions": {
+    "*": {
+      "*": ["dist/*"]
+    }
   },
   "exports": {
     "./variant": "./dist/variant.d.ts",
@@ -25,12 +32,6 @@
   "bin": {
     "polymorphui": "./bin/cli.js"
   },
-  "files": [
-    "bin",
-    "dist",
-    "package.json",
-    "yarn.lock"
-  ],
   "scripts": {
     "rollup:dev": "rollup -c -w",
     "rollup:build": "rm -rf dist bin && rollup -c --environment BUILD:production"
