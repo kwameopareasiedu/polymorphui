@@ -20,7 +20,7 @@ jobs:
       - run: yarn install
       - run: yarn rollup:build
       - run: npm pack --dry-run
-#      - run: npm publish --access public
-#        env:
-#          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 

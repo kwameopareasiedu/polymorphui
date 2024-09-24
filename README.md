@@ -49,10 +49,9 @@ Getting started with PolymorphUI is the simplest thing ever:
 
 3. Run `npx polymorphui generate` to generate the internal theme (**and types too!**) based on your config.
 
-4. Added the following paths to your `tailwind.config.js`:
-
-- `"node_modules/polymorphui/dist/*.js"`
-- `"polymorphui.config.ts"`
+4. Add the following paths to your `tailwind.config.js`:
+   - `"node_modules/polymorphui/dist/*.js"`
+   - `"polymorphui.config.ts"`
 
 ## Usage
 

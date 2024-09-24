@@ -8,52 +8,44 @@ import { dts } from "rollup-plugin-dts";
 import svgr from "@svgr/rollup";
 import paths from "rollup-plugin-tsconfig-paths";
 import shebang from "rollup-plugin-add-shebang";
-
-function externals(mappings = {}) {
-  return {
-    name: "externals",
-    renderChunk(code, chunk, options) {
-      let transformedCode = code;
-
-      for (const [from, to] of Object.entries(mappings)) {
-        transformedCode = transformedCode.replace(from, to);
-      }
-
-      return transformedCode;
-    },
-  };
-}
-
-const componentPathMap = globbySync(["src/components/*.tsx", "src/components/**/index.tsx"]).reduce(
-  (map, inputPath) => {
-    const parts = inputPath.split("/");
-    const componentName = inputPath.includes("index") ? parts.at(-2) : parts.at(-1)?.split(".")[0];
-    return { ...map, [componentName]: inputPath };
-  },
-  {},
-);
+import { remapAlias } from "./rollup.plugin.mjs";
 
 const isProd = process.env.BUILD === "production";
 
-const helperConfigs = defineConfig([
+const componentNamePathMap = globbySync("src/components/*.tsx").reduce((map, inputPath) => {
+  const parts = inputPath.split("/");
+  const componentName = parts.at(-1)?.split(".")[0];
+  return { ...map, [componentName]: inputPath };
+}, {});
+
+const pluginNamePathMap = globbySync("src/plugins/*.ts").reduce((map, inputPath) => {
+  const parts = inputPath.split("/");
+  const componentName = "plugin-" + parts.at(-1)?.split(".")[0];
+  return { ...map, [componentName]: inputPath };
+}, {});
+
+export default defineConfig([
   {
+    /** Creates variant typings file used in host app config */
     input: "src/components/variant.types.ts",
     output: { file: "dist/variant.d.ts" },
     plugins: [typescript(), dts()],
   },
   {
+    /** Creates variant shell file. CLI builds host app config here */
     input: "src/components/variants.ts",
     output: { file: "dist/variants.js" },
     plugins: [nodeResolve(), commonjs(), typescript(), isProd && terser()],
   },
   {
+    /** Create utils file external to component files. Variants shell file is marked as external */
     input: ["src/components/utils.ts"],
     output: { file: "dist/utils.js" },
     plugins: [
       nodeResolve(),
       commonjs(),
       typescript(),
-      externals({
+      remapAlias({
         "@/components/variants": "./variants.js",
       }),
       isProd && terser(),
@@ -61,6 +53,7 @@ const helperConfigs = defineConfig([
     external: ["react", "react/jsx-runtime", "react-dom", "@/components/variants"],
   },
   {
+    /** Creates CLI files */
     input: { cli: "src/cli/index.ts" },
     output: { dir: "bin", format: "commonjs" },
     plugins: [nodeResolve(), commonjs(), typescript(), shebang(), isProd && terser()],
@@ -73,11 +66,9 @@ const helperConfigs = defineConfig([
       "rollup",
     ],
   },
-]);
-
-const componentConfigs = defineConfig([
   {
-    input: componentPathMap,
+    /** Creates component files */
+    input: componentNamePathMap,
     output: { dir: `dist` },
     plugins: [
       nodeResolve(),
@@ -85,7 +76,7 @@ const componentConfigs = defineConfig([
       typescript(),
       paths(),
       svgr(),
-      externals({
+      remapAlias({
         "@/components/utils": "./utils.js",
         "@/components/spinner": "./spinner.js",
         "@/components/popup": "./popup.js",
@@ -106,10 +97,23 @@ const componentConfigs = defineConfig([
     ],
   },
   {
-    input: componentPathMap,
+    /** Creates component typings files */
+    input: componentNamePathMap,
     output: { dir: "dist" },
     plugins: [typescript(), dts()],
   },
+  {
+    /** Creates plugin files */
+    input: pluginNamePathMap,
+    output: { dir: `dist` },
+    plugins: [nodeResolve(), commonjs(), typescript(), isProd && terser()],
+    external: ["vite"],
+  },
+  {
+    /** Creates plugin typings files */
+    input: pluginNamePathMap,
+    output: { dir: "dist" },
+    plugins: [typescript(), dts()],
+    external: ["vite"],
+  },
 ]);
-
-export default [...helperConfigs, ...componentConfigs];
