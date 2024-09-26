@@ -1,14 +1,14 @@
 # PolymorphUI
 
-> pol·y·morph (noun)
-> An organism, inorganic object or material which takes various forms.
+_`pol·y·morph` (noun) An organism, inorganic object or material which takes various forms._
 
 **PolymorphUI** is a collection of variant-based UI components built using [TailwindCSS](https://tailwindcss.com/).
-PolymorphUI allows you to define as many variant styles as possible. It ships with a CLI that regenerates the internal
-styles based on your configuration file.
+You to define multiple variant styles for the components and use the CLI to regenerate the internal styles.
 
-_PolymorphUI is inspired by how the [Prisma ORM](https://www.prisma.io/) dynamically builds the prisma client package
-based on the `prisma.schema` file._
+> PolymorphUI is inspired by how the [Prisma ORM](https://www.prisma.io/) dynamically builds the prisma client package
+> based on the `prisma.schema` file.
+
+> PolymorphUI has first-class integration with [Vite](https://vitejs.dev) via a plugin
 
 ## Installation
 
@@ -25,8 +25,7 @@ yarn add --dev polymorphui
 
 Getting started with PolymorphUI is the simplest thing ever:
 
-1. Create the config file by running `npx polymorphui init`. This creates a `polymorphui.config.ts` at the root of your
-   project
+1. Running `npx polymorphui init` to create the `polymorphui.config.ts` config file at the root of your project.
 2. Define component variants in `polymorphui.config.ts`. This would look something like this:
 
    ```typescript
@@ -47,20 +46,38 @@ Getting started with PolymorphUI is the simplest thing ever:
    } as ComponentVariants;
    ```
 
-3. Run `npx polymorphui generate` to generate the internal theme (**and types too!**) based on your config.
+3. Add the following paths to your `tailwind.config.js`:
+   - `node_modules/polymorphui/dist/variants.js`
+   - `polymorphui.config.ts`
 
-4. Add the following paths to your `tailwind.config.js`:
-   - `"node_modules/polymorphui/dist/*.js"`
-   - `"polymorphui.config.ts"`
+4. Add the polymorphui plugin to `vite.config.ts`. _This triggers a rebuild when `polymorphui.config.ts` is updated._
+
+   ```typescript
+   import {defineConfig} from "vite";
+   import react from "@vitejs/plugin-react";
+   import polymorphUi from "polymorphui/plugin-vite";
+   
+   export default defineConfig({
+     plugins: [react(), polymorphUi()],
+   });
+   ```
+
+> **Note:** For other bundlers other than Vite, you'll have to run `npx polymorphui generate` after updating
+> `polymorphui.config.ts`
 
 ## Usage
 
 ```typescript jsx
 import { Text } from "polymorphui/text";
 
-<Text>Hello World</Text>; // The "variant" prop defaults to "default"
-<Text variant="default">Hello World</Text>; // The "variant" prop is now typed to "default" | "heading" | "small"
-<Text variant={["default", "small"]}>Hello World</Text>; // You can combine variants also!
+/* The "variant" prop defaults to "default" */
+<Text>Hello World</Text>;
+
+/* From the config above, "variant" prop is now typed to "default" | "heading" | "small" */
+<Text variant="default">Hello World</Text>;
+
+/* You can combine variants also! */
+<Text variant={["default", "small"]}>Hello World</Text>;
 ```
 
 ## Components
@@ -68,7 +85,7 @@ import { Text } from "polymorphui/text";
 PolymorphUI exports the following components:
 
 | Component     | Description                                                    | Docs                                |
-| ------------- | -------------------------------------------------------------- | ----------------------------------- |
+|---------------|----------------------------------------------------------------|-------------------------------------|
 | `Spinner`     | Indicates that an operation is in progress                     | [View docs](./docs/spinner.md)      |
 | `Button`      | Control component which triggers an action                     | [View docs](./docs/button.md)       |
 | `Text`        | Display component to standardize text in your app              | [View docs](./docs/text.md)         |
@@ -86,12 +103,12 @@ PolymorphUI exports the following components:
 
 ## CLI
 
-The PolymorphUI CLI allows you to create the config file as well as update its internal theme with your configuration
+The PolymorphUI CLI allows you to create the config file as well as update its internal theme with your configuration.
 
-| Command                    | Description                                        |
-| -------------------------- | -------------------------------------------------- |
-| `npx polymorphui init`     | Create PolymorphUI config file at the project root |
-| `npx polymorphui generate` | (Re)generates variants for PolymorphUI components  |
+| Command                    | Description                                                                    |
+|----------------------------|--------------------------------------------------------------------------------|
+| `npx polymorphui init`     | Create PolymorphUI config file at the project root                             |
+| `npx polymorphui generate` | Compiles `polymorphui.config.ts` to `node_modules/polymorphui/dist/variant.js` |
 
 ## Contributors
 

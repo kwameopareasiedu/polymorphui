@@ -6,5 +6,6 @@ bin
 
 package-lock.json
 *.tar.gz
+*.tgz
 .env*
 .npmrc

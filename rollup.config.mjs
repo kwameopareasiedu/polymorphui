@@ -55,7 +55,7 @@ export default defineConfig([
   {
     /** Creates CLI files */
     input: { cli: "src/cli/index.ts" },
-    output: { dir: "bin", format: "commonjs" },
+    output: { dir: "bin" },
     plugins: [nodeResolve(), commonjs(), typescript(), shebang(), isProd && terser()],
     external: [
       "@rollup/plugin-node-resolve",
@@ -65,6 +65,28 @@ export default defineConfig([
       "esprima",
       "rollup",
     ],
+  },
+  {
+    /** Creates plugin files */
+    input: pluginNamePathMap,
+    output: { dir: "dist", entryFileNames: "[name].mjs" },
+    plugins: [nodeResolve(), commonjs(), typescript(), isProd && terser()],
+    external: [
+      "@rollup/plugin-node-resolve",
+      "@rollup/plugin-commonjs",
+      "@rollup/plugin-typescript",
+      "commander",
+      "esprima",
+      "rollup",
+      "vite",
+    ],
+  },
+  {
+    /** Creates plugin typings files */
+    input: pluginNamePathMap,
+    output: { dir: "dist" },
+    plugins: [typescript(), dts()],
+    external: ["vite"],
   },
   {
     /** Creates component files */
@@ -101,19 +123,5 @@ export default defineConfig([
     input: componentNamePathMap,
     output: { dir: "dist" },
     plugins: [typescript(), dts()],
-  },
-  {
-    /** Creates plugin files */
-    input: pluginNamePathMap,
-    output: { dir: "dist", entryFileNames: "[name].mjs" },
-    plugins: [nodeResolve(), commonjs(), typescript(), isProd && terser()],
-    external: ["vite"],
-  },
-  {
-    /** Creates plugin typings files */
-    input: pluginNamePathMap,
-    output: { dir: "dist" },
-    plugins: [typescript(), dts()],
-    external: ["vite"],
   },
 ]);

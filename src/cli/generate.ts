@@ -44,7 +44,7 @@ export async function generate() {
   for (const componentName in componentVariantMap) {
     const variants = componentVariantMap[componentName];
     const unionType = variants.map((v) => `"${v}"`).join(" | ");
-    const componentTypesPath = resolve(__dirname, `../dist/${componentName}.d.ts`);
+    const componentTypesPath = resolve(import.meta.dirname, `../dist/${componentName}.d.ts`);
 
     if (!existsSync(componentTypesPath)) continue;
 
@@ -53,10 +53,10 @@ export async function generate() {
       componentTypesPath,
       componentTypesSource.replace(/(variant\?:.+)/g, `variant?: ${unionType} | (${unionType})[];`),
     );
-    console.log(`success: "${componentName}" variants: ${unionType}`);
+    console.log(`success: updated "${componentName}" variants: ${unionType}`);
   }
 
-  const variantPath = resolve(__dirname, "../dist/variants.js");
+  const variantPath = resolve(import.meta.dirname, "../dist/variants.js");
   writeFileSync(variantPath, configJsSource);
 }
 

@@ -31,7 +31,7 @@ function App() {
   const [activeTab, setActiveTab] = useState("");
 
   return (
-    <main className="p-4 flex flex-wrap items-start gap-8">
+    <main className="p-4 flex flex-wrap items-start gap-8 ">
       <Showcase title="Spinner">
         <Spinner />
       </Showcase>

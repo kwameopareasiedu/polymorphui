@@ -2,6 +2,6 @@ import type { ComponentVariants } from "polymorphui/variant";
 
 export default {
   text: {
-    default: "text-gray-600 tracking-wide text-sm",
+    default: "text-xs text-green-600",
   },
 } as ComponentVariants;
