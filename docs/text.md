@@ -2,7 +2,7 @@
 
 [**_Docs_**](../README.md)
 
-A component which indicates that an operation is in progress
+A component to display standardized text
 
 ```typescript jsx
 import { Text } from "polymorphui/text";
@@ -21,5 +21,5 @@ _Extends_ `LabelHTMLAttributes<HTMLParagraphElement>`
 | Props      | Description               | Type                                                                     | Default     |
 |------------|---------------------------|--------------------------------------------------------------------------|-------------|
 | `variant?` | Variant(s) to style with  | `string \| string[]`                                                     | `"default"` |
-| `as?`      | HTML element to render    | `h1 \| h2 \| h3 \| h4 \| h5 \| h6 \| p \| span \| strong \| li \| label` | `p`         |
+| `as?`      | HTML element to render    | `h1 \| h2 \| h3 \| h4 \| h5 \| h6 \| p \| span \| strong \| li \| label` | `"p"`       |
 | `inline?`  | Render inline with `span` | `boolean`                                                                | `false`     |

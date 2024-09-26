@@ -1,11 +1,11 @@
-# Input
+# Select
 
 [**_Docs_**](../README.md)
 
-An input component which displays a list of options to pick from
+An input component which allows a single selection from a list of options
 
 ```typescript jsx
-import { Select } from "polymorphui/select";
+import { Select, SelectItem } from "polymorphui/select";
 import { useState } from "react";
 
 export function Example() {
@@ -30,7 +30,7 @@ export function Example() {
 }
 ```
 
-_Extends_ `ButtonHTMLAttributes<HTMLButtonElement>`
+_Extends_ `HTMLAttributes<HTMLDivElement>`
 
 | Props          | Description                           | Type                                               | Default     |
 |----------------|---------------------------------------|----------------------------------------------------|-------------|
