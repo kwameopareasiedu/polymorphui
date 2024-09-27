@@ -34,17 +34,17 @@ export function Example() {
 }
 ```
 
-| Props           | Description                                                   | Type                                 | Default        |
-|-----------------|---------------------------------------------------------------|--------------------------------------|----------------|
-| `openEvent?`    | Event(s) to open popup                                        | `OpenEventType \| OpenEventType[]`   |                |
-| `closeEvent?`   | Event(s) to close popup                                       | `CloseEventType \| CloseEventType[]` |                |
-| `children`      | Children array                                                | `[ReactNode, ReactNode]`             |                |
-| `placement?`    | Popup position relative to trigger                            | `Placement`                          | `"auto-start"` |
-| `offset?`       | Popup offset from trigger in pixels                           | `[number, number]`                   |                |
-| `openDelayMs?`  | If `openEvent` includes `triggerEnter`, delay before opening  | `number`                             | `250`          |
-| `closeDelayMs?` | If `closeEvent` includes `triggerLeave`, delay before closing | `number`                             | `250`          |
-| `open?`         | Used with `onChange()` to control popup externally            | `boolean`                            |                |
-| `onChange?`     | Called when popup state changes (Required if `open={true}`    | `(opened: boolean) => void`          |                |
+| Props           | Description                                                       | Type                                 | Default        |
+| --------------- | ----------------------------------------------------------------- | ------------------------------------ | -------------- |
+| `openEvent?`    | Event(s) to open popup                                            | `OpenEventType \| OpenEventType[]`   |                |
+| `closeEvent?`   | Event(s) to close popup                                           | `CloseEventType \| CloseEventType[]` |                |
+| `children`      | Children array                                                    | `[ReactNode, ReactNode]`             |                |
+| `placement?`    | Popup position relative to trigger                                | `Placement`                          | `"auto-start"` |
+| `offset?`       | Popup offset from trigger in pixels                               | `[number, number]`                   |                |
+| `openDelayMs?`  | If `openEvent` includes `triggerEnter`, delay before opening      | `number`                             | `250`          |
+| `closeDelayMs?` | If `closeEvent` includes `triggerLeave`, delay before closing     | `number`                             | `250`          |
+| `open?`         | Used with `onChange()` to control popup externally                | `boolean`                            |                |
+| `onChange?`     | Called when popup state changes (_Required if `open` is defined_) | `(opened: boolean) => void`          |                |
 
 ```typescript
 type OpenEventType = "triggerEnter" | "triggerClick";
