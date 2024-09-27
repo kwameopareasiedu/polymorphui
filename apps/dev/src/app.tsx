@@ -5,7 +5,7 @@ import { BiNotepad, BiUser } from "react-icons/bi";
 import { Spinner } from "polymorphui/spinner";
 import { Button } from "polymorphui/button";
 import { Text } from "polymorphui/text";
-import { Popup, PopupController } from "polymorphui/popup";
+import { Popup } from "polymorphui/popup";
 import { Tooltip } from "polymorphui/tooltip";
 import { ContextMenu, ContextMenuItem, ContextMenuItems } from "polymorphui/context-menu";
 import { Input } from "polymorphui/input";
@@ -18,9 +18,9 @@ import { InputLabel } from "polymorphui/input-helpers";
 import { Dialog, DialogClose, DialogContent } from "polymorphui/dialog";
 import { TabItem, TabItems, TabPanel, Tabs } from "polymorphui/tabs";
 
-const popupController = new PopupController();
-
 function App() {
+  const [popupOpen, setPopupOpen] = useState(false);
+
   const [inputText, setInputText] = useState("");
   const [areaText, setAreaText] = useState("");
   const [selectValue, setSelectValue] = useState("");
@@ -62,13 +62,7 @@ function App() {
           <Text>Move the cursor out to close me</Text>
         </Popup>
 
-        <Popup
-          placement="top-start"
-          offset={[0, 10]}
-          openEvent="triggerClick"
-          closeEvent="triggerClick"
-          onOpen={() => console.log("Opened")}
-          onClose={() => console.log("Closed")}>
+        <Popup placement="top-start" offset={[0, 10]} openEvent="triggerClick" closeEvent="triggerClick">
           <Button>Click popup</Button>
           <Text>Click the button again to close me</Text>
         </Popup>
@@ -79,16 +73,16 @@ function App() {
         </Popup>
 
         <Popup
-          placement="right-start"
+          open={popupOpen}
           offset={[0, 10]}
-          controller={popupController}
+          placement="right-start"
           openEvent="triggerClick"
-          closeEvent={null}>
-          <Button>Controller popup</Button>
+          onChange={setPopupOpen}>
+          <Button>Controlled popup</Button>
 
           <div className="flex flex-col gap-2 py-2">
             <Text>Click the button below to close this popup</Text>
-            <Button onClick={popupController.close} trailing={<AiOutlineClose />}>
+            <Button onClick={() => setPopupOpen(false)} trailing={<AiOutlineClose />}>
               Close
             </Button>
           </div>

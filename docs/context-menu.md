@@ -24,12 +24,10 @@ export function Example() {
         </ContextMenuItem>
       </ContextMenuItems>
     </ContextMenu>
-  )
-    ;
+  );
 }
 ```
 
-| Props         | Description                                      | Type                                   | Default     |
-|---------------|--------------------------------------------------|----------------------------------------|-------------|
-| `variant?`    | Variant(s) to style with                         | `string \| string[]`                   | `"default"` |
-| `controller?` | Controller object(s) to control popup externally | `PopupController \| PopupController[]` |             |
+| Props      | Description    | Type                                               | Default |
+|------------|----------------|----------------------------------------------------|---------|
+| `children` | Children array | `[ReactNode, ReactElement<ContextMenuItemsProps>]` |         |

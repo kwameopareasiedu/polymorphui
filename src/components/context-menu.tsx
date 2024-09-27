@@ -1,29 +1,46 @@
-import React, { ButtonHTMLAttributes, Children, forwardRef, HTMLAttributes, ReactElement, ReactNode } from "react";
+import React, {
+  ButtonHTMLAttributes,
+  Children,
+  createContext,
+  forwardRef,
+  HTMLAttributes,
+  ReactElement,
+  ReactNode,
+  useContext,
+  useState,
+} from "react";
 import { resolveClassName } from "@/components/utils";
-import { Popup, PopupController } from "@/components/popup";
+import { Popup } from "@/components/popup";
 import ArrowRight from "@/assets/arrow-right.svg";
 
-const internalPopupController = new PopupController();
+interface ContextMenuContextProps {
+  onClose: () => void;
+}
+
+const ContextMenuContext = createContext<ContextMenuContextProps>(null as never);
 
 export interface ContextMenuProps {
-  controller?: PopupController;
   children: [ReactNode, ReactElement<ContextMenuItemsProps>];
 }
 
-export const ContextMenu = ({ controller, children, ...rest }: ContextMenuProps) => {
+export const ContextMenu = ({ children, ...rest }: ContextMenuProps) => {
+  const [isOpen, setIsOpen] = useState(false);
   const [anchor, items] = children;
 
   return (
-    <Popup
-      openEvent="triggerClick"
-      closeEvent="outsideClick"
-      controller={controller ? [controller, internalPopupController] : internalPopupController}
-      placement="right-start"
-      offset={[0, 4]}
-      {...rest}>
-      {anchor}
-      {items}
-    </Popup>
+    <ContextMenuContext.Provider value={{ onClose: () => setIsOpen(false) }}>
+      <Popup
+        open={isOpen}
+        offset={[0, 4]}
+        openEvent="triggerClick"
+        closeEvent={["triggerClick", "outsideClick"]}
+        placement="right-start"
+        onChange={setIsOpen}
+        {...rest}>
+        {anchor}
+        {items}
+      </Popup>
+    </ContextMenuContext.Provider>
   );
 };
 
@@ -62,6 +79,10 @@ export const ContextMenuItem = forwardRef<HTMLButtonElement, ContextMenuItemProp
     { variant = "default", label, icon, className, children, disabled, onClick, ...rest }: ContextMenuItemProps,
     ref,
   ) => {
+    const contextMenuContext = useContext(ContextMenuContext);
+
+    if (!contextMenuContext) throw "<ContextMenuItem /> must be a descendant of <ContextMenu />";
+
     const hasItems = Children.count(children) > 0;
 
     const _className = resolveClassName(
@@ -76,7 +97,7 @@ export const ContextMenuItem = forwardRef<HTMLButtonElement, ContextMenuItemProp
       onClick?.(e);
 
       if (!hasItems) {
-        internalPopupController.close();
+        contextMenuContext.onClose();
       }
     };
 

@@ -15,7 +15,7 @@ import React, {
   useContext,
 } from "react";
 import { combineRefs, resolveClassName } from "@/components/utils";
-import { Popup, PopupController } from "@/components/popup";
+import { Popup } from "@/components/popup";
 import Dropdown from "@/assets/dropdown.svg";
 import Check from "@/assets/check.svg";
 import { InputAddon, InputError, InputHelper, InputInput, InputLabel } from "@/components/input-helpers";
@@ -32,8 +32,6 @@ interface SelectContextProps {
 }
 
 const SelectContext = createContext<SelectContextProps>(null as never);
-
-const internalPopupController = new PopupController();
 
 export interface SelectProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "value" | "onChange"> {
   variant?: string | string[];
@@ -68,6 +66,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
     const buttonRef = useRef<HTMLButtonElement>(null);
     const [triggerWidth, setTriggerWidth] = useState(0);
     const [items, setItems] = useState<SelectItemDataType[]>([]);
+    const [isOpen, setIsOpen] = useState(false);
 
     const _className = resolveClassName("select", variant, "select w-full flex flex-col gap-0.5", undefined, className);
 
@@ -96,14 +95,14 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
         onChange?.({ target: { value: newValue } } as never);
       } else {
         onChange?.({ target: { value: itemValue } } as never);
-        internalPopupController.close();
+        setIsOpen(false);
         buttonRef.current?.focus();
       }
     };
 
     const handleOnKeyUp = (e: KeyboardEvent<HTMLDivElement>) => {
       if (e.key === "Escape") {
-        internalPopupController.close();
+        setIsOpen(false);
         buttonRef.current?.focus();
       }
     };
@@ -114,11 +113,12 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
           {label && <InputLabel htmlFor={id}>{label}</InputLabel>}
 
           <Popup
+            open={isOpen}
             openEvent="triggerClick"
             closeEvent={["triggerClick", "outsideClick"]}
-            controller={internalPopupController}
             placement="bottom-start"
-            offset={[0, 4]}>
+            offset={[0, 4]}
+            onChange={setIsOpen}>
             <SelectButton ref={combineRefs(ref, buttonRef, (el) => setTriggerWidth(el?.clientWidth ?? 0))} {...rest}>
               {leading && <InputAddon>{leading}</InputAddon>}
 
