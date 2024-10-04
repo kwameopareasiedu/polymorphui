@@ -1,4 +1,4 @@
-# Select
+# Accordion
 
 [**_Docs_**](../README.md)
 
