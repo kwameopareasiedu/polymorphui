@@ -100,6 +100,7 @@ PolymorphUI exports the following components:
 | `RadioGroup`  | An input component which allows a single selection from a list of options | [View docs](./docs/radio-group.md)  |
 | `Dialog`      | A component which displays content over the primary window                | [View docs](./docs/dialog.md)       |
 | `Tabs`        | A component which displays a single tab panel based on the active tab     | [View docs](./docs/tabs.md)         |
+| `Accordion`   | A component which shows and hides sections of related content on a page   | [View docs](./docs/accordion.md)    |
 
 ## CLI
 
@@ -116,4 +117,5 @@ The PolymorphUI CLI allows you to create the config file as well as update its i
 
 ## Changelog
 
-N/A
+- `0.3.1`
+   - Added [`Accordion`](./docs/accordion.md) component
