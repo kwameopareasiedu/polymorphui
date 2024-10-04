@@ -45,9 +45,9 @@ export const Popup = ({
 
   const isOpen = useMemo(() => {
     return externalOpen ?? internalOpen;
-  }, [internalOpen, externalOpen]);
+  }, [externalOpen, internalOpen]);
 
-  const handleSetOpen = useCallback(
+  const setIsOpen = useCallback(
     (open: boolean) => {
       if (externalOpen !== undefined) onChange?.(open);
       else setInternalOpen(open);
@@ -74,9 +74,9 @@ export const Popup = ({
         triggerChild.props?.onClick?.(e);
 
         if (!isOpen && openEvents.includes("triggerClick")) {
-          handleSetOpen(true);
+          setIsOpen(true);
         } else if (isOpen && closeEvents.includes("triggerClick")) {
-          handleSetOpen(false);
+          setIsOpen(false);
         }
       },
       onMouseEnter: (e: never) => {
@@ -86,7 +86,7 @@ export const Popup = ({
           clearTimeout(openTimer.current);
           clearTimeout(closeTimer.current);
           openTimer.current = setTimeout(() => {
-            handleSetOpen(true);
+            setIsOpen(true);
           }, openDelayMs);
         }
       },
@@ -97,7 +97,7 @@ export const Popup = ({
           clearTimeout(openTimer.current);
           clearTimeout(closeTimer.current);
           closeTimer.current = setTimeout(() => {
-            handleSetOpen(false);
+            setIsOpen(false);
           }, closeDelayMs);
         }
       },
@@ -128,7 +128,7 @@ export const Popup = ({
           clearTimeout(openTimer.current);
           clearTimeout(closeTimer.current);
           closeTimer.current = setTimeout(() => {
-            handleSetOpen(false);
+            setIsOpen(false);
           }, closeDelayMs);
         }
       },
@@ -145,7 +145,7 @@ export const Popup = ({
         !triggerRef?.contains(e.target as never) &&
         !floatingRef?.contains(e.target as never)
       ) {
-        handleSetOpen(false);
+        setIsOpen(false);
       }
     };
 

@@ -37,6 +37,10 @@ export interface ComponentVariants {
   tabItems?: VariantsClassNameMap;
   tabItem?: VariantsClassNameMap;
   tabPanel?: VariantsClassNameMap;
+  accordion?: VariantsClassNameMap;
+  accordionItem?: VariantsClassNameMap;
+  accordionHeader?: VariantsClassNameMap;
+  accordionPanel?: VariantsClassNameMap;
 }
 
 export type ComponentNameType = keyof ComponentVariants;

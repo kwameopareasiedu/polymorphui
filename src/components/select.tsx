@@ -68,7 +68,13 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
     const [items, setItems] = useState<SelectItemDataType[]>([]);
     const [isOpen, setIsOpen] = useState(false);
 
-    const _className = resolveClassName("select", variant, "select w-full flex flex-col gap-0.5", undefined, className);
+    const _className = resolveClassName(
+      "select",
+      variant,
+      "select  w-full flex flex-col gap-0.5",
+      undefined,
+      className,
+    );
 
     const isMultiSelect = Array.isArray(value);
     const selectedValues = Array.isArray(value) ? value : value ? [value] : [];

@@ -17,6 +17,8 @@ import { RadioGroup, RadioGroupItem } from "polymorphui/radio-group";
 import { InputLabel } from "polymorphui/input-helpers";
 import { Dialog, DialogClose, DialogContent } from "polymorphui/dialog";
 import { TabItem, TabItems, TabPanel, Tabs } from "polymorphui/tabs";
+import { Accordion, AccordionHeader, AccordionItem, AccordionPanel } from "polymorphui/accordion";
+import { FaChevronDown } from "react-icons/fa6";
 
 function App() {
   const [popupOpen, setPopupOpen] = useState(false);
@@ -29,6 +31,7 @@ function App() {
   const [radioGroupValue, setRadioGroupValue] = useState("");
   const [showDialog, setShowDialog] = useState(false);
   const [activeTab, setActiveTab] = useState("");
+  const [activeSection, setActiveSection] = useState<string[]>([]);
 
   return (
     <main className="p-4 flex flex-wrap items-start gap-8 ">
@@ -77,6 +80,7 @@ function App() {
           offset={[0, 10]}
           placement="right-start"
           openEvent="triggerClick"
+          closeEvent={null}
           onChange={setPopupOpen}>
           <Button>Controlled popup</Button>
 
@@ -374,6 +378,125 @@ function App() {
         <Button onClick={() => setActiveTab("third")} disabled={activeTab === "third"}>
           Go to third panel
         </Button>
+      </Showcase>
+
+      <Showcase title="Accordion">
+        <Text className="w-full">Single mode, Uncontrolled</Text>
+
+        <Accordion className="w-full">
+          <AccordionItem value="section1">
+            <AccordionHeader>
+              <Text>Section 1</Text>
+            </AccordionHeader>
+
+            <AccordionPanel>
+              <Text>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet cum debitis, deleniti exercitationem
+                omnis placeat.
+              </Text>
+            </AccordionPanel>
+          </AccordionItem>
+
+          <AccordionItem value="section2">
+            <AccordionHeader>
+              <Text>Section 2</Text>
+            </AccordionHeader>
+
+            <AccordionPanel>
+              <Text>
+                A amet cupiditate, dignissimos facere facilis fuga in incidunt magni odio odit porro temporibus
+                voluptatum.
+              </Text>
+            </AccordionPanel>
+          </AccordionItem>
+        </Accordion>
+
+        <hr className="w-full" />
+
+        <Text className="w-full">Multiple mode, Uncontrolled</Text>
+
+        <Accordion className="w-full" defaultValue={["section2"]} multiple>
+          <AccordionItem value="section1">
+            <AccordionHeader>
+              <Text>Section 1</Text>
+            </AccordionHeader>
+
+            <AccordionPanel>
+              <Text>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet cum debitis, deleniti exercitationem
+                omnis placeat.
+              </Text>
+            </AccordionPanel>
+          </AccordionItem>
+
+          <AccordionItem value="section2">
+            <AccordionHeader>
+              <Text>Section 2</Text>
+            </AccordionHeader>
+
+            <AccordionPanel>
+              <Text>
+                A amet cupiditate, dignissimos facere facilis fuga in incidunt magni odio odit porro temporibus
+                voluptatum.
+              </Text>
+            </AccordionPanel>
+          </AccordionItem>
+
+          <AccordionItem value="section3">
+            <AccordionHeader>
+              <Text>Section 3</Text>
+            </AccordionHeader>
+
+            <AccordionPanel>
+              <Text>Ad deleniti enim eos impedit perspiciatis quas quisquam quod.</Text>
+            </AccordionPanel>
+          </AccordionItem>
+        </Accordion>
+
+        <hr className="w-full" />
+
+        <Text className="w-full">Multiple mode, Controlled</Text>
+
+        <Accordion className="w-full" value={activeSection} onChange={setActiveSection} multiple>
+          <AccordionItem value="section1">
+            <AccordionHeader className="flex items-center justify-between w-full">
+              <Text>Section 1</Text>
+              <FaChevronDown
+                className={`transition-transform ${activeSection.includes("section1") ? "-rotate-90" : ""}`}
+              />
+            </AccordionHeader>
+
+            <AccordionPanel>
+              <Text>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet cum debitis, deleniti exercitationem
+                omnis placeat.
+              </Text>
+            </AccordionPanel>
+          </AccordionItem>
+
+          <AccordionItem value="section2">
+            <AccordionHeader>
+              <Text>Section 2</Text>
+            </AccordionHeader>
+
+            <AccordionPanel>
+              <Text>
+                A amet cupiditate, dignissimos facere facilis fuga in incidunt magni odio odit porro temporibus
+                voluptatum.
+              </Text>
+            </AccordionPanel>
+          </AccordionItem>
+
+          <AccordionItem value="section3">
+            <AccordionHeader>
+              <Text>Section 3</Text>
+            </AccordionHeader>
+
+            <AccordionPanel>
+              <Text>Ad deleniti enim eos impedit perspiciatis quas quisquam quod.</Text>
+            </AccordionPanel>
+          </AccordionItem>
+        </Accordion>
       </Showcase>
     </main>
   );
