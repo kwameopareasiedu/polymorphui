@@ -26,7 +26,7 @@ function App() {
   const [inputText, setInputText] = useState("");
   const [areaText, setAreaText] = useState("");
   const [selectValue, setSelectValue] = useState("");
-  const [multiSelectValue, setMultiSelectValue] = useState<string[]>([]);
+  const [multiSelectValue, setMultiSelectValue] = useState<string[]>(["apples"]);
   const [switchChecked, setSwitchChecked] = useState(false);
   const [radioGroupValue, setRadioGroupValue] = useState("");
   const [showDialog, setShowDialog] = useState(false);
