@@ -123,6 +123,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
             openEvent="triggerClick"
             closeEvent={["triggerClick", "outsideClick"]}
             placement="bottom-start"
+            renderWhenClosed
             offset={[0, 4]}
             onChange={setIsOpen}>
             <SelectButton ref={combineRefs(ref, buttonRef, (el) => setTriggerWidth(el?.clientWidth ?? 0))} {...rest}>

@@ -17,6 +17,7 @@ export interface PopupProps {
   openDelayMs?: number;
   closeDelayMs?: number;
   open?: boolean;
+  renderWhenClosed?: boolean;
   onChange?: (opened: boolean) => void;
 }
 
@@ -29,6 +30,7 @@ export const Popup = ({
   openDelayMs = 250,
   closeDelayMs = 250,
   open: externalOpen,
+  renderWhenClosed,
   onChange,
 }: PopupProps) => {
   const openTimer = useRef<NodeJS.Timeout>();
@@ -113,6 +115,7 @@ export const Popup = ({
         ...floatingChild.props.style,
         ...floatingStyles.popper,
       },
+      hidden: !isOpen,
       onMouseEnter: (e: never) => {
         floatingChild.props?.onMouseEnter?.(e);
 
@@ -159,7 +162,7 @@ export const Popup = ({
   return (
     <>
       {triggerChild}
-      {isOpen && createPortal(floatingChild, document.body)}
+      {(isOpen || renderWhenClosed) && createPortal(floatingChild, document.body)}
     </>
   );
 };
