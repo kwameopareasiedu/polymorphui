@@ -247,7 +247,6 @@ export interface SelectItemProps extends Omit<ButtonHTMLAttributes<HTMLButtonEle
 
 export const SelectItem = forwardRef<HTMLButtonElement, SelectItemProps>(
   ({ variant = "default", className, children, value, onClick, ...rest }: SelectItemProps, ref) => {
-    const [registered, setRegistered] = useState(false);
     const selectContext = useContext(SelectContext);
 
     if (!selectContext) throw "error: <SelectItem /> must be a child of a <Select />";
@@ -266,10 +265,12 @@ export const SelectItem = forwardRef<HTMLButtonElement, SelectItemProps>(
       onClick?.(e);
     };
 
-    if (!registered) {
-      selectContext.registerItem({ label: children, value: value });
-      setRegistered(true);
-    }
+    useEffect(() => {
+      selectContext.registerItem({
+        label: children,
+        value: value,
+      });
+    }, []);
 
     return (
       <button ref={ref} type="button" className={_className} onClick={handleOnClick} {...rest}>
