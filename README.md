@@ -87,6 +87,7 @@ PolymorphUI exports the following components:
 | Component     | Description                                                               | Docs                                |
 |---------------|---------------------------------------------------------------------------|-------------------------------------|
 | `Spinner`     | A component which indicates that an operation is in progress              | [View docs](./docs/spinner.md)      |
+| `Badge`       | A component which displays a badge next to an anchor element/component    | [View docs](./docs/badge.md)        |
 | `Button`      | A control component which triggers an action                              | [View docs](./docs/button.md)       |
 | `Text`        | A component to display standardized text                                  | [View docs](./docs/text.md)         |
 | `Popup`       | A component which displays popup content when the trigger is activated    | [View docs](./docs/popup.md)        |
@@ -117,5 +118,8 @@ The PolymorphUI CLI allows you to create the config file as well as update its i
 
 ## Changelog
 
+- `0.5.0`
+   - Added [`Badge`](./docs/badge.md) component
+   - Named all `forwardRef` components to identify in React devtools
 - `0.3.1`
    - Added [`Accordion`](./docs/accordion.md) component
