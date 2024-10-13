@@ -75,88 +75,91 @@ export interface TabItemsProps extends HTMLAttributes<HTMLDivElement> {
   variant?: string | string[];
 }
 
-export const TabItems = forwardRef<HTMLDivElement, TabItemsProps>(
-  ({ variant = "default", className, children, ...rest }: TabItemsProps, ref) => {
-    const tabsContext = useContext(TabsContext);
+export const TabItems = forwardRef<HTMLDivElement, TabItemsProps>(function TabItems(
+  { variant = "default", className, children, ...rest }: TabItemsProps,
+  ref,
+) {
+  const tabsContext = useContext(TabsContext);
 
-    if (!tabsContext) throw "<TabItems /> must be a child of <Tabs />";
+  if (!tabsContext) throw "<TabItems /> must be a child of <Tabs />";
 
-    const _className = resolveClassName(
-      "tabItems",
-      variant,
-      "tabItems",
-      "bg-gray-100 data-[orientation=vertical]:flex data-[orientation=vertical]:flex-col",
-      className,
-    );
+  const _className = resolveClassName(
+    "tabItems",
+    variant,
+    "tabItems",
+    "bg-gray-100 data-[orientation=vertical]:flex data-[orientation=vertical]:flex-col",
+    className,
+  );
 
-    return (
-      <div ref={ref} className={_className} {...rest} data-orientation={tabsContext.orientation}>
-        {children}
-      </div>
-    );
-  },
-);
+  return (
+    <div ref={ref} className={_className} {...rest} data-orientation={tabsContext.orientation}>
+      {children}
+    </div>
+  );
+});
 
 export interface TabItemProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: string | string[];
   value: string;
 }
 
-export const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(
-  ({ variant = "default", className, children, value, onClick, ...rest }: TabItemProps, ref) => {
-    const tabsContext = useContext(TabsContext);
+export const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(function TabItem(
+  { variant = "default", className, children, value, onClick, ...rest }: TabItemProps,
+  ref,
+) {
+  const tabsContext = useContext(TabsContext);
 
-    if (!tabsContext) throw "<TabItem /> must be a descendant of <Tabs />";
+  if (!tabsContext) throw "<TabItem /> must be a descendant of <Tabs />";
 
-    const _className = resolveClassName(
-      "tabItem",
-      variant,
-      "tabItem",
-      "px-4 py-2 border-b-2 hover:border-blue-400 transition-colors focus:outline-0 focus:border-blue-400 " +
-        "data-[active=true]:font-medium data-[active=true]:text-white data-[active=true]:bg-blue-500 data-[active=true]:border-blue-400 " +
-        "data-[orientation=vertical]:border-b-0 data-[orientation=vertical]:border-r-2",
-      className,
-    );
+  const _className = resolveClassName(
+    "tabItem",
+    variant,
+    "tabItem",
+    "px-4 py-2 border-b-2 hover:border-blue-400 transition-colors focus:outline-0 focus:border-blue-400 " +
+      "data-[active=true]:font-medium data-[active=true]:text-white data-[active=true]:bg-blue-500 data-[active=true]:border-blue-400 " +
+      "data-[orientation=vertical]:border-b-0 data-[orientation=vertical]:border-r-2",
+    className,
+  );
 
-    const handleOnClick = (e: MouseEvent<HTMLButtonElement>) => {
-      tabsContext.onSelect(value);
-      onClick?.(e);
-    };
+  const handleOnClick = (e: MouseEvent<HTMLButtonElement>) => {
+    tabsContext.onSelect(value);
+    onClick?.(e);
+  };
 
-    return (
-      <button
-        ref={ref}
-        type="button"
-        className={_className}
-        onClick={handleOnClick}
-        {...rest}
-        data-active={tabsContext.activeValue === value}
-        data-orientation={tabsContext.orientation}>
-        {children}
-      </button>
-    );
-  },
-);
+  return (
+    <button
+      ref={ref}
+      type="button"
+      className={_className}
+      onClick={handleOnClick}
+      {...rest}
+      data-active={tabsContext.activeValue === value}
+      data-orientation={tabsContext.orientation}>
+      {children}
+    </button>
+  );
+});
 
 export interface TabPanelProps extends HTMLAttributes<HTMLDivElement> {
   variant?: string | string[];
   value: string;
 }
 
-export const TabPanel = forwardRef<HTMLDivElement, TabPanelProps>(
-  ({ variant = "default", className, children, value, ...rest }: TabPanelProps, ref) => {
-    const tabsContext = useContext(TabsContext);
+export const TabPanel = forwardRef<HTMLDivElement, TabPanelProps>(function TabPanel(
+  { variant = "default", className, children, value, ...rest }: TabPanelProps,
+  ref,
+) {
+  const tabsContext = useContext(TabsContext);
 
-    if (!tabsContext) throw "<TabPanel /> must be a descendant of <Tabs />";
+  if (!tabsContext) throw "<TabPanel /> must be a descendant of <Tabs />";
 
-    const _className = resolveClassName("tabPanel", variant, "tabPanel", undefined, className);
+  const _className = resolveClassName("tabPanel", variant, "tabPanel", undefined, className);
 
-    if (tabsContext.activeValue === value) {
-      return (
-        <div ref={ref} className={_className} {...rest} data-active={tabsContext.activeValue === value}>
-          {children}
-        </div>
-      );
-    } else return null;
-  },
-);
+  if (tabsContext.activeValue === value) {
+    return (
+      <div ref={ref} className={_className} {...rest} data-active={tabsContext.activeValue === value}>
+        {children}
+      </div>
+    );
+  } else return null;
+});

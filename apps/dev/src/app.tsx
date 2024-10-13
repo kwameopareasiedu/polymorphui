@@ -20,7 +20,7 @@ import { TabItem, TabItems, TabPanel, Tabs } from "polymorphui/tabs";
 import { Accordion, AccordionHeader, AccordionItem, AccordionPanel } from "polymorphui/accordion";
 import { FaChevronDown } from "react-icons/fa6";
 
-function App() {
+export default function App() {
   const [popupOpen, setPopupOpen] = useState(false);
 
   const [inputText, setInputText] = useState("");
@@ -501,8 +501,6 @@ function App() {
     </main>
   );
 }
-
-export default App;
 
 interface ShowcaseProps {
   title: string;

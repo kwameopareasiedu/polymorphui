@@ -11,7 +11,7 @@ export default [
   pluginReact.configs.flat.recommended,
   {
     rules: {
-      "react/display-name": "off",
+      "react/display-name": "warn",
       "@typescript-eslint/no-explicit-any": "warn",
     },
   },

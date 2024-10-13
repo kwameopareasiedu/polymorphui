@@ -72,7 +72,7 @@ export const Popup = ({
         combineRefs(triggerRef)(el);
         setTriggerRef(el);
       },
-      onClick: (e: never) => {
+      onClick: (e: MouseEvent) => {
         triggerChild.props?.onClick?.(e);
 
         if (!isOpen && openEvents.includes("triggerClick")) {
@@ -81,7 +81,7 @@ export const Popup = ({
           setIsOpen(false);
         }
       },
-      onMouseEnter: (e: never) => {
+      onMouseEnter: (e: MouseEvent) => {
         triggerChild.props?.onMouseEnter?.(e);
 
         if (openEvents.includes("triggerEnter")) {
@@ -92,7 +92,7 @@ export const Popup = ({
           }, openDelayMs);
         }
       },
-      onMouseLeave: (e: never) => {
+      onMouseLeave: (e: MouseEvent) => {
         triggerChild.props?.onMouseLeave?.(e);
 
         if (closeEvents.includes("triggerLeave")) {
@@ -116,7 +116,7 @@ export const Popup = ({
         ...floatingStyles.popper,
       },
       hidden: !isOpen,
-      onMouseEnter: (e: never) => {
+      onMouseEnter: (e: MouseEvent) => {
         floatingChild.props?.onMouseEnter?.(e);
 
         if (openEvents.includes("triggerEnter")) {
@@ -124,7 +124,7 @@ export const Popup = ({
           clearTimeout(closeTimer.current);
         }
       },
-      onMouseLeave: (e: never) => {
+      onMouseLeave: (e: MouseEvent) => {
         floatingChild.props?.onMouseLeave?.(e);
 
         if (closeEvents.includes("triggerLeave")) {

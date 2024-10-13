@@ -12,74 +12,72 @@ export interface TextAreaProps extends Omit<InputHTMLAttributes<HTMLTextAreaElem
   autoResize?: boolean;
 }
 
-export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
-  (
-    {
-      variant = "default",
-      label,
-      leading,
-      trailing,
-      id,
-      className,
-      helper,
-      error,
-      autoResize = true,
-      onInput,
-      ...rest
-    }: TextAreaProps,
-    ref,
-  ) => {
-    const textareaRef = useRef<HTMLTextAreaElement | null>(null);
-    const [autoFocusedInitially, setAutoFocusedInitially] = useState(false);
+export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(function TextArea(
+  {
+    variant = "default",
+    label,
+    leading,
+    trailing,
+    id,
+    className,
+    helper,
+    error,
+    autoResize = true,
+    onInput,
+    ...rest
+  }: TextAreaProps,
+  ref,
+) {
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+  const [autoFocusedInitially, setAutoFocusedInitially] = useState(false);
 
-    const _className = resolveClassName(
-      "textarea",
-      variant,
-      "textarea w-full flex flex-col gap-0.5",
-      undefined,
-      className,
-    );
+  const _className = resolveClassName(
+    "textarea",
+    variant,
+    "textarea w-full flex flex-col gap-0.5",
+    undefined,
+    className,
+  );
 
-    const autoResizeTextArea = () => {
-      if (autoResize && textareaRef.current) {
-        const textarea = textareaRef.current;
-        if (textarea) {
-          textarea.style.height = "10px";
-          textarea.style.height = textarea.scrollHeight + "px";
-        }
+  const autoResizeTextArea = () => {
+    if (autoResize && textareaRef.current) {
+      const textarea = textareaRef.current;
+      if (textarea) {
+        textarea.style.height = "10px";
+        textarea.style.height = textarea.scrollHeight + "px";
       }
-    };
-
-    const handleOnInput = (e: FormEvent<HTMLTextAreaElement>) => {
-      onInput?.(e);
-      autoResizeTextArea();
-    };
-
-    if (!autoFocusedInitially) {
-      autoResizeTextArea();
-      setAutoFocusedInitially(true);
     }
+  };
 
-    return (
-      <div className={_className}>
-        {label && <InputLabel htmlFor={id}>{label}</InputLabel>}
+  const handleOnInput = (e: FormEvent<HTMLTextAreaElement>) => {
+    onInput?.(e);
+    autoResizeTextArea();
+  };
 
-        <InputWrapper className="!items-start">
-          {leading && <InputAddon>{leading}</InputAddon>}
-          <InputTextArea ref={combineRefs(ref, textareaRef)} onInput={handleOnInput} {...rest} />
-          {trailing && <InputAddon>{trailing}</InputAddon>}
-        </InputWrapper>
+  if (!autoFocusedInitially) {
+    autoResizeTextArea();
+    setAutoFocusedInitially(true);
+  }
 
-        {(helper || error) && (
-          <div className="flex items-center justify-between gap-2">
-            {error && <InputError>{error}</InputError>}
-            {helper && <InputHelper>{helper}</InputHelper>}
-          </div>
-        )}
-      </div>
-    );
-  },
-);
+  return (
+    <div className={_className}>
+      {label && <InputLabel htmlFor={id}>{label}</InputLabel>}
+
+      <InputWrapper className="!items-start">
+        {leading && <InputAddon>{leading}</InputAddon>}
+        <InputTextArea ref={combineRefs(ref, textareaRef)} onInput={handleOnInput} {...rest} />
+        {trailing && <InputAddon>{trailing}</InputAddon>}
+      </InputWrapper>
+
+      {(helper || error) && (
+        <div className="flex items-center justify-between gap-2">
+          {error && <InputError>{error}</InputError>}
+          {helper && <InputHelper>{helper}</InputHelper>}
+        </div>
+      )}
+    </div>
+  );
+});
 
 interface InputTextAreaProps extends InputHTMLAttributes<HTMLTextAreaElement> {
   variant?: string | string[];
