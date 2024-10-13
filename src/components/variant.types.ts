@@ -41,6 +41,7 @@ export interface ComponentVariants {
   accordionItem?: VariantsClassNameMap;
   accordionHeader?: VariantsClassNameMap;
   accordionPanel?: VariantsClassNameMap;
+  badge?: VariantsClassNameMap;
 }
 
 export type ComponentNameType = keyof ComponentVariants;

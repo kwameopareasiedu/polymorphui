@@ -2,6 +2,7 @@ import { Fragment, ReactNode, useState } from "react";
 import { CgOptions } from "react-icons/cg";
 import { AiFillAlert, AiOutlineClose } from "react-icons/ai";
 import { BiNotepad, BiUser } from "react-icons/bi";
+import { FaChevronDown } from "react-icons/fa6";
 import { Spinner } from "polymorphui/spinner";
 import { Button } from "polymorphui/button";
 import { Text } from "polymorphui/text";
@@ -18,7 +19,7 @@ import { InputLabel } from "polymorphui/input-helpers";
 import { Dialog, DialogClose, DialogContent } from "polymorphui/dialog";
 import { TabItem, TabItems, TabPanel, Tabs } from "polymorphui/tabs";
 import { Accordion, AccordionHeader, AccordionItem, AccordionPanel } from "polymorphui/accordion";
-import { FaChevronDown } from "react-icons/fa6";
+import { Badge } from "polymorphui/badge";
 
 export default function App() {
   const [popupOpen, setPopupOpen] = useState(false);
@@ -497,6 +498,20 @@ export default function App() {
             </AccordionPanel>
           </AccordionItem>
         </Accordion>
+      </Showcase>
+
+      <Showcase title="Badge">
+        <div className="flex flex-col gap-4">
+          <Badge placement="right" offset={[0, 10]}>
+            <Text className="">Unread messages</Text>
+            <Text>2</Text>
+          </Badge>
+
+          <Badge placement="left" offset={[0, 10]}>
+            <Text className="">Unread messages</Text>
+            <Text>2</Text>
+          </Badge>
+        </div>
       </Showcase>
     </main>
   );
