@@ -1,7 +1,7 @@
 import React, { ButtonHTMLAttributes, forwardRef, MouseEvent, ReactNode } from "react";
-import { resolveClassName } from "@/components/utils";
 import Check from "@/assets/check.svg";
 import { InputError, InputHelper, InputLabel } from "@/components/input-helpers";
+import { usePolymorphUi } from "@/providers/polymorphui-provider";
 
 export interface CheckboxProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children" | "onChange"> {
   variant?: string | string[];
@@ -17,6 +17,7 @@ export const Checkbox = forwardRef<HTMLButtonElement, CheckboxProps>(function Ch
   { variant = "default", id, className, label, rtl, checked, helper, error, onChange, onClick, ...rest }: CheckboxProps,
   ref,
 ) {
+  const { resolveClassName } = usePolymorphUi();
   const _className = resolveClassName(
     "checkbox",
     variant,

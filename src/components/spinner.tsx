@@ -1,6 +1,6 @@
 import React, { forwardRef, HTMLAttributes, ReactNode } from "react";
-import { resolveClassName } from "@/components/utils";
 import RingBg from "@/assets/ring-bg.svg";
+import { usePolymorphUi } from "@/providers/polymorphui-provider";
 
 export interface SpinnerProps extends HTMLAttributes<HTMLSpanElement> {
   variant?: string | string[];
@@ -11,6 +11,7 @@ export const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>(function Spinne
   { variant = "default", icon = <RingBg />, className, ...rest }: SpinnerProps,
   ref,
 ) {
+  const { resolveClassName } = usePolymorphUi();
   const _className = resolveClassName(
     "spinner",
     variant,

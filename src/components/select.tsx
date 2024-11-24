@@ -1,33 +1,33 @@
 import React, {
   ButtonHTMLAttributes,
-  ChangeEventHandler,
-  KeyboardEvent,
-  forwardRef,
-  ReactNode,
-  useState,
-  useRef,
-  HTMLAttributes,
   Children,
-  useEffect,
-  MouseEvent,
   createContext,
+  forwardRef,
+  HTMLAttributes,
+  KeyboardEvent,
+  MouseEvent,
   ReactElement,
+  ReactNode,
   useContext,
+  useEffect,
+  useRef,
+  useState,
 } from "react";
-import { combineRefs, resolveClassName } from "@/components/utils";
+import { combineRefs } from "@/utils";
 import { Popup } from "@/components/popup";
 import Dropdown from "@/assets/dropdown.svg";
 import Check from "@/assets/check.svg";
 import { InputAddon, InputError, InputHelper, InputInput, InputLabel } from "@/components/input-helpers";
+import { usePolymorphUi } from "@/providers/polymorphui-provider";
 
 type SelectItemDataType = {
   label: string;
-  value: any;
+  value: unknown;
 };
 
 interface SelectContextProps {
-  selectedValues: any[];
-  setItemValue: (val: any) => void;
+  selectedValues: unknown[];
+  setItemValue: (val: never) => void;
   registerItem: (item: SelectItemDataType) => void;
 }
 
@@ -42,7 +42,7 @@ export interface SelectProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement
   placeholder?: string;
   value?: string | string[];
   children?: ReactElement<SelectItemProps> | ReactElement<SelectItemProps>[];
-  onChange?: ChangeEventHandler<{ value: string & string[] }>;
+  onChange?: (e: { target: { value: string & string[] } }) => void;
 }
 
 export const Select = forwardRef<HTMLButtonElement, SelectProps>(function Select(
@@ -62,6 +62,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(function Select
   }: SelectProps,
   ref,
 ) {
+  const { resolveClassName } = usePolymorphUi();
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [triggerWidth, setTriggerWidth] = useState(0);
   const [items, setItems] = useState<SelectItemDataType[]>([]);
@@ -82,7 +83,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(function Select
     });
   };
 
-  const handleOnClickItem = (itemValue: any) => {
+  const handleOnClickItem = (itemValue: never) => {
     if (isMultiSelect) {
       const newValueSet = new Set(selectedValues);
 
@@ -157,6 +158,7 @@ const SelectButton = forwardRef<HTMLButtonElement, SelectButtonProps>(function S
   { variant = "default", className, children, ...rest }: SelectButtonProps,
   ref,
 ) {
+  const { resolveClassName } = usePolymorphUi();
   const _className = resolveClassName(
     "selectButton",
     variant,
@@ -181,6 +183,7 @@ const SelectItems = forwardRef<HTMLDivElement, SelectItemsProps>(function Select
   { variant = "default", className, children, onKeyDownCapture, onKeyUp, ...rest }: SelectItemsProps,
   ref,
 ) {
+  const { resolveClassName } = usePolymorphUi();
   const optionsRef = useRef<HTMLDivElement>(null);
   const [childCount] = useState(Children.count(children));
   const [focusedInitially, setFocusedInitially] = useState(false);
@@ -236,7 +239,7 @@ const SelectItems = forwardRef<HTMLDivElement, SelectItemsProps>(function Select
 
 export interface SelectItemProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "value"> {
   variant?: string | string[];
-  value: any;
+  value: unknown;
   children: string;
 }
 
@@ -244,6 +247,7 @@ export const SelectItem = forwardRef<HTMLButtonElement, SelectItemProps>(functio
   { variant = "default", className, children, value, onClick, ...rest }: SelectItemProps,
   ref,
 ) {
+  const { resolveClassName } = usePolymorphUi();
   const selectContext = useContext(SelectContext);
 
   if (!selectContext) throw "error: <SelectItem /> must be a child of a <Select />";
@@ -258,7 +262,7 @@ export const SelectItem = forwardRef<HTMLButtonElement, SelectItemProps>(functio
   );
 
   const handleOnClick = (e: MouseEvent<HTMLButtonElement>) => {
-    selectContext.setItemValue(value);
+    selectContext.setItemValue(value as never);
     onClick?.(e);
   };
 

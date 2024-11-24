@@ -1,5 +1,5 @@
 import React, { forwardRef, LabelHTMLAttributes } from "react";
-import { resolveClassName } from "@/components/utils";
+import { usePolymorphUi } from "@/providers/polymorphui-provider";
 
 export interface TextProps extends LabelHTMLAttributes<HTMLParagraphElement> {
   variant?: string | string[] | null;
@@ -11,8 +11,9 @@ export const Text = forwardRef<HTMLParagraphElement, TextProps>(function Text(
   { variant = "default", as, inline, className, children, ...rest }: TextProps,
   ref,
 ) {
-  const Comp = (inline ? "span" : as || "p") as any;
+  const { resolveClassName } = usePolymorphUi();
 
+  const Comp = (inline ? "span" : as || "p") as any;
   const _className = resolveClassName("text", variant, "text data-[inline]:inline", undefined, className);
 
   return (

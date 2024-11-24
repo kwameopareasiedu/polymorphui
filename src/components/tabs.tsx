@@ -10,7 +10,7 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import { resolveClassName } from "@/components/utils";
+import { usePolymorphUi } from "@/providers/polymorphui-provider";
 
 interface TabsContextProps {
   activeValue?: string;
@@ -22,7 +22,7 @@ const TabsContext = createContext<TabsContextProps>(null as never);
 
 export interface TabsProps extends Omit<HTMLAttributes<HTMLDivElement>, "onChange"> {
   variant?: string | string[];
-  as?: "div" | JSXElementConstructor<any>;
+  as?: "div" | JSXElementConstructor<unknown>;
   value?: string;
   defaultValue?: string;
   orientation?: "vertical" | "horizontal";
@@ -40,8 +40,9 @@ export const Tabs = ({
   onChange,
   ...rest
 }: TabsProps) => {
-  const Root = (as ?? Fragment) as any;
+  const { resolveClassName } = usePolymorphUi();
 
+  const Root = (as ?? Fragment) as any;
   const _className = resolveClassName("tabs", variant, "tabs", undefined, className);
 
   const [ready, setReady] = useState(false);
@@ -79,6 +80,7 @@ export const TabItems = forwardRef<HTMLDivElement, TabItemsProps>(function TabIt
   { variant = "default", className, children, ...rest }: TabItemsProps,
   ref,
 ) {
+  const { resolveClassName } = usePolymorphUi();
   const tabsContext = useContext(TabsContext);
 
   if (!tabsContext) throw "<TabItems /> must be a child of <Tabs />";
@@ -107,6 +109,7 @@ export const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(function TabI
   { variant = "default", className, children, value, onClick, ...rest }: TabItemProps,
   ref,
 ) {
+  const { resolveClassName } = usePolymorphUi();
   const tabsContext = useContext(TabsContext);
 
   if (!tabsContext) throw "<TabItem /> must be a descendant of <Tabs />";
@@ -149,6 +152,7 @@ export const TabPanel = forwardRef<HTMLDivElement, TabPanelProps>(function TabPa
   { variant = "default", className, children, value, ...rest }: TabPanelProps,
   ref,
 ) {
+  const { resolveClassName } = usePolymorphUi();
   const tabsContext = useContext(TabsContext);
 
   if (!tabsContext) throw "<TabPanel /> must be a descendant of <Tabs />";

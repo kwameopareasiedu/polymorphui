@@ -1,8 +1,8 @@
 import React, { forwardRef, HTMLAttributes, ReactElement } from "react";
-import { resolveClassName } from "@/components/utils";
 import { Popup } from "@/components/popup";
 import { Text } from "@/components/text";
 import { Placement } from "@popperjs/core";
+import { usePolymorphUi } from "@/providers/polymorphui-provider";
 
 export interface TooltipProps extends Omit<HTMLAttributes<HTMLParagraphElement>, "children"> {
   variant?: string | string[];
@@ -26,6 +26,7 @@ export const Tooltip = forwardRef<HTMLParagraphElement, TooltipProps>(function T
   }: TooltipProps,
   ref,
 ) {
+  const { resolveClassName } = usePolymorphUi();
   const _className = resolveClassName(
     "tooltip",
     variant,

@@ -10,11 +10,11 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import { resolveClassName } from "@/components/utils";
+import { usePolymorphUi } from "@/providers/polymorphui-provider";
 
 interface AccordionContextProps {
-  values: any[];
-  toggleValue: (val: any) => void;
+  values: string[];
+  toggleValue: (val: string) => void;
 }
 
 const AccordionContext = createContext<AccordionContextProps>(null as never);
@@ -31,6 +31,7 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(function Acc
   { variant = "default", className, defaultValue, value, multiple, onChange, ...rest }: AccordionProps,
   ref,
 ) {
+  const { resolveClassName } = usePolymorphUi();
   const [_value, _setValue] = useState(value ?? defaultValue ?? []);
 
   const toggleItemValue = (itemValue: string) => {
@@ -63,7 +64,7 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(function Acc
 
 interface AccordionItemProps extends Omit<HTMLAttributes<HTMLDivElement>, "children"> {
   variant?: string | string[];
-  value: any;
+  value: string;
   children: [ReactElement<AccordionHeaderProps>, ReactElement<AccordionPanelProps>];
 }
 
@@ -71,6 +72,7 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(func
   { variant = "default", className, children, value, ...rest }: AccordionItemProps,
   ref,
 ) {
+  const { resolveClassName } = usePolymorphUi();
   const accordionContext = useContext(AccordionContext);
 
   if (!accordionContext) throw "error: <AccordionItem /> must be a child of a <Accordion />";
@@ -119,6 +121,7 @@ export const AccordionHeader = forwardRef<HTMLButtonElement, AccordionHeaderProp
   { variant = "default", className, children, ...rest }: AccordionHeaderProps,
   ref,
 ) {
+  const { resolveClassName } = usePolymorphUi();
   const _className = resolveClassName("accordionHeader", variant, "accordionHeader", "w-full h-8 text-left", className);
 
   return (
@@ -136,6 +139,7 @@ export const AccordionPanel = forwardRef<HTMLDivElement, AccordionPanelProps>(fu
   { variant = "default", className, children, ...rest }: AccordionPanelProps,
   ref,
 ) {
+  const { resolveClassName } = usePolymorphUi();
   const _className = resolveClassName("accordionPanel", variant, "accordionPanel", "p-4 bg-gray-100", className);
 
   return (

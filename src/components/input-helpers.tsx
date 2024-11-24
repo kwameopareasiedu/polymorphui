@@ -1,5 +1,5 @@
 import React, { forwardRef, HTMLAttributes, InputHTMLAttributes, LabelHTMLAttributes } from "react";
-import { resolveClassName } from "@/components/utils";
+import { usePolymorphUi } from "@/providers/polymorphui-provider";
 
 export interface InputLabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
   variant?: string | string[];
@@ -9,6 +9,7 @@ export const InputLabel = forwardRef<HTMLLabelElement, InputLabelProps>(function
   { variant = "default", className, children, ...rest }: InputLabelProps,
   ref,
 ) {
+  const { resolveClassName } = usePolymorphUi();
   const _className = resolveClassName("inputLabel", variant, "inputLabel", "text-sm text-gray-600", className);
 
   return (
@@ -26,6 +27,7 @@ export const InputHelper = forwardRef<HTMLSpanElement, InputHelperProps>(functio
   { variant = "default", className, children, ...rest }: InputHelperProps,
   ref,
 ) {
+  const { resolveClassName } = usePolymorphUi();
   const _className = resolveClassName("inputHelper", variant, "inputHelper", "text-xs text-gray-400", className);
 
   return (
@@ -39,6 +41,7 @@ export const InputError = forwardRef<HTMLSpanElement, InputHelperProps>(function
   { variant = "default", className, children, ...rest }: InputHelperProps,
   ref,
 ) {
+  const { resolveClassName } = usePolymorphUi();
   const _className = resolveClassName("inputError", variant, "inputError", "text-xs text-red-500", className);
 
   return (
@@ -56,6 +59,7 @@ export const InputAddon = forwardRef<HTMLSpanElement, InputAddonProps>(function 
   { variant = "default", className, children, ...rest }: InputAddonProps,
   ref,
 ) {
+  const { resolveClassName } = usePolymorphUi();
   const _className = resolveClassName(
     "inputAddon",
     variant,
@@ -79,6 +83,7 @@ export const InputWrapper = forwardRef<HTMLDivElement, InputWrapperProps>(functi
   { variant = "default", className, children, ...rest }: InputWrapperProps,
   ref,
 ) {
+  const { resolveClassName } = usePolymorphUi();
   const _className = resolveClassName(
     "inputWrapper",
     variant,
@@ -103,6 +108,7 @@ export const InputInput = forwardRef<HTMLInputElement, InputInputProps>(function
   { variant = "default", className, children, ...rest }: InputInputProps,
   ref,
 ) {
+  const { resolveClassName } = usePolymorphUi();
   const _className = resolveClassName(
     "inputInput",
     variant,

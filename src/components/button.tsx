@@ -1,6 +1,6 @@
 import React, { ButtonHTMLAttributes, forwardRef, ReactNode } from "react";
-import { resolveClassName } from "@/components/utils";
 import { Spinner } from "@/components/spinner";
+import { usePolymorphUi } from "@/providers/polymorphui-provider";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: string | string[];
@@ -14,6 +14,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
   { variant = "default", leading, trailing, loading, flex, disabled, className, children, ...rest }: ButtonProps,
   ref,
 ) {
+  const { resolveClassName } = usePolymorphUi();
+
   const _className = resolveClassName(
     "button",
     variant,

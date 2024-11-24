@@ -9,9 +9,9 @@ import React, {
   useContext,
   useState,
 } from "react";
-import { resolveClassName } from "@/components/utils";
 import { Popup } from "@/components/popup";
 import ArrowRight from "@/assets/arrow-right.svg";
+import { usePolymorphUi } from "@/providers/polymorphui-provider";
 
 interface ContextMenuContextProps {
   onClose: () => void;
@@ -52,6 +52,7 @@ export const ContextMenuItems = forwardRef<HTMLDivElement, ContextMenuItemsProps
   { variant = "default", className, children, ...rest }: ContextMenuItemsProps,
   ref,
 ) {
+  const { resolveClassName } = usePolymorphUi();
   const _className = resolveClassName(
     "contextMenuItems",
     variant,
@@ -78,6 +79,7 @@ export const ContextMenuItem = forwardRef<HTMLButtonElement, ContextMenuItemProp
   { variant = "default", label, icon, className, children, disabled, onClick, ...rest }: ContextMenuItemProps,
   ref,
 ) {
+  const { resolveClassName } = usePolymorphUi();
   const contextMenuContext = useContext(ContextMenuContext);
 
   if (!contextMenuContext) throw "<ContextMenuItem /> must be a descendant of <ContextMenu />";

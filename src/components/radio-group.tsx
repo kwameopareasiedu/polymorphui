@@ -7,19 +7,19 @@ import React, {
   ReactNode,
   useContext,
 } from "react";
-import { resolveClassName } from "@/components/utils";
 import { InputError, InputHelper, InputLabel } from "@/components/input-helpers";
+import { usePolymorphUi } from "@/providers/polymorphui-provider";
 
 interface RadioGroupContextProps {
-  value: any;
-  setValue: (val: any) => void;
+  value: unknown;
+  setValue: (val: unknown) => void;
 }
 
 const RadioGroupContext = createContext<RadioGroupContextProps>(null as never);
 
 export interface RadioGroupProps extends Omit<HTMLAttributes<HTMLDivElement>, "onChange"> {
   variant?: string | string[];
-  value?: any;
+  value: unknown;
   inline?: boolean;
   label?: ReactNode;
   helper?: ReactNode;
@@ -31,6 +31,7 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(function R
   { variant = "default", className, value, label, children, onChange, helper, error, inline, ...rest }: RadioGroupProps,
   ref,
 ) {
+  const { resolveClassName } = usePolymorphUi();
   const _className = resolveClassName(
     "radioGroup",
     variant,
@@ -47,7 +48,7 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(function R
     className,
   );
 
-  const handleOnChange = (value?: any) => {
+  const handleOnChange = (value: unknown) => {
     onChange?.({ target: { value } });
   };
 
@@ -79,6 +80,7 @@ export const RadioGroupItem = forwardRef<HTMLButtonElement, RadioGroupItemProps>
   { variant = "default", className, onClick, value, ...rest }: RadioGroupItemProps,
   ref,
 ) {
+  const { resolveClassName } = usePolymorphUi();
   const radioGroupContext = useContext(RadioGroupContext);
 
   if (!radioGroupContext) throw "error: <RadioGroupItem /> must be a child of a <RadioGroup />";

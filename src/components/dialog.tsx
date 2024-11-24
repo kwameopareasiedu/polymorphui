@@ -9,9 +9,10 @@ import React, {
   useEffect,
   useRef,
 } from "react";
-import { combineRefs, resolveClassName } from "@/components/utils";
+import { combineRefs } from "@/utils";
 import { createPortal } from "react-dom";
 import Close from "@/assets/close.svg";
+import { usePolymorphUi } from "@/providers/polymorphui-provider";
 
 interface DialogContextProps {
   onClose: () => void;
@@ -30,6 +31,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(function Dialog(
   { variant = "default", className, children, onClose, onClick, dismissible, ...rest }: DialogProps,
   ref,
 ) {
+  const { resolveClassName } = usePolymorphUi();
   const dialogRef = useRef<HTMLDivElement>(null);
   const documentOverflowRef = useRef("");
 
@@ -86,6 +88,7 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(func
   { variant = "default", size = "md", className, children, ...rest }: DialogContentProps,
   ref,
 ) {
+  const { resolveClassName } = usePolymorphUi();
   const dialogRef = useRef<HTMLDivElement>(null);
 
   const _className = resolveClassName(
@@ -144,6 +147,7 @@ export const DialogClose = forwardRef<HTMLButtonElement, DialogCloseProps>(funct
   { variant = "default", className, onClick, ...rest }: DialogCloseProps,
   ref,
 ) {
+  const { resolveClassName } = usePolymorphUi();
   const dialogContext = useContext(DialogContext);
 
   if (!dialogContext) throw "error: <DialogClose /> must be a descendant of a <Dialog />";

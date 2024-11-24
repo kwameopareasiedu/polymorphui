@@ -1,6 +1,6 @@
 import React, { ButtonHTMLAttributes, forwardRef, HTMLAttributes, MouseEvent } from "react";
-import { resolveClassName } from "@/components/utils";
 import { InputHelperProps } from "@/components/input-helpers";
+import { usePolymorphUi } from "@/providers/polymorphui-provider";
 
 export interface SwitchProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children" | "onChange"> {
   variant?: string | string[];
@@ -12,6 +12,7 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(function Switch
   { variant = "default", className, checked, onChange, onClick, ...rest }: SwitchProps,
   ref,
 ) {
+  const { resolveClassName } = usePolymorphUi();
   const _className = resolveClassName(
     "switch",
     variant,
@@ -41,16 +42,18 @@ interface SwitchThumbProps extends Omit<HTMLAttributes<HTMLSpanElement>, "childr
   variant?: string | string[];
 }
 
-const SwitchThumb = forwardRef<HTMLSpanElement, SwitchThumbProps>(
-  ({ variant = "default", className, ...rest }: InputHelperProps, ref) => {
-    const _className = resolveClassName(
-      "switchThumb",
-      variant,
-      "switchThumb inline-block h-full aspect-square rounded-full transition-all",
-      "bg-white",
-      className,
-    );
+const SwitchThumb = forwardRef<HTMLSpanElement, SwitchThumbProps>(function SwitchThumb(
+  { variant = "default", className, ...rest }: InputHelperProps,
+  ref,
+) {
+  const { resolveClassName } = usePolymorphUi();
+  const _className = resolveClassName(
+    "switchThumb",
+    variant,
+    "switchThumb inline-block h-full aspect-square rounded-full transition-all",
+    "bg-white",
+    className,
+  );
 
-    return <span ref={ref} className={_className} {...rest} />;
-  },
-);
+  return <span ref={ref} className={_className} {...rest} />;
+});
