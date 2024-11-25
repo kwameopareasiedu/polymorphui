@@ -22,7 +22,7 @@ const TabsContext = createContext<TabsContextProps>(null as never);
 
 export interface TabsProps extends Omit<HTMLAttributes<HTMLDivElement>, "onChange"> {
   variant?: string | string[];
-  as?: "div" | JSXElementConstructor<unknown>;
+  as?: "div" | JSXElementConstructor<any>;
   value?: string;
   defaultValue?: string;
   orientation?: "vertical" | "horizontal";

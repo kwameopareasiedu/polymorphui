@@ -11,14 +11,16 @@ import { remapAlias } from "./rollup.plugin.mjs";
 
 const isProd = process.env.BUILD === "production";
 
-const componentNamePathMap = globbySync(["src/components/*.tsx", "src/providers/*", "src/utils.ts"]).reduce(
-  (map, inputPath) => {
-    const parts = inputPath.split("/");
-    const componentName = parts.at(-1)?.split(".")[0];
-    return { ...map, [componentName]: inputPath };
-  },
-  {},
-);
+const componentNamePathMap = globbySync([
+  "src/components/*.tsx",
+  "src/providers/*",
+  "src/config/variant.ts",
+  "src/utils.ts",
+]).reduce((map, inputPath) => {
+  const parts = inputPath.split("/");
+  const componentName = parts.at(-1)?.split(".")[0];
+  return { ...map, [componentName]: inputPath };
+}, {});
 
 export default defineConfig([
   {
@@ -33,6 +35,7 @@ export default defineConfig([
       svgr(),
       remapAlias({
         "@/utils": "./utils.js",
+        "@/config/variant": "./variant.js",
         "@/components/spinner": "./spinner.js",
         "@/components/popup": "./popup.js",
         "@/components/text": "./text.js",
