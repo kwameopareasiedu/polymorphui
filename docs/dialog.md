@@ -52,8 +52,8 @@ export function Example() {
 
 _Extends_ `HTMLAttributes<HTMLDivElement`
 
-| Props          | Description                                              | Type                 | Default     |
-|----------------|----------------------------------------------------------|----------------------|-------------|
-| `variant?`     | Variant(s) to style with                                 | `string \| string[]` | `"default"` |
-| `dismissible?` | Close dialog if escape is pressed or backdrop is clicked | `boolean`            | `false`     |
-| `onClose`      | Function to call when a close event occurs               | `() => void`         |             |
+| Props          | Description                                              | Type                 | Default |
+|----------------|----------------------------------------------------------|----------------------|---------|
+| `variant?`     | Variant(s) to style with                                 | `string \| string[]` |         |
+| `dismissible?` | Close dialog if escape is pressed or backdrop is clicked | `boolean`            | `false` |
+| `onClose`      | Function to call when a close event occurs               | `() => void`         |         |

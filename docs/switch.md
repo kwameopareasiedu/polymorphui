@@ -19,8 +19,8 @@ export function Example() {
 
 _Extends_ `ButtonHTMLAttributes<HTMLButtonElement>`
 
-| Props       | Description              | Type                                               | Default     |
-|-------------|--------------------------|----------------------------------------------------|-------------|
-| `variant?`  | Variant(s) to style with | `string \| string[]`                               | `"default"` |
-| `checked?`  | Checked state            | `boolean`                                          |             |
-| `onChange?` | Change handler           | `ChangeEventHandler<{ value: string & string[] }>` |             |
+| Props       | Description              | Type                                               | Default |
+|-------------|--------------------------|----------------------------------------------------|---------|
+| `variant?`  | Variant(s) to style with | `string \| string[]`                               |         |
+| `checked?`  | Checked state            | `boolean`                                          |         |
+| `onChange?` | Change handler           | `ChangeEventHandler<{ value: string & string[] }>` |         |

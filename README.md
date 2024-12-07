@@ -87,6 +87,7 @@ PolymorphUI exports the following components:
 | `Dialog`      | A component which displays content over the primary window                | [View docs](./docs/dialog.md)       |
 | `Tabs`        | A component which displays a single tab panel based on the active tab     | [View docs](./docs/tabs.md)         |
 | `Accordion`   | A component which shows and hides sections of related content on a page   | [View docs](./docs/accordion.md)    |
+| `Pagination`  | A component which displays pagination buttons for a list of items         | [View docs](./docs/pagination.md)   |
 
 ## Contributors
 
@@ -94,10 +95,15 @@ PolymorphUI exports the following components:
 
 ## Changelog
 
+- `0.7.0`
+   - Added [Pagination](./docs/pagination.md) component
+   - Replaced `default` key in component variants objects with `replaceDefault` and `appendDefault` which replace and
+     addon to the default class names respectively
+   - Fixed `z-index` class names for [Dialog](./docs/dialog.md) and [Select](./docs/select.md) components
 - `0.6.0`
    - Refactored library to use provider pattern for component variants
 - `0.5.0`
-   - Added [`Badge`](./docs/badge.md) component
+   - Added [Badge](./docs/badge.md) component
    - Named all `forwardRef` components to identify in React devtools
 - `0.3.1`
-   - Added [`Accordion`](./docs/accordion.md) component
+   - Added [Accordion](./docs/accordion.md) component

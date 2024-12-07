@@ -21,5 +21,5 @@ _Extends_ `HTMLAttributes<HTMLSpanElement>`
 
 | Props      | Description              | Type                 | Default              |
 |------------|--------------------------|----------------------|----------------------|
-| `variant?` | Variant(s) to style with | `string \| string[]` | `"default"`          |
+| `variant?` | Variant(s) to style with | `string \| string[]` |                      |
 | `icon?`    | Spinner icon to render   | `ReactNode`          | `<Ring />` (Inbuilt) |

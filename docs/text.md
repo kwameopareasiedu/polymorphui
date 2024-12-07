@@ -18,8 +18,8 @@ export function Example() {
 
 _Extends_ `LabelHTMLAttributes<HTMLParagraphElement>`
 
-| Props      | Description               | Type                                                                     | Default     |
-|------------|---------------------------|--------------------------------------------------------------------------|-------------|
-| `variant?` | Variant(s) to style with  | `string \| string[]`                                                     | `"default"` |
-| `as?`      | HTML element to render    | `h1 \| h2 \| h3 \| h4 \| h5 \| h6 \| p \| span \| strong \| li \| label` | `"p"`       |
-| `inline?`  | Render inline with `span` | `boolean`                                                                | `false`     |
+| Props      | Description               | Type                                                                     | Default |
+|------------|---------------------------|--------------------------------------------------------------------------|---------|
+| `variant?` | Variant(s) to style with  | `string \| string[]`                                                     |         |
+| `as?`      | HTML element to render    | `h1 \| h2 \| h3 \| h4 \| h5 \| h6 \| p \| span \| strong \| li \| label` | `"p"`   |
+| `inline?`  | Render inline with `span` | `boolean`                                                                | `false` |

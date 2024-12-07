@@ -14,10 +14,10 @@ export function Example() {
 
 _Extends_ `ButtonHTMLAttributes<HTMLButtonElement>`
 
-| Props       | Description                          | Type                 | Default     |
-|-------------|--------------------------------------|----------------------|-------------|
-| `variant?`  | Variant(s) to style with             | `string \| string[]` | `"default"` |
-| `leading?`  | Component to render to left of text  | `ReactNode`          |             |
-| `trailing?` | Component to render to right of text | `ReactNode`          |             |
-| `loading?`  | Show loading indicator               | `boolean`            | `false`     |
-| `flex?`     | Use full width                       | `boolean`            | `false`     |
+| Props       | Description                          | Type                 | Default |
+|-------------|--------------------------------------|----------------------|---------|
+| `variant?`  | Variant(s) to style with             | `string \| string[]` |         |
+| `leading?`  | Component to render to left of text  | `ReactNode`          |         |
+| `trailing?` | Component to render to right of text | `ReactNode`          |         |
+| `loading?`  | Show loading indicator               | `boolean`            | `false` |
+| `flex?`     | Use full width                       | `boolean`            | `false` |

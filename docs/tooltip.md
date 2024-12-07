@@ -26,7 +26,7 @@ _Extends_ `HTMLAttributes<HTMLParagraphElement>`
 
 | Props         | Description                           | Type                 | Default        |
 |---------------|---------------------------------------|----------------------|----------------|
-| `variant?`    | Variant(s) to style with              | `string \| string[]` | `"default"`    |
+| `variant?`    | Variant(s) to style with              | `string \| string[]` |                |
 | `description` | Description for tooltip               | `string`             |                |
 | `delayMs?`    | Delay before opening                  | `number`             | `250`          |
 | `placement?`  | Tooltip position relative to trigger  | `Placement`          | `bottom-start` |

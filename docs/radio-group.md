@@ -41,12 +41,12 @@ export function Example() {
 
 _Extends_ `ButtonHTMLAttributes<HTMLButtonElement>`
 
-| Props       | Description                       | Type                                               | Default     |
-|-------------|-----------------------------------|----------------------------------------------------|-------------|
-| `variant?`  | Variant(s) to style with          | `string \| string[]`                               | `"default"` |
-| `checked?`  | Checked state                     | `boolean`                                          |             |
-| `label?`    | Label node                        | `ReactNode`                                        |             |
-| `helper?`   | Helper node to render below input | `ReactNode`                                        |             |
-| `error?`    | Error node                        | `ReactNode`                                        |             |
-| `inline?`   | Render items inline               | `boolean`                                          | `false`     |
-| `onChange?` | Change handler                    | `ChangeEventHandler<{ value: string & string[] }>` |             |
+| Props       | Description                       | Type                                               | Default |
+|-------------|-----------------------------------|----------------------------------------------------|---------|
+| `variant?`  | Variant(s) to style with          | `string \| string[]`                               |         |
+| `checked?`  | Checked state                     | `boolean`                                          |         |
+| `label?`    | Label node                        | `ReactNode`                                        |         |
+| `helper?`   | Helper node to render below input | `ReactNode`                                        |         |
+| `error?`    | Error node                        | `ReactNode`                                        |         |
+| `inline?`   | Render items inline               | `boolean`                                          | `false` |
+| `onChange?` | Change handler                    | `ChangeEventHandler<{ value: string & string[] }>` |         |

@@ -27,13 +27,13 @@ export function Example() {
 
 _Extends_ `InputHTMLAttributes<HTMLInputElement>`
 
-| Props       | Description                           | Type                                    | Default     |
-|-------------|---------------------------------------|-----------------------------------------|-------------|
-| `variant?`  | Variant(s) to style with              | `string \| string[]`                    | `"default"` |
-| `label?`    | Label node                            | `ReactNode`                             |             |
-| `leading?`  | Component to render to left of input  | `ReactNode`                             |             |
-| `trailing?` | Component to render to right of input | `ReactNode`                             |             |
-| `helper?`   | Helper node to render below input     | `ReactNode`                             |             |
-| `error?`    | Error node                            | `ReactNode`                             |             |
-| `value?`    | Value of the input                    | `string`                                |             |
-| `onChange?` | Change handler                        | `ChangeEventHandler<{ value: string }>` |             |
+| Props       | Description                           | Type                                    | Default |
+|-------------|---------------------------------------|-----------------------------------------|---------|
+| `variant?`  | Variant(s) to style with              | `string \| string[]`                    |         |
+| `label?`    | Label node                            | `ReactNode`                             |         |
+| `leading?`  | Component to render to left of input  | `ReactNode`                             |         |
+| `trailing?` | Component to render to right of input | `ReactNode`                             |         |
+| `helper?`   | Helper node to render below input     | `ReactNode`                             |         |
+| `error?`    | Error node                            | `ReactNode`                             |         |
+| `value?`    | Value of the input                    | `string`                                |         |
+| `onChange?` | Change handler                        | `ChangeEventHandler<{ value: string }>` |         |
