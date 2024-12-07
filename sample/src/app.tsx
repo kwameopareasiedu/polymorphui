@@ -20,6 +20,7 @@ import { Dialog, DialogClose, DialogContent } from "polymorphui/dialog";
 import { TabItem, TabItems, TabPanel, Tabs } from "polymorphui/tabs";
 import { Accordion, AccordionHeader, AccordionItem, AccordionPanel } from "polymorphui/accordion";
 import { Badge } from "polymorphui/badge";
+import { Pagination } from "polymorphui/pagination";
 
 export default function App() {
   const [popupOpen, setPopupOpen] = useState(false);
@@ -33,6 +34,7 @@ export default function App() {
   const [showDialog, setShowDialog] = useState(false);
   const [activeTab, setActiveTab] = useState("");
   const [activeSection, setActiveSection] = useState<string[]>([]);
+  const [page, setPage] = useState(1);
 
   return (
     <main className="p-4 flex flex-wrap items-start gap-8 ">
@@ -511,6 +513,21 @@ export default function App() {
             <Text className="">Unread messages</Text>
             <Text>2</Text>
           </Badge>
+        </div>
+      </Showcase>
+
+      <Showcase title="Pagination">
+        <div className="flex flex-col gap-4">
+          <Pagination page={1} pageSize={10} totalCount={0} onPageChange={(page) => console.log(page)} />
+          <Pagination page={1} pageSize={50} totalCount={1000} onPageChange={(page) => console.log(page)} />
+          <Pagination page={2} pageSize={50} totalCount={1000} onPageChange={(page) => console.log(page)} />
+          <Pagination page={3} pageSize={50} totalCount={1000} onPageChange={(page) => console.log(page)} />
+          <Pagination page={5} pageSize={50} totalCount={1000} onPageChange={(page) => console.log(page)} />
+          <Pagination page={8} pageSize={50} totalCount={1000} onPageChange={(page) => console.log(page)} />
+          <Pagination page={9} pageSize={50} totalCount={1000} onPageChange={(page) => console.log(page)} />
+          <Pagination page={10} pageSize={50} totalCount={1000} onPageChange={(page) => console.log(page)} />
+          <Text>Interactive pagination</Text>
+          <Pagination page={page} pageSize={50} totalCount={1000} onPageChange={setPage} />
         </div>
       </Showcase>
     </main>

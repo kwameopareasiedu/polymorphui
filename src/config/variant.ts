@@ -43,6 +43,8 @@ export interface ComponentVariants {
   accordionHeader?: VariantMap;
   accordionPanel?: VariantMap;
   badge?: VariantMap;
+  pagination?: VariantMap;
+  paginationButton?: VariantMap;
 }
 
 export type ComponentNameType = keyof ComponentVariants;
