@@ -2,9 +2,10 @@ import React, { ButtonHTMLAttributes, forwardRef, MouseEvent, ReactNode } from "
 import Check from "@/assets/check.svg";
 import { InputError, InputHelper, InputLabel } from "@/components/input-helpers";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
+import { VariantNameType } from "@/config/variant";
 
 export interface CheckboxProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children" | "onChange"> {
-  variant?: string | string[];
+  variant?: VariantNameType | VariantNameType[];
   checked?: boolean;
   label?: ReactNode;
   helper?: ReactNode;
@@ -14,7 +15,7 @@ export interface CheckboxProps extends Omit<ButtonHTMLAttributes<HTMLButtonEleme
 }
 
 export const Checkbox = forwardRef<HTMLButtonElement, CheckboxProps>(function Checkbox(
-  { variant = "default", id, className, label, rtl, checked, helper, error, onChange, onClick, ...rest }: CheckboxProps,
+  { variant, id, className, label, rtl, checked, helper, error, onChange, onClick, ...rest }: CheckboxProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();

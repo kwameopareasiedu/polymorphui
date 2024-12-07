@@ -12,6 +12,7 @@ import React, {
 import { Popup } from "@/components/popup";
 import ArrowRight from "@/assets/arrow-right.svg";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
+import { VariantNameType } from "@/config/variant";
 
 interface ContextMenuContextProps {
   onClose: () => void;
@@ -44,12 +45,12 @@ export const ContextMenu = ({ children }: ContextMenuProps) => {
 };
 
 export interface ContextMenuItemsProps extends Omit<HTMLAttributes<HTMLDivElement>, "children"> {
-  variant?: string | string[];
+  variant?: VariantNameType | VariantNameType[];
   children: OneOrMany<ReactElement>;
 }
 
 export const ContextMenuItems = forwardRef<HTMLDivElement, ContextMenuItemsProps>(function ContextMenuItems(
-  { variant = "default", className, children, ...rest }: ContextMenuItemsProps,
+  { variant, className, children, ...rest }: ContextMenuItemsProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();
@@ -69,14 +70,14 @@ export const ContextMenuItems = forwardRef<HTMLDivElement, ContextMenuItemsProps
 });
 
 export interface ContextMenuItemProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
-  variant?: string | string[];
+  variant?: VariantNameType | VariantNameType[];
   label: ReactNode;
   icon?: ReactNode;
   children?: ReactElement;
 }
 
 export const ContextMenuItem = forwardRef<HTMLButtonElement, ContextMenuItemProps>(function ContextMenuItem(
-  { variant = "default", label, icon, className, children, disabled, onClick, ...rest }: ContextMenuItemProps,
+  { variant, label, icon, className, children, disabled, onClick, ...rest }: ContextMenuItemProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();

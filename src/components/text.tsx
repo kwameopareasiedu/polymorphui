@@ -1,14 +1,15 @@
 import React, { forwardRef, LabelHTMLAttributes } from "react";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
+import { VariantNameType } from "@/config/variant";
 
 export interface TextProps extends LabelHTMLAttributes<HTMLParagraphElement> {
-  variant?: string | string[] | null;
+  variant?: VariantNameType | VariantNameType[] | null;
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span" | "strong" | "li" | "label";
   inline?: boolean;
 }
 
 export const Text = forwardRef<HTMLParagraphElement, TextProps>(function Text(
-  { variant = "default", as, inline, className, children, ...rest }: TextProps,
+  { variant, as, inline, className, children, ...rest }: TextProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();

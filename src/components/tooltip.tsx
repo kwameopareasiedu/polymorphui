@@ -3,9 +3,10 @@ import { Popup } from "@/components/popup";
 import { Text } from "@/components/text";
 import { Placement } from "@popperjs/core";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
+import { VariantNameType } from "@/config/variant";
 
 export interface TooltipProps extends Omit<HTMLAttributes<HTMLParagraphElement>, "children"> {
-  variant?: string | string[];
+  variant?: VariantNameType | VariantNameType[];
   description: string;
   delayMs?: number;
   offset?: [number, number];
@@ -15,7 +16,7 @@ export interface TooltipProps extends Omit<HTMLAttributes<HTMLParagraphElement>,
 
 export const Tooltip = forwardRef<HTMLParagraphElement, TooltipProps>(function Tooltip(
   {
-    variant = "default",
+    variant,
     description,
     delayMs,
     className,
@@ -44,7 +45,7 @@ export const Tooltip = forwardRef<HTMLParagraphElement, TooltipProps>(function T
       offset={offset}>
       {children}
 
-      <Text ref={ref} variant={null} className={_className} {...rest}>
+      <Text ref={ref} variant="appendDefault" className={_className} {...rest}>
         {description}
       </Text>
     </Popup>

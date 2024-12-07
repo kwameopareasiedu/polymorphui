@@ -1,15 +1,16 @@
 import React, { ButtonHTMLAttributes, forwardRef, HTMLAttributes, MouseEvent } from "react";
 import { InputHelperProps } from "@/components/input-helpers";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
+import { VariantNameType } from "@/config/variant";
 
 export interface SwitchProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children" | "onChange"> {
-  variant?: string | string[];
+  variant?: VariantNameType | VariantNameType[];
   checked?: boolean;
   onChange?: (e: { target: { checked: boolean } }) => void;
 }
 
 export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(function Switch(
-  { variant = "default", className, checked, onChange, onClick, ...rest }: SwitchProps,
+  { variant, className, checked, onChange, onClick, ...rest }: SwitchProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();
@@ -39,11 +40,11 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(function Switch
 });
 
 interface SwitchThumbProps extends Omit<HTMLAttributes<HTMLSpanElement>, "children"> {
-  variant?: string | string[];
+  variant?: VariantNameType | VariantNameType[];
 }
 
 const SwitchThumb = forwardRef<HTMLSpanElement, SwitchThumbProps>(function SwitchThumb(
-  { variant = "default", className, ...rest }: InputHelperProps,
+  { variant, className, ...rest }: InputHelperProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();

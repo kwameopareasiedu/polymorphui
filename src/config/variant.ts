@@ -1,6 +1,7 @@
 export interface VariantMap {
-  default: string;
-  [variant: string]: string;
+  replaceDefault?: string; // Replaces the component's base tailwind classes
+  appendDefault?: string; // Appends to component's base tailwind classes
+  [variant: string]: string | undefined;
 }
 
 export interface ComponentVariants {
@@ -45,3 +46,10 @@ export interface ComponentVariants {
 }
 
 export type ComponentNameType = keyof ComponentVariants;
+
+// type ReservedVariantName = "replaceDefault" | "appendDefault";
+// type NotA<T> = T extends ReservedVariantName ? never : T;
+// type NotB<T> = ReservedVariantName extends T ? never : T;
+// export type VariantNameType<T> = NotA<T> & NotB<T>;
+// export type VariantNameType<T> = T & (T extends ReservedVariantName ? never : T);
+export type VariantNameType = string;

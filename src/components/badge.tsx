@@ -2,9 +2,10 @@ import React, { Children, forwardRef, HTMLAttributes, ReactNode } from "react";
 import { Popup } from "@/components/popup";
 import { Placement } from "@popperjs/core";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
+import { VariantNameType } from "@/config/variant";
 
 export interface BadgeProps extends HTMLAttributes<HTMLDivElement> {
-  variant?: string | string[];
+  variant?: VariantNameType | VariantNameType[];
   delayMs?: number;
   offset?: [number, number];
   placement?: Placement;
@@ -12,7 +13,7 @@ export interface BadgeProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const Badge = forwardRef<HTMLDivElement, BadgeProps>(function Tooltip(
-  { variant = "default", delayMs, className, offset, placement = "right", children, ...rest }: BadgeProps,
+  { variant, delayMs, className, offset, placement = "right", children, ...rest }: BadgeProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();

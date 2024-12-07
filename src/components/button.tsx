@@ -1,9 +1,10 @@
 import React, { ButtonHTMLAttributes, forwardRef, ReactNode } from "react";
 import { Spinner } from "@/components/spinner";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
+import { VariantNameType } from "@/config/variant";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: string | string[];
+  variant?: VariantNameType | VariantNameType[];
   leading?: ReactNode;
   trailing?: ReactNode;
   loading?: boolean;
@@ -11,7 +12,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
-  { variant = "default", leading, trailing, loading, flex, disabled, className, children, ...rest }: ButtonProps,
+  { variant, leading, trailing, loading, flex, disabled, className, children, ...rest }: ButtonProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();

@@ -19,6 +19,7 @@ import Dropdown from "@/assets/dropdown.svg";
 import Check from "@/assets/check.svg";
 import { InputAddon, InputError, InputHelper, InputInput, InputLabel } from "@/components/input-helpers";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
+import { VariantNameType } from "@/config/variant";
 
 type SelectItemDataType = {
   label: string;
@@ -34,7 +35,7 @@ interface SelectContextProps {
 const SelectContext = createContext<SelectContextProps>(null as never);
 
 export interface SelectProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "value" | "onChange"> {
-  variant?: string | string[];
+  variant?: VariantNameType | VariantNameType[];
   label?: ReactNode;
   leading?: ReactNode;
   helper?: ReactNode;
@@ -47,7 +48,7 @@ export interface SelectProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement
 
 export const Select = forwardRef<HTMLButtonElement, SelectProps>(function Select(
   {
-    variant = "default",
+    variant,
     label,
     leading,
     id,
@@ -151,11 +152,11 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(function Select
 });
 
 interface SelectButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: string | string[];
+  variant?: VariantNameType | VariantNameType[];
 }
 
 const SelectButton = forwardRef<HTMLButtonElement, SelectButtonProps>(function SelectButton(
-  { variant = "default", className, children, ...rest }: SelectButtonProps,
+  { variant, className, children, ...rest }: SelectButtonProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();
@@ -176,11 +177,11 @@ const SelectButton = forwardRef<HTMLButtonElement, SelectButtonProps>(function S
 });
 
 interface SelectItemsProps extends HTMLAttributes<HTMLDivElement> {
-  variant?: string | string[];
+  variant?: VariantNameType | VariantNameType[];
 }
 
 const SelectItems = forwardRef<HTMLDivElement, SelectItemsProps>(function SelectItems(
-  { variant = "default", className, children, onKeyDownCapture, onKeyUp, ...rest }: SelectItemsProps,
+  { variant, className, children, onKeyDownCapture, onKeyUp, ...rest }: SelectItemsProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();
@@ -193,7 +194,7 @@ const SelectItems = forwardRef<HTMLDivElement, SelectItemsProps>(function Select
     "selectItems",
     variant,
     "selectItems",
-    "bg-white border-[0.5px] border-gray-300 rounded-sm",
+    "bg-white border-[0.5px] border-gray-300 rounded-sm z-[100]",
     className,
   );
 
@@ -238,13 +239,13 @@ const SelectItems = forwardRef<HTMLDivElement, SelectItemsProps>(function Select
 });
 
 export interface SelectItemProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "value"> {
-  variant?: string | string[];
+  variant?: VariantNameType | VariantNameType[];
   value: unknown;
   children: string;
 }
 
 export const SelectItem = forwardRef<HTMLButtonElement, SelectItemProps>(function SelectItem(
-  { variant = "default", className, children, value, onClick, ...rest }: SelectItemProps,
+  { variant, className, children, value, onClick, ...rest }: SelectItemProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();

@@ -13,6 +13,7 @@ import { combineRefs } from "@/utils";
 import { createPortal } from "react-dom";
 import Close from "@/assets/close.svg";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
+import { VariantNameType } from "@/config/variant";
 
 interface DialogContextProps {
   onClose: () => void;
@@ -21,14 +22,14 @@ interface DialogContextProps {
 const DialogContext = createContext<DialogContextProps>(null as never);
 
 export interface DialogProps extends Omit<HTMLAttributes<HTMLDivElement>, "children"> {
-  variant?: string | string[];
+  variant?: VariantNameType | VariantNameType[];
   children?: ReactNode;
   onClose: () => void;
   dismissible?: boolean;
 }
 
 export const Dialog = forwardRef<HTMLDivElement, DialogProps>(function Dialog(
-  { variant = "default", className, children, onClose, onClick, dismissible, ...rest }: DialogProps,
+  { variant, className, children, onClose, onClick, dismissible, ...rest }: DialogProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();
@@ -38,7 +39,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(function Dialog(
   const _className = resolveClassName(
     "dialog",
     variant,
-    "dialog fixed top-0 left-0 w-screen h-screen z-9999 grid place-items-center p-6",
+    "dialog fixed top-0 left-0 w-screen h-screen z-[99] grid place-items-center p-6",
     "bg-black/75",
     className,
   );
@@ -80,12 +81,12 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(function Dialog(
 });
 
 export interface DialogContentProps extends HTMLAttributes<HTMLDivElement> {
-  variant?: string | string[];
+  variant?: VariantNameType | VariantNameType[];
   size?: "xs" | "sm" | "md" | "lg" | "xl" | "full";
 }
 
 export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(function DialogContent(
-  { variant = "default", size = "md", className, children, ...rest }: DialogContentProps,
+  { variant, size = "md", className, children, ...rest }: DialogContentProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();
@@ -140,11 +141,11 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(func
 });
 
 export interface DialogCloseProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
-  variant?: string | string[];
+  variant?: VariantNameType | VariantNameType[];
 }
 
 export const DialogClose = forwardRef<HTMLButtonElement, DialogCloseProps>(function DialogClose(
-  { variant = "default", className, onClick, ...rest }: DialogCloseProps,
+  { variant, className, onClick, ...rest }: DialogCloseProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();

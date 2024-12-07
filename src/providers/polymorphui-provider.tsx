@@ -1,11 +1,11 @@
 import React, { createContext, ReactNode, useContext } from "react";
-import { ComponentNameType, ComponentVariants, VariantMap } from "@/config/variant";
+import { ComponentNameType, ComponentVariants, VariantMap, VariantNameType } from "@/config/variant";
 import { cn } from "@/utils";
 
 interface PolymorphUiContextProps {
   resolveClassName: (
     componentName: ComponentNameType,
-    variantName: string | string[] | null,
+    variantName: VariantNameType | VariantNameType[] | null | undefined,
     structuralClassName: string,
     fallbackClassName?: string,
     className?: string,
@@ -19,20 +19,21 @@ interface PolymorphUiProviderProps {
   variants: ComponentVariants;
 }
 
-export function PolymorphUiProvider({ children, variants }: PolymorphUiProviderProps) {
+export function PolymorphUiProvider({ children, variants: allVariants }: PolymorphUiProviderProps) {
   const resolveClassName = (
     componentName: ComponentNameType,
-    variantName: string | string[] | null,
+    variantName: VariantNameType | VariantNameType[] | null | undefined,
     structuralClassName: string,
-    fallbackClassName?: string,
+    defaultClassName?: string,
     className?: string,
   ) => {
-    if (variantName === null) return cn(structuralClassName, className);
+    const { replaceDefault, appendDefault, ...restOfVariants } = (allVariants[componentName] ?? {}) as VariantMap;
+    const resolvedDefaultClassName = replaceDefault ?? cn(defaultClassName, appendDefault);
+    if (!variantName) return cn(structuralClassName, resolvedDefaultClassName, className);
 
-    const componentVariants = (variants[componentName] ?? {}) as VariantMap;
     const variantList = Array.isArray(variantName) ? variantName : [variantName];
-    const variantClassName = variantList.map((variantName) => componentVariants[variantName] ?? "").join(" ");
-    return cn(structuralClassName, variantClassName || fallbackClassName, className);
+    const variantClassName = variantList.map((variantName) => restOfVariants[variantName] ?? "").join(" ");
+    return cn(structuralClassName, resolvedDefaultClassName, variantClassName, className);
   };
 
   return (

@@ -11,6 +11,7 @@ import React, {
   useState,
 } from "react";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
+import { VariantNameType } from "@/config/variant";
 
 interface TabsContextProps {
   activeValue?: string;
@@ -21,7 +22,7 @@ interface TabsContextProps {
 const TabsContext = createContext<TabsContextProps>(null as never);
 
 export interface TabsProps extends Omit<HTMLAttributes<HTMLDivElement>, "onChange"> {
-  variant?: string | string[];
+  variant?: VariantNameType | VariantNameType[];
   as?: "div" | JSXElementConstructor<any>;
   value?: string;
   defaultValue?: string;
@@ -30,7 +31,7 @@ export interface TabsProps extends Omit<HTMLAttributes<HTMLDivElement>, "onChang
 }
 
 export const Tabs = ({
-  variant = "default",
+  variant,
   as = "div",
   value,
   defaultValue,
@@ -73,11 +74,11 @@ export const Tabs = ({
 };
 
 export interface TabItemsProps extends HTMLAttributes<HTMLDivElement> {
-  variant?: string | string[];
+  variant?: VariantNameType | VariantNameType[];
 }
 
 export const TabItems = forwardRef<HTMLDivElement, TabItemsProps>(function TabItems(
-  { variant = "default", className, children, ...rest }: TabItemsProps,
+  { variant, className, children, ...rest }: TabItemsProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();
@@ -101,12 +102,12 @@ export const TabItems = forwardRef<HTMLDivElement, TabItemsProps>(function TabIt
 });
 
 export interface TabItemProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: string | string[];
+  variant?: VariantNameType | VariantNameType[];
   value: string;
 }
 
 export const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(function TabItem(
-  { variant = "default", className, children, value, onClick, ...rest }: TabItemProps,
+  { variant, className, children, value, onClick, ...rest }: TabItemProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();
@@ -144,12 +145,12 @@ export const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(function TabI
 });
 
 export interface TabPanelProps extends HTMLAttributes<HTMLDivElement> {
-  variant?: string | string[];
+  variant?: VariantNameType | VariantNameType[];
   value: string;
 }
 
 export const TabPanel = forwardRef<HTMLDivElement, TabPanelProps>(function TabPanel(
-  { variant = "default", className, children, value, ...rest }: TabPanelProps,
+  { variant, className, children, value, ...rest }: TabPanelProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();

@@ -2,9 +2,10 @@ import React, { FormEvent, forwardRef, InputHTMLAttributes, ReactNode, useRef, u
 import { InputAddon, InputError, InputHelper, InputLabel, InputWrapper } from "@/components/input-helpers";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
 import { combineRefs } from "@/utils";
+import { VariantNameType } from "@/config/variant";
 
 export interface TextAreaProps extends Omit<InputHTMLAttributes<HTMLTextAreaElement>, "children"> {
-  variant?: string | string[];
+  variant?: VariantNameType | VariantNameType[];
   label?: ReactNode;
   leading?: ReactNode;
   trailing?: ReactNode;
@@ -15,7 +16,7 @@ export interface TextAreaProps extends Omit<InputHTMLAttributes<HTMLTextAreaElem
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(function TextArea(
   {
-    variant = "default",
+    variant,
     label,
     leading,
     trailing,
@@ -82,11 +83,11 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(function 
 });
 
 interface InputTextAreaProps extends InputHTMLAttributes<HTMLTextAreaElement> {
-  variant?: string | string[];
+  variant?: VariantNameType | VariantNameType[];
 }
 
 const InputTextArea = forwardRef<HTMLTextAreaElement, InputTextAreaProps>(function InputTextArea(
-  { variant = "default", className, children, ...rest }: InputTextAreaProps,
+  { variant, className, children, ...rest }: InputTextAreaProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();

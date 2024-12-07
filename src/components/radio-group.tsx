@@ -9,6 +9,7 @@ import React, {
 } from "react";
 import { InputError, InputHelper, InputLabel } from "@/components/input-helpers";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
+import { VariantNameType } from "@/config/variant";
 
 interface RadioGroupContextProps {
   value: unknown;
@@ -18,7 +19,7 @@ interface RadioGroupContextProps {
 const RadioGroupContext = createContext<RadioGroupContextProps>(null as never);
 
 export interface RadioGroupProps extends Omit<HTMLAttributes<HTMLDivElement>, "onChange"> {
-  variant?: string | string[];
+  variant?: VariantNameType | VariantNameType[];
   value: unknown;
   inline?: boolean;
   label?: ReactNode;
@@ -28,7 +29,7 @@ export interface RadioGroupProps extends Omit<HTMLAttributes<HTMLDivElement>, "o
 }
 
 export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(function RadioGroup(
-  { variant = "default", className, value, label, children, onChange, helper, error, inline, ...rest }: RadioGroupProps,
+  { variant, className, value, label, children, onChange, helper, error, inline, ...rest }: RadioGroupProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();
@@ -73,11 +74,11 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(function R
 });
 
 export interface RadioGroupItemProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
-  variant?: string | string[];
+  variant?: VariantNameType | VariantNameType[];
 }
 
 export const RadioGroupItem = forwardRef<HTMLButtonElement, RadioGroupItemProps>(function RadioGroupItem(
-  { variant = "default", className, onClick, value, ...rest }: RadioGroupItemProps,
+  { variant, className, onClick, value, ...rest }: RadioGroupItemProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();

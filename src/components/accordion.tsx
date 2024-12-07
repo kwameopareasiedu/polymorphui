@@ -11,6 +11,7 @@ import React, {
   useState,
 } from "react";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
+import { VariantNameType } from "@/config/variant";
 
 interface AccordionContextProps {
   values: string[];
@@ -20,7 +21,7 @@ interface AccordionContextProps {
 const AccordionContext = createContext<AccordionContextProps>(null as never);
 
 interface AccordionProps extends Omit<HTMLAttributes<HTMLDivElement>, "onChange"> {
-  variant?: string | string[];
+  variant?: VariantNameType | VariantNameType[];
   value?: string[];
   multiple?: boolean;
   defaultValue?: string[];
@@ -28,7 +29,7 @@ interface AccordionProps extends Omit<HTMLAttributes<HTMLDivElement>, "onChange"
 }
 
 export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(function Accordion(
-  { variant = "default", className, defaultValue, value, multiple, onChange, ...rest }: AccordionProps,
+  { variant, className, defaultValue, value, multiple, onChange, ...rest }: AccordionProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();
@@ -63,13 +64,13 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(function Acc
 });
 
 interface AccordionItemProps extends Omit<HTMLAttributes<HTMLDivElement>, "children"> {
-  variant?: string | string[];
+  variant?: VariantNameType | VariantNameType[];
   value: string;
   children: [ReactElement<AccordionHeaderProps>, ReactElement<AccordionPanelProps>];
 }
 
 export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(function AccordionItem(
-  { variant = "default", className, children, value, ...rest }: AccordionItemProps,
+  { variant, className, children, value, ...rest }: AccordionItemProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();
@@ -114,11 +115,11 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(func
 });
 
 interface AccordionHeaderProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: string | string[];
+  variant?: VariantNameType | VariantNameType[];
 }
 
 export const AccordionHeader = forwardRef<HTMLButtonElement, AccordionHeaderProps>(function AccordionHeader(
-  { variant = "default", className, children, ...rest }: AccordionHeaderProps,
+  { variant, className, children, ...rest }: AccordionHeaderProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();
@@ -132,11 +133,11 @@ export const AccordionHeader = forwardRef<HTMLButtonElement, AccordionHeaderProp
 });
 
 interface AccordionPanelProps extends HTMLAttributes<HTMLDivElement> {
-  variant?: string | string[];
+  variant?: VariantNameType | VariantNameType[];
 }
 
 export const AccordionPanel = forwardRef<HTMLDivElement, AccordionPanelProps>(function AccordionPanel(
-  { variant = "default", className, children, ...rest }: AccordionPanelProps,
+  { variant, className, children, ...rest }: AccordionPanelProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();

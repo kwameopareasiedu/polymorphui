@@ -1,9 +1,10 @@
 import React, { forwardRef, InputHTMLAttributes, ReactNode } from "react";
 import { InputAddon, InputError, InputHelper, InputInput, InputLabel, InputWrapper } from "@/components/input-helpers";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
+import { VariantNameType } from "@/config/variant";
 
 export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "children"> {
-  variant?: string | string[];
+  variant?: VariantNameType | VariantNameType[];
   label?: ReactNode;
   leading?: ReactNode;
   trailing?: ReactNode;
@@ -12,7 +13,7 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
-  { variant = "default", label, leading, trailing, id, className, helper, error, ...rest }: InputProps,
+  { variant, label, leading, trailing, id, className, helper, error, ...rest }: InputProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();

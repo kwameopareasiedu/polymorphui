@@ -13,7 +13,8 @@ const isProd = process.env.BUILD === "production";
 
 const componentNamePathMap = globbySync([
   "src/components/*.tsx",
-  "src/providers/*",
+  "src/hooks/*.ts",
+  "src/providers/*.tsx",
   "src/config/variant.ts",
   "src/utils.ts",
 ]).reduce((map, inputPath) => {
@@ -47,6 +48,7 @@ export default defineConfig([
       "react",
       "react/jsx-runtime",
       "react-dom",
+      "react-router-dom",
       "@/utils",
       "@/components/spinner",
       "@/components/popup",
