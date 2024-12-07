@@ -30,13 +30,12 @@ Getting started with PolymorphUI is the simplest thing ever:
    
    const variants: ComponentVariants = {
      text: {
-       default: "text-gray-600 tracking-wide",
+       replaceDefault: "text-gray-600 tracking-wide",
        heading: "text-5xl font-medium text-black",
        small: "text-sm",
        /* Other text variants (As many as you want) */
      },
      button: {
-       default: "",
        secondary: "bg-orange-500 hover:opacity-85",
        /* Other button variants (As many as you want) */
      },
@@ -52,15 +51,16 @@ Getting started with PolymorphUI is the simplest thing ever:
    );
    ```
 
+> Use the `replaceDefault` key to replace the default class names (essentially, start styling from scratch)
+
+> Use the `appendDefault` key to add class names to the default class names
+
 ## Usage
 
 ```typescript jsx
 import { Text } from "polymorphui/text";
 
-/* The "variant" prop defaults to "default" */
 <Text>Default text variant</Text>;
-
-/* From the config above, "variant" prop is now typed to "default" | "heading" | "small" */
 <Text variant="heading">Heading text variant</Text>;
 <Text variant="small">Small text variant</Text>;
 ```
@@ -89,6 +89,14 @@ PolymorphUI exports the following components:
 | `Accordion`   | A component which shows and hides sections of related content on a page   | [View docs](./docs/accordion.md)    |
 | `Pagination`  | A component which displays pagination buttons for a list of items         | [View docs](./docs/pagination.md)   |
 
+## Hooks
+
+PolymorphUI exports the following hooks:
+
+| Hook            | Description                                                | Docs                                   |
+|-----------------|------------------------------------------------------------|----------------------------------------|
+| `useQueryParam` | A hook which monitors and updates a single query parameter | [View docs](./docs/use-query-param.md) |
+
 ## Contributors
 
 - [Kwame Opare Asiedu](https://github.com/kwameopareasiedu) (Author)
@@ -97,6 +105,7 @@ PolymorphUI exports the following components:
 
 - `0.7.0`
    - Added [Pagination](./docs/pagination.md) component
+   - Added [useQueryParam](./docs/use-query-param.md) hook
    - Replaced `default` key in component variants objects with `replaceDefault` and `appendDefault` which replace and
      addon to the default class names respectively
    - Fixed `z-index` class names for [Dialog](./docs/dialog.md) and [Select](./docs/select.md) components

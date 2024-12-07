@@ -23,7 +23,7 @@ export function Example() {
 }
 ```
 
-_Extends_ `PaginationHTMLAttributes<HTMLPaginationElement>`
+_Extends_ `HTMLAttributes<HTMLDivElement>`
 
 | Props           | Description                          | Type                     | Default |
 |-----------------|--------------------------------------|--------------------------|---------|
