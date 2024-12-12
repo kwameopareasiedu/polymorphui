@@ -18,8 +18,9 @@ jobs:
           node-version: "20.11.1"
           registry-url: "https://registry.npmjs.org"
       - run: yarn install
-      - run: yarn rollup:build
+      - run: yarn build
       - run: npm publish --access public
+        working-directory: ./packages/lib
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
