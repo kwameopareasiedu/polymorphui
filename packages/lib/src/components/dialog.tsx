@@ -11,7 +11,7 @@ import React, {
 } from "react";
 import { combineRefs } from "@/utils";
 import { createPortal } from "react-dom";
-import Close from "@/assets/close.svg";
+import CloseIcon from "../assets/close.svg";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
 import { VariantNameType } from "@/config/variant";
 
@@ -168,7 +168,7 @@ export const DialogClose = forwardRef<HTMLButtonElement, DialogCloseProps>(funct
 
   return (
     <button ref={ref} type="button" className={_className} onClick={handleOnClick} {...rest}>
-      <Close />
+      <CloseIcon />
     </button>
   );
 });

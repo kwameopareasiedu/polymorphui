@@ -15,7 +15,7 @@ const componentNamePathMap = globbySync([
   "src/components/*.tsx",
   "src/hooks/*.ts",
   "src/providers/*.tsx",
-  "src/config/variant.ts",
+  "src/config/*.ts",
   "src/utils.ts",
 ]).reduce((map, inputPath) => {
   const parts = inputPath.split("/");
@@ -41,20 +41,11 @@ export default defineConfig([
         "@/components/popup": "./popup.js",
         "@/components/text": "./text.js",
         "@/components/input-helpers": "./input-helpers.js",
+        "@/providers/polymorphui-provider": "./polymorphui-provider.js",
       }),
       isProd && terser(),
     ],
-    external: [
-      "react",
-      "react/jsx-runtime",
-      "react-dom",
-      "react-router-dom",
-      "@/utils",
-      "@/components/spinner",
-      "@/components/popup",
-      "@/components/text",
-      "@/components/input-helpers",
-    ],
+    external: ["react", "react/jsx-runtime", "react-dom", "react-router-dom", /@\/.*/],
   },
   {
     /** Creates component typings files */

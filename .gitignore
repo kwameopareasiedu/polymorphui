@@ -3,9 +3,10 @@ node_modules
 build
 dist
 bin
+.turbo
 
 package-lock.json
 *.tar.gz
 *.tgz
 .env*
-.npmrc
+packages/lib/.npmrc

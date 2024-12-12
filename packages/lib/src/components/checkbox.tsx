@@ -1,5 +1,5 @@
 import React, { ButtonHTMLAttributes, forwardRef, MouseEvent, ReactNode } from "react";
-import Check from "@/assets/check.svg";
+import CheckIcon from "../assets/check.svg";
 import { InputError, InputHelper, InputLabel } from "@/components/input-helpers";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
 import { VariantNameType } from "@/config/variant";
@@ -55,7 +55,7 @@ export const Checkbox = forwardRef<HTMLButtonElement, CheckboxProps>(function Ch
           onClick={handleOnClick}
           {...rest}
           data-checked={checked}>
-          {checked && <Check {...({ className: "w-4 text-white pointer-events-none" } as object)} />}
+          {checked && <CheckIcon {...({ className: "w-4 text-white pointer-events-none" } as object)} />}
         </button>
 
         {label && rtl && <InputLabel htmlFor={id}>{label}</InputLabel>}

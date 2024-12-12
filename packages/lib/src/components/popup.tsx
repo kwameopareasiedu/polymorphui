@@ -33,8 +33,8 @@ export const Popup = ({
   renderWhenClosed,
   onChange,
 }: PopupProps) => {
-  const openTimer = useRef<NodeJS.Timeout>();
-  const closeTimer = useRef<NodeJS.Timeout>();
+  const openTimer = useRef<number>();
+  const closeTimer = useRef<number>();
   const [triggerRef, setTriggerRef] = useState<HTMLElement | null>(null);
   const [floatingRef, setFloatingRef] = useState<HTMLElement | null>(null);
   const [internalOpen, setInternalOpen] = useState(externalOpen ?? false);
