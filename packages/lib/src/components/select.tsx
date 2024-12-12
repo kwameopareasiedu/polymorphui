@@ -15,8 +15,8 @@ import React, {
 } from "react";
 import { combineRefs } from "@/utils";
 import { Popup } from "@/components/popup";
-import Dropdown from "@/assets/dropdown.svg";
-import Check from "@/assets/check.svg";
+import CheckIcon from "../assets/check.svg";
+import DropdownIcon from "../assets/dropdown.svg";
 import { InputAddon, InputError, InputHelper, InputInput, InputLabel } from "@/components/input-helpers";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
 import { VariantNameType } from "@/config/variant";
@@ -132,7 +132,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(function Select
               disabled
             />
 
-            <Dropdown {...({ className: "w-3" } as object)} />
+            <DropdownIcon {...({ className: "w-3" } as object)} />
           </SelectButton>
 
           <SelectItems style={{ minWidth: `${triggerWidth}px` }} onKeyUp={handleOnKeyUp}>
@@ -276,7 +276,7 @@ export const SelectItem = forwardRef<HTMLButtonElement, SelectItemProps>(functio
 
   return (
     <button ref={ref} type="button" className={_className} onClick={handleOnClick} {...rest}>
-      {children} {selectContext.selectedValues.includes(value) && <Check {...({ className: "w-3" } as object)} />}
+      {children} {selectContext.selectedValues.includes(value) && <CheckIcon {...({ className: "w-3" } as object)} />}
     </button>
   );
 });

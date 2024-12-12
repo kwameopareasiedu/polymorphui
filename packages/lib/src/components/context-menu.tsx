@@ -10,7 +10,7 @@ import React, {
   useState,
 } from "react";
 import { Popup } from "@/components/popup";
-import ArrowRight from "@/assets/arrow-right.svg";
+import ArrowRightIcon from "../assets/arrow-right.svg";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
 import { VariantNameType } from "@/config/variant";
 
@@ -109,7 +109,7 @@ export const ContextMenuItem = forwardRef<HTMLButtonElement, ContextMenuItemProp
       <span className="col-start-2 col-span-1">{label}</span>
       {hasItems && (
         <span className="col-start-3 col-span-1 grid place-items-center">
-          <ArrowRight {...({ className: "w-3" } as object)} />
+          <ArrowRightIcon {...({ className: "w-3" } as object)} />
         </span>
       )}
     </button>

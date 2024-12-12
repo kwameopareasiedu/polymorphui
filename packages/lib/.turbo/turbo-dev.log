@@ -1,0 +1,70 @@
+[2K[1G[1myarn run v1.22.22[22m
+[2K[1G[2m$ rollup -c -w --no-watch.clearScreen[22m
+[4mrollup v4.27.4[24m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m4.2s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[32mcreated [1mdist[22m in [1m4.3s[22m[39m
+
+[2024-12-12 11:12:28] waiting for changes...
+
+Reloading updated config...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m2.8s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[32mcreated [1mdist[22m in [1m5.5s[22m[39m
+
+[2024-12-12 11:13:27] waiting for changes...
+
+Reloading updated config...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m2.8s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[32mcreated [1mdist[22m in [1m5.2s[22m[39m
+
+[2024-12-12 11:14:46] waiting for changes...
+
+Reloading updated config...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m3s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+
+Reloading updated config...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m2.8s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+
+<--- Last few GCs --->
+
+[36317:0x2ef78540]  1206123 ms: Mark-Compact 2044.6 (2084.4) -> 2043.4 (2089.4) MB, 484.96 / 0.00 ms  (average mu = 0.403, current mu = 0.047) allocation failure; scavenge might not succeed
+[36317:0x2ef78540]  1206646 ms: Mark-Compact (reduce) 2047.4 (2089.4) -> 2046.9 (2085.7) MB, 110.36 / 0.01 ms  (+ 311.4 ms in 61 steps since start of marking, biggest step 7.5 ms, walltime since start of marking 447 ms) (average mu = 0.321, current mu = 0
+
+<--- JS stacktrace --->
+
+FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory
+----- Native stack trace -----
+
+ 1: 0xca5580 node::Abort() [/home/kwameopareasiedu/.nvm/versions/node/v20.11.1/bin/node]
+ 2: 0xb781f9  [/home/kwameopareasiedu/.nvm/versions/node/v20.11.1/bin/node]
+ 3: 0xeca4d0 v8::Utils::ReportOOMFailure(v8::internal::Isolate*, char const*, v8::OOMDetails const&) [/home/kwameopareasiedu/.nvm/versions/node/v20.11.1/bin/node]
+ 4: 0xeca7b7 v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, v8::OOMDetails const&) [/home/kwameopareasiedu/.nvm/versions/node/v20.11.1/bin/node]
+ 5: 0x10dc505  [/home/kwameopareasiedu/.nvm/versions/node/v20.11.1/bin/node]
+ 6: 0x10f4388 v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [/home/kwameopareasiedu/.nvm/versions/node/v20.11.1/bin/node]
+ 7: 0x10ca4a1 v8::internal::HeapAllocator::AllocateRawWithLightRetrySlowPath(int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment) [/home/kwameopareasiedu/.nvm/versions/node/v20.11.1/bin/node]
+ 8: 0x10cb635 v8::internal::HeapAllocator::AllocateRawWithRetryOrFailSlowPath(int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment) [/home/kwameopareasiedu/.nvm/versions/node/v20.11.1/bin/node]
+ 9: 0x10a8c86 v8::internal::Factory::NewFillerObject(int, v8::internal::AllocationAlignment, v8::internal::AllocationType, v8::internal::AllocationOrigin) [/home/kwameopareasiedu/.nvm/versions/node/v20.11.1/bin/node]
+10: 0x1503a16 v8::internal::Runtime_AllocateInYoungGeneration(int, unsigned long*, v8::internal::Isolate*) [/home/kwameopareasiedu/.nvm/versions/node/v20.11.1/bin/node]
+11: 0x7909c1ed9ef6 
+Aborted (core dumped)
+[2K[1G[31merror[39m Command failed with exit code 134.
+[2K[1G[34minfo[39m Visit [1mhttps://yarnpkg.com/en/docs/cli/run[22m for documentation about this command.

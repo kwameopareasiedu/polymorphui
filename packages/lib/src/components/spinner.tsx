@@ -1,7 +1,7 @@
 import React, { forwardRef, HTMLAttributes, ReactNode } from "react";
-import RingBg from "@/assets/ring-bg.svg";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
 import { VariantNameType } from "@/config/variant";
+import RingBgIcon from "../assets/ring-bg.svg";
 
 export interface SpinnerProps extends HTMLAttributes<HTMLSpanElement> {
   variant?: VariantNameType | VariantNameType[];
@@ -9,7 +9,7 @@ export interface SpinnerProps extends HTMLAttributes<HTMLSpanElement> {
 }
 
 export const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>(function Spinner(
-  { variant, icon = <RingBg />, className, ...rest }: SpinnerProps,
+  { variant, icon = <RingBgIcon />, className, ...rest }: SpinnerProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();
