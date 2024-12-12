@@ -103,6 +103,8 @@ PolymorphUI exports the following hooks:
 
 ## Changelog
 
+- `0.9.0`
+   - Fixed bug causing incorrect dropdown placement in [Select](./docs/select.md) component when used in a dialog
 - `0.7.0`
    - Added [Pagination](./docs/pagination.md) component
    - Added [useQueryParam](./docs/use-query-param.md) hook

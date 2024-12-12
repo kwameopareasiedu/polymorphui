@@ -299,7 +299,7 @@ export default function App() {
 
         {showDialog && (
           <Dialog onClose={() => setShowDialog(false)} dismissible>
-            <DialogContent>
+            <DialogContent size="sm">
               <DialogClose />
 
               <Text as="h1" className="!text-5xl">
@@ -316,6 +316,35 @@ export default function App() {
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, incidunt, minus? Architecto, atque
                 consequatur distinctio dolorem ea fugiat fugit illum iusto nulla quaerat, ratione repellendus similique
                 suscipit temporibus tenetur voluptatibus.
+              </Text>
+
+              <Select
+                value={multiSelectValue}
+                label="Favorite fruits"
+                leading={<BiNotepad />}
+                placeholder="Select fruits"
+                error="Error text"
+                helper="Helper text"
+                onChange={(e) => setMultiSelectValue(e.target.value)}>
+                <SelectItem value="apples">Apples</SelectItem>
+                <SelectItem value="oranges">Oranges</SelectItem>
+                <SelectItem value="grapes">Grapes</SelectItem>
+                <SelectItem value="pears">Pears</SelectItem>
+              </Select>
+
+              <Text as="h1">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, incidunt, minus? Architecto, atque
+                consequatur distinctio dolorem ea fugiat fugit illum iusto nulla quaerat, ratione repellendus similique
+                suscipit temporibus tenetur voluptatibus.
+              </Text>
+
+              <Text as="h1">
+                Ut convallis, sem sit amet interdum consectetuer, odio augue aliquam leo, nec dapibus tortor nibh sed
+                augue. Integer eu magna sit amet metus fermentum posuere. Morbi sit amet nulla sed dolor elementum
+                imperdiet. Quisque fermentum. Cum sociis natoque penatibus et magnis xdis parturient montes, nascetur
+                ridiculus mus. Pellentesque adipiscing eros ut libero. Ut condimentum mi vel tellus. Suspendisse
+                laoreet. Fusce ut est sed dolor gravida convallis. Morbi vitae ante. Vivamus ultrices luctus nunc.
+                Suspendisse et dolor. Etiam dignissim. Proin malesuada adipiscing lacus. Donec metus. Curabitur gravida
               </Text>
 
               <div className="flex justify-end">

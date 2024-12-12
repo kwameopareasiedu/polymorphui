@@ -113,13 +113,18 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(function Select
       <div className={_className}>
         {label && <InputLabel htmlFor={id}>{label}</InputLabel>}
 
+        {/* Children rendered hidden div
+        to allow them register items */}
+        <div className="hidden" hidden>
+          {children}
+        </div>
+
         <Popup
           open={isOpen}
+          offset={[0, 4]}
           openEvent="triggerClick"
           closeEvent={["triggerClick", "outsideClick"]}
           placement="bottom-start"
-          renderWhenClosed
-          offset={[0, 4]}
           onChange={setIsOpen}>
           <SelectButton ref={combineRefs(ref, buttonRef, (el) => setTriggerWidth(el?.clientWidth ?? 0))} {...rest}>
             {leading && <InputAddon>{leading}</InputAddon>}
