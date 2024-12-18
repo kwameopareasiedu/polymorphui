@@ -65,7 +65,7 @@ export const BreadcrumbItem = forwardRef(function BreadcrumbItem<C extends Eleme
   const _className = resolveClassName(
     "breadcrumbItem",
     variant,
-    "breadcrumbItem text-sm [&[href]]:text-blue-500 [&[href]]:hover:underlined",
+    "breadcrumbItem text-sm [&[href]]:text-blue-500 [&[href]]:hover:underline",
     className,
   );
 
