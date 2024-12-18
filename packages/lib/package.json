@@ -1,6 +1,6 @@
 {
   "name": "polymorphui",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "React UI library which can take on many appearances",
   "author": "Kwame Opare Asiedu",
   "license": "MIT",
@@ -10,6 +10,7 @@
   "readme": "https://github.com/kwameopareasiedu/polymorphui?tab=readme-ov-file#polymorphui",
   "files": [
     "dist",
+    "README.md",
     "package.json",
     "yarn.lock"
   ],
@@ -21,7 +22,7 @@
   },
   "scripts": {
     "dev": "rollup -c -w --no-watch.clearScreen",
-    "build": "rm -rf dist && rollup -c --environment BUILD:production"
+    "build": "rm -rf dist && rollup -c --environment BUILD:production && cp ../../README.md README.md"
   },
   "devDependencies": {
     "@eslint/js": "^9.12.0",
