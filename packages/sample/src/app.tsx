@@ -181,10 +181,13 @@ export default function App() {
           error="Error text"
           helper="Helper text"
           onChange={(e) => setSelectValue(e.target.value)}>
-          <SelectItem value="apples">Apples</SelectItem>
-          <SelectItem value="oranges">Oranges</SelectItem>
-          <SelectItem value="grapes">Grapes</SelectItem>
-          <SelectItem value="pears">Pears</SelectItem>
+          <SelectItem value="">None</SelectItem>
+
+          {["Apples", "Oranges", "Grapes", "Pears"].map((fruit) => (
+            <SelectItem key={fruit} value={fruit}>
+              {fruit}
+            </SelectItem>
+          ))}
         </Select>
 
         <Select
@@ -329,10 +332,13 @@ export default function App() {
                 error="Error text"
                 helper="Helper text"
                 onChange={(e) => setMultiSelectValue(e.target.value)}>
-                <SelectItem value="apples">Apples</SelectItem>
-                <SelectItem value="oranges">Oranges</SelectItem>
-                <SelectItem value="grapes">Grapes</SelectItem>
-                <SelectItem value="pears">Pears</SelectItem>
+                <SelectItem value="">None</SelectItem>
+
+                {["apples", "oranges", "grapes", "pears"].map((fruit) => (
+                  <SelectItem key={fruit} value={fruit}>
+                    {fruit}
+                  </SelectItem>
+                ))}
               </Select>
 
               <Text as="h1">

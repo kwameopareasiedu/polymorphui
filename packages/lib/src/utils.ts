@@ -12,3 +12,7 @@ export function combineRefs<T>(...refs: (MutableRefObject<T | null> | ((e: T | n
     }
   };
 }
+
+export function isDefined(val?: unknown) {
+  return ![undefined, null].includes(val as never);
+}

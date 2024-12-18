@@ -6,14 +6,13 @@ import React, {
   HTMLAttributes,
   KeyboardEvent,
   MouseEvent,
-  ReactElement,
   ReactNode,
   useContext,
   useEffect,
   useRef,
   useState,
 } from "react";
-import { combineRefs } from "@/utils";
+import { combineRefs, isDefined } from "@/utils";
 import { Popup } from "@/components/popup";
 import CheckIcon from "../assets/check.svg";
 import DropdownIcon from "../assets/dropdown.svg";
@@ -42,7 +41,7 @@ export interface SelectProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement
   error?: ReactNode;
   placeholder?: string;
   value?: string | string[];
-  children?: ReactElement<SelectItemProps> | ReactElement<SelectItemProps>[];
+  children?: ReactNode;
   onChange?: (e: { target: { value: string & string[] } }) => void;
 }
 
@@ -72,7 +71,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(function Select
   const _className = resolveClassName("select", variant, "select  w-full flex flex-col gap-0.5", undefined, className);
 
   const isMultiSelect = Array.isArray(value);
-  const selectedValues = Array.isArray(value) ? value : value ? [value] : [];
+  const selectedValues = Array.isArray(value) ? value : isDefined(value) ? [value] : [];
   const selectedLabels = selectedValues.map((val) => items.find((op) => op.value === val)?.label ?? "");
 
   const registerItem = (item: SelectItemDataType) => {

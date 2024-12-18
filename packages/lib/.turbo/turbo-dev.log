@@ -1311,3 +1311,43 @@ src/components/breadcrumbs.tsx
 [32mcreated [1mdist[22m in [1m2.8s[22m[39m
 
 [2024-12-18 01:23:00] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m1.7s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[32mcreated [1mdist[22m in [1m2.7s[22m[39m
+
+[2024-12-18 01:23:21] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m1.5s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[32mcreated [1mdist[22m in [1m2.9s[22m[39m
+
+[2024-12-18 01:23:32] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m1.8s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[32mcreated [1mdist[22m in [1m3.1s[22m[39m
+
+[2024-12-18 01:24:54] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m1.9s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[32mcreated [1mdist[22m in [1m5.4s[22m[39m
+
+[2024-12-18 01:29:55] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m843ms[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[32mcreated [1mdist[22m in [1m2.8s[22m[39m
+
+[2024-12-18 01:29:59] waiting for changes...

@@ -33,6 +33,7 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(function R
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();
+
   const _className = resolveClassName(
     "radioGroup",
     variant,
