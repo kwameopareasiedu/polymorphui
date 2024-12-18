@@ -21,6 +21,9 @@ import { TabItem, TabItems, TabPanel, Tabs } from "polymorphui/tabs";
 import { Accordion, AccordionHeader, AccordionItem, AccordionPanel } from "polymorphui/accordion";
 import { Badge } from "polymorphui/badge";
 import { Pagination } from "polymorphui/pagination";
+import { BreadcrumbItem, Breadcrumbs } from "polymorphui/breadcrumbs";
+import { Link } from "react-router-dom";
+import { FiChevronsRight } from "react-icons/fi";
 
 export default function App() {
   const [popupOpen, setPopupOpen] = useState(false);
@@ -558,6 +561,24 @@ export default function App() {
           <Text>Interactive pagination</Text>
           <Pagination page={page} pageSize={50} totalCount={1000} onPageChange={setPage} />
         </div>
+      </Showcase>
+
+      <Showcase title="Breadcrumbs">
+        <Breadcrumbs>
+          <BreadcrumbItem as={Link} to="/main">
+            Main
+          </BreadcrumbItem>
+          <BreadcrumbItem>Section</BreadcrumbItem>
+          <BreadcrumbItem>Sub section</BreadcrumbItem>
+        </Breadcrumbs>
+
+        <Breadcrumbs className="mt-4" separator={<FiChevronsRight />}>
+          <BreadcrumbItem as={Link} to="/main">
+            Main
+          </BreadcrumbItem>
+          <BreadcrumbItem>Section</BreadcrumbItem>
+          <BreadcrumbItem>Sub section</BreadcrumbItem>
+        </Breadcrumbs>
       </Showcase>
     </main>
   );

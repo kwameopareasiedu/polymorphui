@@ -1,43 +1,1231 @@
 [2K[1G[1myarn run v1.22.22[22m
 [2K[1G[2m$ rollup -c -w --no-watch.clearScreen[22m
 [4mrollup v4.27.4[24m
-[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (48:61): @rollup/plugin-typescript TS2314: Generic type 'BreadcrumbItemProps<T>' requires 1 type argument(s).[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:48:61[22m
+[90m
+[7m48[0m export const BreadcrumbItem = forwardRef<HTMLAnchorElement, BreadcrumbItemProps>(function BreadcrumbItem(
+[7m  [0m [91m                                                            ~~~~~~~~~~~~~~~~~~~[0m
+[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (49:50): @rollup/plugin-typescript TS2314: Generic type 'BreadcrumbItemProps<T>' requires 1 type argument(s).[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:49:50[22m
+[90m
+[7m49[0m   { as, variant, className, children, ...rest }: BreadcrumbItemProps,
+[7m  [0m [91m                                                 ~~~~~~~~~~~~~~~~~~~[0m
+[39m
 [1m[33m(!) Generated an empty chunk[39m[22m
 "variant"
-[32mcreated [1mdist[22m in [1m4.6s[22m[39m
-[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
-[32mcreated [1mdist[22m in [1m4s[22m[39m
+[32mcreated [1mdist[22m in [1m4.5s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+src/components/breadcrumbs.tsx(48,61): error TS2314: Generic type 'BreadcrumbItemProps<T>' requires 1 type argument(s).
+src/components/breadcrumbs.tsx(49,50): error TS2314: Generic type 'BreadcrumbItemProps<T>' requires 1 type argument(s).
 
-[2024-12-12 11:41:05] waiting for changes...
-[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (48:61): @rollup/plugin-typescript TS2314: Generic type 'BreadcrumbItemProps<T>' requires 1 type argument(s).[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:48:61[22m
+[90m
+[7m48[0m export const BreadcrumbItem = forwardRef<HTMLAnchorElement, BreadcrumbItemProps>(function BreadcrumbItem(
+[7m  [0m [91m                                                            ~~~~~~~~~~~~~~~~~~~[0m
+[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (49:50): @rollup/plugin-typescript TS2314: Generic type 'BreadcrumbItemProps<T>' requires 1 type argument(s).[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:49:50[22m
+[90m
+[7m49[0m   { as, variant, className, children, ...rest }: BreadcrumbItemProps,
+[7m  [0m [91m                                                 ~~~~~~~~~~~~~~~~~~~[0m
+[39m
+[1m[31m[!] [1m(plugin dts) RollupError: [plugin dts] src/components/breadcrumbs.tsx: Failed to compile. Check the logs above.[22m[1m[39m[22m
+src/components/breadcrumbs.tsx
+[2m    at getRollupError (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:285:41)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:281:42)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:902:32)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:20848:42)
+    at generateDtsFromTs (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1834:30)
+    at Object.transform (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1843:38)
+    at /home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:1087:40[22m
+
+
+
+[2024-12-17 23:11:06] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (48:61): @rollup/plugin-typescript TS2314: Generic type 'BreadcrumbItemProps<T>' requires 1 type argument(s).[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:48:61[22m
+[90m
+[7m48[0m export const BreadcrumbItem = forwardRef<HTMLAnchorElement, BreadcrumbItemProps>(function BreadcrumbItem<
+[7m  [0m [91m                                                            ~~~~~~~~~~~~~~~~~~~[0m
+[39m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:48:61[22m
+[90m
+[7m48[0m export const BreadcrumbItem = forwardRef<HTMLAnchorElement, BreadcrumbItemProps>(function BreadcrumbItem<
+[7m  [0m [91m                                                            ~~~~~~~~~~~~~~~~~~~[0m
+[39m
 [1m[33m(!) Generated an empty chunk[39m[22m
 "variant"
-[32mcreated [1mdist[22m in [1m1.5s[22m[39m
-[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
-[32mcreated [1mdist[22m in [1m3.6s[22m[39m
+[32mcreated [1mdist[22m in [1m1.8s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+src/components/breadcrumbs.tsx(48,61): error TS2314: Generic type 'BreadcrumbItemProps<T>' requires 1 type argument(s).
 
-[2024-12-12 11:49:25] waiting for changes...
-[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[31m[!] [1m(plugin dts) RollupError: [plugin dts] src/components/breadcrumbs.tsx: Failed to compile. Check the logs above.[22m[1m[39m[22m
+src/components/breadcrumbs.tsx
+[2m    at getRollupError (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:285:41)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:281:42)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:902:32)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:20848:42)
+    at generateDtsFromTs (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1834:30)
+    at Object.transform (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1843:38)
+    at /home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:1087:40[22m
+
+
+
+[2024-12-17 23:12:02] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
 [1m[33m(!) Generated an empty chunk[39m[22m
 "variant"
-[32mcreated [1mdist[22m in [1m1.5s[22m[39m
-[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
-[32mcreated [1mdist[22m in [1m3.6s[22m[39m
+[32mcreated [1mdist[22m in [1m1.1s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[32mcreated [1mdist[22m in [1m3.9s[22m[39m
 
-[2024-12-12 11:58:29] waiting for changes...
-[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[2024-12-17 23:12:49] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m862ms[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[32mcreated [1mdist[22m in [1m2.2s[22m[39m
+
+[2024-12-17 23:12:52] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (46:61): @rollup/plugin-typescript TS2314: Generic type 'BreadcrumbItemProps<T>' requires 1 type argument(s).[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:46:61[22m
+[90m
+[7m46[0m export const BreadcrumbItem = forwardRef<HTMLAnchorElement, BreadcrumbItemProps>(function BreadcrumbItem(
+[7m  [0m [91m                                                            ~~~~~~~~~~~~~~~~~~~[0m
+[39m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:46:61[22m
+[90m
+[7m46[0m export const BreadcrumbItem = forwardRef<HTMLAnchorElement, BreadcrumbItemProps>(function BreadcrumbItem(
+[7m  [0m [91m                                                            ~~~~~~~~~~~~~~~~~~~[0m
+[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (47:50): @rollup/plugin-typescript TS2314: Generic type 'BreadcrumbItemProps<T>' requires 1 type argument(s).[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:47:50[22m
+[90m
+[7m47[0m   { as, variant, className, children, ...rest }: BreadcrumbItemProps,
+[7m  [0m [91m                                                 ~~~~~~~~~~~~~~~~~~~[0m
+[39m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:47:50[22m
+[90m
+[7m47[0m   { as, variant, className, children, ...rest }: BreadcrumbItemProps,
+[7m  [0m [91m                                                 ~~~~~~~~~~~~~~~~~~~[0m
+[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m1s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+src/components/breadcrumbs.tsx(46,61): error TS2314: Generic type 'BreadcrumbItemProps<T>' requires 1 type argument(s).
+src/components/breadcrumbs.tsx(47,50): error TS2314: Generic type 'BreadcrumbItemProps<T>' requires 1 type argument(s).
+
+[1m[31m[!] [1m(plugin dts) RollupError: [plugin dts] src/components/breadcrumbs.tsx: Failed to compile. Check the logs above.[22m[1m[39m[22m
+src/components/breadcrumbs.tsx
+[2m    at getRollupError (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:285:41)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:281:42)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:902:32)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:20848:42)
+    at generateDtsFromTs (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1834:30)
+    at Object.transform (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1843:38)
+    at /home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:1087:40[22m
+
+
+
+[2024-12-17 23:14:15] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
 [1m[33m(!) Generated an empty chunk[39m[22m
 "variant"
 [32mcreated [1mdist[22m in [1m1.6s[22m[39m
-[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
-[32mcreated [1mdist[22m in [1m3.8s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[32mcreated [1mdist[22m in [1m4.3s[22m[39m
 
-[2024-12-12 11:59:49] waiting for changes...
-[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[2024-12-17 23:15:53] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m1.4s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[32mcreated [1mdist[22m in [1m3.7s[22m[39m
+
+[2024-12-17 23:16:06] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m1.5s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[32mcreated [1mdist[22m in [1m2.9s[22m[39m
+
+[2024-12-17 23:16:13] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m3.1s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[32mcreated [1mdist[22m in [1m4.5s[22m[39m
+
+[2024-12-17 23:41:13] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (47:35): @rollup/plugin-typescript TS1005: '>' expected.[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:47:35[22m
+[90m
+[7m47[0m   &Omit<ComponentPropsWithRef<any>;
+[7m  [0m [91m                                  ~[0m
+[39m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:47:35[22m
+[90m
+[7m47[0m   &Omit<ComponentPropsWithRef<any>;
+[7m  [0m [91m                                  ~[0m
+[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m1.2s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+src/components/breadcrumbs.tsx(47,35): error TS1005: '>' expected.
+src/components/breadcrumbs.tsx(47,4): error TS2314: Generic type 'Omit' requires 2 type argument(s).
+
+[1m[31m[!] [1m(plugin dts) RollupError: [plugin dts] src/components/breadcrumbs.tsx: Failed to compile. Check the logs above.[22m[1m[39m[22m
+src/components/breadcrumbs.tsx
+[2m    at getRollupError (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:285:41)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:281:42)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:902:32)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:20848:42)
+    at generateDtsFromTs (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1834:30)
+    at Object.transform (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1843:38)
+    at /home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:1087:40[22m
+
+
+
+[2024-12-17 23:41:28] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (52:61): @rollup/plugin-typescript TS2314: Generic type 'Props' requires 1 type argument(s).[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:52:61[22m
+[90m
+[7m52[0m export const BreadcrumbItem = forwardRef<HTMLAnchorElement, Props>(function BreadcrumbItem(
+[7m  [0m [91m                                                            ~~~~~[0m
+[39m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:52:61[22m
+[90m
+[7m52[0m export const BreadcrumbItem = forwardRef<HTMLAnchorElement, Props>(function BreadcrumbItem(
+[7m  [0m [91m                                                            ~~~~~[0m
+[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (53:50): @rollup/plugin-typescript TS2314: Generic type 'Props' requires 1 type argument(s).[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:53:50[22m
+[90m
+[7m53[0m   { as, variant, className, children, ...rest }: Props,
+[7m  [0m [91m                                                 ~~~~~[0m
+[39m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:53:50[22m
+[90m
+[7m53[0m   { as, variant, className, children, ...rest }: Props,
+[7m  [0m [91m                                                 ~~~~~[0m
+[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m1.4s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+src/components/breadcrumbs.tsx(52,61): error TS2314: Generic type 'Props' requires 1 type argument(s).
+src/components/breadcrumbs.tsx(53,50): error TS2314: Generic type 'Props' requires 1 type argument(s).
+
+[1m[31m[!] [1m(plugin dts) RollupError: [plugin dts] src/components/breadcrumbs.tsx: Failed to compile. Check the logs above.[22m[1m[39m[22m
+src/components/breadcrumbs.tsx
+[2m    at getRollupError (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:285:41)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:281:42)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:902:32)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:20848:42)
+    at generateDtsFromTs (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1834:30)
+    at Object.transform (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1843:38)
+    at /home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:1087:40[22m
+
+
+
+[2024-12-17 23:42:18] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m1.2s[22m[39m
+
+[2024-12-17 23:42:19] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m1s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[32mcreated [1mdist[22m in [1m4.6s[22m[39m
+
+[2024-12-17 23:43:22] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m2.4s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[32mcreated [1mdist[22m in [1m4.2s[22m[39m
+
+[2024-12-17 23:45:51] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m4s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[32mcreated [1mdist[22m in [1m3.9s[22m[39m
+
+[2024-12-17 23:47:32] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m2.4s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[32mcreated [1mdist[22m in [1m4.3s[22m[39m
+
+[2024-12-17 23:48:08] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m2.3s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[32mcreated [1mdist[22m in [1m3.9s[22m[39m
+
+[2024-12-17 23:48:44] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m3.4s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[32mcreated [1mdist[22m in [1m4.3s[22m[39m
+
+[2024-12-18 00:01:45] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m2.3s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[32mcreated [1mdist[22m in [1m4s[22m[39m
+
+[2024-12-18 00:02:12] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m1.2s[22m[39m
+
+[2024-12-18 00:02:13] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m2.4s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[32mcreated [1mdist[22m in [1m4.4s[22m[39m
+
+[2024-12-18 00:03:50] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m2.5s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[32mcreated [1mdist[22m in [1m4.2s[22m[39m
+
+[2024-12-18 00:06:02] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (49:51): @rollup/plugin-typescript TS2345: Argument of type '<C extends ElementType>({ as, variant, className, children, ...rest }: PolymorphicProps<C, BreadcrumbItemProps<C>>, ref: ComponentPropsWithRef<C>["ref"]) => JSX.Element' is not assignable to parameter of type 'ForwardRefRenderFunction<unknown, Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">>'.
+  Types of parameters '__0' and 'props' are incompatible.
+    Type 'Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">' is not assignable to type 'PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>'.
+      Property 'children' is missing in type 'Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">' but required in type 'BreadcrumbItemProps<ElementType>'.[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:49:51[22m
+[90m
+[7m49[0m export const BreadcrumbItem = forwardRef(function BreadcrumbItem<C extends ElementType>(
+[7m  [0m [91m                                                  ~~~~~~~~~~~~~~[0m
+
+  [96msrc/components/breadcrumbs.tsx[0m:[93m44[0m:[93m3[0m
+    [7m44[0m   children: ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[39m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:49:51[22m
+[90m
+[7m49[0m export const BreadcrumbItem = forwardRef(function BreadcrumbItem<C extends ElementType>(
+[7m  [0m [91m                                                  ~~~~~~~~~~~~~~[0m
+
+  [96msrc/components/breadcrumbs.tsx[0m:[93m44[0m:[93m3[0m
+    [7m44[0m   children: ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m2.3s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+src/components/breadcrumbs.tsx(49,51): error TS2345: Argument of type '<C extends ElementType>({ as, variant, className, children, ...rest }: PolymorphicProps<C, BreadcrumbItemProps<C>>, ref: ComponentPropsWithRef<C>["ref"]) => JSX.Element' is not assignable to parameter of type 'ForwardRefRenderFunction<unknown, Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">>'.
+  Types of parameters '__0' and 'props' are incompatible.
+    Type 'Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">' is not assignable to type 'PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>'.
+      Property 'children' is missing in type 'Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">' but required in type 'BreadcrumbItemProps<ElementType>'.
+
+[1m[31m[!] [1m(plugin dts) RollupError: [plugin dts] src/components/breadcrumbs.tsx: Failed to compile. Check the logs above.[22m[1m[39m[22m
+src/components/breadcrumbs.tsx
+[2m    at getRollupError (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:285:41)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:281:42)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:902:32)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:20848:42)
+    at generateDtsFromTs (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1834:30)
+    at Object.transform (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1843:38)
+    at /home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:1087:40[22m
+
+
+
+[2024-12-18 00:09:42] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (50:51): @rollup/plugin-typescript TS2345: Argument of type '<C extends ElementType>({ as, variant, className, children, ...rest }: PolymorphicProps<C, BreadcrumbItemProps<C>>, ref: ComponentPropsWithRef<C>["ref"]) => JSX.Element' is not assignable to parameter of type 'ForwardRefRenderFunction<unknown, Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">>'.
+  Types of parameters '__0' and 'props' are incompatible.
+    Type 'Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">' is not assignable to type 'PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>'.
+      Property 'children' is missing in type 'Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">' but required in type 'BreadcrumbItemProps<ElementType>'.[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:50:51[22m
+[90m
+[7m50[0m export const BreadcrumbItem = forwardRef(function BreadcrumbItem<C extends ElementType>(
+[7m  [0m [91m                                                  ~~~~~~~~~~~~~~[0m
+
+  [96msrc/components/breadcrumbs.tsx[0m:[93m44[0m:[93m3[0m
+    [7m44[0m   children: ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[39m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:50:51[22m
+[90m
+[7m50[0m export const BreadcrumbItem = forwardRef(function BreadcrumbItem<C extends ElementType>(
+[7m  [0m [91m                                                  ~~~~~~~~~~~~~~[0m
+
+  [96msrc/components/breadcrumbs.tsx[0m:[93m44[0m:[93m3[0m
+    [7m44[0m   children: ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m2.3s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+src/components/breadcrumbs.tsx(50,51): error TS2345: Argument of type '<C extends ElementType>({ as, variant, className, children, ...rest }: PolymorphicProps<C, BreadcrumbItemProps<C>>, ref: ComponentPropsWithRef<C>["ref"]) => JSX.Element' is not assignable to parameter of type 'ForwardRefRenderFunction<unknown, Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">>'.
+  Types of parameters '__0' and 'props' are incompatible.
+    Type 'Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">' is not assignable to type 'PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>'.
+      Property 'children' is missing in type 'Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">' but required in type 'BreadcrumbItemProps<ElementType>'.
+
+[1m[31m[!] [1m(plugin dts) RollupError: [plugin dts] src/components/breadcrumbs.tsx: Failed to compile. Check the logs above.[22m[1m[39m[22m
+src/components/breadcrumbs.tsx
+[2m    at getRollupError (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:285:41)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:281:42)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:902:32)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:20848:42)
+    at generateDtsFromTs (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1834:30)
+    at Object.transform (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1843:38)
+    at /home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:1087:40[22m
+
+
+
+[2024-12-18 00:13:18] waiting for changes...
+
+[2024-12-18 00:13:18] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (50:51): @rollup/plugin-typescript TS2345: Argument of type '<C extends ElementType = "a">({ as, variant, className, children, ...rest }: PolymorphicProps<C, BreadcrumbItemProps<C>>, ref: ComponentPropsWithRef<C>["ref"]) => JSX.Element' is not assignable to parameter of type 'ForwardRefRenderFunction<unknown, Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">>'.
+  Types of parameters 'ref' and 'ref' are incompatible.
+    Type 'ForwardedRef<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+      Type 'MutableRefObject<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+        Type 'MutableRefObject<unknown>' is not assignable to type 'RefObject<HTMLAnchorElement>'.
+          Types of property 'current' are incompatible.
+            Type 'unknown' is not assignable to type 'HTMLAnchorElement | null'.[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:50:51[22m
+[90m
+[7m50[0m export const BreadcrumbItem = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m                                                  ~~~~~~~~~~~~~~[0m
+[39m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:50:51[22m
+[90m
+[7m50[0m export const BreadcrumbItem = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m                                                  ~~~~~~~~~~~~~~[0m
+[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m2.1s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+src/components/breadcrumbs.tsx(50,51): error TS2345: Argument of type '<C extends ElementType = "a">({ as, variant, className, children, ...rest }: PolymorphicProps<C, BreadcrumbItemProps<C>>, ref: ComponentPropsWithRef<C>["ref"]) => JSX.Element' is not assignable to parameter of type 'ForwardRefRenderFunction<unknown, Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">>'.
+  Types of parameters 'ref' and 'ref' are incompatible.
+    Type 'ForwardedRef<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+      Type 'MutableRefObject<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+        Type 'MutableRefObject<unknown>' is not assignable to type 'RefObject<HTMLAnchorElement>'.
+          Types of property 'current' are incompatible.
+            Type 'unknown' is not assignable to type 'HTMLAnchorElement | null'.
+
+[1m[31m[!] [1m(plugin dts) RollupError: [plugin dts] src/components/breadcrumbs.tsx: Failed to compile. Check the logs above.[22m[1m[39m[22m
+src/components/breadcrumbs.tsx
+[2m    at getRollupError (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:285:41)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:281:42)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:902:32)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:20848:42)
+    at generateDtsFromTs (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1834:30)
+    at Object.transform (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1843:38)
+    at /home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:1087:40[22m
+
+
+
+[2024-12-18 00:15:07] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (49:51): @rollup/plugin-typescript TS2345: Argument of type '<C extends ElementType = "a">({ as, variant, className, children, ...rest }: PolymorphicProps<C, BreadcrumbItemProps<C>>, ref: ComponentPropsWithRef<C>["ref"]) => JSX.Element' is not assignable to parameter of type 'ForwardRefRenderFunction<unknown, Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">>'.
+  Types of parameters '__0' and 'props' are incompatible.
+    Type 'Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">' is not assignable to type 'PolymorphicProps<"a", BreadcrumbItemProps<"a">>'.
+      Property 'children' is missing in type 'Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">' but required in type 'BreadcrumbItemProps<"a">'.[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:49:51[22m
+[90m
+[7m49[0m export const BreadcrumbItem = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m                                                  ~~~~~~~~~~~~~~[0m
+
+  [96msrc/components/breadcrumbs.tsx[0m:[93m44[0m:[93m3[0m
+    [7m44[0m   children: ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[39m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:49:51[22m
+[90m
+[7m49[0m export const BreadcrumbItem = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m                                                  ~~~~~~~~~~~~~~[0m
+
+  [96msrc/components/breadcrumbs.tsx[0m:[93m44[0m:[93m3[0m
+    [7m44[0m   children: ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m2.3s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+src/components/breadcrumbs.tsx(49,51): error TS2345: Argument of type '<C extends ElementType = "a">({ as, variant, className, children, ...rest }: PolymorphicProps<C, BreadcrumbItemProps<C>>, ref: ComponentPropsWithRef<C>["ref"]) => JSX.Element' is not assignable to parameter of type 'ForwardRefRenderFunction<unknown, Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">>'.
+  Types of parameters '__0' and 'props' are incompatible.
+    Type 'Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">' is not assignable to type 'PolymorphicProps<"a", BreadcrumbItemProps<"a">>'.
+      Property 'children' is missing in type 'Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">' but required in type 'BreadcrumbItemProps<"a">'.
+
+[1m[31m[!] [1m(plugin dts) RollupError: [plugin dts] src/components/breadcrumbs.tsx: Failed to compile. Check the logs above.[22m[1m[39m[22m
+src/components/breadcrumbs.tsx
+[2m    at getRollupError (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:285:41)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:281:42)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:902:32)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:20848:42)
+    at generateDtsFromTs (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1834:30)
+    at Object.transform (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1843:38)
+    at /home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:1087:40[22m
+
+
+
+[2024-12-18 00:17:19] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (60:51): @rollup/plugin-typescript TS2345: Argument of type '<C extends ElementType>({ as, variant, className, children, ...rest }: PolymorphicProps<C, BreadcrumbItemProps<C>>, ref: ComponentPropsWithRef<C>["ref"]) => JSX.Element' is not assignable to parameter of type 'ForwardRefRenderFunction<unknown, Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">>'.
+  Types of parameters '__0' and 'props' are incompatible.
+    Type 'Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">' is not assignable to type 'PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>'.
+      Property 'children' is missing in type 'Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">' but required in type 'BreadcrumbItemProps<ElementType>'.[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:60:51[22m
+[90m
+[7m60[0m export const BreadcrumbItem = forwardRef(function BreadcrumbItem<C extends ElementType>(
+[7m  [0m [91m                                                  ~~~~~~~~~~~~~~[0m
+
+  [96msrc/components/breadcrumbs.tsx[0m:[93m55[0m:[93m3[0m
+    [7m55[0m   children: ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[39m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:60:51[22m
+[90m
+[7m60[0m export const BreadcrumbItem = forwardRef(function BreadcrumbItem<C extends ElementType>(
+[7m  [0m [91m                                                  ~~~~~~~~~~~~~~[0m
+
+  [96msrc/components/breadcrumbs.tsx[0m:[93m55[0m:[93m3[0m
+    [7m55[0m   children: ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m2.4s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+src/components/breadcrumbs.tsx(60,51): error TS2345: Argument of type '<C extends ElementType>({ as, variant, className, children, ...rest }: PolymorphicProps<C, BreadcrumbItemProps<C>>, ref: ComponentPropsWithRef<C>["ref"]) => JSX.Element' is not assignable to parameter of type 'ForwardRefRenderFunction<unknown, Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">>'.
+  Types of parameters '__0' and 'props' are incompatible.
+    Type 'Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">' is not assignable to type 'PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>'.
+      Property 'children' is missing in type 'Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">' but required in type 'BreadcrumbItemProps<ElementType>'.
+
+[1m[31m[!] [1m(plugin dts) RollupError: [plugin dts] src/components/breadcrumbs.tsx: Failed to compile. Check the logs above.[22m[1m[39m[22m
+src/components/breadcrumbs.tsx
+[2m    at getRollupError (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:285:41)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:281:42)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:902:32)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:20848:42)
+    at generateDtsFromTs (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1834:30)
+    at Object.transform (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1843:38)
+    at /home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:1087:40[22m
+
+
+
+[2024-12-18 00:22:40] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m2.4s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[32mcreated [1mdist[22m in [1m4.2s[22m[39m
+
+[2024-12-18 00:24:20] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m2.9s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[32mcreated [1mdist[22m in [1m3.6s[22m[39m
+
+[2024-12-18 00:29:38] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m2.6s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[32mcreated [1mdist[22m in [1m6s[22m[39m
+
+[2024-12-18 00:32:05] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m2.5s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[32mcreated [1mdist[22m in [1m3.9s[22m[39m
+
+[2024-12-18 00:33:12] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m2.6s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[32mcreated [1mdist[22m in [1m4.4s[22m[39m
+
+[2024-12-18 00:37:28] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (62:51): @rollup/plugin-typescript TS2345: Argument of type '<C extends ElementType = "a">({ as, variant, className, children, ...rest }: PolymorphicProps<C, BreadcrumbItemProps<C>>, ref: ComponentPropsWithRef<C>["ref"]) => JSX.Element' is not assignable to parameter of type 'ForwardRefRenderFunction<unknown, Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">>'.
+  Types of parameters 'ref' and 'ref' are incompatible.
+    Type 'ForwardedRef<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+      Type 'MutableRefObject<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+        Type 'MutableRefObject<unknown>' is not assignable to type 'RefObject<HTMLAnchorElement>'.
+          Types of property 'current' are incompatible.
+            Type 'unknown' is not assignable to type 'HTMLAnchorElement | null'.[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:62:51[22m
+[90m
+[7m62[0m export const BreadcrumbItem = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m                                                  ~~~~~~~~~~~~~~[0m
+[39m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:62:51[22m
+[90m
+[7m62[0m export const BreadcrumbItem = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m                                                  ~~~~~~~~~~~~~~[0m
+[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m10.8s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+src/components/breadcrumbs.tsx(62,51): error TS2345: Argument of type '<C extends ElementType = "a">({ as, variant, className, children, ...rest }: PolymorphicProps<C, BreadcrumbItemProps<C>>, ref: ComponentPropsWithRef<C>["ref"]) => JSX.Element' is not assignable to parameter of type 'ForwardRefRenderFunction<unknown, Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">>'.
+  Types of parameters 'ref' and 'ref' are incompatible.
+    Type 'ForwardedRef<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+      Type 'MutableRefObject<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+        Type 'MutableRefObject<unknown>' is not assignable to type 'RefObject<HTMLAnchorElement>'.
+          Types of property 'current' are incompatible.
+            Type 'unknown' is not assignable to type 'HTMLAnchorElement | null'.
+
+[1m[31m[!] [1m(plugin dts) RollupError: [plugin dts] src/components/breadcrumbs.tsx: Failed to compile. Check the logs above.[22m[1m[39m[22m
+src/components/breadcrumbs.tsx
+[2m    at getRollupError (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:285:41)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:281:42)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:902:32)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:20848:42)
+    at generateDtsFromTs (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1834:30)
+    at Object.transform (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1843:38)
+    at /home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:1087:40[22m
+
+
+
+[2024-12-18 00:46:49] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m2.5s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[32mcreated [1mdist[22m in [1m4.2s[22m[39m
+
+[2024-12-18 00:48:13] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m2.2s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[32mcreated [1mdist[22m in [1m4.2s[22m[39m
+
+[2024-12-18 00:48:43] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (62:51): @rollup/plugin-typescript TS2345: Argument of type '<C extends ElementType = "a">({ as, variant, className, children, ...rest }: PolymorphicProps<C, BreadcrumbItemProps<C>>, ref: ComponentPropsWithRef<C>["ref"]) => JSX.Element' is not assignable to parameter of type 'ForwardRefRenderFunction<unknown, Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">>'.
+  Types of parameters 'ref' and 'ref' are incompatible.
+    Type 'ForwardedRef<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+      Type 'MutableRefObject<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+        Type 'MutableRefObject<unknown>' is not assignable to type 'RefObject<HTMLAnchorElement>'.
+          Types of property 'current' are incompatible.
+            Type 'unknown' is not assignable to type 'HTMLAnchorElement | null'.[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:62:51[22m
+[90m
+[7m62[0m export const BreadcrumbItem = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m                                                  ~~~~~~~~~~~~~~[0m
+[39m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:62:51[22m
+[90m
+[7m62[0m export const BreadcrumbItem = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m                                                  ~~~~~~~~~~~~~~[0m
+[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m2.4s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+src/components/breadcrumbs.tsx(62,51): error TS2345: Argument of type '<C extends ElementType = "a">({ as, variant, className, children, ...rest }: PolymorphicProps<C, BreadcrumbItemProps<C>>, ref: ComponentPropsWithRef<C>["ref"]) => JSX.Element' is not assignable to parameter of type 'ForwardRefRenderFunction<unknown, Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">>'.
+  Types of parameters 'ref' and 'ref' are incompatible.
+    Type 'ForwardedRef<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+      Type 'MutableRefObject<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+        Type 'MutableRefObject<unknown>' is not assignable to type 'RefObject<HTMLAnchorElement>'.
+          Types of property 'current' are incompatible.
+            Type 'unknown' is not assignable to type 'HTMLAnchorElement | null'.
+
+[1m[31m[!] [1m(plugin dts) RollupError: [plugin dts] src/components/breadcrumbs.tsx: Failed to compile. Check the logs above.[22m[1m[39m[22m
+src/components/breadcrumbs.tsx
+[2m    at getRollupError (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:285:41)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:281:42)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:902:32)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:20848:42)
+    at generateDtsFromTs (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1834:30)
+    at Object.transform (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1843:38)
+    at /home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:1087:40[22m
+
+
+
+[2024-12-18 00:50:26] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (62:69): @rollup/plugin-typescript TS2304: Cannot find name 'TextProps'.[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:62:69[22m
+[90m
+[7m62[0m type BreadcrumbItem = <C extends React.ElementType = "span">(props: TextProps<C>) => React.ReactElement | null;
+[7m  [0m [91m                                                                    ~~~~~~~~~[0m
+[39m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:62:69[22m
+[90m
+[7m62[0m type BreadcrumbItem = <C extends React.ElementType = "span">(props: TextProps<C>) => React.ReactElement | null;
+[7m  [0m [91m                                                                    ~~~~~~~~~[0m
+[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (64:51): @rollup/plugin-typescript TS2345: Argument of type '<C extends ElementType = "a">({ as, variant, className, children, ...rest }: PolymorphicProps<C, BreadcrumbItemProps<C>>, ref: ComponentPropsWithRef<C>["ref"]) => JSX.Element' is not assignable to parameter of type 'ForwardRefRenderFunction<unknown, Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">>'.
+  Types of parameters 'ref' and 'ref' are incompatible.
+    Type 'ForwardedRef<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+      Type 'MutableRefObject<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+        Type 'MutableRefObject<unknown>' is not assignable to type 'RefObject<HTMLAnchorElement>'.
+          Types of property 'current' are incompatible.
+            Type 'unknown' is not assignable to type 'HTMLAnchorElement | null'.[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:64:51[22m
+[90m
+[7m64[0m export const BreadcrumbItem = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m                                                  ~~~~~~~~~~~~~~[0m
+[39m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:64:51[22m
+[90m
+[7m64[0m export const BreadcrumbItem = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m                                                  ~~~~~~~~~~~~~~[0m
+[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m2.6s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+src/components/breadcrumbs.tsx(62,69): error TS2304: Cannot find name 'TextProps'.
+src/components/breadcrumbs.tsx(64,51): error TS2345: Argument of type '<C extends ElementType = "a">({ as, variant, className, children, ...rest }: PolymorphicProps<C, BreadcrumbItemProps<C>>, ref: ComponentPropsWithRef<C>["ref"]) => JSX.Element' is not assignable to parameter of type 'ForwardRefRenderFunction<unknown, Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">>'.
+  Types of parameters 'ref' and 'ref' are incompatible.
+    Type 'ForwardedRef<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+      Type 'MutableRefObject<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+        Type 'MutableRefObject<unknown>' is not assignable to type 'RefObject<HTMLAnchorElement>'.
+          Types of property 'current' are incompatible.
+            Type 'unknown' is not assignable to type 'HTMLAnchorElement | null'.
+
+[1m[31m[!] [1m(plugin dts) RollupError: [plugin dts] src/components/breadcrumbs.tsx: Failed to compile. Check the logs above.[22m[1m[39m[22m
+src/components/breadcrumbs.tsx
+[2m    at getRollupError (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:285:41)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:281:42)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:902:32)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:20848:42)
+    at generateDtsFromTs (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1834:30)
+    at Object.transform (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1843:38)
+    at /home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:1087:40[22m
+
+
+
+[2024-12-18 00:53:10] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
 [1m[33m(!) Generated an empty chunk[39m[22m
 "variant"
 [32mcreated [1mdist[22m in [1m1.3s[22m[39m
-[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+
+[2024-12-18 00:53:11] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (66:14): @rollup/plugin-typescript TS2322: Type 'ForwardRefExoticComponent<Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref"> & RefAttributes<unknown>>' is not assignable to type 'BreadcrumbItemComponent'.
+  Type 'ReactNode' is not assignable to type 'ReactElement<any, string | JSXElementConstructor<any>> | null'.
+    Type 'undefined' is not assignable to type 'ReactElement<any, string | JSXElementConstructor<any>> | null'.[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:66:14[22m
+[90m
+[7m66[0m export const BreadcrumbItem: BreadcrumbItemComponent = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m             ~~~~~~~~~~~~~~[0m
+[39m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:66:14[22m
+[90m
+[7m66[0m export const BreadcrumbItem: BreadcrumbItemComponent = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m             ~~~~~~~~~~~~~~[0m
+[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (66:76): @rollup/plugin-typescript TS2345: Argument of type '<C extends ElementType = "a">({ as, variant, className, children, ...rest }: PolymorphicProps<C, BreadcrumbItemProps<C>>, ref: ComponentPropsWithRef<C>["ref"]) => JSX.Element' is not assignable to parameter of type 'ForwardRefRenderFunction<unknown, Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">>'.
+  Types of parameters 'ref' and 'ref' are incompatible.
+    Type 'ForwardedRef<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+      Type 'MutableRefObject<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+        Type 'MutableRefObject<unknown>' is not assignable to type 'RefObject<HTMLAnchorElement>'.
+          Types of property 'current' are incompatible.
+            Type 'unknown' is not assignable to type 'HTMLAnchorElement | null'.[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:66:76[22m
+[90m
+[7m66[0m export const BreadcrumbItem: BreadcrumbItemComponent = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m                                                                           ~~~~~~~~~~~~~~[0m
+[39m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:66:76[22m
+[90m
+[7m66[0m export const BreadcrumbItem: BreadcrumbItemComponent = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m                                                                           ~~~~~~~~~~~~~~[0m
+[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m2.6s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+src/components/breadcrumbs.tsx(66,14): error TS2322: Type 'ForwardRefExoticComponent<Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref"> & RefAttributes<unknown>>' is not assignable to type 'BreadcrumbItemComponent'.
+  Type 'ReactNode' is not assignable to type 'ReactElement<any, string | JSXElementConstructor<any>> | null'.
+    Type 'undefined' is not assignable to type 'ReactElement<any, string | JSXElementConstructor<any>> | null'.
+src/components/breadcrumbs.tsx(66,76): error TS2345: Argument of type '<C extends ElementType = "a">({ as, variant, className, children, ...rest }: PolymorphicProps<C, BreadcrumbItemProps<C>>, ref: ComponentPropsWithRef<C>["ref"]) => JSX.Element' is not assignable to parameter of type 'ForwardRefRenderFunction<unknown, Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">>'.
+  Types of parameters 'ref' and 'ref' are incompatible.
+    Type 'ForwardedRef<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+      Type 'MutableRefObject<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+        Type 'MutableRefObject<unknown>' is not assignable to type 'RefObject<HTMLAnchorElement>'.
+          Types of property 'current' are incompatible.
+            Type 'unknown' is not assignable to type 'HTMLAnchorElement | null'.
+
+[1m[31m[!] [1m(plugin dts) RollupError: [plugin dts] src/components/breadcrumbs.tsx: Failed to compile. Check the logs above.[22m[1m[39m[22m
+src/components/breadcrumbs.tsx
+[2m    at getRollupError (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:285:41)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:281:42)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:902:32)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:20848:42)
+    at generateDtsFromTs (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1834:30)
+    at Object.transform (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1843:38)
+    at /home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:1087:40[22m
+
+
+
+[2024-12-18 00:55:02] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (66:51): @rollup/plugin-typescript TS2345: Argument of type '<C extends ElementType = "a">({ as, variant, className, children, ...rest }: PolymorphicProps<C, BreadcrumbItemProps<C>>, ref: ComponentPropsWithRef<C>["ref"]) => JSX.Element' is not assignable to parameter of type 'ForwardRefRenderFunction<unknown, Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">>'.
+  Types of parameters 'ref' and 'ref' are incompatible.
+    Type 'ForwardedRef<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+      Type 'MutableRefObject<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+        Type 'MutableRefObject<unknown>' is not assignable to type 'RefObject<HTMLAnchorElement>'.
+          Types of property 'current' are incompatible.
+            Type 'unknown' is not assignable to type 'HTMLAnchorElement | null'.[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:66:51[22m
+[90m
+[7m66[0m export const BreadcrumbItem = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m                                                  ~~~~~~~~~~~~~~[0m
+[39m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:66:51[22m
+[90m
+[7m66[0m export const BreadcrumbItem = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m                                                  ~~~~~~~~~~~~~~[0m
+[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m2.4s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+src/components/breadcrumbs.tsx(66,51): error TS2345: Argument of type '<C extends ElementType = "a">({ as, variant, className, children, ...rest }: PolymorphicProps<C, BreadcrumbItemProps<C>>, ref: ComponentPropsWithRef<C>["ref"]) => JSX.Element' is not assignable to parameter of type 'ForwardRefRenderFunction<unknown, Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">>'.
+  Types of parameters 'ref' and 'ref' are incompatible.
+    Type 'ForwardedRef<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+      Type 'MutableRefObject<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+        Type 'MutableRefObject<unknown>' is not assignable to type 'RefObject<HTMLAnchorElement>'.
+          Types of property 'current' are incompatible.
+            Type 'unknown' is not assignable to type 'HTMLAnchorElement | null'.
+
+[1m[31m[!] [1m(plugin dts) RollupError: [plugin dts] src/components/breadcrumbs.tsx: Failed to compile. Check the logs above.[22m[1m[39m[22m
+src/components/breadcrumbs.tsx
+[2m    at getRollupError (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:285:41)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:281:42)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:902:32)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:20848:42)
+    at generateDtsFromTs (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1834:30)
+    at Object.transform (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1843:38)
+    at /home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:1087:40[22m
+
+
+
+[2024-12-18 00:56:23] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (66:14): @rollup/plugin-typescript TS2322: Type 'ForwardRefExoticComponent<Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref"> & RefAttributes<unknown>>' is not assignable to type 'BreadcrumbItemComponent'.
+  Type 'ReactNode' is not assignable to type 'ReactElement<any, string | JSXElementConstructor<any>> | null'.
+    Type 'undefined' is not assignable to type 'ReactElement<any, string | JSXElementConstructor<any>> | null'.[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:66:14[22m
+[90m
+[7m66[0m export const BreadcrumbItem: BreadcrumbItemComponent = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m             ~~~~~~~~~~~~~~[0m
+[39m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:66:14[22m
+[90m
+[7m66[0m export const BreadcrumbItem: BreadcrumbItemComponent = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m             ~~~~~~~~~~~~~~[0m
+[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (66:76): @rollup/plugin-typescript TS2345: Argument of type '<C extends ElementType = "a">({ as, variant, className, children, ...rest }: PolymorphicProps<C, BreadcrumbItemProps<C>>, ref: ComponentPropsWithRef<C>["ref"]) => JSX.Element' is not assignable to parameter of type 'ForwardRefRenderFunction<unknown, Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">>'.
+  Types of parameters 'ref' and 'ref' are incompatible.
+    Type 'ForwardedRef<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+      Type 'MutableRefObject<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+        Type 'MutableRefObject<unknown>' is not assignable to type 'RefObject<HTMLAnchorElement>'.
+          Types of property 'current' are incompatible.
+            Type 'unknown' is not assignable to type 'HTMLAnchorElement | null'.[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:66:76[22m
+[90m
+[7m66[0m export const BreadcrumbItem: BreadcrumbItemComponent = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m                                                                           ~~~~~~~~~~~~~~[0m
+[39m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:66:76[22m
+[90m
+[7m66[0m export const BreadcrumbItem: BreadcrumbItemComponent = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m                                                                           ~~~~~~~~~~~~~~[0m
+[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m2.4s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+src/components/breadcrumbs.tsx(66,14): error TS2322: Type 'ForwardRefExoticComponent<Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref"> & RefAttributes<unknown>>' is not assignable to type 'BreadcrumbItemComponent'.
+  Type 'ReactNode' is not assignable to type 'ReactElement<any, string | JSXElementConstructor<any>> | null'.
+    Type 'undefined' is not assignable to type 'ReactElement<any, string | JSXElementConstructor<any>> | null'.
+src/components/breadcrumbs.tsx(66,76): error TS2345: Argument of type '<C extends ElementType = "a">({ as, variant, className, children, ...rest }: PolymorphicProps<C, BreadcrumbItemProps<C>>, ref: ComponentPropsWithRef<C>["ref"]) => JSX.Element' is not assignable to parameter of type 'ForwardRefRenderFunction<unknown, Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">>'.
+  Types of parameters 'ref' and 'ref' are incompatible.
+    Type 'ForwardedRef<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+      Type 'MutableRefObject<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+        Type 'MutableRefObject<unknown>' is not assignable to type 'RefObject<HTMLAnchorElement>'.
+          Types of property 'current' are incompatible.
+            Type 'unknown' is not assignable to type 'HTMLAnchorElement | null'.
+
+[1m[31m[!] [1m(plugin dts) RollupError: [plugin dts] src/components/breadcrumbs.tsx: Failed to compile. Check the logs above.[22m[1m[39m[22m
+src/components/breadcrumbs.tsx
+[2m    at getRollupError (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:285:41)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:281:42)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:902:32)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:20848:42)
+    at generateDtsFromTs (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1834:30)
+    at Object.transform (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1843:38)
+    at /home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:1087:40[22m
+
+
+
+[2024-12-18 00:56:43] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (62:51): @rollup/plugin-typescript TS2345: Argument of type '<C extends ElementType = "a">({ as, variant, className, children, ...rest }: PolymorphicProps<C, BreadcrumbItemProps<C>>, ref: ComponentPropsWithRef<C>["ref"]) => JSX.Element' is not assignable to parameter of type 'ForwardRefRenderFunction<unknown, Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">>'.
+  Types of parameters 'ref' and 'ref' are incompatible.
+    Type 'ForwardedRef<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+      Type 'MutableRefObject<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+        Type 'MutableRefObject<unknown>' is not assignable to type 'RefObject<HTMLAnchorElement>'.
+          Types of property 'current' are incompatible.
+            Type 'unknown' is not assignable to type 'HTMLAnchorElement | null'.[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:62:51[22m
+[90m
+[7m62[0m export const BreadcrumbItem = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m                                                  ~~~~~~~~~~~~~~[0m
+[39m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:62:51[22m
+[90m
+[7m62[0m export const BreadcrumbItem = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m                                                  ~~~~~~~~~~~~~~[0m
+[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m2.5s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+src/components/breadcrumbs.tsx(62,51): error TS2345: Argument of type '<C extends ElementType = "a">({ as, variant, className, children, ...rest }: PolymorphicProps<C, BreadcrumbItemProps<C>>, ref: ComponentPropsWithRef<C>["ref"]) => JSX.Element' is not assignable to parameter of type 'ForwardRefRenderFunction<unknown, Omit<PolymorphicProps<ElementType, BreadcrumbItemProps<ElementType>>, "ref">>'.
+  Types of parameters 'ref' and 'ref' are incompatible.
+    Type 'ForwardedRef<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+      Type 'MutableRefObject<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+        Type 'MutableRefObject<unknown>' is not assignable to type 'RefObject<HTMLAnchorElement>'.
+          Types of property 'current' are incompatible.
+            Type 'unknown' is not assignable to type 'HTMLAnchorElement | null'.
+
+[1m[31m[!] [1m(plugin dts) RollupError: [plugin dts] src/components/breadcrumbs.tsx: Failed to compile. Check the logs above.[22m[1m[39m[22m
+src/components/breadcrumbs.tsx
+[2m    at getRollupError (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:285:41)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:281:42)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:902:32)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:20848:42)
+    at generateDtsFromTs (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1834:30)
+    at Object.transform (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1843:38)
+    at /home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:1087:40[22m
+
+
+
+[2024-12-18 00:59:28] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (75:14): @rollup/plugin-typescript TS2322: Type 'ForwardRefExoticComponent<Omit<PolymorphicProps<C, BreadcrumbItemProps<C>>, "ref"> & RefAttributes<unknown>>' is not assignable to type 'BreadcrumbItemComponent'.
+  Type 'ReactNode' is not assignable to type 'ReactElement<any, string | JSXElementConstructor<any>> | null'.
+    Type 'undefined' is not assignable to type 'ReactElement<any, string | JSXElementConstructor<any>> | null'.[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:75:14[22m
+[90m
+[7m75[0m export const BreadcrumbItem: BreadcrumbItemComponent = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m             ~~~~~~~~~~~~~~[0m
+[39m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:75:14[22m
+[90m
+[7m75[0m export const BreadcrumbItem: BreadcrumbItemComponent = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m             ~~~~~~~~~~~~~~[0m
+[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (75:76): @rollup/plugin-typescript TS2345: Argument of type '<C extends ElementType = "a">({ as, variant, className, children, ...rest }: PolymorphicProps<C, BreadcrumbItemProps<C>>, ref: ComponentPropsWithRef<C>["ref"]) => JSX.Element' is not assignable to parameter of type 'ForwardRefRenderFunction<unknown, Omit<PolymorphicProps<C, BreadcrumbItemProps<C>>, "ref">>'.
+  Types of parameters 'ref' and 'ref' are incompatible.
+    Type 'ForwardedRef<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+      Type 'MutableRefObject<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+        Type 'MutableRefObject<unknown>' is not assignable to type 'RefObject<HTMLAnchorElement>'.
+          Types of property 'current' are incompatible.
+            Type 'unknown' is not assignable to type 'HTMLAnchorElement | null'.[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:75:76[22m
+[90m
+[7m75[0m export const BreadcrumbItem: BreadcrumbItemComponent = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m                                                                           ~~~~~~~~~~~~~~[0m
+[39m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:75:76[22m
+[90m
+[7m75[0m export const BreadcrumbItem: BreadcrumbItemComponent = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m                                                                           ~~~~~~~~~~~~~~[0m
+[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (76:50): @rollup/plugin-typescript TS2552: Cannot find name 'PolymorphicProps'. Did you mean 'PolymorphicRef'?[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:76:50[22m
+[90m
+[7m76[0m   { as, variant, className, children, ...rest }: PolymorphicProps<C, BreadcrumbItemProps<C>>,
+[7m  [0m [91m                                                 ~~~~~~~~~~~~~~~~[0m
+[39m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:76:50[22m
+[90m
+[7m76[0m   { as, variant, className, children, ...rest }: PolymorphicProps<C, BreadcrumbItemProps<C>>,
+[7m  [0m [91m                                                 ~~~~~~~~~~~~~~~~[0m
+[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m2.4s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+src/components/breadcrumbs.tsx(75,14): error TS2322: Type 'ForwardRefExoticComponent<Omit<PolymorphicProps<C, BreadcrumbItemProps<C>>, "ref"> & RefAttributes<unknown>>' is not assignable to type 'BreadcrumbItemComponent'.
+  Type 'ReactNode' is not assignable to type 'ReactElement<any, string | JSXElementConstructor<any>> | null'.
+    Type 'undefined' is not assignable to type 'ReactElement<any, string | JSXElementConstructor<any>> | null'.
+src/components/breadcrumbs.tsx(75,76): error TS2345: Argument of type '<C extends ElementType = "a">({ as, variant, className, children, ...rest }: PolymorphicProps<C, BreadcrumbItemProps<C>>, ref: ComponentPropsWithRef<C>["ref"]) => JSX.Element' is not assignable to parameter of type 'ForwardRefRenderFunction<unknown, Omit<PolymorphicProps<C, BreadcrumbItemProps<C>>, "ref">>'.
+  Types of parameters 'ref' and 'ref' are incompatible.
+    Type 'ForwardedRef<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+      Type 'MutableRefObject<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+        Type 'MutableRefObject<unknown>' is not assignable to type 'RefObject<HTMLAnchorElement>'.
+          Types of property 'current' are incompatible.
+            Type 'unknown' is not assignable to type 'HTMLAnchorElement | null'.
+src/components/breadcrumbs.tsx(76,50): error TS2552: Cannot find name 'PolymorphicProps'. Did you mean 'PolymorphicRef'?
+
+[1m[31m[!] [1m(plugin dts) RollupError: [plugin dts] src/components/breadcrumbs.tsx: Failed to compile. Check the logs above.[22m[1m[39m[22m
+src/components/breadcrumbs.tsx
+[2m    at getRollupError (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:285:41)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:281:42)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:902:32)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:20848:42)
+    at generateDtsFromTs (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1834:30)
+    at Object.transform (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1843:38)
+    at /home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:1087:40[22m
+
+
+
+[2024-12-18 01:02:02] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (75:14): @rollup/plugin-typescript TS2322: Type 'ForwardRefExoticComponent<Omit<BreadcrumbItemProps<ElementType>, "ref"> & RefAttributes<unknown>>' is not assignable to type 'BreadcrumbItemComponent'.
+  Type 'ReactNode' is not assignable to type 'ReactElement<any, string | JSXElementConstructor<any>> | null'.
+    Type 'undefined' is not assignable to type 'ReactElement<any, string | JSXElementConstructor<any>> | null'.[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:75:14[22m
+[90m
+[7m75[0m export const BreadcrumbItem: BreadcrumbItemComponent = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m             ~~~~~~~~~~~~~~[0m
+[39m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:75:14[22m
+[90m
+[7m75[0m export const BreadcrumbItem: BreadcrumbItemComponent = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m             ~~~~~~~~~~~~~~[0m
+[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (75:76): @rollup/plugin-typescript TS2345: Argument of type '<C extends ElementType = "a">({ as, variant, className, children, ...rest }: BreadcrumbItemProps<C>, ref: ComponentPropsWithRef<C>["ref"]) => JSX.Element' is not assignable to parameter of type 'ForwardRefRenderFunction<unknown, Omit<BreadcrumbItemProps<ElementType>, "ref">>'.
+  Types of parameters 'ref' and 'ref' are incompatible.
+    Type 'ForwardedRef<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+      Type 'MutableRefObject<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+        Type 'MutableRefObject<unknown>' is not assignable to type 'RefObject<HTMLAnchorElement>'.
+          Types of property 'current' are incompatible.
+            Type 'unknown' is not assignable to type 'HTMLAnchorElement | null'.[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:75:76[22m
+[90m
+[7m75[0m export const BreadcrumbItem: BreadcrumbItemComponent = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m                                                                           ~~~~~~~~~~~~~~[0m
+[39m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:75:76[22m
+[90m
+[7m75[0m export const BreadcrumbItem: BreadcrumbItemComponent = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m                                                                           ~~~~~~~~~~~~~~[0m
+[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m2.6s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+src/components/breadcrumbs.tsx(75,14): error TS2322: Type 'ForwardRefExoticComponent<Omit<BreadcrumbItemProps<ElementType>, "ref"> & RefAttributes<unknown>>' is not assignable to type 'BreadcrumbItemComponent'.
+  Type 'ReactNode' is not assignable to type 'ReactElement<any, string | JSXElementConstructor<any>> | null'.
+    Type 'undefined' is not assignable to type 'ReactElement<any, string | JSXElementConstructor<any>> | null'.
+src/components/breadcrumbs.tsx(75,76): error TS2345: Argument of type '<C extends ElementType = "a">({ as, variant, className, children, ...rest }: BreadcrumbItemProps<C>, ref: ComponentPropsWithRef<C>["ref"]) => JSX.Element' is not assignable to parameter of type 'ForwardRefRenderFunction<unknown, Omit<BreadcrumbItemProps<ElementType>, "ref">>'.
+  Types of parameters 'ref' and 'ref' are incompatible.
+    Type 'ForwardedRef<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+      Type 'MutableRefObject<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+        Type 'MutableRefObject<unknown>' is not assignable to type 'RefObject<HTMLAnchorElement>'.
+          Types of property 'current' are incompatible.
+            Type 'unknown' is not assignable to type 'HTMLAnchorElement | null'.
+
+[1m[31m[!] [1m(plugin dts) RollupError: [plugin dts] src/components/breadcrumbs.tsx: Failed to compile. Check the logs above.[22m[1m[39m[22m
+src/components/breadcrumbs.tsx
+[2m    at getRollupError (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:285:41)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:281:42)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:902:32)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:20848:42)
+    at generateDtsFromTs (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1834:30)
+    at Object.transform (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1843:38)
+    at /home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:1087:40[22m
+
+
+
+[2024-12-18 01:02:42] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (78:14): @rollup/plugin-typescript TS2322: Type 'ForwardRefExoticComponent<Omit<BreadcrumbItemProps<ElementType>, "ref"> & RefAttributes<unknown>>' is not assignable to type 'BreadcrumbItemComponent'.
+  Type 'ReactNode' is not assignable to type 'ReactElement<any, string | JSXElementConstructor<any>> | null'.
+    Type 'undefined' is not assignable to type 'ReactElement<any, string | JSXElementConstructor<any>> | null'.[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:78:14[22m
+[90m
+[7m78[0m export const BreadcrumbItem: BreadcrumbItemComponent = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m             ~~~~~~~~~~~~~~[0m
+[39m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:78:14[22m
+[90m
+[7m78[0m export const BreadcrumbItem: BreadcrumbItemComponent = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m             ~~~~~~~~~~~~~~[0m
+[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (78:76): @rollup/plugin-typescript TS2345: Argument of type '<C extends ElementType = "a">({ as, variant, className, children, ...rest }: BreadcrumbItemProps<C>, ref?: PolymorphicRef<C>) => JSX.Element' is not assignable to parameter of type 'ForwardRefRenderFunction<unknown, Omit<BreadcrumbItemProps<ElementType>, "ref">>'.
+  Types of parameters 'ref' and 'ref' are incompatible.
+    Type 'ForwardedRef<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+      Type 'MutableRefObject<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+        Type 'MutableRefObject<unknown>' is not assignable to type 'RefObject<HTMLAnchorElement>'.
+          Types of property 'current' are incompatible.
+            Type 'unknown' is not assignable to type 'HTMLAnchorElement | null'.[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:78:76[22m
+[90m
+[7m78[0m export const BreadcrumbItem: BreadcrumbItemComponent = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m                                                                           ~~~~~~~~~~~~~~[0m
+[39m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:78:76[22m
+[90m
+[7m78[0m export const BreadcrumbItem: BreadcrumbItemComponent = forwardRef(function BreadcrumbItem<C extends ElementType = "a">(
+[7m  [0m [91m                                                                           ~~~~~~~~~~~~~~[0m
+[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m2.7s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+src/components/breadcrumbs.tsx(78,14): error TS2322: Type 'ForwardRefExoticComponent<Omit<BreadcrumbItemProps<ElementType>, "ref"> & RefAttributes<unknown>>' is not assignable to type 'BreadcrumbItemComponent'.
+  Type 'ReactNode' is not assignable to type 'ReactElement<any, string | JSXElementConstructor<any>> | null'.
+    Type 'undefined' is not assignable to type 'ReactElement<any, string | JSXElementConstructor<any>> | null'.
+src/components/breadcrumbs.tsx(78,76): error TS2345: Argument of type '<C extends ElementType = "a">({ as, variant, className, children, ...rest }: BreadcrumbItemProps<C>, ref?: PolymorphicRef<C>) => JSX.Element' is not assignable to parameter of type 'ForwardRefRenderFunction<unknown, Omit<BreadcrumbItemProps<ElementType>, "ref">>'.
+  Types of parameters 'ref' and 'ref' are incompatible.
+    Type 'ForwardedRef<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+      Type 'MutableRefObject<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+        Type 'MutableRefObject<unknown>' is not assignable to type 'RefObject<HTMLAnchorElement>'.
+          Types of property 'current' are incompatible.
+            Type 'unknown' is not assignable to type 'HTMLAnchorElement | null'.
+
+[1m[31m[!] [1m(plugin dts) RollupError: [plugin dts] src/components/breadcrumbs.tsx: Failed to compile. Check the logs above.[22m[1m[39m[22m
+src/components/breadcrumbs.tsx
+[2m    at getRollupError (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:285:41)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:281:42)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:902:32)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:20848:42)
+    at generateDtsFromTs (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1834:30)
+    at Object.transform (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1843:38)
+    at /home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:1087:40[22m
+
+
+
+[2024-12-18 01:03:26] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (106:2): @rollup/plugin-typescript TS1005: ')' expected.[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:106:2[22m
+[90m
+[7m106[0m };);
+[7m   [0m [91m ~[0m
+[39m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:106:2[22m
+[90m
+[7m106[0m };);
+[7m   [0m [91m ~[0m
+[39m
+[1m[33m(!) [plugin typescript] src/components/breadcrumbs.tsx (106:3): @rollup/plugin-typescript TS1128: Declaration or statement expected.[39m[22m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:106:3[22m
+[90m
+[7m106[0m };);
+[7m   [0m [91m  ~[0m
+[39m
+[1m/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/packages/lib/src/components/breadcrumbs.tsx:106:3[22m
+[90m
+[7m106[0m };);
+[7m   [0m [91m  ~[0m
+[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m2.4s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+src/components/breadcrumbs.tsx(106,2): error TS1005: ')' expected.
+src/components/breadcrumbs.tsx(106,3): error TS1128: Declaration or statement expected.
+src/components/breadcrumbs.tsx(78,14): error TS2322: Type 'ForwardRefExoticComponent<Omit<BreadcrumbItemProps<ElementType>, "ref"> & RefAttributes<unknown>>' is not assignable to type 'BreadcrumbItemComponent'.
+  Type 'ReactNode' is not assignable to type 'ReactElement<any, string | JSXElementConstructor<any>> | null'.
+    Type 'undefined' is not assignable to type 'ReactElement<any, string | JSXElementConstructor<any>> | null'.
+src/components/breadcrumbs.tsx(78,67): error TS2345: Argument of type '<C extends ElementType = "a">({ as, variant, className, children, ...rest }: BreadcrumbItemProps<C>, ref?: PolymorphicRef<C>) => JSX.Element' is not assignable to parameter of type 'ForwardRefRenderFunction<unknown, Omit<BreadcrumbItemProps<ElementType>, "ref">>'.
+  Types of parameters 'ref' and 'ref' are incompatible.
+    Type 'ForwardedRef<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+      Type 'MutableRefObject<unknown>' is not assignable to type '((instance: HTMLAnchorElement | null) => void) | RefObject<HTMLAnchorElement> | null | undefined'.
+        Type 'MutableRefObject<unknown>' is not assignable to type 'RefObject<HTMLAnchorElement>'.
+          Types of property 'current' are incompatible.
+            Type 'unknown' is not assignable to type 'HTMLAnchorElement | null'.
+
+[1m[31m[!] [1m(plugin dts) RollupError: [plugin dts] src/components/breadcrumbs.tsx: Failed to compile. Check the logs above.[22m[1m[39m[22m
+src/components/breadcrumbs.tsx
+[2m    at getRollupError (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:285:41)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/parseAst.js:281:42)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:902:32)
+    at Object.error (/home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:20848:42)
+    at generateDtsFromTs (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1834:30)
+    at Object.transform (file:///home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1843:38)
+    at /home/kwameopareasiedu/projects/polymorphui/code/polymorphui-monolith/node_modules/rollup/dist/shared/rollup.js:1087:40[22m
+
+
+
+[2024-12-18 01:03:51] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m2.5s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
 [32mcreated [1mdist[22m in [1m3.7s[22m[39m
 
-[2024-12-12 12:00:14] waiting for changes...
+[2024-12-18 01:07:15] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m1.8s[22m[39m
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[32mcreated [1mdist[22m in [1m3s[22m[39m
+
+[2024-12-18 01:10:21] waiting for changes...
+[36mbundles [1msrc/utils.ts, src/components/accordion.tsx, src/components/badge.tsx, src/components/breadcrumbs.tsx, src/components/button.tsx, src/components/checkbox.tsx, src/components/context-menu.tsx, src/components/dialog.tsx, src/components/input-helpers.tsx, src/components/input.tsx, src/components/pagination.tsx, src/components/popup.tsx, src/components/radio-group.tsx, src/components/select.tsx, src/components/spinner.tsx, src/components/switch.tsx, src/components/tabs.tsx, src/components/text.tsx, src/components/textarea.tsx, src/components/tooltip.tsx, src/hooks/use-query-param.ts, src/providers/polymorphui-provider.tsx, src/config/variant.ts[22m → [1mdist[22m...[39m
+[1m[33m(!) Generated an empty chunk[39m[22m
+"variant"
+[32mcreated [1mdist[22m in [1m1.8s[22m[39m

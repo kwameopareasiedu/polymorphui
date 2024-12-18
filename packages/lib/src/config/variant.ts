@@ -45,13 +45,11 @@ export interface ComponentVariants {
   badge?: VariantMap;
   pagination?: VariantMap;
   paginationButton?: VariantMap;
+  breadcrumbs?: VariantMap;
+  breadcrumbItem?: VariantMap;
+  breadcrumbSeparator?: VariantMap;
 }
 
 export type ComponentNameType = keyof ComponentVariants;
 
-// type ReservedVariantName = "replaceDefault" | "appendDefault";
-// type NotA<T> = T extends ReservedVariantName ? never : T;
-// type NotB<T> = ReservedVariantName extends T ? never : T;
-// export type VariantNameType<T> = NotA<T> & NotB<T>;
-// export type VariantNameType<T> = T & (T extends ReservedVariantName ? never : T);
 export type VariantNameType = string;
