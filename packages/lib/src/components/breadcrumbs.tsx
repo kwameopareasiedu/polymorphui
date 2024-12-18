@@ -33,9 +33,9 @@ export const Breadcrumbs = forwardRef<HTMLDivElement, BreadcrumbsProps>(function
 
   return (
     <BreadcrumbsContext.Provider value={{ separator }}>
-      <div ref={ref} className={_className} {...rest}>
+      <nav ref={ref} className={_className} {...rest}>
         {children}
-      </div>
+      </nav>
     </BreadcrumbsContext.Provider>
   );
 });
@@ -62,7 +62,12 @@ export const BreadcrumbItem = forwardRef(function BreadcrumbItem<C extends Eleme
 
   if (!breadcrumbsContext) throw "<BreadcrumbItem /> must be a descendant of <Breadcrumbs />";
 
-  const _className = resolveClassName("breadcrumbItem", variant, "breadcrumbItem text-sm", className);
+  const _className = resolveClassName(
+    "breadcrumbItem",
+    variant,
+    "breadcrumbItem text-sm [&[href]]:text-blue-500 [&[href]]:hover:underlined",
+    className,
+  );
 
   const separatorClassName = resolveClassName(
     "breadcrumbSeparator",

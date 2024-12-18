@@ -576,7 +576,7 @@ export default function App() {
           <BreadcrumbItem as={Link} to="/main">
             Main
           </BreadcrumbItem>
-          <BreadcrumbItem>Section</BreadcrumbItem>
+          <BreadcrumbItem href="/main/section">Section</BreadcrumbItem>
           <BreadcrumbItem>Sub section</BreadcrumbItem>
         </Breadcrumbs>
       </Showcase>
