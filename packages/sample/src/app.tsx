@@ -590,7 +590,7 @@ export default function App() {
       </Showcase>
 
       <Showcase title="Date Picker">
-        <DatePicker value={date} onChange={(e) => setDate(e.target.value as never)} />
+        <DatePicker value={date} label="Select date" onChange={(e) => setDate(e.target.value as never)} />
         <DatePicker value={date} format="m/d/y" onChange={(e) => setDate(e.target.value as never)} />
       </Showcase>
     </main>

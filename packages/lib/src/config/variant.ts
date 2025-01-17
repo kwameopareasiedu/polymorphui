@@ -49,7 +49,8 @@ export interface ComponentVariants {
   breadcrumbItem?: VariantMap;
   breadcrumbSeparator?: VariantMap;
   datePicker?: VariantMap;
-  datePickerButton?: VariantMap;
+  datePickerCalendar?: VariantMap;
+  datePickerCalendarDay?: VariantMap;
 }
 
 export type ComponentNameType = keyof ComponentVariants;

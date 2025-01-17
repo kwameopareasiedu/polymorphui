@@ -1,6 +1,7 @@
 import React, {
   ChangeEvent,
   forwardRef,
+  HTMLAttributes,
   InputHTMLAttributes,
   ReactNode,
   useEffect,
@@ -12,12 +13,16 @@ import { InputAddon, InputError, InputHelper, InputInput, InputLabel, InputWrapp
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
 import { VariantNameType } from "@/config/variant";
 import { Popup } from "@/components/popup";
-import { combineRefs } from "@/utils";
+import { cn, combineRefs } from "@/utils";
 import CalendarIcon from "../assets/calendar.svg";
+import ArrowLeftIcon from "../assets/arrow-left.svg";
+import ArrowRightIcon from "../assets/arrow-right.svg";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 
 dayjs.extend(customParseFormat);
+
+const currentDjs = dayjs();
 
 export enum DatePickerFormat {
   D_M_Y = "d/m/y",
@@ -109,11 +114,11 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(function
     }
   };
 
-  // const handleSelectCalendarDate = (date: Date) => {
-  //   onChange?.({ target: { date } });
-  //   setIsOpen(false);
-  //   inputRef.current?.focus();
-  // };
+  const handleSelectCalendarDate = (date: string) => {
+    onChange?.({ target: { value: date } });
+    setIsOpen(false);
+    inputRef.current?.focus();
+  };
 
   useEffect(() => {
     const djs = dayjs(value ?? "");
@@ -130,8 +135,6 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(function
 
   return (
     <div className={_className}>
-      {label && <InputLabel htmlFor={id}>{label}</InputLabel>}
-
       {label && <InputLabel htmlFor={id}>{label}</InputLabel>}
 
       <InputWrapper>
@@ -159,13 +162,13 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(function
           offset={[0, 4]}
           openEvent="triggerClick"
           closeEvent={["triggerClick", "outsideClick"]}
-          placement="bottom-start"
+          placement="bottom-end"
           onChange={setIsOpen}>
           <button type="button">
             <CalendarIcon {...({ className: "w-4 h-4" } as object)} />
           </button>
 
-          <div>{/* TODO: Implement picker */}</div>
+          <DatePickerCalendar date={value} onSelect={handleSelectCalendarDate} />
         </Popup>
       </InputWrapper>
 
@@ -208,3 +211,141 @@ function getTransformers(
     { regex: /^\d\d\/\d\d\/\d\d\d\d$/, placeholder: "          " },
   ];
 }
+
+interface DatePickerCalendarProps extends Omit<HTMLAttributes<HTMLDivElement>, "onSelect"> {
+  variant?: VariantNameType | VariantNameType[];
+  date?: string | Date;
+  onSelect: (date: string) => void;
+}
+
+const DatePickerCalendar = forwardRef<HTMLDivElement, DatePickerCalendarProps>(function DatePickerCalendar(
+  { date, variant, className, onSelect, ...rest }: DatePickerCalendarProps,
+  ref,
+) {
+  const { resolveClassName } = usePolymorphUi();
+
+  const [djs, setDjs] = useState(dayjs(date).isValid() ? dayjs(date) : currentDjs.clone());
+
+  const [yearOptions, calendarDays] = useMemo(() => {
+    const len = 100;
+
+    const yearOptions = Array(len)
+      .fill(null)
+      .map((_, idx) => djs.year() + idx - len / 2);
+
+    const [offset, daysInMonth] = [djs.date(1).day(), djs.daysInMonth()];
+
+    const calendarDays = Array(offset + daysInMonth)
+      .fill(null)
+      .map((_, idx) => {
+        return idx < offset ? null : idx - offset + 1;
+      });
+
+    return [yearOptions, calendarDays];
+  }, [djs]);
+
+  const _className = resolveClassName(
+    "datePickerCalendar",
+    variant,
+    "datePickerCalendar grid grid-cols-2 gap-2 p-2 w-auto max-w-72",
+    "rounded-lg bg-white shadow-lg border-[1px] border-gray-300",
+    className,
+  );
+
+  const calendarDayClassName = resolveClassName(
+    "datePickerCalendarDay",
+    variant,
+    "datePickerCalendarDay grid place-items-center aspect-square",
+    cn("data-[selected=true]:bg-primary data-[selected=true]:text-white", "hover:bg-primary/25"),
+  );
+
+  const handleSelectMonth = (e: ChangeEvent<HTMLSelectElement>) => {
+    const value = parseInt(e.target.value);
+    setDjs(djs.month(value));
+  };
+
+  const handleSelectYear = (e: ChangeEvent<HTMLSelectElement>) => {
+    const value = parseInt(e.target.value);
+    setDjs(djs.year(value));
+  };
+
+  const handleCycleDate = (offset: 1 | -1, unit: "month" | "year") => {
+    setDjs(djs.add(offset, unit));
+  };
+
+  const handleSelectDate = (day: number) => {
+    onSelect(djs.date(day).format("YYYY-MM-DD"));
+  };
+
+  return (
+    <div ref={ref} className={_className} {...rest}>
+      <nav className="flex items-center gap-1">
+        <button type="button" className="p-1.5" onClick={() => handleCycleDate(-1, "month")}>
+          <ArrowLeftIcon {...({ className: "w-5 h-5" } as object)} />
+        </button>
+
+        <select className="bg-transparent" value={djs.month()} onChange={handleSelectMonth}>
+          <option value={0}>Jan</option>
+          <option value={1}>Feb</option>
+          <option value={2}>Mar</option>
+          <option value={3}>Apr</option>
+          <option value={4}>May</option>
+          <option value={5}>Jun</option>
+          <option value={6}>Jul</option>
+          <option value={7}>Aug</option>
+          <option value={8}>Sep</option>
+          <option value={9}>Oct</option>
+          <option value={10}>Nov</option>
+          <option value={11}>Dec</option>
+        </select>
+
+        <button type="button" className="p-1.5" onClick={() => handleCycleDate(1, "month")}>
+          <ArrowRightIcon {...({ className: "w-5 h-5" } as object)} />
+        </button>
+      </nav>
+
+      <nav className="flex items-center gap-1">
+        <button type="button" className="p-1.5" onClick={() => handleCycleDate(-1, "year")}>
+          <ArrowLeftIcon {...({ className: "w-5 h-5" } as object)} />
+        </button>
+
+        <select className="bg-transparent" value={djs.year()} onChange={handleSelectYear}>
+          {yearOptions.map((year) => (
+            <option key={year} value={year}>
+              {year}
+            </option>
+          ))}
+        </select>
+
+        <button type="button" className="p-1.5" onClick={() => handleCycleDate(1, "year")}>
+          <ArrowRightIcon {...({ className: "w-5 h-5" } as object)} />
+        </button>
+      </nav>
+
+      <div className="col-span-full grid grid-cols-7 gap-1">
+        <p className="text-center text-sm text-gray-500">Su</p>
+        <p className="text-center text-sm text-gray-500">Mo</p>
+        <p className="text-center text-sm text-gray-500">Tu</p>
+        <p className="text-center text-sm text-gray-500">We</p>
+        <p className="text-center text-sm text-gray-500">Th</p>
+        <p className="text-center text-sm text-gray-500">Fr</p>
+        <p className="text-center text-sm text-gray-500">Sa</p>
+
+        {calendarDays.map((day, idx) => {
+          if (!day) return <span key={idx} />;
+
+          return (
+            <button
+              type="button"
+              key={idx}
+              className={calendarDayClassName}
+              data-selected={djs.date() === day}
+              onClick={() => handleSelectDate(day)}>
+              {day}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+});
