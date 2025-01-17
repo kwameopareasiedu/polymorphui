@@ -24,6 +24,7 @@ import { Pagination } from "polymorphui/pagination";
 import { BreadcrumbItem, Breadcrumbs } from "polymorphui/breadcrumbs";
 import { Link } from "react-router-dom";
 import { FiChevronsRight } from "react-icons/fi";
+import { DatePicker } from "polymorphui/date-picker";
 
 export default function App() {
   const [popupOpen, setPopupOpen] = useState(false);
@@ -38,6 +39,7 @@ export default function App() {
   const [activeTab, setActiveTab] = useState("");
   const [activeSection, setActiveSection] = useState<string[]>([]);
   const [page, setPage] = useState(1);
+  const [date, setDate] = useState<Date>();
 
   return (
     <main className="p-4 flex flex-wrap items-start gap-8 ">
@@ -585,6 +587,11 @@ export default function App() {
           <BreadcrumbItem href="/main/section">Section</BreadcrumbItem>
           <BreadcrumbItem>Sub section</BreadcrumbItem>
         </Breadcrumbs>
+      </Showcase>
+
+      <Showcase title="Date Picker">
+        <DatePicker value={date} onChange={(e) => setDate(e.target.value as never)} />
+        <DatePicker value={date} format="m/d/y" onChange={(e) => setDate(e.target.value as never)} />
       </Showcase>
     </main>
   );
