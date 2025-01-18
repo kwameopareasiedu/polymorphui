@@ -16,6 +16,7 @@ const componentNamePathMap = globbySync([
   "src/hooks/*.ts",
   "src/providers/*.tsx",
   "src/config/*.ts",
+  "src/types.ts",
   "src/utils.ts",
 ]).reduce((map, inputPath) => {
   const parts = inputPath.split("/");
@@ -34,15 +35,7 @@ export default defineConfig([
       typescript(),
       paths(),
       svgr(),
-      remapAlias({
-        "@/utils": "./utils.js",
-        "@/config/variant": "./variant.js",
-        "@/components/spinner": "./spinner.js",
-        "@/components/popup": "./popup.js",
-        "@/components/text": "./text.js",
-        "@/components/input-helpers": "./input-helpers.js",
-        "@/providers/polymorphui-provider": "./polymorphui-provider.js",
-      }),
+      remapAlias({ alias: "@/" }),
       isProd && terser(),
     ],
     external: ["react", "react/jsx-runtime", "react-dom", "react-router-dom", /@\/.*/],

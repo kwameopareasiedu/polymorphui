@@ -1,9 +1,12 @@
 import React, {
   ButtonHTMLAttributes,
+  ComponentPropsWithRef,
   createContext,
+  ElementType,
   forwardRef,
   HTMLAttributes,
   MouseEvent,
+  ReactElement,
   ReactNode,
   useContext,
   useEffect,
@@ -14,6 +17,7 @@ import { createPortal } from "react-dom";
 import CloseIcon from "../assets/close.svg";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
 import { VariantNameType } from "@/config/variant";
+import { PolymorphicProps } from "@/types";
 
 interface DialogContextProps {
   onClose: () => void;
@@ -80,15 +84,21 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(function Dialog(
   );
 });
 
-export interface DialogContentProps extends HTMLAttributes<HTMLDivElement> {
+interface DialogContentProps<C extends ElementType> extends HTMLAttributes<HTMLDivElement> {
   variant?: VariantNameType | VariantNameType[];
   size?: "xs" | "sm" | "md" | "lg" | "xl" | "full";
+  as?: C;
 }
 
-export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(function DialogContent(
-  { variant, size = "md", className, children, ...rest }: DialogContentProps,
-  ref,
+type DialogContentComponent = <C extends ElementType = "div">(
+  props: PolymorphicProps<C, DialogContentProps<C>> & { ref?: ComponentPropsWithRef<C>["ref"] },
+) => ReactElement;
+
+export const DialogContent = forwardRef(function DialogContent<C extends ElementType>(
+  { as, variant, size = "md", className, children, ...rest }: DialogContentProps<C>,
+  ref: ComponentPropsWithRef<C>["ref"],
 ) {
+  const Root = as ?? "div";
   const { resolveClassName } = usePolymorphUi();
   const dialogRef = useRef<HTMLDivElement>(null);
 
@@ -134,11 +144,11 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(func
   }, []);
 
   return (
-    <div ref={combineRefs(ref, dialogRef)} className={_className} data-size={size} {...rest} tabIndex={0}>
+    <Root ref={combineRefs(ref, dialogRef)} className={_className} data-size={size} {...rest} tabIndex={0}>
       {children}
-    </div>
+    </Root>
   );
-});
+}) as unknown as DialogContentComponent;
 
 export interface DialogCloseProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
   variant?: VariantNameType | VariantNameType[];

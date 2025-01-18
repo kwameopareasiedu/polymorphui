@@ -4,13 +4,13 @@ import React, {
   ElementType,
   forwardRef,
   HTMLAttributes,
-  PropsWithChildren,
   ReactElement,
   ReactNode,
   useContext,
 } from "react";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
 import { VariantNameType } from "@/config/variant";
+import { PolymorphicProps } from "@/types";
 
 interface BreadcrumbsContextProps {
   separator: ReactNode;
@@ -44,9 +44,6 @@ interface BreadcrumbItemProps<C extends ElementType> {
   variant?: VariantNameType | VariantNameType[];
   as?: C;
 }
-
-type PolymorphicProps<C extends ElementType, OwnProps> = PropsWithChildren<OwnProps> &
-  Omit<ComponentPropsWithRef<C>, keyof OwnProps>;
 
 type BreadcrumbItemComponent = <C extends ElementType = "a">(
   props: PolymorphicProps<C, BreadcrumbItemProps<C>> & { ref?: ComponentPropsWithRef<C>["ref"] },

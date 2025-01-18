@@ -3,7 +3,7 @@ import App from "./app.tsx";
 import { createRoot } from "react-dom/client";
 import { PolymorphUiProvider } from "polymorphui/polymorphui-provider";
 import { ComponentVariants } from "polymorphui/variant";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Isolate from "./isolate.tsx";
 
 const variants: ComponentVariants = {
@@ -21,13 +21,13 @@ const variants: ComponentVariants = {
   /* Other component variants */
 };
 
+const router = createBrowserRouter([
+  { index: true, element: <App /> },
+  { path: "/isolate", element: <Isolate /> },
+]);
+
 createRoot(document.getElementById("root")!).render(
-  <BrowserRouter>
-    <PolymorphUiProvider variants={variants}>
-      <Routes>
-        <Route index element={<App />} />
-        <Route path="/isolate" element={<Isolate />} />
-      </Routes>
-    </PolymorphUiProvider>
-  </BrowserRouter>,
+  <PolymorphUiProvider variants={variants}>
+    <RouterProvider router={router} />
+  </PolymorphUiProvider>,
 );
