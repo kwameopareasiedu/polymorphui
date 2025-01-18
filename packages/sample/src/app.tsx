@@ -627,9 +627,19 @@ export default function App() {
         />
 
         <div className="flex items-center gap-2">
-          <DatePicker value={startDate} label="From" onChange={(e) => setStartDate(e.target.value as never)} />
+          <DatePicker
+            label="From"
+            value={startDate}
+            range={[startDate, endDate]}
+            onChange={(e) => setStartDate(e.target.value as never)}
+          />
 
-          <DatePicker value={endDate} label="To" onChange={(e) => setEndDate(e.target.value as never)} />
+          <DatePicker
+            label="To"
+            value={endDate}
+            range={[startDate, endDate]}
+            onChange={(e) => setEndDate(e.target.value as never)}
+          />
         </div>
       </Showcase>
     </main>

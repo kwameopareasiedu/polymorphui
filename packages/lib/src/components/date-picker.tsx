@@ -28,14 +28,11 @@ dayjs.extend(isSameOrAfter);
 
 const currentDjs = dayjs();
 
+type InputDateType = string | Date;
+
 export enum DatePickerFormat {
   D_M_Y = "d/m/y",
   M_D_Y = "m/d/y",
-}
-
-export enum DatePickerRangePosition {
-  START = "start",
-  END = "end",
 }
 
 export interface DatePickerProps
@@ -47,9 +44,8 @@ export interface DatePickerProps
   error?: ReactNode;
   format?: `${DatePickerFormat}`;
   validator?: (date: string) => string;
-  rangePosition?: `${DatePickerRangePosition}`;
-  rangeDates?: [string | Date, string | Date];
-  value?: string | Date;
+  range?: [InputDateType | undefined, InputDateType | undefined];
+  value?: InputDateType;
   onChange?: (e: { target: { value: string } }) => void;
 }
 
@@ -61,8 +57,7 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(function
     id,
     className,
     format: _format = "d/m/y",
-    rangePosition,
-    rangeDates,
+    range,
     validator,
     helper,
     error,
@@ -188,7 +183,7 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(function
             <CalendarIcon {...({ className: "w-4 h-4" } as object)} />
           </button>
 
-          <DatePickerCalendar date={value} validator={validator} onSelect={handleSelectCalendarDate} />
+          <DatePickerCalendar date={value} validator={validator} range={range} onSelect={handleSelectCalendarDate} />
         </Popup>
       </InputWrapper>
 
@@ -234,34 +229,34 @@ function getTransformers(
 
 interface DatePickerCalendarProps extends Omit<HTMLAttributes<HTMLDivElement>, "onSelect"> {
   variant?: VariantNameType | VariantNameType[];
+  range?: [InputDateType | undefined, InputDateType | undefined];
   validator?: (date: string) => string;
   date?: string | Date;
   onSelect: (date: string) => void;
 }
 
 const DatePickerCalendar = forwardRef<HTMLDivElement, DatePickerCalendarProps>(function DatePickerCalendar(
-  { date, variant, className, validator, onSelect, ...rest }: DatePickerCalendarProps,
+  { date, variant, className, range, validator, onSelect, ...rest }: DatePickerCalendarProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();
 
-  const [djs, setDjs] = useState(dayjs(date).isValid() ? dayjs(date) : currentDjs.clone());
+  const [dateDjs] = useState(dayjs(date).isValid() ? dayjs(date) : currentDjs.clone());
+  const [viewDjs, setViewDjs] = useState(dateDjs.clone());
 
   const [yearOptions, calendarDjsList] = useMemo(() => {
     const yearOptions = Array(100)
       .fill(null)
-      .map((_, idx) => djs.year() + idx - 50);
+      .map((_, idx) => viewDjs.year() + idx - 50);
 
-    const offset = djs.date(1).day();
-    const daysInCalendar = 7 * Math.ceil((offset + djs.daysInMonth()) / 7);
+    const offset = viewDjs.date(1).day();
+    const daysInCalendar = 7 * Math.ceil((offset + viewDjs.daysInMonth()) / 7);
     const calendarDays = Array(daysInCalendar)
       .fill(null)
-      .map((_, idx) => {
-        return djs.date(1).add(idx - offset, "day");
-      });
+      .map((_, idx) => viewDjs.date(1).add(idx - offset, "day"));
 
     return [yearOptions, calendarDays];
-  }, [djs]);
+  }, [viewDjs]);
 
   const _className = resolveClassName(
     "datePickerCalendar",
@@ -271,28 +266,29 @@ const DatePickerCalendar = forwardRef<HTMLDivElement, DatePickerCalendarProps>(f
     className,
   );
 
-  const calendarDayClassName = resolveClassName(
+  const calendarBtnClassName = resolveClassName(
     "datePickerCalendarDay",
     variant,
     "datePickerCalendarDay grid place-items-center aspect-square disabled:opacity-25 disabled:hover:cursor-not-allowed",
     cn(
-      "enabled:data-[selected=true]:bg-primary enabled:data-[selected=true]:text-white",
+      "text-sm enabled:data-[selected=true]:bg-primary enabled:data-[selected=true]:text-white",
       "enabled:hover:bg-primary/25 data-[in-month=false]:opacity-25",
+      "enabled:data-[selected=false]:data-[in-range=true]:!bg-primary/10",
     ),
   );
 
   const handleSelectMonth = (e: ChangeEvent<HTMLSelectElement>) => {
     const value = parseInt(e.target.value);
-    setDjs(djs.month(value));
+    setViewDjs(viewDjs.month(value));
   };
 
   const handleSelectYear = (e: ChangeEvent<HTMLSelectElement>) => {
     const value = parseInt(e.target.value);
-    setDjs(djs.year(value));
+    setViewDjs(viewDjs.year(value));
   };
 
   const handleCycleDate = (offset: 1 | -1, unit: "month" | "year") => {
-    setDjs(djs.add(offset, unit));
+    setViewDjs(viewDjs.add(offset, unit));
   };
 
   const handleSelectDate = (djs: dayjs.Dayjs) => {
@@ -306,7 +302,7 @@ const DatePickerCalendar = forwardRef<HTMLDivElement, DatePickerCalendarProps>(f
           <ArrowLeftIcon {...({ className: "w-5 h-5" } as object)} />
         </button>
 
-        <select className="bg-transparent" value={djs.month()} onChange={handleSelectMonth}>
+        <select className="bg-transparent" value={viewDjs.month()} onChange={handleSelectMonth}>
           <option value={0}>Jan</option>
           <option value={1}>Feb</option>
           <option value={2}>Mar</option>
@@ -331,7 +327,7 @@ const DatePickerCalendar = forwardRef<HTMLDivElement, DatePickerCalendarProps>(f
           <ArrowLeftIcon {...({ className: "w-5 h-5" } as object)} />
         </button>
 
-        <select className="bg-transparent" value={djs.year()} onChange={handleSelectYear}>
+        <select className="bg-transparent" value={viewDjs.year()} onChange={handleSelectYear}>
           {yearOptions.map((year) => (
             <option key={year} value={year}>
               {year}
@@ -353,19 +349,26 @@ const DatePickerCalendar = forwardRef<HTMLDivElement, DatePickerCalendarProps>(f
         <p className="text-center text-sm text-gray-500">Fr</p>
         <p className="text-center text-sm text-gray-500">Sa</p>
 
-        {calendarDjsList.map((cdjs, idx) => {
-          const cdjsIso = cdjs.format("YYYY-MM-DD");
+        {calendarDjsList.map((itemDjs, idx) => {
+          const cdjsIso = itemDjs.format("YYYY-MM-DD");
 
           return (
             <button
               type="button"
               key={idx}
-              className={calendarDayClassName}
+              className={calendarBtnClassName}
               disabled={validator && validator(cdjsIso) !== cdjsIso}
-              data-selected={djs.isSame(cdjs, "day")}
-              data-in-month={djs.month() === cdjs.month()}
-              onClick={() => handleSelectDate(cdjs)}>
-              {cdjs.format("DD")}
+              data-selected={dateDjs.isSame(itemDjs, "day")}
+              data-in-month={viewDjs.month() === itemDjs.month()}
+              data-in-range={
+                range?.[0] &&
+                range?.[1] &&
+                (dateDjs.isSame(range[0], "day") || dateDjs.isSame(range[1], "day")) &&
+                itemDjs.isSameOrAfter(range[0], "day") &&
+                itemDjs.isSameOrBefore(range[1], "day")
+              }
+              onClick={() => handleSelectDate(itemDjs)}>
+              {itemDjs.format("DD")}
             </button>
           );
         })}
