@@ -372,6 +372,13 @@ const DatePickerCalendar = forwardRef<HTMLDivElement, DatePickerCalendarProps>(f
             </button>
           );
         })}
+
+        <button
+          type="button"
+          className="col-span-full text-xs uppercase pt-1 pb-2"
+          onClick={() => handleSelectDate(dayjs())}>
+          Today
+        </button>
       </div>
     </div>
   );
