@@ -19,14 +19,23 @@ import ArrowLeftIcon from "../assets/arrow-left.svg";
 import ArrowRightIcon from "../assets/arrow-right.svg";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
+import isSameOrBefore from "dayjs/plugin/isSameOrBefore";
+import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
 
 dayjs.extend(customParseFormat);
+dayjs.extend(isSameOrBefore);
+dayjs.extend(isSameOrAfter);
 
 const currentDjs = dayjs();
 
 export enum DatePickerFormat {
   D_M_Y = "d/m/y",
   M_D_Y = "m/d/y",
+}
+
+export enum DatePickerRangePosition {
+  START = "start",
+  END = "end",
 }
 
 export interface DatePickerProps
@@ -37,6 +46,9 @@ export interface DatePickerProps
   helper?: ReactNode;
   error?: ReactNode;
   format?: `${DatePickerFormat}`;
+  validator?: (date: string) => string;
+  rangePosition?: `${DatePickerRangePosition}`;
+  rangeDates?: [string | Date, string | Date];
   value?: string | Date;
   onChange?: (e: { target: { value: string } }) => void;
 }
@@ -49,6 +61,9 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(function
     id,
     className,
     format: _format = "d/m/y",
+    rangePosition,
+    rangeDates,
+    validator,
     helper,
     error,
     value,
@@ -106,7 +121,12 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(function
     if (!buffer) {
       onChange?.({ target: { value: "" } });
     } else if (djs.isValid()) {
-      const iso = djs.format("YYYY-MM-DD");
+      let iso = djs.format("YYYY-MM-DD");
+
+      // if (minDate && djs.isBefore(minDate)) iso = dayjs(minDate).format("YYYY-MM-DD");
+      // if (maxDate && djs.isAfter(maxDate)) iso = dayjs(maxDate).format("YYYY-MM-DD");
+      if (validator) iso = validator(iso);
+
       onChange?.({ target: { value: iso } });
     } else {
       const fallback = dayjs().format("YYYY-MM-DD");
@@ -168,7 +188,7 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(function
             <CalendarIcon {...({ className: "w-4 h-4" } as object)} />
           </button>
 
-          <DatePickerCalendar date={value} onSelect={handleSelectCalendarDate} />
+          <DatePickerCalendar date={value} validator={validator} onSelect={handleSelectCalendarDate} />
         </Popup>
       </InputWrapper>
 
@@ -214,31 +234,30 @@ function getTransformers(
 
 interface DatePickerCalendarProps extends Omit<HTMLAttributes<HTMLDivElement>, "onSelect"> {
   variant?: VariantNameType | VariantNameType[];
+  validator?: (date: string) => string;
   date?: string | Date;
   onSelect: (date: string) => void;
 }
 
 const DatePickerCalendar = forwardRef<HTMLDivElement, DatePickerCalendarProps>(function DatePickerCalendar(
-  { date, variant, className, onSelect, ...rest }: DatePickerCalendarProps,
+  { date, variant, className, validator, onSelect, ...rest }: DatePickerCalendarProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();
 
   const [djs, setDjs] = useState(dayjs(date).isValid() ? dayjs(date) : currentDjs.clone());
 
-  const [yearOptions, calendarDays] = useMemo(() => {
-    const len = 100;
-
-    const yearOptions = Array(len)
+  const [yearOptions, calendarDjsList] = useMemo(() => {
+    const yearOptions = Array(100)
       .fill(null)
-      .map((_, idx) => djs.year() + idx - len / 2);
+      .map((_, idx) => djs.year() + idx - 50);
 
-    const [offset, daysInMonth] = [djs.date(1).day(), djs.daysInMonth()];
-
-    const calendarDays = Array(offset + daysInMonth)
+    const offset = djs.date(1).day();
+    const daysInCalendar = 7 * Math.ceil((offset + djs.daysInMonth()) / 7);
+    const calendarDays = Array(daysInCalendar)
       .fill(null)
       .map((_, idx) => {
-        return idx < offset ? null : idx - offset + 1;
+        return djs.date(1).add(idx - offset, "day");
       });
 
     return [yearOptions, calendarDays];
@@ -255,8 +274,11 @@ const DatePickerCalendar = forwardRef<HTMLDivElement, DatePickerCalendarProps>(f
   const calendarDayClassName = resolveClassName(
     "datePickerCalendarDay",
     variant,
-    "datePickerCalendarDay grid place-items-center aspect-square",
-    cn("data-[selected=true]:bg-primary data-[selected=true]:text-white", "hover:bg-primary/25"),
+    "datePickerCalendarDay grid place-items-center aspect-square disabled:opacity-25 disabled:hover:cursor-not-allowed",
+    cn(
+      "enabled:data-[selected=true]:bg-primary enabled:data-[selected=true]:text-white",
+      "enabled:hover:bg-primary/25 data-[in-month=false]:opacity-25",
+    ),
   );
 
   const handleSelectMonth = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -273,8 +295,8 @@ const DatePickerCalendar = forwardRef<HTMLDivElement, DatePickerCalendarProps>(f
     setDjs(djs.add(offset, unit));
   };
 
-  const handleSelectDate = (day: number) => {
-    onSelect(djs.date(day).format("YYYY-MM-DD"));
+  const handleSelectDate = (djs: dayjs.Dayjs) => {
+    onSelect(djs.format("YYYY-MM-DD"));
   };
 
   return (
@@ -322,7 +344,7 @@ const DatePickerCalendar = forwardRef<HTMLDivElement, DatePickerCalendarProps>(f
         </button>
       </nav>
 
-      <div className="col-span-full grid grid-cols-7 gap-1">
+      <div className="col-span-full grid grid-cols-7 gap-0">
         <p className="text-center text-sm text-gray-500">Su</p>
         <p className="text-center text-sm text-gray-500">Mo</p>
         <p className="text-center text-sm text-gray-500">Tu</p>
@@ -331,17 +353,19 @@ const DatePickerCalendar = forwardRef<HTMLDivElement, DatePickerCalendarProps>(f
         <p className="text-center text-sm text-gray-500">Fr</p>
         <p className="text-center text-sm text-gray-500">Sa</p>
 
-        {calendarDays.map((day, idx) => {
-          if (!day) return <span key={idx} />;
+        {calendarDjsList.map((cdjs, idx) => {
+          const cdjsIso = cdjs.format("YYYY-MM-DD");
 
           return (
             <button
               type="button"
               key={idx}
               className={calendarDayClassName}
-              data-selected={djs.date() === day}
-              onClick={() => handleSelectDate(day)}>
-              {day}
+              disabled={validator && validator(cdjsIso) !== cdjsIso}
+              data-selected={djs.isSame(cdjs, "day")}
+              data-in-month={djs.month() === cdjs.month()}
+              onClick={() => handleSelectDate(cdjs)}>
+              {cdjs.format("DD")}
             </button>
           );
         })}

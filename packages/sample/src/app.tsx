@@ -25,6 +25,12 @@ import { BreadcrumbItem, Breadcrumbs } from "polymorphui/breadcrumbs";
 import { Link } from "react-router-dom";
 import { FiChevronsRight } from "react-icons/fi";
 import { DatePicker } from "polymorphui/date-picker";
+import dayjs from "dayjs";
+import isSameOrBefore from "dayjs/plugin/isSameOrBefore";
+import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
+
+dayjs.extend(isSameOrBefore);
+dayjs.extend(isSameOrAfter);
 
 export default function App() {
   const [popupOpen, setPopupOpen] = useState(false);
@@ -40,6 +46,8 @@ export default function App() {
   const [activeSection, setActiveSection] = useState<string[]>([]);
   const [page, setPage] = useState(1);
   const [date, setDate] = useState<Date>();
+  const [startDate, setStartDate] = useState<Date>();
+  const [endDate, setEndDate] = useState<Date>();
 
   return (
     <main className="p-4 flex flex-wrap items-start gap-8 ">
@@ -590,8 +598,39 @@ export default function App() {
       </Showcase>
 
       <Showcase title="Date Picker">
-        <DatePicker value={date} label="Select date" onChange={(e) => setDate(e.target.value as never)} />
-        <DatePicker value={date} format="m/d/y" onChange={(e) => setDate(e.target.value as never)} />
+        <DatePicker
+          value={date}
+          label="Select date"
+          leading={<span className="text-xs font-medium text-gray-400">DD/MM/YYY</span>}
+          onChange={(e) => setDate(e.target.value as never)}
+        />
+
+        <DatePicker
+          value={date}
+          format="m/d/y"
+          leading={<span className="text-xs font-medium text-gray-400">MM/DD/YYY</span>}
+          onChange={(e) => setDate(e.target.value as never)}
+        />
+
+        <DatePicker
+          value={date}
+          validator={(date) => {
+            const minDate = dayjs("2025-01-15");
+            const maxDate = dayjs("2025-01-31");
+
+            if (minDate.isBefore(date) && maxDate.isAfter(date) && !dayjs().isSame(date, "day")) return date;
+            else if (minDate.isSameOrAfter(date)) return minDate.format("YYYY-MM-DD");
+            return maxDate.format("YYYY-MM-DD");
+          }}
+          label="With validator"
+          onChange={(e) => setDate(e.target.value as never)}
+        />
+
+        <div className="flex items-center gap-2">
+          <DatePicker value={startDate} label="From" onChange={(e) => setStartDate(e.target.value as never)} />
+
+          <DatePicker value={endDate} label="To" onChange={(e) => setEndDate(e.target.value as never)} />
+        </div>
       </Showcase>
     </main>
   );
