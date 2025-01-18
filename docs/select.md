@@ -2,7 +2,7 @@
 
 [**_Docs_**](../README.md)
 
-An input component which allows a single selection from a list of options
+An input component which allows a single or multiple selections from a list of options
 
 ```typescript jsx
 import { Select, SelectItem } from "polymorphui/select";
