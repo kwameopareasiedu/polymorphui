@@ -1,0 +1,15 @@
+.idea
+node_modules
+build
+dist
+bin
+.turbo
+.yarn
+
+package-lock.json
+*.tar.gz
+*.tgz
+.env*
+packages/lib/.npmrc
+packages/lib/README.md
+*.tsbuildinfo
