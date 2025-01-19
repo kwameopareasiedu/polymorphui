@@ -262,7 +262,7 @@ const DatePickerCalendar = forwardRef<HTMLDivElement, DatePickerCalendarProps>(f
     "datePickerCalendar",
     variant,
     "datePickerCalendar grid grid-cols-2 gap-2 p-2 w-auto max-w-72",
-    "rounded-lg bg-white shadow-lg border-[1px] border-gray-300",
+    "rounded-lg bg-white shadow-lg border-[1px] border-gray-300 z-[100]",
     className,
   );
 

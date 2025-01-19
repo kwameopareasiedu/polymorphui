@@ -9,6 +9,7 @@ export interface TooltipProps extends Omit<HTMLAttributes<HTMLParagraphElement>,
   variant?: VariantNameType | VariantNameType[];
   description: string;
   delayMs?: number;
+  disabled?: boolean;
   offset?: [number, number];
   placement?: Placement;
   children: ReactElement;
@@ -19,6 +20,7 @@ export const Tooltip = forwardRef<HTMLParagraphElement, TooltipProps>(function T
     variant,
     description,
     delayMs,
+    disabled,
     className,
     offset = [0, 6],
     placement = "bottom-start",
@@ -42,7 +44,8 @@ export const Tooltip = forwardRef<HTMLParagraphElement, TooltipProps>(function T
       closeEvent="triggerLeave"
       openDelayMs={delayMs}
       placement={placement}
-      offset={offset}>
+      offset={offset}
+      open={disabled ? false : undefined}>
       {children}
 
       <Text ref={ref} variant="appendDefault" className={_className} {...rest}>
