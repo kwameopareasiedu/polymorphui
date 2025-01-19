@@ -105,6 +105,9 @@ PolymorphUI exports the following hooks:
 
 ## Changelog
 
+- `0.12.0`
+   - Added `disabled` prop to [Tooltip](./docs/tooltip.md) component to disable popup
+   - Added `disabled` prop to [Badge](./docs/badge.md) component to disable popup
 - `0.11.0`
    - Added [DatePicker](./docs/date-picker.md) component
    - Added polymorphism to `<DialogContent>` component in [Dialog](./docs/dialog.md) through the `as` prop

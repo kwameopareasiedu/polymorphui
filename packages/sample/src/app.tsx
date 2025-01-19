@@ -48,6 +48,7 @@ export default function App() {
   const [date, setDate] = useState<Date>();
   const [startDate, setStartDate] = useState<Date>();
   const [endDate, setEndDate] = useState<Date>();
+  const [showBadge, setShowBadge] = useState(true);
 
   return (
     <main className="p-4 flex flex-wrap items-start gap-8 ">
@@ -64,15 +65,23 @@ export default function App() {
       </Showcase>
 
       <Showcase title="Text">
-        <Text as="h3">Paragraph!</Text>
-        <Text inline>Inline 1</Text>
-        <Text inline>Inline 2</Text>
+        <div>
+          <Text as="h3">Paragraph!</Text>
+          <Text inline>Inline 1</Text>
+          <Text inline>Inline 2</Text>
+        </div>
       </Showcase>
 
       <Showcase title="Tooltip">
-        <Tooltip description="Update button description">
-          <Button flex>Update</Button>
-        </Tooltip>
+        <div className="flex flex-col gap-2">
+          <Tooltip description="Update button description">
+            <Button>Hover on me</Button>
+          </Tooltip>
+
+          <Tooltip description="Update button description" disabled>
+            <Button>Disabled Tooltip</Button>
+          </Tooltip>
+        </div>
       </Showcase>
 
       <Showcase title="Popup">
@@ -357,6 +366,13 @@ export default function App() {
                 suscipit temporibus tenetur voluptatibus.
               </Text>
 
+              <DatePicker
+                value={date}
+                label="Select date"
+                leading={<span className="text-xs font-medium text-gray-400">DD/MM/YYY</span>}
+                onChange={(e) => setDate(e.target.value as never)}
+              />
+
               <Text as="h1">
                 Ut convallis, sem sit amet interdum consectetuer, odio augue aliquam leo, nec dapibus tortor nibh sed
                 augue. Integer eu magna sit amet metus fermentum posuere. Morbi sit amet nulla sed dolor elementum
@@ -552,15 +568,17 @@ export default function App() {
 
       <Showcase title="Badge">
         <div className="flex flex-col gap-4">
-          <Badge placement="right" offset={[0, 10]}>
+          <Badge placement="right" offset={[0, 4]} disabled={!showBadge}>
             <Text className="">Unread messages</Text>
             <Text>2</Text>
           </Badge>
 
-          <Badge placement="left" offset={[0, 10]}>
+          <Badge placement="left" offset={[0, 4]} disabled={!showBadge}>
             <Text className="">Unread messages</Text>
             <Text>2</Text>
           </Badge>
+
+          <Button onClick={() => setShowBadge(!showBadge)}>Toggle Badge</Button>
         </div>
       </Showcase>
 

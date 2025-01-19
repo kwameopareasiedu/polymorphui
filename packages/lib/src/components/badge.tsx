@@ -7,13 +7,14 @@ import { VariantNameType } from "@/config/variant";
 export interface BadgeProps extends HTMLAttributes<HTMLDivElement> {
   variant?: VariantNameType | VariantNameType[];
   delayMs?: number;
+  disabled?: boolean;
   offset?: [number, number];
   placement?: Placement;
   children: [ReactNode, ReactNode];
 }
 
 export const Badge = forwardRef<HTMLDivElement, BadgeProps>(function Tooltip(
-  { variant, delayMs, className, offset, placement = "right", children, ...rest }: BadgeProps,
+  { variant, delayMs, disabled, className, offset, placement = "right", children, ...rest }: BadgeProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();
@@ -28,7 +29,13 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(function Tooltip(
   );
 
   return (
-    <Popup openEvent={null} closeEvent={null} openDelayMs={delayMs} placement={placement} offset={offset} open>
+    <Popup
+      openEvent={null}
+      closeEvent={null}
+      openDelayMs={delayMs}
+      placement={placement}
+      offset={offset}
+      open={!disabled}>
       {anchor}
 
       <div ref={ref} className={_className} {...rest}>
