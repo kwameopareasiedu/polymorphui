@@ -31,16 +31,17 @@ export function Example() {
 
 _Extends_ `HTMLAttributes<HTMLDivElement>`
 
-| Props          | Description                           | Type                                               | Default |
-|----------------|---------------------------------------|----------------------------------------------------|---------|
-| `variant?`     | Variant(s) to style with              | `string \| string[]`                               |         |
-| `label?`       | Label node                            | `ReactNode`                                        |         |
-| `leading?`     | Component to render to left of input  | `ReactNode`                                        |         |
-| `trailing?`    | Component to render to right of input | `ReactNode`                                        |         |
-| `helper?`      | Helper node to render below input     | `ReactNode`                                        |         |
-| `error?`       | Error node                            | `ReactNode`                                        |         |
-| `placeholder?` | Placeholder text                      | `string`                                           |         |
-| `value?`       | Value(s) of the select                | `string \| string[]`                               |         |
-| `onChange?`    | Change handler                        | `ChangeEventHandler<{ value: string & string[] }>` |         |
+| Props             | Description                                | Type                                               | Default |
+|-------------------|--------------------------------------------|----------------------------------------------------|---------|
+| `variant?`        | Variant(s) to style with                   | `string \| string[]`                               |         |
+| `label?`          | Label node                                 | `ReactNode`                                        |         |
+| `leading?`        | Component to render to left of input       | `ReactNode`                                        |         |
+| `trailing?`       | Component to render to right of input      | `ReactNode`                                        |         |
+| `helper?`         | Helper node to render below input          | `ReactNode`                                        |         |
+| `error?`          | Error node                                 | `ReactNode`                                        |         |
+| `placeholder?`    | Placeholder text                           | `string`                                           |         |
+| `itemsClassName?` | Additional class to add to items container | `string`                                           |         |
+| `value?`          | Value(s) of the select                     | `string \| string[]`                               |         |
+| `onChange?`       | Change handler                             | `ChangeEventHandler<{ value: string & string[] }>` |         |
 
 > If `value` is an array, `<Select />` becomes multi-select

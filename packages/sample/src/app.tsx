@@ -22,18 +22,20 @@ import { Accordion, AccordionHeader, AccordionItem, AccordionPanel } from "polym
 import { Badge } from "polymorphui/badge";
 import { Pagination } from "polymorphui/pagination";
 import { BreadcrumbItem, Breadcrumbs } from "polymorphui/breadcrumbs";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { FiChevronsRight } from "react-icons/fi";
 import { DatePicker } from "polymorphui/date-picker";
 import dayjs from "dayjs";
 import isSameOrBefore from "dayjs/plugin/isSameOrBefore";
 import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
+import { useQueryParams } from "polymorphui/use-query-params";
 
 dayjs.extend(isSameOrBefore);
 dayjs.extend(isSameOrAfter);
 
 export default function App() {
   const [popupOpen, setPopupOpen] = useState(false);
+  const [params, setParam] = useQueryParams({ param1: "val1", param2: "val2" });
 
   const [inputText, setInputText] = useState("");
   const [areaText, setAreaText] = useState("");
@@ -657,6 +659,27 @@ export default function App() {
             value={endDate}
             range={[startDate, endDate]}
             onChange={(e) => setEndDate(e.target.value as never)}
+          />
+        </div>
+      </Showcase>
+
+      <Showcase title="Query Params (Hook)">
+        <div className="font-mono bg-slate-100 p-4 rounded">
+          <p>Param 1 = {decodeURIComponent(params.param1)}</p>
+          <p>Param 2 = {decodeURIComponent(params.param2)}</p>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <Input
+            label="Param 1 Value"
+            value={decodeURIComponent(params.param1 ?? "")}
+            onChange={(e) => setParam("param1", encodeURIComponent(e.target.value))}
+          />
+
+          <Input
+            label="Param 2 Value"
+            value={decodeURIComponent(params.param2 ?? "")}
+            onChange={(e) => setParam("param2", encodeURIComponent(e.target.value))}
           />
         </div>
       </Showcase>

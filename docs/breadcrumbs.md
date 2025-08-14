@@ -5,7 +5,7 @@
 A component which displays the current navigation using a hierarchy of links
 
 ```typescript jsx
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { BreadcrumbItem, Breadcrumbs } from "polymorphui/breadcrumbs";
 import { FiChevronsRight } from "react-icons/fi";
 
