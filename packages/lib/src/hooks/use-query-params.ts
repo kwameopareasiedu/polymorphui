@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
 
 export function useQueryParams<T extends Record<string, string | undefined>>(initialParams: T) {
-  const [, setSearchParams] = useSearchParams();
-  const [params, setParams] = useState(initialParams);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [params, setParams] = useState(resolveInitialParams(searchParams, initialParams));
 
   const handleSetParam = (key: keyof T, value: string | undefined) => {
     setSearchParams((params) => {
@@ -30,4 +30,18 @@ export function useQueryParams<T extends Record<string, string | undefined>>(ini
   }, []);
 
   return [params, handleSetParam] as const;
+}
+
+function resolveInitialParams<T extends Record<string, string | undefined>>(
+  searchParams: URLSearchParams,
+  initialParams: T,
+) {
+  const resolved = {} as T;
+
+  for (const key in initialParams) {
+    // @ts-expect-error key is defined on resolved
+    resolved[key] = searchParams.get(key) ?? initialParams[key];
+  }
+
+  return resolved;
 }

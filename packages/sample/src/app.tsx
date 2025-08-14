@@ -673,13 +673,13 @@ export default function App() {
           <Input
             label="Param 1 Value"
             value={decodeURIComponent(params.param1 ?? "")}
-            onChange={(e) => setParam("param1", encodeURIComponent(e.target.value))}
+            onChange={(e) => setParam("param1", e.target.value)}
           />
 
           <Input
             label="Param 2 Value"
             value={decodeURIComponent(params.param2 ?? "")}
-            onChange={(e) => setParam("param2", encodeURIComponent(e.target.value))}
+            onChange={(e) => setParam("param2", e.target.value)}
           />
         </div>
       </Showcase>
