@@ -106,6 +106,8 @@ PolymorphUI exports the following hooks:
 
 ## Changelog
 
+- `0.13.1`
+   - Fixed initial value resolution bug in [useQueryParams](./docs/use-query-params.md) hook
 - `0.13.0`
    - Added optional `itemsClassName` prop to [Select](./docs/select.md) component
    - Added [useQueryParams](./docs/use-query-params.md) hook
