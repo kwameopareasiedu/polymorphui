@@ -42,6 +42,7 @@ export interface SelectProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement
   placeholder?: string;
   value?: string | string[];
   children?: ReactNode;
+  itemsClassName?: string;
   onChange?: (e: { target: { value: string & string[] } }) => void;
 }
 
@@ -58,6 +59,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(function Select
     value,
     onChange,
     children,
+    itemsClassName,
     ...rest
   }: SelectProps,
   ref,
@@ -139,7 +141,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(function Select
             <DropdownIcon {...({ className: "w-3" } as object)} />
           </SelectButton>
 
-          <SelectItems style={{ minWidth: `${triggerWidth}px` }} onKeyUp={handleOnKeyUp}>
+          <SelectItems style={{ minWidth: `${triggerWidth}px` }} className={itemsClassName} onKeyUp={handleOnKeyUp}>
             {children}
           </SelectItems>
         </Popup>
