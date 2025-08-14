@@ -38,7 +38,7 @@ export default defineConfig([
       remapAlias({ alias: "@/" }),
       isProd && terser(),
     ],
-    external: ["react", "react/jsx-runtime", "react-dom", "react-router-dom", /@\/.*/],
+    external: ["react", "react/jsx-runtime", "react-dom", "react-router", /@\/.*/],
   },
   {
     /** Creates component typings files */

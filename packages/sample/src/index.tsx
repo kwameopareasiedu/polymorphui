@@ -3,7 +3,7 @@ import App from "./app.tsx";
 import { createRoot } from "react-dom/client";
 import { PolymorphUiProvider } from "polymorphui/polymorphui-provider";
 import { ComponentVariants } from "polymorphui/variant";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router";
 import Isolate from "./isolate.tsx";
 
 const variants: ComponentVariants = {
