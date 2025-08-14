@@ -95,9 +95,10 @@ PolymorphUI exports the following components:
 
 PolymorphUI exports the following hooks:
 
-| Hook            | Description                                                | Docs                                   |
-|-----------------|------------------------------------------------------------|----------------------------------------|
-| `useQueryParam` | A hook which monitors and updates a single query parameter | [View docs](./docs/use-query-param.md) |
+| Hook             | Description                                                 | Docs                                    |
+|------------------|-------------------------------------------------------------|-----------------------------------------|
+| `useQueryParam`  | A hook which monitors and updates a single query parameter  | [View docs](./docs/use-query-param.md)  |
+| `useQueryParams` | A hook which monitors and updates multiple query parameters | [View docs](./docs/use-query-params.md) |
 
 ## Contributors
 
@@ -105,6 +106,9 @@ PolymorphUI exports the following hooks:
 
 ## Changelog
 
+- `0.13.0`
+   - Added optional `itemsClassName` prop to [Select](./docs/select.md) component
+   - Added [useQueryParams](./docs/use-query-params.md) hook
 - `0.12.0`
    - Added `disabled` prop to [Tooltip](./docs/tooltip.md) component to disable popup
    - Added `disabled` prop to [Badge](./docs/badge.md) component to disable popup
@@ -128,6 +132,6 @@ PolymorphUI exports the following hooks:
    - Refactored library to use provider pattern for component variants
 - `0.5.0`
    - Added [Badge](./docs/badge.md) component
-   - Named all `forwardRef` components to identify in React devtools
+   - Named all `forwardRef` components to identify components in React devtools
 - `0.3.1`
    - Added [Accordion](./docs/accordion.md) component
