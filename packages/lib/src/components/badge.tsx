@@ -33,7 +33,7 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(function Tooltip(
         className={resolveClassName(
           "badge",
           "badge",
-          "px-2 py-0.5 rounded-full bg-primary-500 text-white text-sm",
+          "px-2 py-0.5 rounded-full bg-primary text-white text-sm",
           className,
         )}
         {...rest}>

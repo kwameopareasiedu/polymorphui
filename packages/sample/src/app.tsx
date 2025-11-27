@@ -624,8 +624,8 @@ export default function App() {
 
         <DatePicker
           value={date}
-          format="m/d/y"
-          leading={<span className="text-xs font-medium text-gray-400">MM/DD/YYY</span>}
+          format="Do MMM YYYY"
+          leading={<span className="text-xs font-medium text-gray-400">Do MMM YYYY</span>}
           onChange={(e) => setDate(e.target.value as never)}
         />
 

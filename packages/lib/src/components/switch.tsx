@@ -25,9 +25,9 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(function Switch
       className={resolveClassName(
         "switch",
         "switch relative inline-block w-10 h-6 rounded-full border-2 transition-colors",
-        "bg-gray-300 border-gray-300 focus:outline-0 data-[checked=true]:bg-primary-400 " +
-          "data-[checked=true]:border-primary-400 disabled:opacity-35 enabled:hover:border-primary-400 " +
-          "focus:border-primary-400",
+        "bg-gray-300 border-gray-300 focus:outline-0 data-[checked=true]:bg-primary " +
+          "data-[checked=true]:border-primary disabled:opacity-35 enabled:hover:border-primary " +
+          "focus:border-primary",
         className,
       )}
       onClick={handleOnClick}

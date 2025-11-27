@@ -15,11 +15,13 @@ import { Popup } from "@/components/popup";
 import { combineRefs } from "@/utils";
 import CalendarIcon from "../assets/calendar.svg";
 import dayjs from "dayjs";
+import advancedFormat from "dayjs/plugin/advancedFormat";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import isSameOrBefore from "dayjs/plugin/isSameOrBefore";
 import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
 import { Tooltip } from "@/components/tooltip";
 
+dayjs.extend(advancedFormat);
 dayjs.extend(customParseFormat);
 dayjs.extend(isSameOrBefore);
 dayjs.extend(isSameOrAfter);
@@ -28,18 +30,13 @@ const currentDjs = dayjs();
 
 type InputDateType = string | Date;
 
-export enum DatePickerFormat {
-  D_M_Y = "d/m/y",
-  M_D_Y = "m/d/y",
-}
-
 export interface DatePickerProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "type" | "value" | "onChange" | "children" | "placeholder"> {
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, "type" | "value" | "onChange" | "children"> {
   label?: ReactNode;
   leading?: ReactNode;
   helper?: ReactNode;
   error?: ReactNode;
-  format?: `${DatePickerFormat}`;
+  format?: string;
   validator?: (date: string) => string;
   range?: [InputDateType | undefined, InputDateType | undefined];
   value?: InputDateType;
@@ -52,7 +49,8 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(function
     leading,
     id,
     className,
-    format: _format = "d/m/y",
+    placeholder,
+    format = "DD/MM/YY",
     range,
     validator,
     helper,
@@ -66,56 +64,7 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(function
   const inputRef = useRef<HTMLInputElement>(null);
   const { resolveClassName } = usePolymorphUi();
   const [isOpen, setIsOpen] = useState(false);
-  const [placeholder, setPlaceholder] = useState("");
   const [buffer, setBuffer] = useState("");
-
-  const format = useMemo(() => {
-    if (_format === DatePickerFormat.D_M_Y) {
-      return "DD/MM/YYYY";
-    } else if (_format === DatePickerFormat.M_D_Y) {
-      return "MM/DD/YYYY";
-    } else throw new Error(`Invalid format: ${_format}`);
-  }, [_format]);
-
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const val = e.target.value;
-    const transformers = getTransformers(format);
-
-    for (let i = 0; i < transformers.length; i++) {
-      const t = transformers[i];
-
-      if (t.regex.test(val)) {
-        setPlaceholder(t.placeholder);
-        setBuffer(t.transform?.(val) ?? val);
-
-        // If first or last transformer is used, parse the date buffer
-        if ([0, transformers.length - 1].includes(i)) {
-          handleParseBuffer(val);
-        }
-
-        break;
-      }
-    }
-  };
-
-  const handleParseBuffer = (buffer: string) => {
-    const djs = dayjs(buffer, format);
-
-    if (!buffer) {
-      onChange?.({ target: { value: "" } });
-    } else if (djs.isValid()) {
-      let iso = djs.format("YYYY-MM-DD");
-
-      // if (minDate && djs.isBefore(minDate)) iso = dayjs(minDate).format("YYYY-MM-DD");
-      // if (maxDate && djs.isAfter(maxDate)) iso = dayjs(maxDate).format("YYYY-MM-DD");
-      if (validator) iso = validator(iso);
-
-      onChange?.({ target: { value: iso } });
-    } else {
-      const fallback = dayjs().format("YYYY-MM-DD");
-      onChange?.({ target: { value: fallback } });
-    }
-  };
 
   const handleSelectCalendarDate = (date: string) => {
     onChange?.({ target: { value: date } });
@@ -128,11 +77,6 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(function
 
     if (djs.isValid()) {
       setBuffer(djs.format(format));
-      setPlaceholder("");
-    } else {
-      const transformers = getTransformers(format);
-      setPlaceholder(transformers[0].placeholder);
-      setBuffer("");
     }
   }, [value, format]);
 
@@ -154,14 +98,8 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(function
             {...rest}
             type="text"
             ref={combineRefs(ref, inputRef)}
+            placeholder={placeholder}
             value={buffer}
-            onChange={handleInputChange}
-          />
-
-          <InputInput
-            className="absolute left-0 top-0 text-gray-400 pointer-events-none -z-[1]"
-            value={placeholder}
-            tabIndex={-1}
             readOnly
           />
         </div>
@@ -191,39 +129,9 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(function
   );
 });
 
-function getTransformers(
-  format: "DD/MM/YYYY" | "MM/DD/YYYY",
-): { regex: RegExp; transform?: (val: string) => string; placeholder: string }[] {
-  const isDMY = format === "DD/MM/YYYY";
-
-  return [
-    { regex: /^$/, placeholder: isDMY ? "dd/mm/yyyy" : "mm/dd/yyyy" },
-    { regex: /^\d$/, placeholder: isDMY ? " d/mm/yyyy" : " m/dd/yyyy" },
-    { regex: /^\d\d$/, placeholder: isDMY ? "  /mm/yyyy" : "  /dd/yyyy" },
-    {
-      regex: /^\d\d\d$/,
-      transform: (v) => `${v.slice(0, 2)}/${v[2]}`,
-      placeholder: isDMY ? "    m/yyyy" : "    d/yyyy",
-    },
-    { regex: /^\d\d\/$/, placeholder: isDMY ? "   mm/yyyy" : "   dd/yyyy" },
-    { regex: /^\d\d\/\d$/, placeholder: isDMY ? "    m/yyyy" : "    d/yyyy" },
-    { regex: /^\d\d\/\d\d$/, placeholder: "     /yyyy" },
-    {
-      regex: /^\d\d\/\d\d\d$/,
-      transform: (v) => `${v.slice(0, 5)}/${v[5]}`,
-      placeholder: "       yyy",
-    },
-    { regex: /^\d\d\/\d\d\/$/, placeholder: "      yyyy" },
-    { regex: /^\d\d\/\d\d\/\d$/, placeholder: "       yyy" },
-    { regex: /^\d\d\/\d\d\/\d\d$/, placeholder: "        yy" },
-    { regex: /^\d\d\/\d\d\/\d\d\d$/, placeholder: "         y" },
-    { regex: /^\d\d\/\d\d\/\d\d\d\d$/, placeholder: "          " },
-  ];
-}
-
 interface DatePickerCalendarProps extends Omit<HTMLAttributes<HTMLDivElement>, "onSelect"> {
   range?: [InputDateType | undefined, InputDateType | undefined];
-  validator?: (date: string) => string;
+  validator?: (date: string) => string | null;
   date?: string | Date;
   onSelect: (date: string) => void;
 }
@@ -233,14 +141,13 @@ const DatePickerCalendar = forwardRef<HTMLDivElement, DatePickerCalendarProps>(f
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();
-
   const [dateDjs] = useState(dayjs(date).isValid() ? dayjs(date) : currentDjs.clone());
   const [viewDjs, setViewDjs] = useState(dateDjs.clone());
 
   const [yearOptions, calendarDjsList] = useMemo(() => {
-    const yearOptions = Array(100)
+    const yearOptions = Array(50)
       .fill(null)
-      .map((_, idx) => viewDjs.year() + idx - 50);
+      .map((_, idx) => viewDjs.year() + idx - 25);
 
     const offset = viewDjs.date(1).day();
     const daysInCalendar = 7 * Math.ceil((offset + viewDjs.daysInMonth()) / 7);
@@ -263,6 +170,10 @@ const DatePickerCalendar = forwardRef<HTMLDivElement, DatePickerCalendarProps>(f
 
   const handleSelectDate = (djs: dayjs.Dayjs) => {
     onSelect(djs.format("YYYY-MM-DD"));
+  };
+
+  const handleShowToday = () => {
+    setViewDjs(currentDjs.clone());
   };
 
   return (
@@ -302,7 +213,11 @@ const DatePickerCalendar = forwardRef<HTMLDivElement, DatePickerCalendarProps>(f
         <span className="flex-1" />
 
         <Tooltip description="Today" className="z-[100]">
-          <button type="button" onClick={() => handleSelectDate(dayjs())}>
+          <button
+            type="button"
+            className="disabled:opacity-20 disabled:cursor-not-allowed"
+            onClick={handleShowToday}
+            disabled={viewDjs.isSame(dateDjs, "month")}>
             <CalendarIcon {...({ className: "size-4" } as object)} />
           </button>
         </Tooltip>
@@ -318,22 +233,24 @@ const DatePickerCalendar = forwardRef<HTMLDivElement, DatePickerCalendarProps>(f
         <p className="text-center text-sm text-gray-500">Sa</p>
 
         {calendarDjsList.map((itemDjs, idx) => {
-          const cdjsIso = itemDjs.format("YYYY-MM-DD");
+          const itemDjsIso = itemDjs.format("YYYY-MM-DD");
 
           return (
             <button
-              type="button"
               key={idx}
+              type="button"
               className={resolveClassName(
                 "datePickerCalendarDay",
-                "datePickerCalendarDay grid place-items-center aspect-square rounded p-0.5 disabled:opacity-25 disabled:hover:cursor-not-allowed",
-                "text-sm enabled:data-[selected=true]:bg-primary enabled:data-[selected=true]:text-white " +
+                "datePickerCalendarDay grid place-items-center aspect-square rounded disabled:opacity-25 disabled:hover:cursor-not-allowed",
+                "data-[selected=false]:border data-[today=true]:border-dashed data-[today=true]:border-primary " +
+                  "enabled:data-[selected=true]:bg-primary enabled:data-[selected=true]:text-white " +
                   "enabled:hover:bg-primary/25 data-[in-month=false]:opacity-25 " +
                   "enabled:data-[selected=false]:data-[in-range=true]:!bg-primary/10",
               )}
-              disabled={validator && validator(cdjsIso) !== cdjsIso}
-              data-selected={dateDjs.isSame(itemDjs, "day")}
-              data-in-month={viewDjs.month() === itemDjs.month()}
+              disabled={validator && validator(itemDjsIso) !== itemDjsIso}
+              data-today={itemDjs.isSame(currentDjs, "day")}
+              data-selected={itemDjs.isSame(dateDjs, "day")}
+              data-in-month={itemDjs.month() === viewDjs.month()}
               data-in-range={
                 range?.[0] &&
                 range?.[1] &&

@@ -85,7 +85,7 @@ export const InputWrapper = forwardRef<HTMLDivElement, InputWrapperProps>(functi
       className={resolveClassName(
         "inputWrapper",
         "inputWrapper flex items-center gap-2",
-        "px-2 rounded border border-gray-300 focus-within:border-primary-400 " +
+        "px-2 rounded border border-gray-300 focus-within:border-primary " +
           "has-[input:disabled]:opacity-50 has-[input:disabled]:bg-gray-100",
         className,
       )}

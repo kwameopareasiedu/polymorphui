@@ -167,7 +167,7 @@ const SelectButton = forwardRef<HTMLButtonElement, SelectButtonProps>(function S
       className={resolveClassName(
         "selectButton",
         "selectButton flex items-center gap-2",
-        "px-2 py-1 rounded border border-slate-300 focus:border-primary-400 focus:outline-0 " +
+        "px-2 py-1 rounded border border-slate-300 focus:border-primary focus:outline-0 " +
           "disabled:opacity-50 disabled:bg-slate-100 ",
         className,
       )}
@@ -210,8 +210,8 @@ export const SelectItem = forwardRef<HTMLButtonElement, SelectItemProps>(functio
       className={resolveClassName(
         "selectItem",
         "selectItem text-left px-2 py-1",
-        "w-full flex items-center justify-between text-sm transition-colors hover:bg-primary-500 " +
-          "hover:text-white focus:bg-primary-500 focus:text-white focus:outline-0",
+        "w-full flex items-center justify-between text-sm transition-colors hover:bg-primary " +
+          "hover:text-white focus:bg-primary focus:text-white focus:outline-0",
         className,
       )}
       onKeyUp={handleOnKeyUp}

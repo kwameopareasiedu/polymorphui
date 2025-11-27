@@ -15,7 +15,7 @@ export const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>(function Spinne
   return (
     <span
       ref={ref}
-      className={resolveClassName("spinner", "spinner inline-block animate-spin", "fill-primary-500 size-4", className)}
+      className={resolveClassName("spinner", "spinner inline-block animate-spin", "fill-primary size-4", className)}
       {...rest}>
       {icon}
     </span>

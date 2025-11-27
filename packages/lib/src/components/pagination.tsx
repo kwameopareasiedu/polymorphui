@@ -96,8 +96,8 @@ const PageButton = forwardRef<HTMLButtonElement, PageButtonProps>(function TabPa
         "paginationButton",
         cn(
           "w-8 h-8 grid place-items-center rounded-full text-sm font-medium leading-[0]",
-          "data-[current=false]:bg-white/50 data-[current=false]:text-primary-500",
-          "data-[current=true]:bg-primary-500 data-[current=true]:text-white",
+          "data-[current=false]:bg-white/50 data-[current=false]:text-primary",
+          "data-[current=true]:bg-primary data-[current=true]:text-white",
         ),
         className,
       )}

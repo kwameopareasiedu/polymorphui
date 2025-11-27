@@ -63,7 +63,7 @@ export const BreadcrumbItem = forwardRef(function BreadcrumbItem<C extends Eleme
         ref={ref}
         className={resolveClassName(
           "breadcrumbItem",
-          "breadcrumbItem text-sm [&[href]]:text-primary-500 [&[href]]:hover:underline",
+          "breadcrumbItem text-sm [&[href]]:text-primary [&[href]]:hover:underline",
           className,
         )}
         {...rest}>

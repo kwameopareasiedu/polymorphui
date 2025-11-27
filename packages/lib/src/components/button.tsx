@@ -22,7 +22,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
       className={resolveClassName(
         "button",
         "button flex justify-center items-center gap-1",
-        "bg-primary-500 px-2 py-1 rounded text-white text-sm font-medium transition-opacity enabled:hover:opacity-85 enabled:active:translate-y-[1px] focus:outline-0 focus:opacity-85 disabled:opacity-50 data-[flex=true]:w-full",
+        "bg-primary px-2 py-1 rounded text-white text-sm font-medium transition-opacity enabled:hover:opacity-85 enabled:active:translate-y-[1px] focus:outline-0 focus:opacity-85 disabled:opacity-50 data-[flex=true]:w-full",
         className,
       )}
       disabled={disabled || loading}

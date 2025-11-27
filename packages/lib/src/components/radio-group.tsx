@@ -88,9 +88,9 @@ export const RadioGroupItem = forwardRef<HTMLButtonElement, RadioGroupItemProps>
         "radioGroupItem",
         "radioGroupItem relative inline-grid place-items-center w-5 h-5 rounded-full cursor-pointer " +
           'after:w-3 after:h-3 after:rounded-full after:content-[""]',
-        "border-2 border-gray-300 transition-colors data-[checked=true]:border-primary-400 " +
-          "data-[checked=true]:after:bg-primary-400 disabled:opacity-35 enabled:hover:border-primary-400 " +
-          "focus:outline-0 focus:border-primary-400",
+        "border-2 border-gray-300 transition-colors data-[checked=true]:border-primary " +
+          "data-[checked=true]:after:bg-primary disabled:opacity-35 enabled:hover:border-primary " +
+          "focus:outline-0 focus:border-primary",
         className,
       )}
       onClick={handleOnClick}

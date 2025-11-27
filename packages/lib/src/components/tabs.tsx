@@ -119,8 +119,8 @@ export const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(function TabI
       className={resolveClassName(
         "tabItem",
         "tabItem",
-        "px-4 py-2 border-b-2 hover:border-primary-400 transition-colors focus:outline-0 focus:border-primary-400 " +
-          "data-[active=true]:font-medium data-[active=true]:bg-primary-100 data-[active=true]:border-primary-400 " +
+        "px-4 py-2 border-b-2 hover:border-primary transition-colors focus:outline-0 focus:border-primary " +
+          "data-[active=true]:font-medium data-[active=true]:bg-primary data-[active=true]:border-primary " +
           "data-[orientation=vertical]:border-b-0 data-[orientation=vertical]:border-r-2",
         className,
       )}
