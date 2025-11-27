@@ -38,5 +38,4 @@ _Extends_ `HTMLAttributes<HTMLDivElement>`
 
 | Props        | Description                                | Type                 | Default |
 |--------------|--------------------------------------------|----------------------|---------|
-| `variant?`   | Variant(s) to style with                   | `string \| string[]` |         |
 | `separator?` | String or component to separate items with | `ReactNode`          | `"/"`   |

@@ -50,6 +50,10 @@ export interface ComponentConfig {
   datePicker?: ClassNameConfig;
   datePickerCalendar?: ClassNameConfig;
   datePickerCalendarDay?: ClassNameConfig;
+  table?: ClassNameConfig;
+  tableHead?: ClassNameConfig;
+  tableRow?: ClassNameConfig;
+  tableLoader?: ClassNameConfig;
 }
 
 export type ComponentNameType = keyof ComponentConfig;

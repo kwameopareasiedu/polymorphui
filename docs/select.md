@@ -15,11 +15,11 @@ export function Example() {
     <Select
       value={value}
       label="Favorite fruit"
-      leading={<BiNotepad />}
       placeholder="Select fruit"
       error="Error text"
       helper="Helper text"
-      onChange={(e) => setValue(e.target.value)}>
+      onChange={(e) => setValue(e.target.value)}
+    >
       <SelectItem value="apples">Apples</SelectItem>
       <SelectItem value="oranges">Oranges</SelectItem>
       <SelectItem value="grapes">Grapes</SelectItem>
@@ -33,7 +33,6 @@ _Extends_ `HTMLAttributes<HTMLDivElement>`
 
 | Props             | Description                                | Type                                               | Default |
 |-------------------|--------------------------------------------|----------------------------------------------------|---------|
-| `variant?`        | Variant(s) to style with                   | `string \| string[]`                               |         |
 | `label?`          | Label node                                 | `ReactNode`                                        |         |
 | `leading?`        | Component to render to left of input       | `ReactNode`                                        |         |
 | `trailing?`       | Component to render to right of input      | `ReactNode`                                        |         |

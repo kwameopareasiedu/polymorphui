@@ -28,7 +28,6 @@ _Extends_ `ButtonHTMLAttributes<HTMLButtonElement>`
 
 | Props       | Description                         | Type                                               | Default |
 |-------------|-------------------------------------|----------------------------------------------------|---------|
-| `variant?`  | Variant(s) to style with            | `string \| string[]`                               |         |
 | `checked?`  | Checked state                       | `boolean`                                          |         |
 | `label?`    | Label node                          | `ReactNode`                                        |         |
 | `helper?`   | Helper node to render below input   | `ReactNode`                                        |         |

@@ -1,5 +1,5 @@
 import React, { createContext, ReactNode, useContext } from "react";
-import { ComponentNameType, ComponentConfig, ClassNameConfig } from "@/config/config";
+import { ComponentNameType, ComponentConfig, ClassNameConfig } from "@/config";
 import { cn } from "@/utils";
 
 interface PolymorphUiContextProps {

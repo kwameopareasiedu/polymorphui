@@ -52,7 +52,6 @@ _Extends_ `HTMLAttributes<HTMLDivElement>`
 
 | Props           | Description                                        | Type                        | Default |
 |-----------------|----------------------------------------------------|-----------------------------|---------|
-| `variant?`      | Variant(s) to style with                           | `string \| string[]`        |         |
 | `multiple?`     | Display multiple open sections                     | `boolean`                   | `false` |
 | `defaultValue?` | Section value(s) to open initially if uncontrolled | `string[]`                  |         |
 | `value?`        | Opened section value(s) if controlled              | `string[]`                  |         |

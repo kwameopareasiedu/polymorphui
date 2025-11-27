@@ -7,7 +7,7 @@ A hook which monitors and updates a single query parameter
 > Must be in a descendant of a router component from [react-router](https://reactrouter.com/7.8.0/home)
 
 ```typescript jsx
-import { useQueryParam } from "polymorphui/useQueryParam";
+import { useQueryParam } from "polymorphui/use-query-param";
 
 // URL: localhost:5173/home?name=Kwame&dialog=create
 export function Example() {

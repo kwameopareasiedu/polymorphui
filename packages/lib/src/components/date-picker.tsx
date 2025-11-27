@@ -182,7 +182,7 @@ const DatePickerCalendar = forwardRef<HTMLDivElement, DatePickerCalendarProps>(f
       className={resolveClassName(
         "datePickerCalendar",
         "datePickerCalendar grid grid-cols-2 gap-2 p-2 w-auto overflow-hidden space-y-2",
-        "rounded-lg bg-white shadow-lg border-[1px] border-gray-300 z-[100]",
+        "rounded-lg bg-white shadow-lg border border-gray-300 z-[100]",
         className,
       )}
       {...rest}>

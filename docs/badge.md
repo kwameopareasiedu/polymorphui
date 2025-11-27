@@ -25,7 +25,6 @@ _Extends_ `HTMLAttributes<HTMLParagraphElement>`
 
 | Props        | Description                        | Type                     | Default        |
 |--------------|------------------------------------|--------------------------|----------------|
-| `variant?`   | Variant(s) to style with           | `string \| string[]`     |                |
 | `children`   | Children array                     | `[ReactNode, ReactNode]` |                |
 | `disabled?`  | Disable popup child                | `boolean`                |                |
 | `placement?` | Badge position relative to anchor  | `Placement`              | `bottom-start` |

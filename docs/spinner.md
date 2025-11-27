@@ -19,7 +19,6 @@ export function Example() {
 
 _Extends_ `HTMLAttributes<HTMLSpanElement>`
 
-| Props      | Description              | Type                 | Default              |
-|------------|--------------------------|----------------------|----------------------|
-| `variant?` | Variant(s) to style with | `string \| string[]` |                      |
-| `icon?`    | Spinner icon to render   | `ReactNode`          | `<Ring />` (Inbuilt) |
+| Props   | Description            | Type        | Default              |
+|---------|------------------------|-------------|----------------------|
+| `icon?` | Spinner icon to render | `ReactNode` | `<Ring />` (Inbuilt) |

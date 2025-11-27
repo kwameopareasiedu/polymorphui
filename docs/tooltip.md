@@ -24,14 +24,13 @@ export function Example() {
 
 _Extends_ `HTMLAttributes<HTMLParagraphElement>`
 
-| Props         | Description                           | Type                 | Default        |
-|---------------|---------------------------------------|----------------------|----------------|
-| `variant?`    | Variant(s) to style with              | `string \| string[]` |                |
-| `description` | Description for tooltip               | `string`             |                |
-| `delayMs?`    | Delay before opening                  | `number`             | `250`          |
-| `disabled?`   | Disable description popup             | `boolean`            |                |
-| `placement?`  | Tooltip position relative to trigger  | `Placement`          | `bottom-start` |
-| `offset?`     | Tooltip offset from trigger in pixels | `[number, number]`   | `[0, 6]`       |
+| Props         | Description                           | Type               | Default        |
+|---------------|---------------------------------------|--------------------|----------------|
+| `description` | Description for tooltip               | `string`           |                |
+| `delayMs?`    | Delay before opening                  | `number`           | `250`          |
+| `disabled?`   | Disable description popup             | `boolean`          |                |
+| `placement?`  | Tooltip position relative to trigger  | `Placement`        | `bottom-start` |
+| `offset?`     | Tooltip offset from trigger in pixels | `[number, number]` | `[0, 6]`       |
 
 ```typescript
 type Placement =

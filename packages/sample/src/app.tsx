@@ -30,6 +30,7 @@ import isSameOrBefore from "dayjs/plugin/isSameOrBefore";
 import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
 import { useQueryParams } from "polymorphui/use-query-params";
 import { useDebounced } from "polymorphui/use-debounced";
+import { SortConfig, SortDirection, Table, TableRow } from "polymorphui/table";
 
 dayjs.extend(isSameOrBefore);
 dayjs.extend(isSameOrAfter);
@@ -53,6 +54,7 @@ export default function App() {
   const [startDate, setStartDate] = useState<Date>();
   const [endDate, setEndDate] = useState<Date>();
   const [showBadge, setShowBadge] = useState(true);
+  const [sort, setSort] = useState<SortConfig>({ key: "", direction: SortDirection.NONE });
 
   return (
     <main className="p-4 flex flex-wrap items-start gap-8 ">
@@ -660,6 +662,59 @@ export default function App() {
         </div>
       </Showcase>
 
+      <Showcase title="Table" flex>
+        <div className="w-full overflow-auto max-h-48 border">
+          <Table
+            columns={[
+              { id: "name", label: "Name", visible: true },
+              { id: "age", label: "Age", visible: true },
+              { id: "occupation", label: "Occupation", visible: true, sortable: false },
+            ]}
+            sort={sort}
+            onSort={setSort}>
+            <TableRow
+              data={{ name: "John Doe", age: 20, occupation: "Doctor" }}
+              defaultColumn={(_, val) => <Text>{val as never}</Text>}
+            />
+            <TableRow
+              data={{ name: "Jane Does", age: 22, occupation: "Farmer" }}
+              defaultColumn={(_, val) => <Text>{val as never}</Text>}
+            />
+            <TableRow
+              data={{ name: "John Doe", age: 20, occupation: "Doctor" }}
+              defaultColumn={(_, val) => <Text>{val as never}</Text>}
+            />
+            <TableRow
+              data={{ name: "Jane Does", age: 22, occupation: "Farmer" }}
+              defaultColumn={(_, val) => <Text>{val as never}</Text>}
+            />
+            <TableRow
+              data={{ name: "John Doe", age: 20, occupation: "Doctor" }}
+              defaultColumn={(_, val) => <Text>{val as never}</Text>}
+            />
+            <TableRow
+              data={{ name: "Jane Does", age: 22, occupation: "Farmer" }}
+              defaultColumn={(_, val) => <Text>{val as never}</Text>}
+            />
+          </Table>
+        </div>
+
+        <Table
+          className="mt-4"
+          columns={[
+            { id: "firstName", label: "First Name", visible: true },
+            { id: "lastName", label: "Last Name", visible: true },
+            { id: "otherNames", label: "Other Names", visible: true },
+            { id: "age", label: "Age", visible: true },
+            { id: "occupation", label: "Occupation", visible: true },
+            { id: "email", label: "Email", visible: true },
+            { id: "telephone", label: "Phone Number", visible: true },
+          ]}
+          loading>
+          <span />
+        </Table>
+      </Showcase>
+
       <Showcase title="Query Params (Hook)">
         <div className="font-mono bg-slate-100 p-4 rounded">
           <p>Param 1 = {decodeURIComponent(params.param1)}</p>
@@ -698,11 +753,14 @@ export default function App() {
 interface ShowcaseProps {
   title: string;
   children: ReactNode;
+  flex?: boolean;
 }
 
-function Showcase({ title, children }: ShowcaseProps) {
+function Showcase({ title, children, flex = false }: ShowcaseProps) {
   return (
-    <div className="max-w-full sm:max-w-[386px] flex flex-col items-start gap-4 p-4 shadow-lg bg-white rounded-md border border-slate-300">
+    <div
+      className="max-w-full data-[flex=false]:sm:max-w-[386px] data-[flex=true]:!w-full space-y-4 p-4 shadow-lg bg-white rounded-md border border-slate-300"
+      data-flex={flex}>
       <p className="uppercase text-sm font-medium text-gray-700 tracking-wide">{title}</p>
       <div className="flex flex-wrap gap-2">{children}</div>
     </div>

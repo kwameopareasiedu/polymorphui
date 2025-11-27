@@ -46,7 +46,6 @@ _Extends_ `HTMLAttributes<HTMLDivElement`
 
 | Props           | Description                                       | Type                             | Default        |
 |-----------------|---------------------------------------------------|----------------------------------|----------------|
-| `variant?`      | Variant(s) to style with                          | `string \| string[]`             |                |
 | `as?`           | Element or component to use as root               | `"div" \| (props) => JSXElement` | `"div"`        |
 | `orientation?`  | Orientation of tabs                               | `"horizontal" \| "vertical"`     | `"horizontal"` |
 | `value?`        | Controlled tab value                              | `string`                         |                |
