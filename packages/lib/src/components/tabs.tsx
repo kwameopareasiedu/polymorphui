@@ -56,7 +56,10 @@ export const Tabs = ({
   return (
     <TabsContext.Provider value={{ activeValue, orientation, onSelect: handleOnChange }}>
       {Root !== Fragment ? (
-        <Root className={resolveClassName("tabs", "tabs", undefined, className)} {...rest}>
+        <Root
+          className={resolveClassName("tabs", "tabs", undefined, className)}
+          {...rest}
+          data-orientation={orientation}>
           {children}
         </Root>
       ) : (
@@ -82,7 +85,7 @@ export const TabItems = forwardRef<HTMLDivElement, TabItemsProps>(function TabIt
       className={resolveClassName(
         "tabItems",
         "tabItems",
-        "bg-gray-100 data-[orientation=vertical]:flex data-[orientation=vertical]:flex-col",
+        "data-[orientation=vertical]:flex data-[orientation=vertical]:flex-col",
         className,
       )}
       {...rest}
@@ -117,7 +120,7 @@ export const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(function TabI
         "tabItem",
         "tabItem",
         "px-4 py-2 border-b-2 hover:border-primary-400 transition-colors focus:outline-0 focus:border-primary-400 " +
-          "data-[active=true]:font-medium data-[active=true]:text-white data-[active=true]:bg-primary-500 data-[active=true]:border-primary-400 " +
+          "data-[active=true]:font-medium data-[active=true]:bg-primary-100 data-[active=true]:border-primary-400 " +
           "data-[orientation=vertical]:border-b-0 data-[orientation=vertical]:border-r-2",
         className,
       )}
