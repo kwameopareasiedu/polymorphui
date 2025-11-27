@@ -29,6 +29,8 @@ import dayjs from "dayjs";
 import isSameOrBefore from "dayjs/plugin/isSameOrBefore";
 import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
 import { useQueryParams } from "polymorphui/use-query-params";
+import { useDebounced } from "polymorphui/use-debounced";
+import { SortConfig, SortDirection, Table, TableRow } from "polymorphui/table";
 
 dayjs.extend(isSameOrBefore);
 dayjs.extend(isSameOrAfter);
@@ -36,6 +38,7 @@ dayjs.extend(isSameOrAfter);
 export default function App() {
   const [popupOpen, setPopupOpen] = useState(false);
   const [params, setParam] = useQueryParams({ param1: "val1", param2: "val2" });
+  const [val, debouncedVal, setVal] = useDebounced("hello world");
 
   const [inputText, setInputText] = useState("");
   const [areaText, setAreaText] = useState("");
@@ -51,6 +54,7 @@ export default function App() {
   const [startDate, setStartDate] = useState<Date>();
   const [endDate, setEndDate] = useState<Date>();
   const [showBadge, setShowBadge] = useState(true);
+  const [sort, setSort] = useState<SortConfig>({ key: "", direction: SortDirection.NONE });
 
   return (
     <main className="p-4 flex flex-wrap items-start gap-8 ">
@@ -159,12 +163,7 @@ export default function App() {
       <Showcase title="Input">
         <Input placeholder="Input" value={inputText} onChange={(e) => setInputText(e.target.value)} />
         <Input leading={<BiUser />} placeholder="Disabled Input" disabled />
-        <Input
-          label="Label"
-          value={inputText}
-          trailing={<Spinner variant="default" />}
-          onChange={(e) => setInputText(e.target.value)}
-        />
+        <Input label="Label" value={inputText} trailing={<Spinner />} onChange={(e) => setInputText(e.target.value)} />
         <Tooltip description="Input showcase" offset={[0, 0]}>
           <Input
             error="Error text"
@@ -184,7 +183,7 @@ export default function App() {
             </div>
           }
           leading={<BiNotepad className="mt-3" />}
-          trailing={<Spinner variant="default" className="mt-3" />}
+          trailing={<Spinner className="mt-3" />}
           placeholder="Bio here"
           value={areaText}
           error="Error text"
@@ -225,7 +224,7 @@ export default function App() {
           <SelectItem value="pears">Pears</SelectItem>
         </Select>
 
-        <Select placeholder="Bio here" disabled />
+        <Select value="" placeholder="Bio here" onChange={() => {}} disabled />
       </Showcase>
 
       <Showcase title="Switch">
@@ -627,8 +626,8 @@ export default function App() {
 
         <DatePicker
           value={date}
-          format="m/d/y"
-          leading={<span className="text-xs font-medium text-gray-400">MM/DD/YYY</span>}
+          format="Do MMM YYYY"
+          leading={<span className="text-xs font-medium text-gray-400">Do MMM YYYY</span>}
           onChange={(e) => setDate(e.target.value as never)}
         />
 
@@ -663,6 +662,59 @@ export default function App() {
         </div>
       </Showcase>
 
+      <Showcase title="Table" flex>
+        <div className="w-full overflow-auto max-h-48 border">
+          <Table
+            columns={[
+              { id: "name", label: "Name", visible: true },
+              { id: "age", label: "Age", visible: true },
+              { id: "occupation", label: "Occupation", visible: true, sortable: false },
+            ]}
+            sort={sort}
+            onSort={setSort}>
+            <TableRow
+              data={{ name: "John Doe", age: 20, occupation: "Doctor" }}
+              defaultColumn={(_, val) => <Text>{val as never}</Text>}
+            />
+            <TableRow
+              data={{ name: "Jane Does", age: 22, occupation: "Farmer" }}
+              defaultColumn={(_, val) => <Text>{val as never}</Text>}
+            />
+            <TableRow
+              data={{ name: "John Doe", age: 20, occupation: "Doctor" }}
+              defaultColumn={(_, val) => <Text>{val as never}</Text>}
+            />
+            <TableRow
+              data={{ name: "Jane Does", age: 22, occupation: "Farmer" }}
+              defaultColumn={(_, val) => <Text>{val as never}</Text>}
+            />
+            <TableRow
+              data={{ name: "John Doe", age: 20, occupation: "Doctor" }}
+              defaultColumn={(_, val) => <Text>{val as never}</Text>}
+            />
+            <TableRow
+              data={{ name: "Jane Does", age: 22, occupation: "Farmer" }}
+              defaultColumn={(_, val) => <Text>{val as never}</Text>}
+            />
+          </Table>
+        </div>
+
+        <Table
+          className="mt-4"
+          columns={[
+            { id: "firstName", label: "First Name", visible: true },
+            { id: "lastName", label: "Last Name", visible: true },
+            { id: "otherNames", label: "Other Names", visible: true },
+            { id: "age", label: "Age", visible: true },
+            { id: "occupation", label: "Occupation", visible: true },
+            { id: "email", label: "Email", visible: true },
+            { id: "telephone", label: "Phone Number", visible: true },
+          ]}
+          loading>
+          <span />
+        </Table>
+      </Showcase>
+
       <Showcase title="Query Params (Hook)">
         <div className="font-mono bg-slate-100 p-4 rounded">
           <p>Param 1 = {decodeURIComponent(params.param1)}</p>
@@ -683,6 +735,17 @@ export default function App() {
           />
         </div>
       </Showcase>
+
+      <Showcase title="Debounced (Hook)">
+        <div className="font-mono bg-slate-100 p-4 rounded">
+          <small className="italic">Debounced value</small>
+          <p>{debouncedVal}</p>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <Input label="Param 1 Value" value={val} onChange={(e) => setVal(e.target.value)} />
+        </div>
+      </Showcase>
     </main>
   );
 }
@@ -690,11 +753,14 @@ export default function App() {
 interface ShowcaseProps {
   title: string;
   children: ReactNode;
+  flex?: boolean;
 }
 
-function Showcase({ title, children }: ShowcaseProps) {
+function Showcase({ title, children, flex = false }: ShowcaseProps) {
   return (
-    <div className="max-w-full sm:max-w-[386px] flex flex-col items-start gap-4 p-4 shadow-lg bg-gray-200 rounded-md">
+    <div
+      className="max-w-full data-[flex=false]:sm:max-w-[386px] data-[flex=true]:!w-full space-y-4 p-4 shadow-lg bg-white rounded-md border border-slate-300"
+      data-flex={flex}>
       <p className="uppercase text-sm font-medium text-gray-700 tracking-wide">{title}</p>
       <div className="flex flex-wrap gap-2">{children}</div>
     </div>

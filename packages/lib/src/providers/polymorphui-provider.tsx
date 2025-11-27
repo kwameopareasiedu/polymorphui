@@ -1,13 +1,12 @@
 import React, { createContext, ReactNode, useContext } from "react";
-import { ComponentNameType, ComponentVariants, VariantMap, VariantNameType } from "@/config/variant";
+import { ComponentNameType, ComponentConfig, ClassNameConfig } from "@/config";
 import { cn } from "@/utils";
 
 interface PolymorphUiContextProps {
   resolveClassName: (
     componentName: ComponentNameType,
-    variantName: VariantNameType | VariantNameType[] | null | undefined,
     structuralClassName: string,
-    fallbackClassName?: string,
+    defaultClassName?: string,
     className?: string,
   ) => string;
 }
@@ -16,24 +15,18 @@ const PolymorphUiContext = createContext<PolymorphUiContextProps>(null as never)
 
 interface PolymorphUiProviderProps {
   children: ReactNode;
-  variants: ComponentVariants;
+  config: ComponentConfig;
 }
 
-export function PolymorphUiProvider({ children, variants: allVariants }: PolymorphUiProviderProps) {
+export function PolymorphUiProvider({ children, config }: PolymorphUiProviderProps) {
   const resolveClassName = (
     componentName: ComponentNameType,
-    variantName: VariantNameType | VariantNameType[] | null | undefined,
     structuralClassName: string,
     defaultClassName?: string,
     className?: string,
   ) => {
-    const { replaceDefault, appendDefault, ...restOfVariants } = (allVariants[componentName] ?? {}) as VariantMap;
-    const resolvedDefaultClassName = replaceDefault ?? cn(defaultClassName, appendDefault);
-    if (!variantName) return cn(structuralClassName, resolvedDefaultClassName, className);
-
-    const variantList = Array.isArray(variantName) ? variantName : [variantName];
-    const variantClassName = variantList.map((variantName) => restOfVariants[variantName] ?? "").join(" ");
-    return cn(structuralClassName, resolvedDefaultClassName, variantClassName, className);
+    const { custom, extend } = (config[componentName] ?? {}) as ClassNameConfig;
+    return cn(structuralClassName, custom ?? cn(defaultClassName, extend), className);
   };
 
   return (

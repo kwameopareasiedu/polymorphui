@@ -1,10 +1,8 @@
 import React, { forwardRef, InputHTMLAttributes, ReactNode } from "react";
 import { InputAddon, InputError, InputHelper, InputInput, InputLabel, InputWrapper } from "@/components/input-helpers";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
-import { VariantNameType } from "@/config/variant";
 
 export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "children"> {
-  variant?: VariantNameType | VariantNameType[];
   label?: ReactNode;
   leading?: ReactNode;
   trailing?: ReactNode;
@@ -13,14 +11,13 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
-  { variant, label, leading, trailing, id, className, helper, error, ...rest }: InputProps,
+  { label, leading, trailing, id, className, helper, error, ...rest }: InputProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();
-  const _className = resolveClassName("input", variant, "input w-full flex flex-col gap-0.5", undefined, className);
 
   return (
-    <div className={_className}>
+    <fieldset className={resolveClassName("input", "input w-full flex flex-col gap-0.5", undefined, className)}>
       {label && <InputLabel htmlFor={id}>{label}</InputLabel>}
 
       <InputWrapper>
@@ -35,6 +32,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
           {helper && <InputHelper>{helper}</InputHelper>}
         </div>
       )}
-    </div>
+    </fieldset>
   );
 });

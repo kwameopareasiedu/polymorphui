@@ -10,15 +10,12 @@ import React, {
   useState,
 } from "react";
 import { Popup } from "@/components/popup";
-import ArrowRightIcon from "../assets/arrow-right.svg";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
-import { VariantNameType } from "@/config/variant";
+import ArrowRightIcon from "../assets/arrow-right.svg";
 
-interface ContextMenuContextProps {
+const ContextMenuContext = createContext<{
   onClose: () => void;
-}
-
-const ContextMenuContext = createContext<ContextMenuContextProps>(null as never);
+}>(null as never);
 
 export interface ContextMenuProps {
   children: [ReactNode, ReactElement<ContextMenuItemsProps>];
@@ -45,68 +42,69 @@ export const ContextMenu = ({ children }: ContextMenuProps) => {
 };
 
 export interface ContextMenuItemsProps extends Omit<HTMLAttributes<HTMLDivElement>, "children"> {
-  variant?: VariantNameType | VariantNameType[];
   children: OneOrMany<ReactElement>;
 }
 
 export const ContextMenuItems = forwardRef<HTMLDivElement, ContextMenuItemsProps>(function ContextMenuItems(
-  { variant, className, children, ...rest }: ContextMenuItemsProps,
+  { className, children, ...rest }: ContextMenuItemsProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();
-  const _className = resolveClassName(
-    "contextMenuItems",
-    variant,
-    "contextMenuItems",
-    "flex flex-col bg-white border-[0.5px] border-gray-300 text-gray-600 overflow-hidden rounded-sm text-sm",
-    className,
-  );
 
   return (
-    <div ref={ref} className={_className} {...rest}>
+    <div
+      ref={ref}
+      className={resolveClassName(
+        "contextMenuItems",
+        "contextMenuItems flex flex-col overflow-hidden",
+        "bg-white border-[0.5px] border-gray-300 text-gray-600 rounded-sm text-sm",
+        className,
+      )}
+      {...rest}>
       {children}
     </div>
   );
 });
 
 export interface ContextMenuItemProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
-  variant?: VariantNameType | VariantNameType[];
   label: ReactNode;
   icon?: ReactNode;
   children?: ReactElement;
 }
 
 export const ContextMenuItem = forwardRef<HTMLButtonElement, ContextMenuItemProps>(function ContextMenuItem(
-  { variant, label, icon, className, children, disabled, onClick, ...rest }: ContextMenuItemProps,
+  { label, icon, className, children, disabled, onClick, ...rest }: ContextMenuItemProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();
   const contextMenuContext = useContext(ContextMenuContext);
-
   if (!contextMenuContext) throw "<ContextMenuItem /> must be a descendant of <ContextMenu />";
 
   const hasItems = Children.count(children) > 0;
 
-  const _className = resolveClassName(
-    "contextMenuItem",
-    variant,
-    "contextMenuItem inline-grid grid-cols-[32px,1fr,32px] gap-2 items-center whitespace-nowrap",
-    "py-1.5 border-t-[0.5px] border-t-gray-300 first:border-none hover:bg-gray-100 disabled:bg-gray-200 disabled:opacity-50 ",
-    className,
-  );
-
   const handleOnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    onClick?.(e);
+    if (!hasItems) contextMenuContext.onClose();
 
-    if (!hasItems) {
-      contextMenuContext.onClose();
-    }
+    onClick?.(e);
   };
 
   const base = (
-    <button {...rest} ref={ref} type="button" className={_className} onClick={handleOnClick} disabled={disabled}>
+    <button
+      {...rest}
+      ref={ref}
+      type="button"
+      className={resolveClassName(
+        "contextMenuItem",
+        "contextMenuItem inline-grid grid-cols-[32px,1fr,32px] gap-2 items-center whitespace-nowrap",
+        "py-1.5 border-t-[0.5px] border-t-gray-300 first:border-none hover:bg-gray-100 disabled:bg-gray-200 disabled:opacity-50 ",
+        className,
+      )}
+      onClick={handleOnClick}
+      disabled={disabled}>
       {icon && <span className="col-start-1 col-span-1">{icon}</span>}
+
       <span className="col-start-2 col-span-1">{label}</span>
+
       {hasItems && (
         <span className="col-start-3 col-span-1 grid place-items-center">
           <ArrowRightIcon {...({ className: "w-3" } as object)} />

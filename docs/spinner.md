@@ -8,18 +8,12 @@ A component which indicates that an operation is in progress
 import { Spinner } from "polymorphui/spinner";
 
 export function Example() {
-  return (
-    <>
-      <Spinner />
-      <Spinner variant="default" />
-    </>
-  );
+  return <Spinner />;
 }
 ```
 
 _Extends_ `HTMLAttributes<HTMLSpanElement>`
 
-| Props      | Description              | Type                 | Default              |
-|------------|--------------------------|----------------------|----------------------|
-| `variant?` | Variant(s) to style with | `string \| string[]` |                      |
-| `icon?`    | Spinner icon to render   | `ReactNode`          | `<Ring />` (Inbuilt) |
+| Props   | Description            | Type        | Default              |
+|---------|------------------------|-------------|----------------------|
+| `icon?` | Spinner icon to render | `ReactNode` | `<Ring />` (Inbuilt) |

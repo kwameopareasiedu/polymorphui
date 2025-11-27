@@ -1,11 +1,9 @@
-import React, { FormEvent, forwardRef, InputHTMLAttributes, ReactNode, useRef, useState } from "react";
+import React, { FormEvent, forwardRef, InputHTMLAttributes, ReactNode, useRef } from "react";
 import { InputAddon, InputError, InputHelper, InputLabel, InputWrapper } from "@/components/input-helpers";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
 import { combineRefs } from "@/utils";
-import { VariantNameType } from "@/config/variant";
 
 export interface TextAreaProps extends Omit<InputHTMLAttributes<HTMLTextAreaElement>, "children"> {
-  variant?: VariantNameType | VariantNameType[];
   label?: ReactNode;
   leading?: ReactNode;
   trailing?: ReactNode;
@@ -15,32 +13,14 @@ export interface TextAreaProps extends Omit<InputHTMLAttributes<HTMLTextAreaElem
 }
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(function TextArea(
-  {
-    variant,
-    label,
-    leading,
-    trailing,
-    id,
-    className,
-    helper,
-    error,
-    autoResize = true,
-    onInput,
-    ...rest
-  }: TextAreaProps,
+  { label, leading, trailing, id, className, helper, error, autoResize = true, onInput, ...rest }: TextAreaProps,
   ref,
 ) {
+  const autoResizedInitially = useRef(false);
   const { resolveClassName } = usePolymorphUi();
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
-  const [autoFocusedInitially, setAutoFocusedInitially] = useState(false);
 
-  const _className = resolveClassName(
-    "textarea",
-    variant,
-    "textarea w-full flex flex-col gap-0.5",
-    undefined,
-    className,
-  );
+  const _className = resolveClassName("textarea", "textarea w-full flex flex-col gap-0.5", undefined, className);
 
   const autoResizeTextArea = () => {
     if (autoResize && textareaRef.current) {
@@ -57,9 +37,9 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(function 
     autoResizeTextArea();
   };
 
-  if (!autoFocusedInitially) {
+  if (!autoResizedInitially.current) {
     autoResizeTextArea();
-    setAutoFocusedInitially(true);
+    autoResizedInitially.current = true;
   }
 
   return (
@@ -82,26 +62,24 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(function 
   );
 });
 
-interface InputTextAreaProps extends InputHTMLAttributes<HTMLTextAreaElement> {
-  variant?: VariantNameType | VariantNameType[];
-}
+type InputTextAreaProps = InputHTMLAttributes<HTMLTextAreaElement>;
 
 const InputTextArea = forwardRef<HTMLTextAreaElement, InputTextAreaProps>(function InputTextArea(
-  { variant, className, children, ...rest }: InputTextAreaProps,
+  { className, children, ...rest }: InputTextAreaProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();
-  const _className = resolveClassName(
-    "inputTextArea",
-    variant,
-    "inputTextArea flex-1",
-    "min-h-24 py-2 bg-transparent resize-none focus:outline-none " +
-      "placeholder:text-sm placeholder:text-sm placeholder:pt-0.5",
-    className,
-  );
 
   return (
-    <textarea ref={ref} className={_className} {...rest}>
+    <textarea
+      ref={ref}
+      className={resolveClassName(
+        "inputTextArea",
+        "inputTextArea flex-1",
+        "min-h-24 py-2 bg-transparent resize-none focus:outline-none " + "placeholder:text-sm placeholder:pt-0.5",
+        className,
+      )}
+      {...rest}>
       {children}
     </textarea>
   );

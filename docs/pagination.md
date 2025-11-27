@@ -27,7 +27,6 @@ _Extends_ `HTMLAttributes<HTMLDivElement>`
 
 | Props           | Description                          | Type                     | Default |
 |-----------------|--------------------------------------|--------------------------|---------|
-| `variant?`      | Variant(s) to style with             | `string \| string[]`     |         |
 | `page`          | Current page of the list             | `number`                 |         |
 | `pageSize`      | Number of items per page             | `number`                 |         |
 | `totalCount`    | Total number of items in data source | `number`                 |         |

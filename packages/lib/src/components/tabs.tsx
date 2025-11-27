@@ -11,18 +11,14 @@ import React, {
   useState,
 } from "react";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
-import { VariantNameType } from "@/config/variant";
 
-interface TabsContextProps {
+const TabsContext = createContext<{
   activeValue?: string;
   orientation: "vertical" | "horizontal";
   onSelect: (tabValue: string) => void;
-}
-
-const TabsContext = createContext<TabsContextProps>(null as never);
+}>(null as never);
 
 export interface TabsProps extends Omit<HTMLAttributes<HTMLDivElement>, "onChange"> {
-  variant?: VariantNameType | VariantNameType[];
   as?: "div" | JSXElementConstructor<any>;
   value?: string;
   defaultValue?: string;
@@ -31,7 +27,6 @@ export interface TabsProps extends Omit<HTMLAttributes<HTMLDivElement>, "onChang
 }
 
 export const Tabs = ({
-  variant,
   as = "div",
   value,
   defaultValue,
@@ -42,12 +37,10 @@ export const Tabs = ({
   ...rest
 }: TabsProps) => {
   const { resolveClassName } = usePolymorphUi();
-
-  const Root = (as ?? Fragment) as any;
-  const _className = resolveClassName("tabs", variant, "tabs", undefined, className);
-
   const [ready, setReady] = useState(false);
   const [activeValue, setActiveValue] = useState(value ?? defaultValue);
+
+  const Root = (as ?? Fragment) as any;
 
   const handleOnChange = (tabValue: string) => {
     setActiveValue(tabValue);
@@ -63,7 +56,10 @@ export const Tabs = ({
   return (
     <TabsContext.Provider value={{ activeValue, orientation, onSelect: handleOnChange }}>
       {Root !== Fragment ? (
-        <Root className={_className} {...rest}>
+        <Root
+          className={resolveClassName("tabs", "tabs", undefined, className)}
+          {...rest}
+          data-orientation={orientation}>
           {children}
         </Root>
       ) : (
@@ -73,57 +69,43 @@ export const Tabs = ({
   );
 };
 
-export interface TabItemsProps extends HTMLAttributes<HTMLDivElement> {
-  variant?: VariantNameType | VariantNameType[];
-}
+export type TabItemsProps = HTMLAttributes<HTMLDivElement>;
 
 export const TabItems = forwardRef<HTMLDivElement, TabItemsProps>(function TabItems(
-  { variant, className, children, ...rest }: TabItemsProps,
+  { className, children, ...rest }: TabItemsProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();
   const tabsContext = useContext(TabsContext);
-
   if (!tabsContext) throw "<TabItems /> must be a child of <Tabs />";
 
-  const _className = resolveClassName(
-    "tabItems",
-    variant,
-    "tabItems",
-    "bg-gray-100 data-[orientation=vertical]:flex data-[orientation=vertical]:flex-col",
-    className,
-  );
-
   return (
-    <div ref={ref} className={_className} {...rest} data-orientation={tabsContext.orientation}>
+    <div
+      ref={ref}
+      className={resolveClassName(
+        "tabItems",
+        "tabItems",
+        "data-[orientation=vertical]:flex data-[orientation=vertical]:flex-col",
+        className,
+      )}
+      {...rest}
+      data-orientation={tabsContext.orientation}>
       {children}
     </div>
   );
 });
 
 export interface TabItemProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: VariantNameType | VariantNameType[];
   value: string;
 }
 
 export const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(function TabItem(
-  { variant, className, children, value, onClick, ...rest }: TabItemProps,
+  { className, children, value, onClick, ...rest }: TabItemProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();
   const tabsContext = useContext(TabsContext);
-
   if (!tabsContext) throw "<TabItem /> must be a descendant of <Tabs />";
-
-  const _className = resolveClassName(
-    "tabItem",
-    variant,
-    "tabItem",
-    "px-4 py-2 border-b-2 hover:border-blue-400 transition-colors focus:outline-0 focus:border-blue-400 " +
-      "data-[active=true]:font-medium data-[active=true]:text-white data-[active=true]:bg-blue-500 data-[active=true]:border-blue-400 " +
-      "data-[orientation=vertical]:border-b-0 data-[orientation=vertical]:border-r-2",
-    className,
-  );
 
   const handleOnClick = (e: MouseEvent<HTMLButtonElement>) => {
     tabsContext.onSelect(value);
@@ -134,7 +116,14 @@ export const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(function TabI
     <button
       ref={ref}
       type="button"
-      className={_className}
+      className={resolveClassName(
+        "tabItem",
+        "tabItem",
+        "px-4 py-2 border-b-2 hover:border-primary transition-colors focus:outline-0 focus:border-primary " +
+          "data-[active=true]:font-medium data-[active=true]:bg-primary data-[active=true]:border-primary " +
+          "data-[orientation=vertical]:border-b-0 data-[orientation=vertical]:border-r-2",
+        className,
+      )}
       onClick={handleOnClick}
       {...rest}
       data-active={tabsContext.activeValue === value}
@@ -145,24 +134,24 @@ export const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(function TabI
 });
 
 export interface TabPanelProps extends HTMLAttributes<HTMLDivElement> {
-  variant?: VariantNameType | VariantNameType[];
   value: string;
 }
 
 export const TabPanel = forwardRef<HTMLDivElement, TabPanelProps>(function TabPanel(
-  { variant, className, children, value, ...rest }: TabPanelProps,
+  { className, children, value, ...rest }: TabPanelProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();
   const tabsContext = useContext(TabsContext);
-
   if (!tabsContext) throw "<TabPanel /> must be a descendant of <Tabs />";
-
-  const _className = resolveClassName("tabPanel", variant, "tabPanel", undefined, className);
 
   if (tabsContext.activeValue === value) {
     return (
-      <div ref={ref} className={_className} {...rest} data-active={tabsContext.activeValue === value}>
+      <div
+        ref={ref}
+        className={resolveClassName("tabPanel", "tabPanel", undefined, className)}
+        {...rest}
+        data-active={tabsContext.activeValue === value}>
         {children}
       </div>
     );

@@ -7,7 +7,7 @@ A hook which monitors and updates multiple query parameters
 > Must be in a descendant of a router component from [react-router](https://reactrouter.com/7.8.0/home)
 
 ```typescript jsx
-import { useQueryParams } from "polymorphui/useQueryParams";
+import { useQueryParams } from "polymorphui/use-query-params";
 
 // URL: localhost:5173/home?name=Kwame&region=Eastern
 export function Example() {

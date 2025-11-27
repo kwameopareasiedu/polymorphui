@@ -2,7 +2,7 @@
 
 [**_Docs_**](../README.md)
 
-Textarea component with auto-resize capability
+Textarea component with auto-height-resize capability
 
 ```typescript jsx
 import { TextArea } from "polymorphui/textarea";
@@ -20,7 +20,7 @@ export function Example() {
           <small>{areaText.length} chars</small>
         </div>
       }
-      trailing={<Spinner variant="default" className="mt-3" />}
+      trailing={<Spinner />}
       placeholder="Type here"
       value={value}
       error="Error text"
@@ -35,7 +35,6 @@ _Extends_ `InputHTMLAttributes<HTMLTextAreaElement>`
 
 | Props         | Description                           | Type                                    | Default |
 |---------------|---------------------------------------|-----------------------------------------|---------|
-| `variant?`    | Variant(s) to style with              | `string \| string[]`                    |         |
 | `label?`      | Label node                            | `ReactNode`                             |         |
 | `leading?`    | Component to render to left of input  | `ReactNode`                             |         |
 | `trailing?`   | Component to render to right of input | `ReactNode`                             |         |
