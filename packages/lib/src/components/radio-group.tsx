@@ -9,17 +9,13 @@ import React, {
 } from "react";
 import { InputError, InputHelper, InputLabel } from "@/components/input-helpers";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
-import { VariantNameType } from "@/config/variant";
 
-interface RadioGroupContextProps {
+const RadioGroupContext = createContext<{
   value: unknown;
   setValue: (val: unknown) => void;
-}
-
-const RadioGroupContext = createContext<RadioGroupContextProps>(null as never);
+}>(null as never);
 
 export interface RadioGroupProps extends Omit<HTMLAttributes<HTMLDivElement>, "onChange"> {
-  variant?: VariantNameType | VariantNameType[];
   value: unknown;
   inline?: boolean;
   label?: ReactNode;
@@ -29,26 +25,10 @@ export interface RadioGroupProps extends Omit<HTMLAttributes<HTMLDivElement>, "o
 }
 
 export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(function RadioGroup(
-  { variant, className, value, label, children, onChange, helper, error, inline, ...rest }: RadioGroupProps,
+  { className, value, label, children, onChange, helper, error, inline, ...rest }: RadioGroupProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();
-
-  const _className = resolveClassName(
-    "radioGroup",
-    variant,
-    "radioGroup inline-flex flex-col gap-2",
-    undefined,
-    className,
-  );
-
-  const _itemsClassName = resolveClassName(
-    "radioGroupItems",
-    variant,
-    "radioGroupItems inline-flex gap-2 flex-col data-[inline=true]:flex-row",
-    undefined,
-    className,
-  );
 
   const handleOnChange = (value: unknown) => {
     onChange?.({ target: { value } });
@@ -56,10 +36,20 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(function R
 
   return (
     <RadioGroupContext.Provider value={{ value, setValue: handleOnChange }}>
-      <div ref={ref} className={_className} {...rest}>
+      <div
+        ref={ref}
+        className={resolveClassName("radioGroup", "radioGroup inline-flex flex-col gap-2", undefined, className)}
+        {...rest}>
         {label && <InputLabel>{label}</InputLabel>}
 
-        <div className={_itemsClassName} data-inline={inline}>
+        <div
+          className={resolveClassName(
+            "radioGroupItems",
+            "radioGroupItems inline-flex gap-2 flex-col data-[inline=true]:flex-row",
+            undefined,
+            className,
+          )}
+          data-inline={inline}>
           {children}
         </div>
 
@@ -74,29 +64,16 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(function R
   );
 });
 
-export interface RadioGroupItemProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
-  variant?: VariantNameType | VariantNameType[];
-}
+export type RadioGroupItemProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children">;
 
 export const RadioGroupItem = forwardRef<HTMLButtonElement, RadioGroupItemProps>(function RadioGroupItem(
-  { variant, className, onClick, value, ...rest }: RadioGroupItemProps,
+  { className, onClick, value, ...rest }: RadioGroupItemProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();
   const radioGroupContext = useContext(RadioGroupContext);
 
   if (!radioGroupContext) throw "error: <RadioGroupItem /> must be a child of a <RadioGroup />";
-
-  const _className = resolveClassName(
-    "radioGroupItem",
-    variant,
-    "radioGroupItem relative inline-grid place-items-center w-5 h-5 rounded-full cursor-pointer " +
-      'after:w-3 after:h-3 after:rounded-full after:content-[""]',
-    "border-2 border-gray-300 transition-colors data-[checked=true]:border-blue-400 " +
-      "data-[checked=true]:after:bg-blue-400 disabled:opacity-35 enabled:hover:border-blue-400 " +
-      "focus:outline-0 focus:border-blue-400",
-    className,
-  );
 
   const handleOnClick = (e: MouseEvent<HTMLButtonElement>) => {
     radioGroupContext.setValue(value);
@@ -107,7 +84,15 @@ export const RadioGroupItem = forwardRef<HTMLButtonElement, RadioGroupItemProps>
     <button
       ref={ref}
       type="button"
-      className={_className}
+      className={resolveClassName(
+        "radioGroupItem",
+        "radioGroupItem relative inline-grid place-items-center w-5 h-5 rounded-full cursor-pointer " +
+          'after:w-3 after:h-3 after:rounded-full after:content-[""]',
+        "border-2 border-gray-300 transition-colors data-[checked=true]:border-primary-400 " +
+          "data-[checked=true]:after:bg-primary-400 disabled:opacity-35 enabled:hover:border-primary-400 " +
+          "focus:outline-0 focus:border-primary-400",
+        className,
+      )}
       onClick={handleOnClick}
       data-checked={radioGroupContext.value === value}
       {...rest}

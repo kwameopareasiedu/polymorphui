@@ -1,10 +1,8 @@
 import React, { ButtonHTMLAttributes, forwardRef, HTMLAttributes, useMemo } from "react";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
-import { VariantNameType } from "@/config/variant";
 import { cn } from "@/utils";
 
 export interface PaginationProps extends Omit<HTMLAttributes<HTMLDivElement>, "children"> {
-  variant?: VariantNameType | VariantNameType[];
   page: number;
   pageSize: number;
   totalCount: number;
@@ -13,7 +11,7 @@ export interface PaginationProps extends Omit<HTMLAttributes<HTMLDivElement>, "c
 }
 
 export const Pagination = forwardRef<HTMLDivElement, PaginationProps>(function Pagination(
-  { variant, className, page, pageSize, totalCount, visibleWidth = 3, onPageChange, ...rest }: PaginationProps,
+  { className, page, pageSize, totalCount, visibleWidth = 3, onPageChange, ...rest }: PaginationProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();
@@ -34,20 +32,20 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>(function P
     return [pageCount, minPage, maxPage] as const;
   }, [page, pageSize, totalCount, visibleWidth]);
 
-  const _className = resolveClassName(
-    "pagination",
-    variant,
-    "pagination",
-    "inline-block w-auto flex items-center flex-wrap gap-2",
-    className,
-  );
-
   const handlePageChange = (newPage: number) => {
     if (newPage !== page) onPageChange?.(newPage);
   };
 
   return (
-    <div ref={ref} className={_className} {...rest}>
+    <div
+      ref={ref}
+      className={resolveClassName(
+        "pagination",
+        "pagination",
+        "w-auto inline-flex items-center flex-wrap gap-2",
+        className,
+      )}
+      {...rest}>
       {minPage > 1 && (
         <PageButton current={page === 1} onClick={() => handlePageChange(1)}>
           1
@@ -80,30 +78,31 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>(function P
 });
 
 interface PageButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: VariantNameType | VariantNameType[];
   current: boolean;
 }
 
 const PageButton = forwardRef<HTMLButtonElement, PageButtonProps>(function TabPanel(
-  { variant, className, children, current, ...rest }: PageButtonProps,
+  { className, children, current, ...rest }: PageButtonProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();
 
-  const _className = resolveClassName(
-    "paginationButton",
-    variant,
-    "paginationButton",
-    cn(
-      "w-8 h-8 grid place-items-center rounded-full text-sm font-medium leading-[0]",
-      "data-[current=false]:bg-white/50 data-[current=false]:text-blue-500",
-      "data-[current=true]:bg-blue-500 data-[current=true]:text-white",
-    ),
-    className,
-  );
-
   return (
-    <button ref={ref} type="button" className={_className} data-current={current} {...rest}>
+    <button
+      ref={ref}
+      type="button"
+      className={resolveClassName(
+        "paginationButton",
+        "paginationButton",
+        cn(
+          "w-8 h-8 grid place-items-center rounded-full text-sm font-medium leading-[0]",
+          "data-[current=false]:bg-white/50 data-[current=false]:text-primary-500",
+          "data-[current=true]:bg-primary-500 data-[current=true]:text-white",
+        ),
+        className,
+      )}
+      {...rest}
+      data-current={current}>
       {children}
     </button>
   );

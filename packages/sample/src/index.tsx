@@ -6,20 +6,20 @@ import { ComponentVariants } from "polymorphui/variant";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Isolate from "./isolate.tsx";
 
-const variants: ComponentVariants = {
-  text: {
-    default: "text-gray-600 tracking-wide",
-    heading: "text-5xl font-medium text-black",
-    small: "text-sm",
-    /* Other text variants (As many as you want) */
-  },
-  button: {
-    default: "",
-    secondary: "bg-orange-500 hover:opacity-85",
-    /* Other button variants (As many as you want) */
-  },
-  /* Other component variants */
-};
+// const variants: ComponentVariants = {
+//   text: {
+//     default: "text-gray-600 tracking-wide",
+//     heading: "text-5xl font-medium text-black",
+//     small: "text-sm",
+//     /* Other text variants (As many as you want) */
+//   },
+//   button: {
+//     default: "",
+//     secondary: "bg-orange-500 hover:opacity-85",
+//     /* Other button variants (As many as you want) */
+//   },
+//   /* Other component variants */
+// };
 
 const router = createBrowserRouter([
   { index: true, element: <App /> },
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById("root")!).render(
-  <PolymorphUiProvider variants={variants}>
+  <PolymorphUiProvider config={{}}>
     <RouterProvider router={router} />
   </PolymorphUiProvider>,
 );

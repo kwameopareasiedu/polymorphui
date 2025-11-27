@@ -159,12 +159,7 @@ export default function App() {
       <Showcase title="Input">
         <Input placeholder="Input" value={inputText} onChange={(e) => setInputText(e.target.value)} />
         <Input leading={<BiUser />} placeholder="Disabled Input" disabled />
-        <Input
-          label="Label"
-          value={inputText}
-          trailing={<Spinner variant="default" />}
-          onChange={(e) => setInputText(e.target.value)}
-        />
+        <Input label="Label" value={inputText} trailing={<Spinner />} onChange={(e) => setInputText(e.target.value)} />
         <Tooltip description="Input showcase" offset={[0, 0]}>
           <Input
             error="Error text"
@@ -184,7 +179,7 @@ export default function App() {
             </div>
           }
           leading={<BiNotepad className="mt-3" />}
-          trailing={<Spinner variant="default" className="mt-3" />}
+          trailing={<Spinner className="mt-3" />}
           placeholder="Bio here"
           value={areaText}
           error="Error text"
@@ -225,7 +220,7 @@ export default function App() {
           <SelectItem value="pears">Pears</SelectItem>
         </Select>
 
-        <Select placeholder="Bio here" disabled />
+        <Select value="" placeholder="Bio here" onChange={() => {}} disabled />
       </Showcase>
 
       <Showcase title="Switch">
@@ -694,7 +689,7 @@ interface ShowcaseProps {
 
 function Showcase({ title, children }: ShowcaseProps) {
   return (
-    <div className="max-w-full sm:max-w-[386px] flex flex-col items-start gap-4 p-4 shadow-lg bg-gray-200 rounded-md">
+    <div className="max-w-full sm:max-w-[386px] flex flex-col items-start gap-4 p-4 shadow-lg bg-white rounded-md border border-slate-300">
       <p className="uppercase text-sm font-medium text-gray-700 tracking-wide">{title}</p>
       <div className="flex flex-wrap gap-2">{children}</div>
     </div>

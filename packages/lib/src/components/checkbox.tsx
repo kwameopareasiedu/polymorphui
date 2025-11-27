@@ -2,10 +2,8 @@ import React, { ButtonHTMLAttributes, forwardRef, MouseEvent, ReactNode } from "
 import CheckIcon from "../assets/check.svg";
 import { InputError, InputHelper, InputLabel } from "@/components/input-helpers";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
-import { VariantNameType } from "@/config/variant";
 
 export interface CheckboxProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children" | "onChange"> {
-  variant?: VariantNameType | VariantNameType[];
   checked?: boolean;
   label?: ReactNode;
   helper?: ReactNode;
@@ -15,27 +13,10 @@ export interface CheckboxProps extends Omit<ButtonHTMLAttributes<HTMLButtonEleme
 }
 
 export const Checkbox = forwardRef<HTMLButtonElement, CheckboxProps>(function Checkbox(
-  { variant, id, className, label, rtl, checked, helper, error, onChange, onClick, ...rest }: CheckboxProps,
+  { id, className, label, rtl, checked, helper, error, onChange, onClick, ...rest }: CheckboxProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();
-  const _className = resolveClassName(
-    "checkbox",
-    variant,
-    "checkbox inline-flex flex-col gap-0.5",
-    undefined,
-    className,
-  );
-
-  const _checkClassName = resolveClassName(
-    "checkboxCheck",
-    variant,
-    "checkboxCheck inline-grid place-items-center w-5 h-5 rounded-sm cursor-pointer",
-    "border-2 border-gray-300 transition-colors data-[checked=true]:bg-blue-400 " +
-      "data-[checked=true]:border-blue-400 disabled:opacity-35 enabled:hover:border-blue-400 focus:outline-0 " +
-      "focus:border-blue-400",
-    className,
-  );
 
   const handleOnClick = (e: MouseEvent<HTMLButtonElement>) => {
     onChange?.({ target: { checked: !checked } });
@@ -43,7 +24,7 @@ export const Checkbox = forwardRef<HTMLButtonElement, CheckboxProps>(function Ch
   };
 
   return (
-    <div className={_className}>
+    <div className={resolveClassName("checkbox", "checkbox inline-flex flex-col gap-0.5", undefined, className)}>
       <div className="inline-flex gap-2">
         {label && !rtl && <InputLabel htmlFor={id}>{label}</InputLabel>}
 
@@ -51,7 +32,14 @@ export const Checkbox = forwardRef<HTMLButtonElement, CheckboxProps>(function Ch
           ref={ref}
           id={id}
           type="button"
-          className={_checkClassName}
+          className={resolveClassName(
+            "checkboxCheck",
+            "checkboxCheck inline-grid place-items-center w-5 h-5 rounded-sm cursor-pointer",
+            "border-2 border-gray-300 transition-colors data-[checked=true]:bg-primary-400 " +
+              "data-[checked=true]:border-primary-400 disabled:opacity-35 enabled:hover:border-primary-400 focus:outline-0 " +
+              "focus:border-primary-400",
+            className,
+          )}
           onClick={handleOnClick}
           {...rest}
           data-checked={checked}>

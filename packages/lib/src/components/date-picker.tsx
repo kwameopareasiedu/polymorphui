@@ -11,7 +11,6 @@ import React, {
 } from "react";
 import { InputAddon, InputError, InputHelper, InputInput, InputLabel, InputWrapper } from "@/components/input-helpers";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
-import { VariantNameType } from "@/config/variant";
 import { Popup } from "@/components/popup";
 import { cn, combineRefs } from "@/utils";
 import CalendarIcon from "../assets/calendar.svg";
@@ -37,7 +36,6 @@ export enum DatePickerFormat {
 
 export interface DatePickerProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "type" | "value" | "onChange" | "children" | "placeholder"> {
-  variant?: VariantNameType | VariantNameType[];
   label?: ReactNode;
   leading?: ReactNode;
   helper?: ReactNode;
@@ -51,7 +49,6 @@ export interface DatePickerProps
 
 export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(function DatePicker(
   {
-    variant,
     label,
     leading,
     id,
@@ -80,14 +77,6 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(function
       return "MM/DD/YYYY";
     } else throw new Error(`Invalid format: ${_format}`);
   }, [_format]);
-
-  const _className = resolveClassName(
-    "datePicker",
-    variant,
-    "datePicker relative w-full flex flex-col gap-0.5",
-    undefined,
-    className,
-  );
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;
@@ -149,7 +138,13 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(function
   }, [value, format]);
 
   return (
-    <div className={_className}>
+    <div
+      className={resolveClassName(
+        "datePicker",
+        "datePicker relative w-full flex flex-col gap-0.5",
+        undefined,
+        className,
+      )}>
       {label && <InputLabel htmlFor={id}>{label}</InputLabel>}
 
       <InputWrapper>
@@ -228,7 +223,6 @@ function getTransformers(
 }
 
 interface DatePickerCalendarProps extends Omit<HTMLAttributes<HTMLDivElement>, "onSelect"> {
-  variant?: VariantNameType | VariantNameType[];
   range?: [InputDateType | undefined, InputDateType | undefined];
   validator?: (date: string) => string;
   date?: string | Date;
@@ -236,7 +230,7 @@ interface DatePickerCalendarProps extends Omit<HTMLAttributes<HTMLDivElement>, "
 }
 
 const DatePickerCalendar = forwardRef<HTMLDivElement, DatePickerCalendarProps>(function DatePickerCalendar(
-  { date, variant, className, range, validator, onSelect, ...rest }: DatePickerCalendarProps,
+  { date, className, range, validator, onSelect, ...rest }: DatePickerCalendarProps,
   ref,
 ) {
   const { resolveClassName } = usePolymorphUi();
@@ -258,25 +252,6 @@ const DatePickerCalendar = forwardRef<HTMLDivElement, DatePickerCalendarProps>(f
     return [yearOptions, calendarDays];
   }, [viewDjs]);
 
-  const _className = resolveClassName(
-    "datePickerCalendar",
-    variant,
-    "datePickerCalendar grid grid-cols-2 gap-2 p-2 w-auto max-w-72",
-    "rounded-lg bg-white shadow-lg border-[1px] border-gray-300 z-[100]",
-    className,
-  );
-
-  const calendarBtnClassName = resolveClassName(
-    "datePickerCalendarDay",
-    variant,
-    "datePickerCalendarDay grid place-items-center aspect-square disabled:opacity-25 disabled:hover:cursor-not-allowed",
-    cn(
-      "text-sm enabled:data-[selected=true]:bg-primary enabled:data-[selected=true]:text-white",
-      "enabled:hover:bg-primary/25 data-[in-month=false]:opacity-25",
-      "enabled:data-[selected=false]:data-[in-range=true]:!bg-primary/10",
-    ),
-  );
-
   const handleSelectMonth = (e: ChangeEvent<HTMLSelectElement>) => {
     const value = parseInt(e.target.value);
     setViewDjs(viewDjs.month(value));
@@ -296,7 +271,15 @@ const DatePickerCalendar = forwardRef<HTMLDivElement, DatePickerCalendarProps>(f
   };
 
   return (
-    <div ref={ref} className={_className} {...rest}>
+    <div
+      ref={ref}
+      className={resolveClassName(
+        "datePickerCalendar",
+        "datePickerCalendar grid grid-cols-2 gap-2 p-2 w-auto max-w-72",
+        "rounded-lg bg-white shadow-lg border-[1px] border-gray-300 z-[100]",
+        className,
+      )}
+      {...rest}>
       <nav className="flex items-center gap-1">
         <button type="button" className="p-1.5" onClick={() => handleCycleDate(-1, "month")}>
           <ArrowLeftIcon {...({ className: "w-5 h-5" } as object)} />
@@ -356,7 +339,15 @@ const DatePickerCalendar = forwardRef<HTMLDivElement, DatePickerCalendarProps>(f
             <button
               type="button"
               key={idx}
-              className={calendarBtnClassName}
+              className={resolveClassName(
+                "datePickerCalendarDay",
+                "datePickerCalendarDay grid place-items-center aspect-square disabled:opacity-25 disabled:hover:cursor-not-allowed",
+                cn(
+                  "text-sm enabled:data-[selected=true]:bg-primary enabled:data-[selected=true]:text-white",
+                  "enabled:hover:bg-primary/25 data-[in-month=false]:opacity-25",
+                  "enabled:data-[selected=false]:data-[in-range=true]:!bg-primary/10",
+                ),
+              )}
               disabled={validator && validator(cdjsIso) !== cdjsIso}
               data-selected={dateDjs.isSame(itemDjs, "day")}
               data-in-month={viewDjs.month() === itemDjs.month()}
