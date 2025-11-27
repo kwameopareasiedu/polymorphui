@@ -20,7 +20,7 @@ export function Example() {
           <small>{areaText.length} chars</small>
         </div>
       }
-      trailing={<Spinner variant="default" className="mt-3" />}
+      trailing={<Spinner />}
       placeholder="Type here"
       value={value}
       error="Error text"

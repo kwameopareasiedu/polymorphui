@@ -8,12 +8,7 @@ A component which indicates that an operation is in progress
 import { Spinner } from "polymorphui/spinner";
 
 export function Example() {
-  return (
-    <>
-      <Spinner />
-      <Spinner variant="default" />
-    </>
-  );
+  return <Spinner />;
 }
 ```
 

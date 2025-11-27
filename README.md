@@ -20,7 +20,7 @@ yarn add --dev polymorphui
 
 Getting started with PolymorphUI is the simplest thing ever:
 
-1. Define the component variants and wrap your app with the `PolymorphUiProvider`
+1. Define the component configuration and wrap your app with the `PolymorphUiProvider`
 
    ```typescript jsx
    import App from "./app";
@@ -33,7 +33,7 @@ Getting started with PolymorphUI is the simplest thing ever:
        custom: "text-gray-600 tracking-wide", // Replaces the default style
        extend: "text-center text-sm", // Appends to the default style
      },
-     /* Other component variants */
+     /* Other component configuration */
    };
 
    createRoot(document.getElementById("root")!).render(
@@ -95,6 +95,14 @@ PolymorphUI exports the following hooks:
 
 ## Changelog
 
+- `0.14.0`
+   - Removed arbitrary component variant framework
+   - Added [Table](./docs/table.md) component
+   - Added [TrapFocus](./docs/trap-focus.md) component
+   - Added [TrapClick](./docs/trap-click.md) component
+   - Added [useDebounced](./docs/use-debounced.md) hook
+   - Added [useWindowSizeInRange](./docs/use-window-size-in-range.md) hook
+   - [DatePicker](./docs/date-picker.md) component no longer supports manual typing
 - `0.13.1`
    - Fixed initial value resolution bug in [useQueryParams](./docs/use-query-params.md) hook
 - `0.13.0`
