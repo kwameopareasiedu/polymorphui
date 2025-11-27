@@ -29,6 +29,7 @@ import dayjs from "dayjs";
 import isSameOrBefore from "dayjs/plugin/isSameOrBefore";
 import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
 import { useQueryParams } from "polymorphui/use-query-params";
+import { useDebounced } from "polymorphui/use-debounced";
 
 dayjs.extend(isSameOrBefore);
 dayjs.extend(isSameOrAfter);
@@ -36,6 +37,7 @@ dayjs.extend(isSameOrAfter);
 export default function App() {
   const [popupOpen, setPopupOpen] = useState(false);
   const [params, setParam] = useQueryParams({ param1: "val1", param2: "val2" });
+  const [val, debouncedVal, setVal] = useDebounced("hello world");
 
   const [inputText, setInputText] = useState("");
   const [areaText, setAreaText] = useState("");
@@ -676,6 +678,17 @@ export default function App() {
             value={decodeURIComponent(params.param2 ?? "")}
             onChange={(e) => setParam("param2", e.target.value)}
           />
+        </div>
+      </Showcase>
+
+      <Showcase title="Debounced (Hook)">
+        <div className="font-mono bg-slate-100 p-4 rounded">
+          <small className="italic">Debounced value</small>
+          <p>{debouncedVal}</p>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <Input label="Param 1 Value" value={val} onChange={(e) => setVal(e.target.value)} />
         </div>
       </Showcase>
     </main>
