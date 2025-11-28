@@ -71,7 +71,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
           className={resolveClassName(
             "tableHead",
             "tableHead sticky top-0 z-20 max-sm:hidden",
-            "border-b-2",
+            "border-b",
             headClassName,
           )}>
           <tr>
@@ -210,6 +210,7 @@ export const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(function 
   { className, cells, mobileHeader, mobileFooter, ...rest }: TableRowProps,
   ref,
 ) {
+  const { resolveClassName } = usePolymorphUi();
   const tableContext = useContext(TableContext);
   const groupRowContext = useContext(TableRowGroupContext);
   const isMobile = useWindowSizeInRange(0, 640);
@@ -219,51 +220,54 @@ export const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(function 
   const withinGroupRow = !!groupRowContext;
   const { columns, responsive } = tableContext;
 
-  return responsive && isMobile ? (
-    <tr ref={ref} className={cn("border-transparent [&:not(:last-child)]:border-b-[16px]", className)} {...rest}>
-      <td colSpan={columns.length}>
-        <div className="space-y-2 rounded-lg border border-slate-200 bg-white px-2 py-1 shadow-sm">
-          {mobileHeader ?? null}
+  return (
+    <tr
+      ref={ref}
+      className={resolveClassName("tableRow", "tableRow", "sm:border-b sm:[&:not(:last-child)]:border-b", className)}
+      {...rest}>
+      {responsive && isMobile ? (
+        <td colSpan={columns.length}>
+          <div className="space-y-2 rounded border border-slate-200 px-2 py-1 shadow-sm">
+            {mobileHeader ?? null}
 
-          <div className="grid grid-cols-5 gap-2">
-            {columns
-              .filter((column) => !!cells.find((cell) => cell.id === column.id))
-              .map((column) => {
-                const cell = cells.find((cell) => cell.id === column.id);
+            <div className="grid grid-cols-5 gap-2">
+              {columns
+                .filter((column) => !!cells.find((cell) => cell.id === column.id))
+                .map((column) => {
+                  const cell = cells.find((cell) => cell.id === column.id);
 
-                return (
-                  <Fragment key={column.id}>
-                    <Text className="col-span-2 text-sm font-medium capitalize text-slate-500 data-[price-col=true]:lowercase">
-                      {column.label}
-                    </Text>
+                  return (
+                    <Fragment key={column.id}>
+                      <Text className="col-span-2 text-sm font-medium capitalize text-slate-500 data-[price-col=true]:lowercase">
+                        {column.label}
+                      </Text>
 
-                    <div className="col-span-3 truncate text-sm font-medium capitalize text-slate-500 data-[price-col=true]:lowercase">
-                      {cell?.render(column) ?? null}
-                    </div>
-                  </Fragment>
-                );
-              })}
+                      <div className="col-span-3 truncate text-sm font-medium capitalize text-slate-500 data-[price-col=true]:lowercase">
+                        {cell?.render(column) ?? null}
+                      </div>
+                    </Fragment>
+                  );
+                })}
+            </div>
+
+            {mobileFooter ?? null}
           </div>
+        </td>
+      ) : (
+        columns.map((column) => {
+          const cell = cells.find((cell) => cell.id === column.id);
 
-          {mobileFooter ?? null}
-        </div>
-      </td>
-    </tr>
-  ) : (
-    <tr ref={ref} className={cn("[&:not(:last-child)]:border-b-[1px]", className)} {...rest}>
-      {columns.map((column) => {
-        const cell = cells.find((cell) => cell.id === column.id);
-
-        return (
-          <td
-            key={column.id}
-            className={cn("bg-white px-4 py-1 data-[pad=true]:first:px-16 data-[pad=true]:last:px-8", cell?.className)}
-            {...cell?.props}
-            data-pad={withinGroupRow}>
-            {cell?.render(column) ?? null}
-          </td>
-        );
-      })}
+          return (
+            <td
+              key={column.id}
+              className={cn("px-4 py-1 data-[pad=true]:first:px-16", cell?.className)}
+              {...cell?.props}
+              data-pad={withinGroupRow}>
+              {cell?.render(column) ?? null}
+            </td>
+          );
+        })
+      )}
     </tr>
   );
 });
@@ -288,9 +292,7 @@ const TableLoader = ({ mobileCount = 3, desktopCount = 10 }: TableLoaderProps) =
             {Array.from({ length: mobileCount })
               .fill(null)
               .map((_, index) => (
-                <div
-                  key={index}
-                  className="grid grid-cols-2 gap-4 rounded-lg border border-slate-200 bg-white p-2 shadow-sm">
+                <div key={index} className="grid grid-cols-2 gap-4 rounded-lg border border-slate-200 p-2 shadow-sm">
                   {Array.from({ length: 8 })
                     .fill(null)
                     .map((_, index) => (

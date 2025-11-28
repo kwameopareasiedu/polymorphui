@@ -24,14 +24,13 @@ Getting started with PolymorphUI is the simplest thing ever:
 
    ```typescript jsx
    import App from "./app";
-   import { PolymorphUiProvider } from "polymorphui/polymorphui-provider";
-   import type { ComponentConfig } from "polymorphui/config";
-   import { createRoot } from "react-dom/client";
-   
+   import {PolymorphUiProvider} from "polymorphui/polymorphui-provider";
+   import type {ComponentConfig} from "polymorphui/config";
+
    const config: ComponentConfig = {
      text: {
        custom: "text-gray-600 tracking-wide", // Replaces the default style
-       extend: "text-center text-sm", // Appends to the default style
+       extend: "text-center text-sm",         // Appends to the default style
      },
      /* Other component configuration */
    };
@@ -95,6 +94,8 @@ PolymorphUI exports the following hooks:
 
 ## Changelog
 
+- `0.14.3`
+   - Fixed style issues with [Table](./docs/table.md)
 - `0.14.1`
    - Updated `TableRow` component to use `cells` attribute over `data`, `defaultColumn`, `customColumn` approach
 - `0.14.0`
