@@ -15,7 +15,7 @@ const componentNamePathMap = globbySync([
   "src/components/*.tsx",
   "src/hooks/*.ts",
   "src/providers/*.tsx",
-  "src/config/*.ts",
+  "src/config.ts",
   "src/types.ts",
   "src/utils.ts",
 ]).reduce((map, inputPath) => {
