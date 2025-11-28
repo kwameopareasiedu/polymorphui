@@ -52,30 +52,31 @@ Getting started with PolymorphUI is the simplest thing ever:
 
 PolymorphUI exports the following components:
 
-| Component     | Description                                                                               | Docs                                |
-|---------------|-------------------------------------------------------------------------------------------|-------------------------------------|
-| `Accordion`   | A component which shows and hides sections of related content on a page                   | [View docs](./docs/accordion.md)    |
-| `Badge`       | A component which displays a badge next to an anchor element/component                    | [View docs](./docs/badge.md)        |
-| `Breadcrumbs` | A component which displays the current navigation using a hierarchy of links              | [View docs](./docs/breadcrumbs.md)  |
-| `Button`      | A control component which triggers an action                                              | [View docs](./docs/button.md)       |
-| `Checkbox`    | An input component which toggles between two states                                       | [View docs](./docs/checkbox.md)     |
-| `ContextMenu` | A component which displays action buttons related to a component                          | [View docs](./docs/context-menu.md) |
-| `DatePicker`  | An input component which allows entry or selection of a date                              | [View docs](./docs/date-picker.md)  |
-| `Dialog`      | A component which displays content over the primary window                                | [View docs](./docs/dialog.md)       |
-| `Input`       | Base user input component                                                                 | [View docs](./docs/input.md)        |
-| `Pagination`  | A component which displays pagination buttons for a list of items                         | [View docs](./docs/pagination.md)   |
-| `Popup`       | A component which displays popup content when the trigger is activated                    | [View docs](./docs/popup.md)        |
-| `RadioGroup`  | An input component which allows a single selection from a list of options                 | [View docs](./docs/radio-group.md)  |
-| `Select`      | An input component which allows a single or multiple selections from a list of options    | [View docs](./docs/select.md)       |
-| `Spinner`     | A component which indicates that an operation is in progress                              | [View docs](./docs/spinner.md)      |
-| `Switch`      | An input component which toggles between two states                                       | [View docs](./docs/switch.md)       |
-| `Table`       | A responsive table component with grouping and sorting capabilities                       | [View docs](./docs/table.md)        |
-| `Tabs`        | A component which displays a single tab panel based on the active tab                     | [View docs](./docs/tabs.md)         |
-| `Text`        | A component to display standardized text                                                  | [View docs](./docs/text.md)         |
-| `TextArea`    | Textarea component with auto-resize capability                                            | [View docs](./docs/textarea.md)     |
-| `Tooltip`     | A component which displays text info about another component when hovered                 | [View docs](./docs/tooltip.md)      |
-| `TrapClick`   | A component which prevents click actions from bubbling up to ancestor elements            | [View docs](./docs/trap-click.md)   |
-| `TrapFocus`   | A component which prevents focus loss, by cycling focus between all focusable descendants | [View docs](./docs/trap-focus.md)   |
+| Component      | Description                                                                               | Docs                                 |
+|----------------|-------------------------------------------------------------------------------------------|--------------------------------------|
+| `Accordion`    | A component which shows and hides sections of related content on a page                   | [View docs](./docs/accordion.md)     |
+| `Badge`        | A component which displays a badge next to an anchor element/component                    | [View docs](./docs/badge.md)         |
+| `Breadcrumbs`  | A component which displays the current navigation using a hierarchy of links              | [View docs](./docs/breadcrumbs.md)   |
+| `Button`       | A control component which triggers an action                                              | [View docs](./docs/button.md)        |
+| `Checkbox`     | An input component which toggles between two states                                       | [View docs](./docs/checkbox.md)      |
+| `ContextMenu`  | A component which displays action buttons related to a component                          | [View docs](./docs/context-menu.md)  |
+| `DatePicker`   | An input component which allows entry or selection of a date                              | [View docs](./docs/date-picker.md)   |
+| `DetailsTable` | A 2-column table component for display an object's details                                | [View docs](./docs/details-table.md) |
+| `Dialog`       | A component which displays content over the primary window                                | [View docs](./docs/dialog.md)        |
+| `Input`        | Base user input component                                                                 | [View docs](./docs/input.md)         |
+| `Pagination`   | A component which displays pagination buttons for a list of items                         | [View docs](./docs/pagination.md)    |
+| `Popup`        | A component which displays popup content when the trigger is activated                    | [View docs](./docs/popup.md)         |
+| `RadioGroup`   | An input component which allows a single selection from a list of options                 | [View docs](./docs/radio-group.md)   |
+| `Select`       | An input component which allows a single or multiple selections from a list of options    | [View docs](./docs/select.md)        |
+| `Spinner`      | A component which indicates that an operation is in progress                              | [View docs](./docs/spinner.md)       |
+| `Switch`       | An input component which toggles between two states                                       | [View docs](./docs/switch.md)        |
+| `Table`        | A responsive table component with grouping and sorting capabilities                       | [View docs](./docs/table.md)         |
+| `Tabs`         | A component which displays a single tab panel based on the active tab                     | [View docs](./docs/tabs.md)          |
+| `Text`         | A component to display standardized text                                                  | [View docs](./docs/text.md)          |
+| `TextArea`     | Textarea component with auto-resize capability                                            | [View docs](./docs/textarea.md)      |
+| `Tooltip`      | A component which displays text info about another component when hovered                 | [View docs](./docs/tooltip.md)       |
+| `TrapClick`    | A component which prevents click actions from bubbling up to ancestor elements            | [View docs](./docs/trap-click.md)    |
+| `TrapFocus`    | A component which prevents focus loss, by cycling focus between all focusable descendants | [View docs](./docs/trap-focus.md)    |
 
 ## Hooks
 
@@ -94,8 +95,10 @@ PolymorphUI exports the following hooks:
 
 ## Changelog
 
+- `0.14.4`
+   - Added [DetailsTable](./docs/details-table.md) component
 - `0.14.3`
-   - Fixed style issues with [Table](./docs/table.md)
+   - Fixed style issues with [Table](./docs/table.md) component
 - `0.14.1`
    - Updated `TableRow` component to use `cells` attribute over `data`, `defaultColumn`, `customColumn` approach
 - `0.14.0`

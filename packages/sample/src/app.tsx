@@ -31,6 +31,7 @@ import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
 import { useQueryParams } from "polymorphui/use-query-params";
 import { useDebounced } from "polymorphui/use-debounced";
 import { SortConfig, SortDirection, Table, TableRow } from "polymorphui/table";
+import { DetailsTable } from "polymorphui/details-table";
 
 dayjs.extend(isSameOrBefore);
 dayjs.extend(isSameOrAfter);
@@ -706,6 +707,30 @@ export default function App() {
           loading>
           <span />
         </Table>
+      </Showcase>
+
+      <Showcase title="Details Table">
+        <DetailsTable
+          className="w-full"
+          data={[
+            ["Name", "John Doe", true /* Visible */],
+            [<Text key="key">Age</Text>, <Text key="key">29</Text>, true /* Hidden */],
+          ]}
+          footer={
+            <Button className="mx-auto m-2" flex>
+              Edit
+            </Button>
+          }
+        />
+
+        <DetailsTable
+          className="w-full border"
+          data={[
+            ["Name", "John Doe", true /* Visible */],
+            [<Text key="key">Age</Text>, <Text key="key">29</Text>, true /* Hidden */],
+          ]}
+          loading
+        />
       </Showcase>
 
       <Showcase title="Query Params (Hook)">

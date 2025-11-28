@@ -54,6 +54,11 @@ export interface ComponentConfig {
   tableHead?: ClassNameConfig;
   tableRow?: ClassNameConfig;
   tableLoader?: ClassNameConfig;
+  detailsTable?: ClassNameConfig;
+  detailsTableRow?: ClassNameConfig;
+  detailsTableHeader?: ClassNameConfig;
+  detailsTableFooter?: ClassNameConfig;
+  detailsTableLoader?: ClassNameConfig;
 }
 
 export type ComponentNameType = keyof ComponentConfig;
