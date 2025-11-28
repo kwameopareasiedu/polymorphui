@@ -95,6 +95,9 @@ PolymorphUI exports the following hooks:
 
 ## Changelog
 
+- `0.14.5`
+   - Modified [TrapFocus](./docs/trap-focus.md) component to only prevent default action when focus event keys are
+     pressed
 - `0.14.4`
    - Added [DetailsTable](./docs/details-table.md) component
 - `0.14.3`

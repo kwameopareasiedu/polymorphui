@@ -16,24 +16,23 @@ export const TrapFocus = forwardRef<HTMLDivElement, TrapFocusProps>(function Tra
     );
 
     const onKeyDown = (e: KeyboardEvent) => {
-      e.preventDefault();
-      e.stopPropagation();
-      e.stopImmediatePropagation();
-
       if (focusableElements) {
-        const direction =
-          e.key === "ArrowDown" || (e.key === "Tab" && !e.shiftKey)
-            ? 1
-            : e.key === "ArrowUp" || (e.key === "Tab" && e.shiftKey)
-              ? -1
-              : 0;
+        const focusNext = e.key === "ArrowDown" || (e.key === "Tab" && !e.shiftKey);
+        const focusPrev = e.key === "ArrowUp" || (e.key === "Tab" && e.shiftKey);
+        const delta = focusNext ? 1 : focusPrev ? -1 : 0;
 
-        let nextIndex = focusIndex.current + direction;
-        if (nextIndex === focusableElements.length) nextIndex = 0;
-        else if (nextIndex === -1) nextIndex = focusableElements.length - 1;
+        if (delta) {
+          e.preventDefault();
+          e.stopPropagation();
+          e.stopImmediatePropagation();
 
-        (focusableElements.item(nextIndex) as HTMLElement).focus();
-        focusIndex.current = nextIndex;
+          let nextIndex = focusIndex.current + delta;
+          if (nextIndex === focusableElements.length) nextIndex = 0;
+          else if (nextIndex === -1) nextIndex = focusableElements.length - 1;
+
+          (focusableElements.item(nextIndex) as HTMLElement).focus();
+          focusIndex.current = nextIndex;
+        }
       }
 
       rest.onKeyDown?.(e as never);

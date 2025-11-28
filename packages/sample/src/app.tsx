@@ -44,7 +44,7 @@ export default function App() {
   const [inputText, setInputText] = useState("");
   const [areaText, setAreaText] = useState("");
   const [selectValue, setSelectValue] = useState("");
-  const [multiSelectValue, setMultiSelectValue] = useState<string[]>(["apples"]);
+  const [multiSelectValue, setMultiSelectValue] = useState<string[]>(["Apples"]);
   const [switchChecked, setSwitchChecked] = useState(false);
   const [radioGroupValue, setRadioGroupValue] = useState("");
   const [showDialog, setShowDialog] = useState(false);
@@ -345,6 +345,8 @@ export default function App() {
                 suscipit temporibus tenetur voluptatibus.
               </Text>
 
+              <Input />
+
               <Select
                 value={multiSelectValue}
                 label="Favorite fruits"
@@ -353,9 +355,7 @@ export default function App() {
                 error="Error text"
                 helper="Helper text"
                 onChange={(e) => setMultiSelectValue(e.target.value)}>
-                <SelectItem value="">None</SelectItem>
-
-                {["apples", "oranges", "grapes", "pears"].map((fruit) => (
+                {["Apples", "Oranges", "Grapes", "Pears"].map((fruit) => (
                   <SelectItem key={fruit} value={fruit}>
                     {fruit}
                   </SelectItem>
