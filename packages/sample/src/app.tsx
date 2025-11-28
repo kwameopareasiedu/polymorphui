@@ -672,30 +672,23 @@ export default function App() {
             ]}
             sort={sort}
             onSort={setSort}>
-            <TableRow
-              data={{ name: "John Doe", age: 20, occupation: "Doctor" }}
-              defaultColumn={(_, val) => <Text>{val as never}</Text>}
-            />
-            <TableRow
-              data={{ name: "Jane Does", age: 22, occupation: "Farmer" }}
-              defaultColumn={(_, val) => <Text>{val as never}</Text>}
-            />
-            <TableRow
-              data={{ name: "John Doe", age: 20, occupation: "Doctor" }}
-              defaultColumn={(_, val) => <Text>{val as never}</Text>}
-            />
-            <TableRow
-              data={{ name: "Jane Does", age: 22, occupation: "Farmer" }}
-              defaultColumn={(_, val) => <Text>{val as never}</Text>}
-            />
-            <TableRow
-              data={{ name: "John Doe", age: 20, occupation: "Doctor" }}
-              defaultColumn={(_, val) => <Text>{val as never}</Text>}
-            />
-            <TableRow
-              data={{ name: "Jane Does", age: 22, occupation: "Farmer" }}
-              defaultColumn={(_, val) => <Text>{val as never}</Text>}
-            />
+            {[
+              { name: "John Doe", age: 29, occupation: "Software Developer" },
+              { name: "Jane Doe", age: 26, occupation: "Product Designer" },
+              { name: "John Doe", age: 29, occupation: "Software Developer" },
+              { name: "Jane Doe", age: 26, occupation: "Product Designer" },
+              { name: "John Doe", age: 29, occupation: "Software Developer" },
+              { name: "Jane Doe", age: 26, occupation: "Product Designer" },
+            ].map((data, index) => (
+              <TableRow
+                key={index}
+                cells={[
+                  { id: "name", render: () => <Text>{data.name}</Text> },
+                  { id: "age", render: () => <Text>{data.age}</Text> },
+                  { id: "occupation", render: () => <Text>{data.occupation}</Text> },
+                ]}
+              />
+            ))}
           </Table>
         </div>
 

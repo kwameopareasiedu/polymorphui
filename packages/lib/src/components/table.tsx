@@ -1,4 +1,4 @@
-import React, { createContext, forwardRef, Fragment, ReactNode, useContext, useState } from "react";
+import React, { createContext, forwardRef, Fragment, HTMLAttributes, ReactNode, useContext, useState } from "react";
 import { Text } from "@/components/text";
 import { cn } from "@/utils";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
@@ -192,17 +192,22 @@ export const TableRowGroup = forwardRef<HTMLTableRowElement, TableRowGroupProps>
   );
 });
 
+export interface TableRowCell {
+  id: string;
+  className?: string;
+  props?: Omit<HTMLAttributes<HTMLTableCellElement>, "className">;
+  render: (column: TableColumn) => ReactNode;
+}
+
 interface TableRowProps {
   className?: string;
-  data: Record<string, unknown>;
-  customColumn?: Record<string, (column: TableColumn) => ReactNode>;
-  defaultColumn: (column: TableColumn, value: unknown) => ReactNode;
+  cells: TableRowCell[];
   mobileHeader?: ReactNode;
   mobileFooter?: ReactNode;
 }
 
 export const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(function TableRow(
-  { className, data, mobileHeader, mobileFooter, customColumn, defaultColumn, ...rest }: TableRowProps,
+  { className, cells, mobileHeader, mobileFooter, ...rest }: TableRowProps,
   ref,
 ) {
   const tableContext = useContext(TableContext);
@@ -220,20 +225,24 @@ export const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(function 
         <div className="space-y-2 rounded-lg border border-slate-200 bg-white px-2 py-1 shadow-sm">
           {mobileHeader ?? null}
 
-          <div className="grid grid-cols-10 gap-2">
+          <div className="grid grid-cols-5 gap-2">
             {columns
-              .filter((col) => !!col.label)
-              .map((column) => (
-                <Fragment key={column.id}>
-                  <Text className="col-span-4 text-sm font-medium capitalize text-slate-500 data-[price-col=true]:lowercase">
-                    {column.label}
-                  </Text>
+              .filter((column) => !!cells.find((cell) => cell.id === column.id))
+              .map((column) => {
+                const cell = cells.find((cell) => cell.id === column.id);
 
-                  <div className="col-span-6 truncate text-sm font-medium capitalize text-slate-500 data-[price-col=true]:lowercase">
-                    {customColumn?.[column.id]?.(column) ?? defaultColumn(column, data[column.id])}
-                  </div>
-                </Fragment>
-              ))}
+                return (
+                  <Fragment key={column.id}>
+                    <Text className="col-span-2 text-sm font-medium capitalize text-slate-500 data-[price-col=true]:lowercase">
+                      {column.label}
+                    </Text>
+
+                    <div className="col-span-3 truncate text-sm font-medium capitalize text-slate-500 data-[price-col=true]:lowercase">
+                      {cell?.render(column) ?? null}
+                    </div>
+                  </Fragment>
+                );
+              })}
           </div>
 
           {mobileFooter ?? null}
@@ -242,14 +251,19 @@ export const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(function 
     </tr>
   ) : (
     <tr ref={ref} className={cn("[&:not(:last-child)]:border-b-[1px]", className)} {...rest}>
-      {columns.map((col) => (
-        <td
-          key={col.id}
-          className="bg-white px-4 py-1 data-[pad=true]:first:px-16 data-[pad=true]:last:px-8"
-          data-pad={withinGroupRow}>
-          {customColumn?.[col.id]?.(col) ?? defaultColumn(col, data[col.id])}
-        </td>
-      ))}
+      {columns.map((column) => {
+        const cell = cells.find((cell) => cell.id === column.id);
+
+        return (
+          <td
+            key={column.id}
+            className={cn("bg-white px-4 py-1 data-[pad=true]:first:px-16 data-[pad=true]:last:px-8", cell?.className)}
+            {...cell?.props}
+            data-pad={withinGroupRow}>
+            {cell?.render(column) ?? null}
+          </td>
+        );
+      })}
     </tr>
   );
 });
@@ -282,9 +296,6 @@ const TableLoader = ({ mobileCount = 3, desktopCount = 10 }: TableLoaderProps) =
                     .map((_, index) => (
                       <div key={index} className="h-2 w-full animate-pulse rounded-full bg-slate-200" />
                     ))}
-
-                  <div className="h-6 w-full animate-pulse rounded-md bg-slate-200" />
-                  <div className="h-6 w-full animate-pulse rounded-md bg-slate-200" />
                 </div>
               ))}
           </div>

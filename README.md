@@ -95,6 +95,8 @@ PolymorphUI exports the following hooks:
 
 ## Changelog
 
+- `0.14.1`
+   - Updated `TableRow` component to use `cells` attribute over `data`, `defaultColumn`, `customColumn` approach
 - `0.14.0`
    - Removed arbitrary component variant framework
    - Added [Table](./docs/table.md) component
