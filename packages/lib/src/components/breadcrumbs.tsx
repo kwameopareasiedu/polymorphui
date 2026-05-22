@@ -71,7 +71,12 @@ export const BreadcrumbItem = forwardRef(function BreadcrumbItem<C extends Eleme
       </Root>
 
       {breadcrumbsContext.separator && (
-        <span className={resolveClassName("breadcrumbSeparator", "breadcrumbSeparator text-xs last:hidden", className)}>
+        <span
+          className={resolveClassName(
+            "breadcrumbSeparator",
+            "breadcrumbSeparator text-xs last:hidden opacity-50",
+            className,
+          )}>
           {breadcrumbsContext.separator}
         </span>
       )}

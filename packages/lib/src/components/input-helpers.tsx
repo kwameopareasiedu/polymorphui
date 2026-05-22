@@ -1,5 +1,6 @@
 import React, { forwardRef, HTMLAttributes, InputHTMLAttributes, LabelHTMLAttributes } from "react";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
+import { cn } from "@/utils";
 
 export type InputLabelProps = LabelHTMLAttributes<HTMLLabelElement>;
 
@@ -85,8 +86,10 @@ export const InputWrapper = forwardRef<HTMLDivElement, InputWrapperProps>(functi
       className={resolveClassName(
         "inputWrapper",
         "inputWrapper flex items-center gap-2",
-        "px-2 rounded border border-gray-300 focus-within:border-primary " +
-          "has-[input:disabled]:opacity-50 has-[input:disabled]:bg-gray-100",
+        cn(
+          "px-2 rounded border border-gray-300 dark:border-gray-600 focus-within:border-primary",
+          "has-[input:disabled]:opacity-50 has-[input:disabled]:bg-gray-100 dark:has-[input:disabled]:bg-gray-800",
+        ),
         className,
       )}
       {...rest}>

@@ -43,7 +43,7 @@ export const Tooltip = forwardRef<HTMLParagraphElement, TooltipProps>(function T
         className={resolveClassName(
           "tooltip",
           "tooltip",
-          "bg-white border-[0.5px] border-gray-600 text-xs text-gray-600 px-1.5 py-0.5",
+          "bg-white dark:bg-gray-800 border-[0.5px] border-gray-600 text-xs text-gray-600 dark:text-white px-1.5 py-0.5",
           className,
         )}
         {...rest}>

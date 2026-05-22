@@ -71,12 +71,12 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
           className={resolveClassName(
             "tableHead",
             "tableHead sticky top-0 z-20 max-sm:hidden",
-            "border-b",
+            "border-b dark:border-b-gray-600",
             headClassName,
           )}>
           <tr>
             {visibleColumns.map((col) => (
-              <th key={col.id} className="bg-slate-50 px-4 py-2 text-left font-normal">
+              <th key={col.id} className="bg-slate-50 dark:bg-gray-950 px-4 py-2 text-left font-normal">
                 {col.label ? (
                   <div
                     className="flex items-center gap-2 whitespace-nowrap data-[can-sort=true]:hover:cursor-pointer"
@@ -147,7 +147,7 @@ export const TableRowGroup = forwardRef<HTMLTableRowElement, TableRowGroupProps>
         className={resolveClassName(
           "tableRow",
           "tableRow z-10 data-[sticky=true]:sticky data-[sticky=true]:top-[47px] data-[responsive=true]:max-sm:hidden",
-          "[&:not(:last-child)]:border-b-2",
+          "[&:not(:last-child)]:border-b dark:[&:not(:last-child)]:border-b-gray-600",
           rowClassName,
         )}
         data-responsive={responsive}
@@ -223,11 +223,16 @@ export const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(function 
   return (
     <tr
       ref={ref}
-      className={resolveClassName("tableRow", "tableRow", "sm:border-b sm:[&:not(:last-child)]:border-b", className)}
+      className={resolveClassName(
+        "tableRow",
+        "tableRow",
+        "sm:[&:not(:last-child)]:border-b dark:sm:[&:not(:last-child)]:border-b-gray-600",
+        className,
+      )}
       {...rest}>
       {responsive && isMobile ? (
         <td colSpan={columns.length}>
-          <div className="space-y-2 rounded border border-slate-200 px-2 py-1 shadow-sm">
+          <div className="space-y-2 rounded border border-slate-200 dark:border-gray-600 px-2 py-1 shadow-sm">
             {mobileHeader ?? null}
 
             <div className="grid grid-cols-5 gap-2">
@@ -292,11 +297,16 @@ const TableLoader = ({ mobileCount = 3, desktopCount = 10 }: TableLoaderProps) =
             {Array.from({ length: mobileCount })
               .fill(null)
               .map((_, index) => (
-                <div key={index} className="grid grid-cols-2 gap-4 rounded-lg border border-slate-200 p-2 shadow-sm">
+                <div
+                  key={index}
+                  className="grid grid-cols-2 gap-4 rounded-lg border border-slate-200 dark:border-gray-600 p-2 shadow-sm">
                   {Array.from({ length: 8 })
                     .fill(null)
                     .map((_, index) => (
-                      <div key={index} className="h-2 w-full animate-pulse rounded-full bg-slate-200" />
+                      <div
+                        key={index}
+                        className="h-2 w-full animate-pulse rounded-full bg-slate-200 dark:bg-gray-800"
+                      />
                     ))}
                 </div>
               ))}
@@ -312,7 +322,7 @@ const TableLoader = ({ mobileCount = 3, desktopCount = 10 }: TableLoaderProps) =
               .fill(null)
               .map((_, index) => (
                 <td key={index} className="px-2 py-2.5">
-                  <div className="h-2.5 w-full animate-pulse rounded-md bg-slate-100" />
+                  <div className="h-2.5 w-full animate-pulse rounded-md bg-slate-100 dark:bg-gray-800" />
                 </td>
               ))}
           </tr>

@@ -12,7 +12,7 @@ import React, {
 import { InputAddon, InputError, InputHelper, InputInput, InputLabel, InputWrapper } from "@/components/input-helpers";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
 import { Popup } from "@/components/popup";
-import { combineRefs } from "@/utils";
+import { cn, combineRefs } from "@/utils";
 import CalendarIcon from "../assets/calendar.svg";
 import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
@@ -169,7 +169,11 @@ const DatePickerCalendar = forwardRef<HTMLDivElement, DatePickerCalendarProps>(f
   };
 
   const handleSelectDate = (djs: dayjs.Dayjs) => {
-    onSelect(djs.format("YYYY-MM-DD"));
+    const djsIso = djs.format("YYYY-MM-DD");
+
+    if (!validator || validator(djsIso) === djsIso) {
+      onSelect(djs.format("YYYY-MM-DD"));
+    }
   };
 
   const handleShowToday = () => {
@@ -182,12 +186,12 @@ const DatePickerCalendar = forwardRef<HTMLDivElement, DatePickerCalendarProps>(f
       className={resolveClassName(
         "datePickerCalendar",
         "datePickerCalendar grid grid-cols-2 gap-2 p-2 w-auto overflow-hidden space-y-2",
-        "rounded-lg bg-white shadow-lg border border-gray-300 z-[100]",
+        "rounded-lg bg-white dark:bg-gray-950 shadow-lg border border-gray-300 dark:border-gray-600 z-[100]",
         className,
       )}
       {...rest}>
-      <nav className="col-span-full flex items-center gap-2 p-2 -m-2 bg-slate-100">
-        <select className="bg-transparent text-sm" value={viewDjs.month()} onChange={handleSelectMonth}>
+      <nav className="col-span-full flex items-center gap-2 p-2 -m-2 bg-slate-100 dark:bg-slate-900">
+        <select className="bg-white dark:bg-gray-900 text-sm" value={viewDjs.month()} onChange={handleSelectMonth}>
           <option value={0}>Jan</option>
           <option value={1}>Feb</option>
           <option value={2}>Mar</option>
@@ -202,7 +206,7 @@ const DatePickerCalendar = forwardRef<HTMLDivElement, DatePickerCalendarProps>(f
           <option value={11}>Dec</option>
         </select>
 
-        <select className="bg-transparent text-sm" value={viewDjs.year()} onChange={handleSelectYear}>
+        <select className="bg-white dark:bg-gray-900 text-sm" value={viewDjs.year()} onChange={handleSelectYear}>
           {yearOptions.map((year) => (
             <option key={year} value={year}>
               {year}
@@ -223,7 +227,7 @@ const DatePickerCalendar = forwardRef<HTMLDivElement, DatePickerCalendarProps>(f
         </Tooltip>
       </nav>
 
-      <div className="col-span-full grid grid-cols-7 gap-1">
+      <div className="col-span-full grid grid-cols-7 grid-rows-7 gap-1">
         <p className="text-center text-sm text-gray-500">Su</p>
         <p className="text-center text-sm text-gray-500">Mo</p>
         <p className="text-center text-sm text-gray-500">Tu</p>
@@ -242,10 +246,12 @@ const DatePickerCalendar = forwardRef<HTMLDivElement, DatePickerCalendarProps>(f
               className={resolveClassName(
                 "datePickerCalendarDay",
                 "datePickerCalendarDay grid place-items-center aspect-square rounded disabled:opacity-25 disabled:hover:cursor-not-allowed",
-                "data-[selected=false]:border data-[today=true]:border-dashed data-[today=true]:border-primary " +
-                  "enabled:data-[selected=true]:bg-primary enabled:data-[selected=true]:text-white " +
-                  "enabled:hover:bg-primary/25 data-[in-month=false]:opacity-25 " +
+                cn(
+                  "data-[selected=false]:border dark:data-[selected=false]:border-gray-600 data-[today=true]:border-dashed data-[today=true]:border-primary",
+                  "enabled:data-[selected=true]:bg-primary enabled:data-[selected=true]:text-white",
+                  "enabled:hover:bg-primary/25 data-[in-month=false]:opacity-25",
                   "enabled:data-[selected=false]:data-[in-range=true]:!bg-primary/10",
+                ),
               )}
               disabled={validator && validator(itemDjsIso) !== itemDjsIso}
               data-today={itemDjs.isSame(currentDjs, "day")}

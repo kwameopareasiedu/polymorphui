@@ -14,7 +14,7 @@ export const DetailsTable = ({ header, className, loading, data, footer }: Detai
 
   return (
     <table className={resolveClassName("detailsTable", "details-table w-full", "", className)}>
-      <tbody className="[&_tr:not(:last-child)]:border-b-[1px]">
+      <tbody className="[&_tr:not(:last-child)]:border-b dark:[&_tr:not(:last-child)]:border-b-gray-600">
         {loading ? (
           Array.from({ length: data.filter(([, , visible]) => visible).length })
             .fill(null)
@@ -23,10 +23,10 @@ export const DetailsTable = ({ header, className, loading, data, footer }: Detai
                 key={index}
                 className={resolveClassName("detailsTableLoader", "detailsTableLoader", "[&_td]:px-4 [&_td]:py-2")}>
                 <td className="w-36">
-                  <div className="h-2.5 w-full animate-pulse rounded-md bg-slate-100" />
+                  <div className="h-2.5 w-full animate-pulse rounded-md bg-slate-100 bg-gray-800" />
                 </td>
                 <td>
-                  <div className="h-2.5 w-full animate-pulse rounded-md bg-slate-100" />
+                  <div className="h-2.5 w-full animate-pulse rounded-md bg-slate-100 bg-gray-800" />
                 </td>
               </tr>
             ))

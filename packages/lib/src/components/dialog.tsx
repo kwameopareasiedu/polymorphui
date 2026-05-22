@@ -12,7 +12,7 @@ import React, {
   useEffect,
   useRef,
 } from "react";
-import { combineRefs } from "@/utils";
+import { cn, combineRefs } from "@/utils";
 import { createPortal } from "react-dom";
 import CloseIcon from "../assets/close.svg";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
@@ -104,9 +104,11 @@ export const DialogContent = forwardRef(function DialogContent<C extends Element
       className={resolveClassName(
         "dialogContent",
         "dialogContent relative w-full max-h-full overflow-auto focus:outline-0",
-        "bg-white p-10 rounded-lg data-[size=xs]:max-w-[320px] data-[size=sm]:max-w-[480px] " +
-          "data-[size=md]:max-w-[576px] data-[size=lg]:max-w-[768px] data-[size=xl]:max-w-[992px] " +
+        cn(
+          "bg-white dark:bg-gray-950 p-10 rounded-lg data-[size=xs]:max-w-[320px] data-[size=sm]:max-w-[480px]",
+          "data-[size=md]:max-w-[576px] data-[size=lg]:max-w-[768px] data-[size=xl]:max-w-[992px]",
           "data-[size=xxl]:max-w-[1200px] data-[size=full]:max-w-full",
+        ),
         className,
       )}
       {...rest}

@@ -145,7 +145,7 @@ export default function App() {
             <ContextMenuItem label="Option 2">
               <ContextMenuItems>
                 <ContextMenuItem label="Nested 1" onClick={() => alert("Nested 1 clicked")} />
-                <ContextMenuItem label="Nested 2" onClick={() => alert("Nested 2 clicked")} />
+                <ContextMenuItem label="Nested 2" onClick={() => alert("Nested 2 clicked")} disabled />
               </ContextMenuItems>
             </ContextMenuItem>
             <ContextMenuItem label="Option 3" onClick={() => alert("Option 3 clicked")} />
@@ -664,7 +664,7 @@ export default function App() {
       </Showcase>
 
       <Showcase title="Table" flex>
-        <div className="w-full overflow-auto max-h-48 border">
+        <div className="w-full overflow-auto max-h-48 border dark:border-gray-600">
           <Table
             columns={[
               { id: "name", label: "Name", visible: true },
@@ -724,7 +724,7 @@ export default function App() {
         />
 
         <DetailsTable
-          className="w-full border"
+          className="w-full border dark:border-gray-600"
           data={[
             ["Name", "John Doe", true /* Visible */],
             [<Text key="key">Age</Text>, <Text key="key">29</Text>, true /* Hidden */],
@@ -777,7 +777,7 @@ interface ShowcaseProps {
 function Showcase({ title, children, flex = false }: ShowcaseProps) {
   return (
     <div
-      className="max-w-full data-[flex=false]:sm:max-w-[386px] data-[flex=true]:!w-full space-y-4 p-4 shadow-lg bg-white rounded-md border border-slate-300"
+      className="max-w-full data-[flex=false]:sm:max-w-[386px] data-[flex=true]:!w-full space-y-4 p-4 shadow-lg bg-white rounded-md border border-slate-300 dark:bg-gray-950 dark:border-gray-700"
       data-flex={flex}>
       <p className="uppercase text-sm font-medium text-gray-700 tracking-wide">{title}</p>
       <div className="flex flex-wrap gap-2">{children}</div>

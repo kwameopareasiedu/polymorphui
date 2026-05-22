@@ -96,7 +96,7 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(func
       className={resolveClassName(
         "accordionItem",
         "accordionItem w-full",
-        "[&:not(:last-child)]:border-b-[1px] [&:not(:last-child)]:border-gray-300",
+        "[&:not(:last-child)]:border-b-[1px] [&:not(:last-child)]:border-gray-300 dark:[&:not(:last-child)]:border-gray-600",
         className,
       )}
       {...rest}
@@ -136,7 +136,7 @@ export const AccordionPanel = forwardRef<HTMLDivElement, AccordionPanelProps>(fu
   return (
     <div
       ref={ref}
-      className={resolveClassName("accordionPanel", "accordionPanel", "p-4 bg-gray-100", className)}
+      className={resolveClassName("accordionPanel", "accordionPanel", "p-4 bg-gray-100 dark:bg-gray-950", className)}
       {...rest}>
       {children}
     </div>

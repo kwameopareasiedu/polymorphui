@@ -12,7 +12,7 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { combineRefs, isDefined } from "@/utils";
+import { cn, combineRefs, isDefined } from "@/utils";
 import { Popup } from "@/components/popup";
 import CheckIcon from "../assets/check.svg";
 import DropdownIcon from "../assets/dropdown.svg";
@@ -133,7 +133,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(function Select
             className={resolveClassName(
               "selectItems",
               "selectItems",
-              "bg-white border-[0.5px] border-gray-300 rounded-sm z-[100]",
+              "bg-white dark:bg-gray-950 border-[0.5px] border-gray-300 dark:border-gray-600 rounded-sm z-[100]",
               itemsClassName,
             )}
             onKeyUp={handleOnKeyUp}>
@@ -167,8 +167,10 @@ const SelectButton = forwardRef<HTMLButtonElement, SelectButtonProps>(function S
       className={resolveClassName(
         "selectButton",
         "selectButton flex items-center gap-2",
-        "px-2 py-1 rounded border border-slate-300 focus:border-primary focus:outline-0 " +
-          "disabled:opacity-50 disabled:bg-slate-100 ",
+        cn(
+          "px-2 py-1 rounded border border-slate-300 dark:border-gray-600 focus:border-primary focus:outline-0",
+          "disabled:opacity-50 disabled:bg-slate-100 dark:disabled:bg-gray-800",
+        ),
         className,
       )}
       {...rest}>

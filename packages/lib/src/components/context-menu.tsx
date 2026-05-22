@@ -57,7 +57,7 @@ export const ContextMenuItems = forwardRef<HTMLDivElement, ContextMenuItemsProps
       className={resolveClassName(
         "contextMenuItems",
         "contextMenuItems flex flex-col overflow-hidden",
-        "bg-white border-[0.5px] border-gray-300 text-gray-600 rounded-sm text-sm",
+        "bg-white dark:bg-gray-950 border-[0.5px] border-gray-300 dark:border-gray-600 text-gray-600 dark:text-white rounded-sm text-sm",
         className,
       )}
       {...rest}>
@@ -96,7 +96,7 @@ export const ContextMenuItem = forwardRef<HTMLButtonElement, ContextMenuItemProp
       className={resolveClassName(
         "contextMenuItem",
         "contextMenuItem inline-grid grid-cols-[32px,1fr,32px] gap-2 items-center whitespace-nowrap",
-        "py-1.5 border-t-[0.5px] border-t-gray-300 first:border-none hover:bg-gray-100 disabled:bg-gray-200 disabled:opacity-50 ",
+        "py-1.5 border-t-[0.5px] border-t-gray-300 dark:border-t-gray-600 first:border-none enabled:hover:bg-gray-100 dark:enabled:hover:bg-gray-900 disabled:opacity-20",
         className,
       )}
       onClick={handleOnClick}

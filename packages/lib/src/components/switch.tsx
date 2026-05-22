@@ -1,6 +1,7 @@
 import React, { ButtonHTMLAttributes, forwardRef, HTMLAttributes, MouseEvent } from "react";
 import { InputHelperProps } from "@/components/input-helpers";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
+import { cn } from "@/utils";
 
 export interface SwitchProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children" | "onChange"> {
   checked?: boolean;
@@ -24,10 +25,12 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(function Switch
       type="button"
       className={resolveClassName(
         "switch",
-        "switch relative inline-block w-10 h-6 rounded-full border-2 transition-colors",
-        "bg-gray-300 border-gray-300 focus:outline-0 data-[checked=true]:bg-primary " +
-          "data-[checked=true]:border-primary disabled:opacity-35 enabled:hover:border-primary " +
+        "switch group relative inline-block w-10 h-6 rounded-full border-2 transition-colors",
+        cn(
+          "bg-gray-300 dark:bg-gray-800 border-gray-300 dark:border-gray-600 focus:outline-0 data-[checked=true]:bg-primary",
+          "data-[checked=true]:border-primary disabled:opacity-35 dark:disabled:opacity-20 enabled:hover:border-primary",
           "focus:border-primary",
+        ),
         className,
       )}
       onClick={handleOnClick}
@@ -51,7 +54,7 @@ const SwitchThumb = forwardRef<HTMLSpanElement, SwitchThumbProps>(function Switc
   const _className = resolveClassName(
     "switchThumb",
     "switchThumb inline-block h-full aspect-square rounded-full transition-all",
-    "bg-white",
+    "bg-white dark:group-hover:bg-white dark:data-[checked=false]:bg-gray-500",
     className,
   );
 

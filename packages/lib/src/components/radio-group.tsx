@@ -9,6 +9,7 @@ import React, {
 } from "react";
 import { InputError, InputHelper, InputLabel } from "@/components/input-helpers";
 import { usePolymorphUi } from "@/providers/polymorphui-provider";
+import { cn } from "@/utils";
 
 const RadioGroupContext = createContext<{
   value: unknown;
@@ -86,11 +87,15 @@ export const RadioGroupItem = forwardRef<HTMLButtonElement, RadioGroupItemProps>
       type="button"
       className={resolveClassName(
         "radioGroupItem",
-        "radioGroupItem relative inline-grid place-items-center w-5 h-5 rounded-full cursor-pointer " +
+        cn(
+          "radioGroupItem relative inline-grid place-items-center w-5 h-5 rounded-full cursor-pointer",
           'after:w-3 after:h-3 after:rounded-full after:content-[""]',
-        "border-2 border-gray-300 transition-colors data-[checked=true]:border-primary " +
-          "data-[checked=true]:after:bg-primary disabled:opacity-35 enabled:hover:border-primary " +
+        ),
+        cn(
+          "border-2 border-gray-300 dark:border-gray-600 transition-colors data-[checked=true]:border-primary",
+          "data-[checked=true]:after:bg-primary disabled:opacity-35 dark:disabled:opacity-20 enabled:hover:border-primary",
           "focus:outline-0 focus:border-primary",
+        ),
         className,
       )}
       onClick={handleOnClick}
