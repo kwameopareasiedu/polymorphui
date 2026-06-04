@@ -90,34 +90,34 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(function
       )}>
       {label && <InputLabel htmlFor={id}>{label}</InputLabel>}
 
-      <InputWrapper>
-        {leading && <InputAddon>{leading}</InputAddon>}
+      <Popup
+        open={isOpen}
+        offset={[0, 4]}
+        openEvent="triggerClick"
+        closeEvent={["triggerClick", "outsideClick"]}
+        placement="bottom-end"
+        onChange={setIsOpen}>
+        <InputWrapper>
+          {leading && <InputAddon>{leading}</InputAddon>}
 
-        <div className="relative z-0 font-mono flex-1 [&>input]:w-full">
-          <InputInput
-            {...rest}
-            type="text"
-            ref={combineRefs(ref, inputRef)}
-            placeholder={placeholder}
-            value={buffer}
-            readOnly
-          />
-        </div>
+          <div className="relative z-0 font-mono flex-1 [&>input]:w-full">
+            <InputInput
+              {...rest}
+              type="text"
+              ref={combineRefs(ref, inputRef)}
+              placeholder={placeholder}
+              value={buffer}
+              readOnly
+            />
+          </div>
 
-        <Popup
-          open={isOpen}
-          offset={[0, 4]}
-          openEvent="triggerClick"
-          closeEvent={["triggerClick", "outsideClick"]}
-          placement="bottom-end"
-          onChange={setIsOpen}>
           <button type="button">
             <CalendarIcon {...({ className: "size-4" } as object)} />
           </button>
+        </InputWrapper>
 
-          <DatePickerCalendar date={value} validator={validator} range={range} onSelect={handleSelectCalendarDate} />
-        </Popup>
-      </InputWrapper>
+        <DatePickerCalendar date={value} validator={validator} range={range} onSelect={handleSelectCalendarDate} />
+      </Popup>
 
       {(helper || error) && (
         <div className="flex items-center justify-between gap-2">

@@ -11,5 +11,4 @@ package-lock.json
 *.tgz
 .env*
 packages/lib/.npmrc
-packages/lib/README.md
 *.tsbuildinfo
